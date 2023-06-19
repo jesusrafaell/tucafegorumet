@@ -6,6 +6,7 @@ import AnimationCover from '@/components/AnimationCover';
 import HomePage from '@/sections/Home';
 import Header from '@/components/Header';
 import SideBar from '@/components/SideBar';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -49,6 +50,7 @@ export default function Home() {
 				<Header />
 				<HomePage />
 				<SideBar />
+				<Footer />
 				{/* </AnimationCover> */}
 
 				{completedAnimation && (

@@ -6,6 +6,7 @@ import { BsEyeFill, BsPlus } from 'react-icons/bs';
 
 const Product: FC<any> = ({ id, product }) => {
 	const { addToCart } = useContext(CartContext);
+	const { name } = product;
 	return (
 		<div className=' bg-white'>
 			<div
@@ -45,7 +46,9 @@ const Product: FC<any> = ({ id, product }) => {
 						</div>
 					</button>
 					<Link
-						href={'/'}
+						href={{
+							pathname: `/product/${name}`,
+						}}
 						className='
 							w-10 h-10 
 						bg-white flex justify-center
@@ -59,7 +62,11 @@ const Product: FC<any> = ({ id, product }) => {
 			</div>
 			{/* category & title & price */}
 			<div className='text-sm capitalize text-gray-500'>categoria</div>
-			<Link href={`/product/${1}`} />
+			<Link
+				href={{
+					pathname: `/product/${name}`,
+				}}
+			/>
 			<h2 className='font-gravity-regular mb-1'>title</h2>
 			<div className='font-gravity-regular'>100.99$</div>
 		</div>

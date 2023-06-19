@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, ReactNode, createContext, useState } from 'react';
 
 interface SidebarContextValue {
 	isOpen: boolean;
@@ -6,7 +6,7 @@ interface SidebarContextValue {
 	handleClose: () => void;
 }
 
-export const SidebarContext = React.createContext<SidebarContextValue>({
+export const SidebarContext = createContext<SidebarContextValue>({
 	isOpen: false,
 	setIsOpen: () => {},
 	handleClose: () => {},

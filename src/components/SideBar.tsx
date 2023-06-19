@@ -4,10 +4,11 @@ import { FiTrash2 } from 'react-icons/fi';
 import { SidebarContext } from '@/context/SidebarContext';
 import { CartContext } from '@/context/CartContext';
 import CartItem from './CartItem';
+import Link from 'next/link';
 
 const SideBar = () => {
 	const { isOpen, handleClose } = useContext(SidebarContext);
-	const { cart } = useContext(CartContext);
+	const { cart, total, clearCart } = useContext(CartContext);
 	return (
 		<div
 			className={`
@@ -35,10 +36,43 @@ const SideBar = () => {
 					<IoMdArrowForward className='text-2xl' />
 				</div>
 			</div>
-			<div>
+			<div
+				className='
+					flex flex-col gap-y-2 
+					h-[420px] lg:h-[480px]
+					overflow-y-auto overflow-x-hidden border-b
+			'
+			>
 				{cart.map((product, index) => {
 					return <CartItem key={index} item={product} />;
 				})}
+			</div>
+			{/* sidebar bottom */}
+			<div className='flex flex-col gap-y-3 py-4 mt-4'>
+				<div className='flex w-full justify-between items-center'>
+					{/* total */}
+					<div className='uppercase font-gravity-bold'>
+						<span className='mr-2'>Total:</span>$ {total.toFixed(2)}
+					</div>
+					<div
+						onClick={() => clearCart()}
+						className='cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl'
+					>
+						<FiTrash2 />
+					</div>
+				</div>
+				<Link
+					href={'/'}
+					className='bg-gray-200 flex p-4 justify-center items-center text-primary w-full font-gravity-regular'
+				>
+					View Cart
+				</Link>
+				<Link
+					href={'/'}
+					className='bg-primary flex p-4 justify-center items-center text-white w-full font-gravity-regular'
+				>
+					Checkout
+				</Link>
 			</div>
 		</div>
 	);

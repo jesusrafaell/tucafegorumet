@@ -1,3 +1,4 @@
+import Hero from '@/components/Hero';
 import Product from '@/components/Product';
 import products from '@/utils/products';
 
@@ -9,6 +10,7 @@ export const Home = () => {
 			overflow-x-hidden relative 
 			min-h-screen '
 		>
+			<Hero />
 			<div className='py-16'>
 				<div className='container mx-auto'>
 					<div
