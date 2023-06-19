@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const path = require('path');
 
-module.exports = nextConfig
+const nextConfig = {
+	reactStrictMode: true,
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	sassOptions: {
+		includePaths: [path.join(__dirname, 'styles')],
+	},
+	images: {
+		// domains: ['res.cloudinary.com'],
+	},
+	reactStrictMode: true,
+	swcMinify: true,
+};
+
+module.exports = nextConfig;
