@@ -1,7 +1,14 @@
-import { FC, ReactNode, useEffect } from 'react';
+import { FC, ReactNode, useContext, useEffect } from 'react';
 import gsap from 'gsap';
+import { AnimationCoverContext } from '@/context/AnimationCoverContext';
 
-const AnimationCover: FC<any> = ({ children, title, setCompletedAnimation, isLoading }) => {
+interface Props {
+	children: ReactNode;
+	title: string;
+}
+
+const AnimationCover: FC<Props> = ({ children, title }) => {
+	const { setCompletedAnimation, isLoading } = useContext(AnimationCoverContext);
 	useEffect(() => {
 		const t1 = gsap.timeline();
 		const t2 = gsap.timeline();
@@ -86,62 +93,6 @@ const AnimationCover: FC<any> = ({ children, title, setCompletedAnimation, isLoa
 				3.4
 			);
 
-			// t1.fromTo(
-			// 	'.cover-2',
-			// 	{
-			// 		yPercent: -100,
-			// 		duration: 1,
-			// 	},
-			// 	{
-			// 		opacity: 1,
-			// 		yPercent: 0,
-			// 		duration: 1,
-			// 		ease: 'power1.in',
-			// 		delay: 0.4,
-			// 	}
-			// );
-
-			// t1.fromTo(
-			// 	'.imsrk2',
-			// 	{
-			// 		xPercent: -100,
-			// 		duration: 1,
-			// 	},
-			// 	{
-			// 		opacity: 1,
-			// 		xPercent: 0,
-			// 		duration: 1,
-			// 		ease: 'power1.in',
-			// 	}
-			// );
-
-			//hidden last elemtens
-			// t1.to('.imsrk2', {
-			// 	delay: 1,
-			// 	opacity: 0,
-			// 	xPercent: -100,
-			// 	duration: 1,
-			// 	ease: 'power1.out',
-			// 	yoyo: true,
-			// });
-
-			// t1.to('.cover-2', {
-			// 	xPercent: -100,
-			// 	duration: 1,
-			// 	ease: 'power1.out',
-			// });
-
-			// t1.to('.main-cover', {
-			// 	opacity: 0,
-			// 	display: 'none',
-			// 	xPercent: -100,
-			// 	duration: 0.1,
-			// 	ease: 'power1.out',
-			// 	onComplete: () => {
-			// 		setCompletedAnimation(true);
-			// 	},
-			// });
-
 			t1.to('.main-cover', {
 				opacity: 0,
 				display: 'none',
@@ -153,10 +104,14 @@ const AnimationCover: FC<any> = ({ children, title, setCompletedAnimation, isLoa
 				},
 			});
 
-			t1.to('.page-1', {
+			t1.to('.pageCover', {
 				opacity: 1,
-				height: '100%',
-				with: '100%',
+				// height: '100%',
+				// with: '100vw',
+			});
+
+			t1.to('.main-cover', {
+				display: 'none',
 			});
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -177,7 +132,7 @@ const AnimationCover: FC<any> = ({ children, title, setCompletedAnimation, isLoa
 				</div>
 				<div className='cover-1 opacity-0 bg-[#0f0f0f] absolute w-full h-[100vh]'></div>
 			</div>
-			<div className='page-1 opacity-0 w-0 h-0'>{children}</div>
+			<div className='pageCover opacity-0'>{children}</div>
 		</>
 	);
 };

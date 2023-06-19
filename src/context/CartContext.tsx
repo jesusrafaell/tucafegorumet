@@ -5,7 +5,7 @@ interface CartContextValue {
 	cart: ProductCartDto[];
 	itemAmount: number;
 	total: number;
-	setCart: React.Dispatch<React.SetStateAction<any[]>>;
+	setCart: React.Dispatch<React.SetStateAction<ProductCartDto[]>>;
 	addToCart: (product: ProductCartDto) => void;
 	removeFromCart: (id: number) => void;
 	clearCart: () => void;
