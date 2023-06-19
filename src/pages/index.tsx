@@ -2,11 +2,7 @@ import { Inter } from 'next/font/google';
 import Layout from '@/components/Layout';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import AnimationCover from '@/components/AnimationCover';
 import HomePage from '@/sections/Home';
-import Header from '@/components/Header';
-import SideBar from '@/components/SideBar';
-import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -47,10 +43,7 @@ export default function Home() {
 					setCompletedAnimation={setCompletedAnimation}
 					isLoading={isLoading}
 				> */}
-				<Header />
 				<HomePage />
-				<SideBar />
-				<Footer />
 				{/* </AnimationCover> */}
 
 				{completedAnimation && (

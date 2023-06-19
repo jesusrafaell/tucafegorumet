@@ -1,6 +1,8 @@
 import Hero from '@/components/Hero';
 import Product from '@/components/Product';
+import { textVariant } from '@/utils/monition';
 import products from '@/utils/products';
+import { motion } from 'framer-motion';
 
 export const Home = () => {
 	return (
@@ -13,7 +15,11 @@ export const Home = () => {
 			<Hero />
 			<div className='py-16'>
 				<div className='container mx-auto'>
-					<div
+					<motion.div
+						variants={textVariant(0.2, 10)}
+						initial='hidden'
+						whileInView='show'
+						viewport={{ once: false, amount: 0.7 }}
 						className='grid grid-cols-1 
                 md:grid-cols-1
                 lg:grid-cols-3
@@ -31,7 +37,7 @@ export const Home = () => {
 								</div>
 							);
 						})}
-					</div>
+					</motion.div>
 				</div>
 			</div>
 		</section>

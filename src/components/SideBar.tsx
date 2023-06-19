@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const SideBar = () => {
 	const { isOpen, handleClose } = useContext(SidebarContext);
-	const { cart, total, clearCart } = useContext(CartContext);
+	const { cart, total, itemAmount, clearCart } = useContext(CartContext);
 	return (
 		<div
 			className={`
@@ -26,7 +26,7 @@ const SideBar = () => {
 				className='flex items-center 
 			justify-between py-6 border-b'
 			>
-				<div className='uppercase text-sm font-gravity-bold'>Shopping Bag (0)</div>
+				<div className='uppercase text-sm font-gravity-bold'>Shopping Bag ({itemAmount})</div>
 				{/* icon */}
 				<div
 					onClick={handleClose}
