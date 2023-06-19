@@ -35,7 +35,7 @@ const Product: FC<any> = ({ id, product }) => {
 					group-hover:opacity-100 
 					trasition-all duration-200'
 				>
-					<button onClick={() => addToCart(product, id)}>
+					<button onClick={() => addToCart(product)}>
 						<div
 							className='flex justify-center 
 												items-center text-white 

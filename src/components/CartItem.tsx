@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { CartContext } from '@/context/CartContext';
 import Link from 'next/link';
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 
@@ -9,9 +10,10 @@ interface Props {
 }
 
 const CartItem: FC<Props> = ({ item }) => {
-	const { name, amount } = item;
+	const { id, name, price, amount } = item;
+	const { removeFromCart } = useContext(CartContext);
 	return (
-		<div className='flex gap-x-4 py-2 lg:px-6 border-b border-gray-200 w-full font-gravity-light text-gray-500'>
+		<div className='flex gap-x-4 py-2 lg:px-2 border-b border-gray-200 w-full font-gravity-light text-gray-500'>
 			<div className='w-full min-h-[150px] flex items-center gap-x-4'>
 				{/* image */}
 				<Link href={`/product/${1}`}>
@@ -36,7 +38,10 @@ const CartItem: FC<Props> = ({ item }) => {
 						</Link>
 						{/* remove */}
 						<div className='text-xl cursor-pointer'>
-							<IoMdClose className='text-gray-500 hover:text-red-500 transition' />
+							<IoMdClose
+								onClick={() => removeFromCart(id)}
+								className='text-gray-500 hover:text-red-500 transition'
+							/>
 						</div>
 					</div>
 					<div className='flex gap-x-2 h-[36px] text-[13px]'>
@@ -60,11 +65,11 @@ const CartItem: FC<Props> = ({ item }) => {
 							</div>
 						</div>
 						{/* product price */}
-						<div className='flex-1 flex items-center justify-around'>{'100$'}</div>
+						<div className='flex-1 flex items-center justify-around'>{`${price}$`}</div>
 						{/* final price */}
 						{/* make the price at 2 decimal */}
 						<div className='flex-1 flex justify-end items-center text-primary font-gravity-bold'>
-							{`$ ${parseFloat(`${150 * amount}`).toFixed(2)}`}
+							{`$ ${parseFloat(`${price * amount}`).toFixed(2)}`}
 						</div>
 					</div>
 				</div>
