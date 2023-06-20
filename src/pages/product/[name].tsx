@@ -30,7 +30,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 	}, []);
 
 	return (
-		<Layout>
+		<Layout active={false}>
 			<section className='product-page opacity-0 pt-32 pb-12 lg:py-32 h-screen flex items-center'>
 				<div className='container mx-auto'>
 					{/* img & text */}

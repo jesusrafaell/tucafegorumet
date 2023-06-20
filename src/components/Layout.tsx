@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { FC, ReactNode, useContext } from 'react';
+import { FC, ReactNode, useContext, useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import SideBar from './SideBar';
@@ -8,12 +8,24 @@ import { AnimationCoverContext } from '@/context/AnimationCoverContext';
 
 interface Props {
 	children: ReactNode;
+	active: boolean;
 }
 
-const Layout: FC<Props> = ({ children }) => {
-	const { completedAnimation } = useContext(AnimationCoverContext);
+const Layout: FC<Props> = ({ active, children }) => {
+	const { completedAnimation, setCompletedAnimation } = useContext(AnimationCoverContext);
 
-	console.log('completed', completedAnimation);
+	useEffect(() => {
+		// Verificar si la página ya ha sido cargada previamente
+		const isPageLoaded = localStorage.getItem('isPageLoaded');
+
+		if (isPageLoaded === 'loaded') {
+			console.log('La página ha sido cargada anteriormente en el navegador');
+			// setCompletedAnimation(true);
+		} else {
+			console.log('Es la primera vez que la página se carga en el navegador');
+			localStorage.setItem('isPageLoaded', 'loaded');
+		}
+	}, [setCompletedAnimation]);
 
 	return (
 		<>
@@ -23,14 +35,14 @@ const Layout: FC<Props> = ({ children }) => {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			{completedAnimation && (
+			{(completedAnimation || !active) && (
 				<>
 					<Header />
 					<SideBar />
 				</>
 			)}
-			<AnimationCover title={'TuCafeGourmet'}>{children}</AnimationCover>
-			{completedAnimation && <Footer />}
+			{active ? <AnimationCover title={'TuCafeGourmet'}>{children}</AnimationCover> : children}
+			{(completedAnimation || !active) && <Footer />}
 		</>
 	);
 };

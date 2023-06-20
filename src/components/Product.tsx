@@ -1,17 +1,23 @@
 /* eslint-disable @next/next/no-img-element */
 import { CartContext } from '@/context/CartContext';
+import { ProductCartDto, ProductDto } from '@/utils/products';
 import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 import { BsEyeFill, BsPlus } from 'react-icons/bs';
 
-const Product: FC<any> = ({ id, product }) => {
+interface Props {
+	id: number;
+	product: ProductDto;
+}
+
+const Product: FC<Props> = ({ id, product }) => {
 	const { addToCart } = useContext(CartContext);
-	const { name } = product;
+	const { name, price, disponible } = product;
 	return (
 		<div className=' bg-white'>
 			<div
 				className='
-				border border-[#e4e4e4] h-[300px]
+				border border-[#e4e4e4] h-[250px]
 				mb-4 relative overflow-hidden group
 				trasition'
 			>
@@ -36,15 +42,17 @@ const Product: FC<any> = ({ id, product }) => {
 					group-hover:opacity-100 
 					trasition-all duration-200'
 				>
-					<button onClick={() => addToCart(product)}>
-						<div
-							className='flex justify-center 
+					{disponible && (
+						<button onClick={() => addToCart(product as ProductCartDto)}>
+							<div
+								className='flex justify-center 
 												items-center text-white 
 												w-10 h-10 bg-red-500'
-						>
-							<BsPlus className='text-3xl' />
-						</div>
-					</button>
+							>
+								<BsPlus className='text-3xl' />
+							</div>
+						</button>
+					)}
 					<Link
 						href={{
 							pathname: `/product/${name}`,
@@ -61,14 +69,14 @@ const Product: FC<any> = ({ id, product }) => {
 				</div>
 			</div>
 			{/* category & title & price */}
-			<div className='text-sm capitalize text-gray-500'>categoria</div>
+			<div className='text-sm capitalize text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
 			<Link
 				href={{
 					pathname: `/product/${name}`,
 				}}
 			/>
-			<h2 className='font-gravity-regular mb-1'>title</h2>
-			<div className='font-gravity-regular'>100.99$</div>
+			<h2 className='font-gravity-regular mb-1'>{name}</h2>
+			<div className='font-gravity-regular'>{price}$</div>
 		</div>
 	);
 };

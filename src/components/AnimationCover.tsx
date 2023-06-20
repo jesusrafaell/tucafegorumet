@@ -1,4 +1,4 @@
-import { FC, ReactNode, useContext, useEffect } from 'react';
+import { FC, ReactNode, useContext, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { AnimationCoverContext } from '@/context/AnimationCoverContext';
 
@@ -8,10 +8,14 @@ interface Props {
 }
 
 const AnimationCover: FC<Props> = ({ children, title }) => {
-	const { setCompletedAnimation, isLoading } = useContext(AnimationCoverContext);
+	const { completedAnimation, setCompletedAnimation, isLoading } = useContext(AnimationCoverContext);
+	console.log(completedAnimation);
 	useEffect(() => {
+		//cuando no este cargada has la animacion
+
 		const t1 = gsap.timeline();
 		const t2 = gsap.timeline();
+
 		t1.fromTo(
 			'.imsrk',
 			{
@@ -42,80 +46,68 @@ const AnimationCover: FC<Props> = ({ children, title }) => {
 			}
 		);
 
-		if (!isLoading) {
-			console.log('Ready loading');
-			t1.to('.dot', {
-				x: 20,
-				duration: 1,
-				ease: 'power1.out',
-			});
+		//continua con la animcion cuando termine lo anterior
+		t1.to('.dot', {
+			x: 20,
+			duration: 1,
+			ease: 'power1.out',
+		});
 
-			t1.to('.dot', {
-				x: -10,
-				duration: 0.5,
-				ease: 'power1.out',
-			});
+		t1.to('.dot', {
+			x: -10,
+			duration: 0.5,
+			ease: 'power1.out',
+		});
 
-			//when loading render this [3312]
+		//when loading render this [3312]
 
-			t1.to('.imsrk', {
-				opacity: 0,
+		t1.to('.imsrk', {
+			opacity: 0,
+			xPercent: -100,
+			duration: 1,
+			ease: 'power1.out',
+			yoyo: true,
+		});
+
+		t1.to('.dot', {
+			opacity: 0,
+			duration: 1,
+			ease: 'expo.out',
+		});
+
+		t1.to('.cover', {
+			xPercent: -100,
+			duration: 1,
+			ease: 'power1.out',
+		});
+
+		t1.to(
+			'.cover-1',
+			{
 				xPercent: -100,
 				duration: 1,
-				ease: 'power1.out',
-				yoyo: true,
-			});
-
-			t1.to(
-				'.dot',
-				{
-					opacity: 0,
-					duration: 1,
-					ease: 'expo.out',
-				},
-				3
-			);
-
-			t1.to('.cover', {
-				xPercent: -100,
-				duration: 1,
-				ease: 'power1.out',
-			});
-
-			t1.to(
-				'.cover-1',
-				{
-					xPercent: -100,
-					duration: 1,
-					opacity: 1,
-					ease: 'power1.out',
-				},
-				3.4
-			);
-
-			t1.to('.main-cover', {
-				opacity: 0,
-				display: 'none',
-				xPercent: -100,
-				duration: 0.1,
-				ease: 'power1.out',
-				onComplete: () => {
-					setCompletedAnimation(true);
-				},
-			});
-
-			t1.to('.pageCover', {
 				opacity: 1,
-				// height: '100%',
-				// with: '100vw',
-			});
+				ease: 'power1.out',
+			},
+			3.4
+		);
 
-			t1.to('.main-cover', {
-				display: 'none',
-			});
-		}
+		t1.to('.main-cover', {
+			opacity: 0,
+			display: 'none',
+			xPercent: -100,
+			duration: 0.1,
+			ease: 'power1.out',
+			onComplete: () => {
+				setCompletedAnimation(true);
+			},
+		});
+
+		// t1.to('.pageCover', {
+		// });
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [isLoading]);
+	}, []);
 
 	return (
 		<>
@@ -132,7 +124,7 @@ const AnimationCover: FC<Props> = ({ children, title }) => {
 				</div>
 				<div className='cover-1 opacity-0 bg-[#0f0f0f] absolute w-full h-[100vh]'></div>
 			</div>
-			<div className='pageCover opacity-0'>{children}</div>
+			<div className={`pageCover transition-all ${completedAnimation ? 'block' : 'hidden'}`}>{children}</div>
 		</>
 	);
 };

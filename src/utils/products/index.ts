@@ -1,5 +1,6 @@
 export interface ProductDto {
 	id: number;
+	disponible: boolean;
 	name: string;
 	price: string;
 	description: string;
@@ -12,6 +13,7 @@ export interface ProductCartDto extends ProductDto {
 const products: ProductDto[] = [
 	{
 		id: 1,
+		disponible: true,
 		name: 'Item1',
 		price: '150.99',
 		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
@@ -22,6 +24,7 @@ const products: ProductDto[] = [
 	},
 	{
 		id: 2,
+		disponible: false,
 		name: 'Item2',
 		price: '200.50',
 		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
@@ -32,6 +35,7 @@ const products: ProductDto[] = [
 	},
 	{
 		id: 3,
+		disponible: true,
 		name: 'Item3',
 		price: '50.99',
 		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
@@ -42,6 +46,7 @@ const products: ProductDto[] = [
 	},
 	{
 		id: 4,
+		disponible: false,
 		name: 'Item4',
 		price: '300.50',
 		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
@@ -52,6 +57,7 @@ const products: ProductDto[] = [
 	},
 	{
 		id: 5,
+		disponible: true,
 		name: 'Item5',
 		price: '80.99',
 		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 

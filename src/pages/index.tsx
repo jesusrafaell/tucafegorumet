@@ -6,23 +6,26 @@ import { AnimationCoverContext } from '@/context/AnimationCoverContext';
 
 const inter = Inter({ subsets: ['latin'] });
 const HomePage = dynamic(() => import('@/sections/Home'));
+const ShopPage = dynamic(() => import('@/sections/Shop'));
 
 export default function Home() {
 	const { isLoading, setIsLoading } = useContext(AnimationCoverContext);
 
 	useEffect(() => {
 		setIsLoading(false);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [setIsLoading]);
 
 	return (
-		<Layout>
+		<Layout active={true}>
 			<div
 				className={`
-				overflow-hidden h-[100vh]}
+				overflow-hidden}
 			`}
 			>
-				<HomePage />
+				<>
+					<HomePage />
+					<ShopPage />
+				</>
 			</div>
 		</Layout>
 	);
