@@ -21,7 +21,7 @@ const Hero = () => {
 					{/* title */}
 					<h1 className='text-[60px] leading-[1.1] font-gravity-light mb-4'>
 						Tu Cafe Gourment <br />
-						<span className='font-gravity-bold'>Coffe</span>
+						<span className='font-gravity-bold'>Coffe Shop</span>
 					</h1>
 					<Link href={'/'} className='self-start uppercase font-gravity-bold border-b-2 border-primary'>
 						Tu Cafe

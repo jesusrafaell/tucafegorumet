@@ -3,8 +3,9 @@ import { CartContext } from '@/context/CartContext';
 import { SidebarContext } from '@/context/SidebarContext';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
-import { BsBag } from 'react-icons/bs';
 import { FaCoffee } from 'react-icons/fa';
+import { HiShoppingCart } from 'react-icons/hi';
+
 import { Link as LinkS } from 'react-scroll';
 import Link from 'next/link';
 
@@ -61,12 +62,28 @@ const Header = () => {
 							</div>
 						</li>
 						<li className={`cursor-pointer hover:animate-pulse`}>
+							<div className='text-[16px]'>
+								<LinkS
+									activeClass='before:absolute'
+									className="hover:before:absolute before:content-[''] before:bottom-4 before:h-1 before:w-[65px] before:bg-[#e2e2e2] before:transition"
+									to={'about'}
+									spy
+									smooth
+									offset={0}
+									duration={400}
+									onClick={() => handleClick('about')}
+								>
+									Our Story
+								</LinkS>
+							</div>
+						</li>
+						<li className={`cursor-pointer hover:animate-pulse`}>
 							<div
 								onClick={() => setIsOpen(!isOpen)}
 								className='cursor-pointer flex relative'
 								//
 							>
-								<BsBag className='text-2xl' />
+								<HiShoppingCart className='text-2xl' />
 								<div
 									className='
 											bg-red-500 absolute 

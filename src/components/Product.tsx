@@ -17,8 +17,8 @@ const Product: FC<Props> = ({ id, product }) => {
 		<div className=' bg-white'>
 			<div
 				className='
-				border border-[#e4e4e4] h-[250px]
-				mb-4 relative overflow-hidden group
+				border border-[#e4e4e4] h-[230px]
+				mb-2 relative overflow-hidden group
 				trasition'
 			>
 				<div className='w-full h-full flex justify-center items-center'>

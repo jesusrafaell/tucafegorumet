@@ -7,6 +7,7 @@ import { AnimationCoverContext } from '@/context/AnimationCoverContext';
 const inter = Inter({ subsets: ['latin'] });
 const HomePage = dynamic(() => import('@/sections/Home'));
 const ShopPage = dynamic(() => import('@/sections/Shop'));
+const AboutPage = dynamic(() => import('@/sections/About'));
 
 export default function Home() {
 	const { isLoading, setIsLoading } = useContext(AnimationCoverContext);
@@ -25,6 +26,7 @@ export default function Home() {
 				<>
 					<HomePage />
 					<ShopPage />
+					<AboutPage />
 				</>
 			</div>
 		</Layout>

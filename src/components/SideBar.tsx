@@ -5,6 +5,7 @@ import { SidebarContext } from '@/context/SidebarContext';
 import { CartContext } from '@/context/CartContext';
 import CartItem from './CartItem';
 import Link from 'next/link';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const SideBar = () => {
 	const { isOpen, handleClose } = useContext(SidebarContext);
@@ -26,7 +27,14 @@ const SideBar = () => {
 				className='flex items-center 
 			justify-between py-6 border-b'
 			>
-				<div className='uppercase text-sm font-gravity-bold'>Shopping Bag ({itemAmount})</div>
+				<div className='uppercase text-sm font-gravity-bold'>
+					{cart.length ? (
+						<div className='flex'>
+							<AiOutlineShoppingCart className='text-2xl mr-2 ' />
+							<span className='py-1'>{itemAmount}</span>
+						</div>
+					) : null}
+				</div>
 				{/* icon */}
 				<div
 					onClick={handleClose}
@@ -43,9 +51,15 @@ const SideBar = () => {
 					overflow-y-auto overflow-x-hidden border-b
 			'
 			>
-				{cart.map((product, index) => {
-					return <CartItem key={index} item={product} />;
-				})}
+				{!cart.length ? (
+					<div className='flex justify-center items-center w-full h-full'>
+						<AiOutlineShoppingCart className='text-8xl text-gray-400' />
+					</div>
+				) : (
+					cart.map((product, index) => {
+						return <CartItem key={index} item={product} />;
+					})
+				)}
 			</div>
 			{/* sidebar bottom */}
 			<div className='flex flex-col gap-y-3 py-4 mt-4'>
@@ -56,7 +70,7 @@ const SideBar = () => {
 					</div>
 					<div
 						onClick={() => clearCart()}
-						className='cursor-pointer py-4 bg-red-500 text-white w-12 h-12 flex justify-center items-center text-xl'
+						className='cursor-pointer py-4 bg-red-500 text-white w-10 h-10 flex justify-center items-center text-xl rounded-xl'
 					>
 						<FiTrash2 />
 					</div>
