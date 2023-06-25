@@ -64,9 +64,10 @@ export const Shop = () => {
 								<h1
 									className={`
 										relative
-										font-gravity-light
-										font-extrabold
+										uppercase
+										font-gravity-bold
 										text-4xl 
+										lg:text-4xl
 									`}
 								>
 									MAKE IT YOURS!
