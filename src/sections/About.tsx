@@ -9,8 +9,9 @@ export const About = () => {
 	return (
 		<section
 			id='about'
-			className='h-full w-screen 
+			className='h-full 
 			overflow-hidden relative 
+			w-screen
 			min-h-screen'
 		>
 			<div className='flex items-center justify-center'>
@@ -22,7 +23,7 @@ export const About = () => {
 							initial='hidden'
 							whileInView='show'
 							viewport={{ once: false, amount: 0.7 }}
-							className='flex-1 order-1 lg:-order-1 w-[400px] lg:p-6 lg:shadow-2xl'
+							className='flex-1 order-1 lg:-order-1 w-[250px] lg:w-[full] lg:p-6 lg:shadow-2xl'
 						>
 							<img src={imageOurStory.src} alt='Our-Story-LR' />
 						</motion.div>
@@ -31,6 +32,7 @@ export const About = () => {
 							variants={textVariant(0.5, -10)}
 							initial='hidden'
 							whileInView='show'
+							viewport={{ once: false, amount: 0.7 }}
 							className='lg:flex-1 flex flex-col justify-end px-4 lg:px-0'
 						>
 							<h2 className='text-2xl lg:text-4xl font-gravity-bold uppercase'>HOW TU CAFÉ WAS BORN</h2>

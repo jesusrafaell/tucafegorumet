@@ -2,7 +2,9 @@
 import Link from 'next/link';
 import React from 'react';
 import coffe from '@/images/coffe1.png';
-import coffe2 from '@/images/coffe2.png';
+import { motion } from 'framer-motion';
+import { textVariant } from '@/utils/monition';
+// import coffe2 from '@/images/coffe2.png';
 
 const Hero = () => {
 	return (
@@ -19,22 +21,35 @@ const Hero = () => {
 						<div className='w-10 h-[2px] bg-red-500 mr-3'></div>New
 					</div>
 					{/* title */}
-					<h1 className='text-[60px] leading-[1.1] font-gravity-light mb-4'>
-						Tu Cafe Gourment <br />
+					<div className='text-[60px] leading-[1.1] font-gravity-light mb-4'>
+						<motion.h1
+							variants={textVariant(0.5, 20)}
+							initial='hidden'
+							whileInView='show'
+							viewport={{ once: false, amount: 0.7 }}
+						>
+							Tu Café Gourment
+						</motion.h1>
 						<span className='font-gravity-bold'>Coffe Shop</span>
-					</h1>
+					</div>
 					<Link href={'/'} className='self-start uppercase font-gravity-bold border-b-2 border-primary'>
-						Tu Cafe
+						Tu Café
 					</Link>
 				</div>
 				{/* img */}
-				<div className='hidden lg:block'>
+				<motion.div
+					variants={textVariant(0.5, -100)}
+					initial='hidden'
+					whileInView='show'
+					viewport={{ once: false, amount: 0.7 }}
+					className='hidden lg:block'
+				>
 					<img
 						//
 						src={coffe.src}
 						alt='hola'
 					/>
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);

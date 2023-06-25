@@ -5,6 +5,7 @@ import Footer from './Footer';
 import SideBar from './SideBar';
 import AnimationCover from './AnimationCover';
 import { AnimationCoverContext } from '@/context/AnimationCoverContext';
+import Footer2 from './Footer2';
 
 interface Props {
 	children: ReactNode;
@@ -45,7 +46,8 @@ const Layout: FC<Props> = ({ active, children }) => {
 			{children}
 			{/* </AnimationCover> : children} */}
 			{/* {(completedAnimation || !active) && */}
-			<Footer />
+			{/* <Footer /> */}
+			<Footer2 />
 			{/* } */}
 		</>
 	);

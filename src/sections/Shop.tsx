@@ -1,57 +1,114 @@
 import Product from '@/components/Product';
+import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { textVariant } from '@/utils/monition';
 import products from '@/utils/products';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { setPriority } from 'os';
+import { useContext, useEffect, useState } from 'react';
 
 export const Shop = () => {
+	const router = useRouter();
+
+	const { isActive, setIsActive, setProduct, handleToProduct } = useContext(AnimationProductContext);
+
+	useEffect(() => {
+		setIsActive(false);
+		setProduct(null);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
+	let easing = [0.6, -0.05, 0.01, 0.99];
 	return (
-		<section
-			id='shop'
-			className='h-full w-screen 
-			overflow-hidden relative 
-			min-h-screen'
+		<motion.div
+			initial={{
+				x: 0,
+				opacity: 0,
+				// transition: {
+				// 	duration: 0.6,
+				// 	ease: easing,
+				// },
+			}}
+			animate={isActive ? 'active' : 'inactive'}
+			variants={{
+				active: {
+					x: -100,
+					opacity: 0,
+					transition: {
+						duration: 0.6,
+						ease: 'easeOut',
+					},
+				},
+				inactive: {
+					x: 0,
+					opacity: 1,
+				},
+			}}
+			exit={{ opacity: 0 }}
+			onAnimationComplete={() => {
+				if (isActive) {
+					console.log('go to product detail');
+					handleToProduct();
+				}
+			}}
 		>
-			<div className='py-8'>
-				<div className='container mx-auto'>
-					<div className='items-center justify-start px-10 pt-10 pb-4 flex'>
-						<motion.div
-							variants={textVariant(0.2, 10)}
-							initial='hidden'
-							whileInView='show'
-							viewport={{ once: false, amount: 0.7 }}
-						>
-							<h1 className='font-gravity-bold text-xl'>Shops</h1>
-						</motion.div>
-					</div>
-					<div
-						className='grid grid-cols-1 
-                md:grid-cols-1
-                lg:grid-cols-3
-                xl:grid-cols-3
-								gap-x-[50px]
-								gap-y-[20px]
-                max-w-sm 
-								mx-auto 
-								md:max-w-none 
-								md:mx-0'
-					>
-						{products.map((product, index) => {
-							return (
-								<motion.div
-									key={index}
-									variants={textVariant(0.2, 10)}
-									initial='hidden'
-									whileInView='show'
-									viewport={{ once: false, amount: 0.7 }}
+			<section
+				id='shop'
+				className='h-full w-screen 
+				overflow-hidden relative 
+				min-h-screen'
+			>
+				<div className='py-8'>
+					<div className='container mx-auto'>
+						<div className='items-center justify-center px-10 py-20 flex'>
+							<motion.div
+								variants={textVariant(0.2, 10)}
+								initial='hidden'
+								whileInView='show'
+								viewport={{ once: false, amount: 0.7 }}
+							>
+								<h1
+									className={`
+										relative
+										font-gravity-light
+										font-extrabold
+										text-4xl 
+									`}
 								>
-									<Product id={index} product={product} />;
-								</motion.div>
-							);
-						})}
+									MAKE IT YOURS!
+								</h1>
+							</motion.div>
+						</div>
+						<div
+							className='grid grid-cols-1 
+									md:grid-cols-1
+									lg:grid-cols-3
+									xl:grid-cols-3
+									gap-x-[50px]
+									gap-y-[20px]
+									max-w-sm 
+									mx-auto 
+									md:max-w-none 
+									md:mx-0'
+						>
+							{products.map((product, index) => {
+								return (
+									<motion.div
+										key={index}
+										variants={textVariant(0.2, 10)}
+										initial='hidden'
+										whileInView='show'
+										viewport={{ once: false, amount: 0.7 }}
+									>
+										<Product id={index} product={product} />;
+									</motion.div>
+								);
+							})}
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</motion.div>
 	);
 };
 
