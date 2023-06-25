@@ -3,28 +3,17 @@ import React from 'react';
 
 const Footer = () => {
 	return (
-		<footer className='flex flex-col bg-primary py-12 space-y-10 justify-center'>
-			<nav className='flex justify-center flex-wrap gap-6 text-white font-medium'>
-				<a className='hover:text-gray-900' href='#'>
-					Home
-				</a>
-				<a className='hover:text-gray-900' href='#'>
-					About
-				</a>
-				<a className='hover:text-gray-900' href='#'>
-					Services
-				</a>
-				<a className='hover:text-gray-900' href='#'>
-					Media
-				</a>
-				<a className='hover:text-gray-900' href='#'>
-					Gallery
-				</a>
-				<a className='hover:text-gray-900' href='#'>
-					Contact
-				</a>
-			</nav>
-			<div className='flex justify-center space-x-12'>
+		<footer className='footer mt-[120px]'>
+			<div className='waves py-10'>
+				<div className='wave' id='wave1'></div>
+				<div className='wave' id='wave2'></div>
+				<div className='wave' id='wave3'></div>
+				<div className='wave' id='wave4'></div>
+			</div>
+			<div className='flex justify-center flex-wrap gap-6 text-white font-medium'>
+				<h2 className='text-4xl font-extrabold font-gravity-light hover:text-gray-900'>Social Media</h2>
+			</div>
+			<div className='flex justify-center space-x-12 py-10'>
 				<a href='https://facebook.com' target='_blank' rel='noopener noreferrer'>
 					<img src='https://img.icons8.com/fluent/30/000000/facebook-new.png' />
 				</a>
@@ -41,7 +30,6 @@ const Footer = () => {
 					<img src='https://img.icons8.com/fluent/30/000000/twitter.png' />
 				</a>
 			</div>
-			{/* <p className='text-center text-gray-700 font-medium'>&copy; 2022 Company Ltd. All rights reservered.</p> */}
 			<p className='text-white text-center font-medium'>
 				Copyright &copy; Ecommerce Shop Coffe 2023. All rights reserved.
 			</p>

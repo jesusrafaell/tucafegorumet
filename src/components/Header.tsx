@@ -23,7 +23,7 @@ const Header = () => {
 	}, []);
 
 	const handleClick = (to: string) => {
-		router.push(`#${to}`, undefined, { scroll: true });
+		router.push(`/#${to}`, undefined, { scroll: true });
 	};
 
 	return (

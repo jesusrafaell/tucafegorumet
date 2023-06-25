@@ -1,18 +1,17 @@
 import Head from 'next/head';
 import { FC, ReactNode, useContext, useEffect } from 'react';
 import Header from './Header';
-import Footer from './Footer';
 import SideBar from './SideBar';
 import AnimationCover from './AnimationCover';
 import { AnimationCoverContext } from '@/context/AnimationCoverContext';
-import Footer2 from './Footer2';
+import Footer2 from './Footer';
+import Footer from './Footer';
 
 interface Props {
 	children: ReactNode;
-	active: boolean;
 }
 
-const Layout: FC<Props> = ({ active, children }) => {
+const Layout: FC<Props> = ({ children }) => {
 	const { completedAnimation, setCompletedAnimation } = useContext(AnimationCoverContext);
 
 	useEffect(() => {
@@ -37,17 +36,14 @@ const Layout: FC<Props> = ({ active, children }) => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			{/* {(completedAnimation || !active) && ( */}
-			<>
-				<Header />
-				<SideBar />
-			</>
+			<Header />
+			<SideBar />
 			{/* )} */}
 			{/* {active ? <AnimationCover title={'TuCafeGourmet'}> */}
 			{children}
 			{/* </AnimationCover> : children} */}
 			{/* {(completedAnimation || !active) && */}
-			{/* <Footer /> */}
-			<Footer2 />
+			<Footer />
 			{/* } */}
 		</>
 	);

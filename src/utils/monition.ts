@@ -23,6 +23,21 @@ export const textVariant = (duraction: number, direction: number) => ({
 	},
 });
 
+export const productLisVariant = (duraction: number, direction: number) => ({
+	hidden: {
+		opacity: 0.7,
+		y: direction,
+	},
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			ease: 'easeIn',
+			duration: duraction,
+		},
+	},
+});
+
 export const barSkill = (duraction: number, direction: number) => ({
 	hidden: {
 		width: 0,

@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { CartContext } from '@/context/CartContext';
+import { ProductDto } from '@/utils/products';
 import Link from 'next/link';
 import { FC, useContext } from 'react';
 
@@ -11,9 +13,10 @@ interface Props {
 
 const CartItem: FC<Props> = ({ item }) => {
 	const { id, name, price, amount } = item;
+	const { handleProduct } = useContext(AnimationProductContext);
 	const { increaseAmount, decreaseAmount, removeFromCart } = useContext(CartContext);
 	return (
-		<div className='flex gap-x-4 py-2 lg:px-2 border-b border-gray-200 w-full font-gravity-light text-gray-500'>
+		<div className='flex gap-x-4 z-20 py-2 lg:px-2 border-b border-gray-200 w-full font-gravity-light text-gray-500'>
 			<div className='w-full min-h-[150px] flex items-center gap-x-4'>
 				{/* image */}
 				<Link href={`/product/${1}`}>
@@ -27,15 +30,16 @@ const CartItem: FC<Props> = ({ item }) => {
 					{/* title & remove */}
 					<div className='flex justify-between mb-2'>
 						{/* title */}
-						<Link
-							href={`/product/${1}`}
+						<div
+							onClick={() => handleProduct(item as ProductDto)}
 							className='
+								cursor-pointer
 								text-[13px] uppercase font-gravity-bold
 								max-w-[240px] text-primary hover:underline
 								'
 						>
 							{name}
-						</Link>
+						</div>
 						{/* remove */}
 						<div className='text-xl cursor-pointer'>
 							<IoMdClose

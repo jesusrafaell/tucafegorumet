@@ -14,7 +14,7 @@ interface Props {
 }
 
 const Product: FC<Props> = ({ id, product }) => {
-	const { setProduct, setIsActive } = useContext(AnimationProductContext);
+	const { handleProduct } = useContext(AnimationProductContext);
 	const { addToCart } = useContext(CartContext);
 	const { name, price, disponible } = product;
 	const router = useRouter();
@@ -82,11 +82,7 @@ const Product: FC<Props> = ({ id, product }) => {
 								</button>
 							)}
 							<div
-								onClick={() => {
-									console.log('Click product', name);
-									setIsActive(true);
-									setProduct(product);
-								}}
+								onClick={() => handleProduct(product)}
 								className='
 									w-10 h-10 
 								bg-white flex justify-center

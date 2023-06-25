@@ -8,6 +8,7 @@ interface AnimationProductValue {
 	setIsActive: Dispatch<SetStateAction<boolean>>;
 	setProduct: Dispatch<SetStateAction<ProductDto | null>>;
 	handleToProduct: () => void;
+	handleProduct: (product: ProductDto) => void;
 }
 
 export const AnimationProductContext = createContext<AnimationProductValue>({
@@ -16,6 +17,7 @@ export const AnimationProductContext = createContext<AnimationProductValue>({
 	setIsActive: () => {},
 	setProduct: () => {},
 	handleToProduct: () => {},
+	handleProduct: () => {},
 });
 
 interface Props {
@@ -35,6 +37,11 @@ const AnimationProductProvider: FC<Props> = ({ children }) => {
 		}
 	};
 
+	const handleProduct = (product: ProductDto) => {
+		setIsActive(true);
+		setProduct(product);
+	};
+
 	return (
 		<AnimationProductContext.Provider
 			value={{
@@ -43,6 +50,7 @@ const AnimationProductProvider: FC<Props> = ({ children }) => {
 				setIsActive,
 				setProduct,
 				handleToProduct,
+				handleProduct,
 			}}
 		>
 			{children}

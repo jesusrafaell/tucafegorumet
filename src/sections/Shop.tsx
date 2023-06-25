@@ -1,11 +1,10 @@
 import Product from '@/components/Product';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
-import { textVariant } from '@/utils/monition';
+import { productLisVariant, textVariant } from '@/utils/monition';
 import products from '@/utils/products';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { setPriority } from 'os';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 export const Shop = () => {
 	const router = useRouter();
@@ -61,12 +60,7 @@ export const Shop = () => {
 				<div className='py-8'>
 					<div className='container mx-auto'>
 						<div className='items-center justify-center px-10 py-20 flex'>
-							<motion.div
-								variants={textVariant(0.2, 10)}
-								initial='hidden'
-								whileInView='show'
-								viewport={{ once: false, amount: 0.7 }}
-							>
+							<motion.div variants={textVariant(0.2, 5)} initial='hidden' whileInView='show'>
 								<h1
 									className={`
 										relative
@@ -80,8 +74,9 @@ export const Shop = () => {
 							</motion.div>
 						</div>
 						<div
-							className='grid grid-cols-1 
-									md:grid-cols-1
+							className='grid 
+									grid-cols-1 
+									md:grid-cols-2
 									lg:grid-cols-3
 									xl:grid-cols-3
 									gap-x-[50px]
@@ -95,7 +90,7 @@ export const Shop = () => {
 								return (
 									<motion.div
 										key={index}
-										variants={textVariant(0.2, 10)}
+										variants={productLisVariant(0.5, 20)}
 										initial='hidden'
 										whileInView='show'
 										viewport={{ once: false, amount: 0.7 }}

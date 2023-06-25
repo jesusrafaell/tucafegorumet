@@ -1,8 +1,8 @@
 import { Inter } from 'next/font/google';
-import Layout from '@/components/Layout';
 import dynamic from 'next/dynamic';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { AnimationCoverContext } from '@/context/AnimationCoverContext';
+import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] });
 const HomePage = dynamic(() => import('@/sections/Home'));
@@ -10,25 +10,26 @@ const ShopPage = dynamic(() => import('@/sections/Shop'));
 const AboutPage = dynamic(() => import('@/sections/About'));
 
 export default function Home() {
-	const { isLoading, setIsLoading } = useContext(AnimationCoverContext);
+	const router = useRouter();
 
 	useEffect(() => {
-		setIsLoading(false);
-	}, [setIsLoading]);
+		if (router && router.asPath) {
+			router.push(router.asPath, undefined, { scroll: true, shallow: true }).catch((error) => {
+				console.error('Error al redirigir la ruta:', error);
+			});
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
-		<Layout active={true}>
-			<div
-				className={`
+		<div
+			className={`
 				overflow-hidden}
 			`}
-			>
-				<>
-					<HomePage />
-					<ShopPage />
-					<AboutPage />
-				</>
-			</div>
-		</Layout>
+		>
+			<HomePage />
+			<ShopPage />
+			<AboutPage />
+		</div>
 	);
 }
