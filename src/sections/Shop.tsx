@@ -19,43 +19,43 @@ export const Shop = () => {
 
 	let easing = [0.6, -0.05, 0.01, 0.99];
 	return (
-		<motion.div
-			initial={{
-				x: 0,
-				opacity: 0,
-				// transition: {
-				// 	duration: 0.6,
-				// 	ease: easing,
-				// },
-			}}
-			animate={isActive ? 'active' : 'inactive'}
-			variants={{
-				active: {
-					x: -100,
-					opacity: 0,
-					transition: {
-						duration: 0.6,
-						ease: 'easeOut',
-					},
-				},
-				inactive: {
-					x: 0,
-					opacity: 1,
-				},
-			}}
-			exit={{ opacity: 0 }}
-			onAnimationComplete={() => {
-				if (isActive) {
-					console.log('go to product detail');
-					handleToProduct();
-				}
-			}}
-		>
-			<section
-				id='shop'
-				className='h-full w-screen 
+		<section
+			id='shop'
+			className='h-full w-screen 
 				overflow-hidden relative 
 				min-h-screen'
+		>
+			<motion.div
+				initial={{
+					x: 0,
+					opacity: 0,
+					// transition: {
+					// 	duration: 0.6,
+					// 	ease: easing,
+					// },
+				}}
+				animate={isActive ? 'active' : 'inactive'}
+				variants={{
+					active: {
+						x: -100,
+						opacity: 0,
+						transition: {
+							duration: 0.6,
+							ease: 'easeOut',
+						},
+					},
+					inactive: {
+						x: 0,
+						opacity: 1,
+					},
+				}}
+				exit={{ opacity: 0 }}
+				onAnimationComplete={() => {
+					if (isActive) {
+						console.log('go to product detail');
+						handleToProduct();
+					}
+				}}
 			>
 				<div className='py-8'>
 					<div className='container mx-auto'>
@@ -103,8 +103,8 @@ export const Shop = () => {
 						</div>
 					</div>
 				</div>
-			</section>
-		</motion.div>
+			</motion.div>
+		</section>
 	);
 };
 

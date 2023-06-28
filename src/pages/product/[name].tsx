@@ -36,6 +36,8 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			}}
 			onAnimationComplete={() => {
 				console.log('finish animation product');
+				window.scrollTo(0, 2);
+				console.log(window.scrollY);
 			}}
 		>
 			<section className='pt-32 pb-12 lg:py-32 w-screen h-screen flex items-center'>

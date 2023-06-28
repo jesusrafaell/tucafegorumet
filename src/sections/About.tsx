@@ -9,11 +9,12 @@ export const About = () => {
 	return (
 		<section
 			id='about'
-			className='h-full 
+			className='
 			overflow-hidden relative 
 			w-screen
 			py-40
-			min-h-screen'
+			min-h-screen
+			h-full'
 		>
 			<div className='flex items-center justify-center'>
 				<div className='container max-auto flex flex-col'>
