@@ -38,6 +38,7 @@ module.exports = {
 			backgroundImage: {
 				'header-gradient':
 					'linear-gradient(90deg, rgba(0,0,102,1) 20%, rgba(52,22,71,1) 52%, rgba(24,0,64,1) 97%)',
+				coffeTime: "url('/images/coffetime.jpg')",
 			},
 			keyframes: {
 				rotate: {

@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'] });
 const HomePage = dynamic(() => import('@/sections/Home'));
 const ShopPage = dynamic(() => import('@/sections/Shop'));
 const AboutPage = dynamic(() => import('@/sections/About'));
+const CoffeTimePage = dynamic(() => import('@/sections/CoffeTime'));
 
 export default function Home() {
 	const router = useRouter();
@@ -29,6 +30,7 @@ export default function Home() {
 		>
 			<HomePage />
 			<ShopPage />
+			<CoffeTimePage />
 			<AboutPage />
 		</div>
 	);

@@ -1,7 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import Product from '@/components/Product';
 import { textVariant } from '@/utils/monition';
-import products from '@/utils/products';
 import { motion } from 'framer-motion';
 import imageOurStory from '@/images/Our-Story-LR.jpg';
 
