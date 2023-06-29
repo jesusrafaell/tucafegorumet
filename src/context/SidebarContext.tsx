@@ -20,7 +20,7 @@ const SidebarProvider: FC<Props> = ({ children }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handleClose = () => {
-		console.log('close');
+		console.log('close carrito');
 		setIsOpen(false);
 	};
 

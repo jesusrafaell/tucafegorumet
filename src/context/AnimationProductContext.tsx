@@ -31,8 +31,9 @@ const AnimationProductProvider: FC<Props> = ({ children }) => {
 	const router = useRouter();
 
 	const handleToProduct = () => {
-		console.log('Context Go', product);
+		console.log('Context Go', product, product);
 		if (product) {
+			console.log(`/product/${product.name}`);
 			router.push(`/product/${product.name}`);
 		}
 	};
@@ -40,6 +41,7 @@ const AnimationProductProvider: FC<Props> = ({ children }) => {
 	const handleProduct = (product: ProductDto) => {
 		setIsActive(true);
 		setProduct(product);
+		handleToProduct();
 	};
 
 	return (

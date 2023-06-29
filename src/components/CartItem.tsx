@@ -34,6 +34,7 @@ const CartItem: FC<Props> = ({ item }) => {
 						{/* title */}
 						<div
 							onClick={() => {
+								console.log('go product', name);
 								handleProduct(item as ProductDto);
 								handleClose();
 							}}
