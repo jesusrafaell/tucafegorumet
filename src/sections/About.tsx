@@ -9,8 +9,10 @@ export const About = () => {
 			className='
 			overflow-hidden relative 
 			w-screen
-			py-40
 			min-h-screen
+			flex
+			items-center 
+			justify-center
 			h-full'
 		>
 			<div className='flex items-center justify-center'>

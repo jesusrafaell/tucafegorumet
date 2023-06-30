@@ -4,6 +4,10 @@ const navLinks = [
 		to: 'shop',
 	},
 	{
+		name: 'Coffe Time',
+		to: 'coffeTime',
+	},
+	{
 		name: 'Our Story',
 		to: 'about',
 	},

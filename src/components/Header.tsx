@@ -45,7 +45,10 @@ const Header = () => {
 							src='https://www.tucafegourmet.com/wp-content/uploads/2018/07/TuCafe.png'
 							alt='logo'
 						/> */}
-						<FaCoffee className='w-[40px]' />
+						<div className='flex'>
+							<p className='font-gravity-bold text-1xl'>Tu Cafe Gourmet</p>
+							<FaCoffee className='w-[40px] my-1' />
+						</div>
 					</div>
 				</Link>
 				<div>
