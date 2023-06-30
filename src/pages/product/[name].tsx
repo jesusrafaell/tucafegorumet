@@ -42,19 +42,18 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		>
 			<section className='pt-32 pb-12 lg:py-32 w-screen h-screen flex items-center'>
 				<div className='container mx-auto'>
-					<div className='grid lg:hidden w-full justify-start items-center'>
+					{/* <div className='grid lg:hidden w-full justify-start items-center'>
 						<span className='flex hover:animate-pulse text-[12px]  text-gray-500 font-gravity-regular mb-2 mx-auto cursor-pointer'>
 							<BsArrowLeftCircle className='text-2xl mr-2' />
 							<p className='py-1'>Go back Shop</p>
 						</span>
-					</div>
+					</div> */}
 					{/* img & text */}
 					<div className='flex flex-col lg:flex-row items-center'>
 						{/* img */}
 						<div>
 							<img
 								className='max-w-[200px] lg:max-w-sm'
-								//
 								src='https://www.tucafegourmet.com/wp-content/uploads/2018/07/TuCafe.png'
 								alt={name}
 							/>
