@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
 import { AnimationCoverContext } from '@/context/AnimationCoverContext';
 import { useRouter } from 'next/router';
+import CoffeLoading from '@/components/CoffeLoading';
 
 const inter = Inter({ subsets: ['latin'] });
 const HomePage = dynamic(() => import('@/sections/Home'));
@@ -32,6 +33,7 @@ export default function Home() {
 			<ShopPage />
 			<CoffeTimePage />
 			<AboutPage />
+			<CoffeLoading />
 		</div>
 	);
 }

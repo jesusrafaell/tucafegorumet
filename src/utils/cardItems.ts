@@ -12,25 +12,25 @@ import cafe_milk_2 from '@/images/cupsSVG/cafe_leche_2.svg';
 
 const cardItems = [
 	{
-		id: '1',
+		id: 1,
 		imagen: cafe_negro,
 		imagen2: cafe_negro_2,
 		title: 'Americano',
 	},
 	{
-		id: '2',
+		id: 2,
 		imagen: cubano,
 		imagen2: cubano_2,
 		title: 'Cuban Style, Espresso',
 	},
 	{
-		id: '3',
+		id: 3,
 		imagen: cortadito,
 		imagen2: cortadito_2,
 		title: 'Cortadito',
 	},
 	{
-		id: '4',
+		id: 4,
 		imagen: cafe_milk,
 		imagen2: cafe_milk_2,
 		title: 'Cafe con Leche',

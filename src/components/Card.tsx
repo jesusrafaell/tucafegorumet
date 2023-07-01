@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import React, { FC, useState } from 'react';
+import { motion } from 'framer-motion';
+import { textVariant } from '@/utils/monition';
 
 interface Props {
 	card: {
+		id: number;
 		title: string;
 		imagen: string;
 		imagen2: string;
@@ -10,16 +13,15 @@ interface Props {
 }
 
 const Card: FC<Props> = ({ card }) => {
-	const { title, imagen, imagen2 } = card;
+	const { id, title, imagen, imagen2 } = card;
 	const [hover, setHover] = useState(false);
-	const [imageLoaded, setImageLoaded] = useState(false);
-
-	const handleImageLoad = () => {
-		setImageLoaded(true);
-	};
 
 	return (
-		<div
+		<motion.div
+			variants={textVariant(0.2 * id, 10)} //duracion, direccion
+			initial='hidden'
+			whileInView='show'
+			viewport={{ once: false, amount: 0.7 }}
 			className={`
         card relative 
         w-[340px]
@@ -72,7 +74,7 @@ const Card: FC<Props> = ({ card }) => {
 			<div className='card_content absolute left-0 top-20 w-full h-full flex justify-center items-center lg:items-end py-20'>
 				<h3 className='text-black font-gravity-bold text-2xl shadow-text-lighter'>{title}</h3>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
