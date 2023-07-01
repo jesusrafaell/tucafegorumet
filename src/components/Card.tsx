@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { FC, useState } from 'react';
 
 interface Props {
@@ -10,36 +11,35 @@ interface Props {
 
 const Card: FC<Props> = ({ card }) => {
 	const { title, imagen, imagen2 } = card;
-	const [actualImagen, setActualImagen] = useState(imagen);
+	const [hover, setHover] = useState(false);
+	const [imageLoaded, setImageLoaded] = useState(false);
 
-	const hoverImagen = () => {
-		console.log('hover', title);
-		setActualImagen(imagen2);
-	};
-
-	const ExitHoverImagen = () => {
-		setActualImagen(imagen);
+	const handleImageLoad = () => {
+		setImageLoaded(true);
 	};
 
 	return (
 		<div
 			className={`
         card relative 
-        w-[350px]
-        lg:w-[400px]
+        w-[340px]
+				h-2/3
+        lg:w-full
         cursor-pointer 
         list-none 
         before:content 
         before:block 
         before:pb-[150%]
         before:w-full"
-        transition
+				transition duration-300 ease-linear 
       `}
-			onMouseEnter={hoverImagen}
-			onMouseLeave={ExitHoverImagen}
+			onMouseEnter={() => setHover(true)}
+			onMouseLeave={() => setHover(false)}
 		>
-			<div
-				className='
+			<Image
+				src={imagen}
+				alt={title}
+				className={`
           card__background absolute 
           left-0 top-0 right-0 bottom-0 
           bg-contain 
@@ -50,19 +50,27 @@ const Card: FC<Props> = ({ card }) => {
           transform scale-100 
           translate-z-0 
           transition duration-300 ease-linear 
-        '
-				style={{ backgroundImage: `url(${actualImagen})` }}
-			></div>
-			<div className='card_content absolute left-0 -top-8 lg:top-0 bottom-0 w-full h-full p-4 flex flex-col justify-end items-center'>
-				<h3
-					className='
-          text-black font-gravity-bold text-2xl 
-          shadow-text-lighter
-        '
-				>
-					{title}
-				</h3>
-				{/* <p className='card__category'>Category</p> */}
+					${hover ? 'opacity-0' : 'opacity-100'}
+			`}
+			/>
+			<Image
+				src={imagen2}
+				alt={title}
+				className={`
+					${hover ? 'opacity-100' : 'opacity-0'}
+          card__background absolute 
+          left-0 top-0 right-0 bottom-0 
+          bg-contain 
+          bg-no-repeat
+          bg-center rounded-lg
+          filter brightness-75 
+          saturate-120 contrast-85 
+          transform scale-100 
+          translate-z-0 
+        `}
+			/>
+			<div className='card_content absolute left-0 top-20 w-full h-full flex justify-center items-center lg:items-end py-20'>
+				<h3 className='text-black font-gravity-bold text-2xl shadow-text-lighter'>{title}</h3>
 			</div>
 		</div>
 	);

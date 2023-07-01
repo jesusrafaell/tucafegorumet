@@ -30,8 +30,8 @@ export const CoffeTime = () => {
 						viewport={{ once: false, amount: 0.7 }}
 						className='flex w-full justify-center items-center'
 					>
-						<h2 className='text-2xl lg:text-4xl font-gravity-bold uppercase text-gray-700 -mb-10'>
-							HOW TO DRINK TU CAFÉ
+						<h2 className='text-2xl lg:text-4xl font-gravity-bold uppercase text-gray-700 -mb-10 py-10 lg:py-0'>
+							HOW TO DRINK CAFÉ
 						</h2>
 					</motion.div>
 					{/* contedor cart cups */}
@@ -42,7 +42,6 @@ export const CoffeTime = () => {
 								flex
 								flex-col
 								lg:grid
-								grid-cols-1
 								gap-x-8
 								gap-y-0
 								w-full

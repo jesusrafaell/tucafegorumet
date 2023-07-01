@@ -7,6 +7,7 @@ module.exports = {
 			'gravity-light': ['Gravity-Light'],
 			'gravity-book': ['Gravity-Book'],
 			'prilly-monly': ['prilly-monly'],
+			aventi: ['Aventi', 'sans-serif'],
 		},
 		letterSpacing: {
 			tightest: '-.075em',
