@@ -22,7 +22,7 @@ export const CoffeTime = () => {
 			// bg-coffeTime
 		>
 			<div className='flex w-full justify-center h-full'>
-				<div className='flex flex-col w-full h-full px-40'>
+				<div className='flex flex-col w-full h-full lg:px-40'>
 					<motion.div
 						variants={textVariant(0.5, -10)}
 						initial='hidden'

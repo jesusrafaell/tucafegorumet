@@ -3,8 +3,10 @@ import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { productLisVariant, textVariant } from '@/utils/monition';
 import products from '@/utils/products';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
 import { useRouter } from 'next/router';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export const Shop = () => {
 	const router = useRouter();
@@ -17,13 +19,27 @@ export const Shop = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	let easing = [0.6, -0.05, 0.01, 0.99];
+	//animacion
+	const [ref, inView] = useInView({
+		triggerOnce: false,
+		threshold: 0.5,
+	});
+
+	const [isVisible, setIsVisible] = useState(false);
+
+	useEffect(() => {
+		if (inView && !isVisible) {
+			setIsVisible(true);
+		} else if (!inView && isVisible) {
+			setIsVisible(false);
+		}
+	}, [inView, isVisible]);
+
 	return (
 		<motion.section
 			id='shop'
 			className='h-full w-screen 
 			overflow-hidden relative 
-			shop
 			min-h-screen'
 			initial={{
 				x: 0,
@@ -55,7 +71,7 @@ export const Shop = () => {
 		>
 			<div className='py-8'>
 				<div className='container mx-auto'>
-					<div className='items-center justify-center px-10 pt-10 pb-5 flex'>
+					<div className='items-center justify-center lg:px-10 pt-10 pb-5 flex'>
 						<motion.div variants={textVariant(0.2, 5)} initial='hidden' whileInView='show'>
 							<h1
 								className={`
@@ -63,7 +79,7 @@ export const Shop = () => {
 									relative
 									uppercase
 									font-satoshi
-									text-base
+									text-black
 									font-bold
 									text-4xl 
 									lg:text-4xl
@@ -73,34 +89,38 @@ export const Shop = () => {
 							</h1>
 						</motion.div>
 					</div>
-					<div
+					<motion.div
+						ref={ref}
 						className='
 									grid 
-									grid-cols-1 
-									md:grid-cols-2
-									lg:grid-cols-3
-									xl:grid-cols-3
+									rid-cols-1
+									lg:grid-cols-2
 									gap-x-[50px]
-									gap-y-[20px]
-									max-w-sm 
-									mx-auto 
-									md:max-w-none 
-									md:mx-0'
+									'
 					>
-						{products.map((product, index) => {
-							return (
+						{isVisible &&
+							products.map((product, index) => (
 								<motion.div
 									key={index}
-									variants={productLisVariant(0.5, 20)}
-									initial='hidden'
-									whileInView='show'
+									initial={{
+										x: index % 2 === 0 ? '-80%' : '80%',
+										opacity: 0,
+									}}
+									animate={{
+										x: 0,
+										opacity: 1,
+									}}
+									exit={{
+										x: index % 2 === 0 ? '-80%' : '80%',
+										opacity: 0,
+									}}
+									transition={{ duration: 1 }}
 									viewport={{ once: false, amount: 0.7 }}
 								>
-									<Product product={product} />;
+									<Product product={product} />
 								</motion.div>
-							);
-						})}
-					</div>
+							))}
+					</motion.div>
 				</div>
 			</div>
 		</motion.section>

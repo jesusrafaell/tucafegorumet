@@ -33,7 +33,7 @@ const Header = () => {
 
 	return (
 		<header
-			className={`${isActive || mobileMenu ? 'bg-white py-4 shadow-md' : 'bg-none py-6'} 
+			className={`${isActive || mobileMenu ? 'bg-white py-3 shadow-md' : 'bg-none py-5'} 
 			fixed w-full z-50 transition-all`}
 		>
 			<div className='container mx-auto flex items-center justify-between h-full '>

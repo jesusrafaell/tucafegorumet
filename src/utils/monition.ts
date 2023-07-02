@@ -23,20 +23,53 @@ export const textVariant = (duraction: number, direction: number) => ({
 	},
 });
 
-export const productLisVariant = (duraction: number, direction: number) => ({
-	hidden: {
-		opacity: 0.7,
-		y: direction,
-	},
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			ease: 'easeIn',
-			duration: duraction,
-		},
-	},
-});
+export const productLisVariant = (duraction: number, index: number) => {
+	let direction = 0;
+	let eje = 'x';
+	switch (index + 1) {
+		case 1:
+		case 3:
+		case 5:
+			direction = -100;
+			break;
+		case 2:
+		case 4:
+		case 6:
+			direction = 100;
+			break;
+	}
+	if (eje === 'x') {
+		return {
+			hidden: {
+				opacity: 0,
+				x: direction,
+			},
+			show: {
+				opacity: 1,
+				x: 0,
+				transition: {
+					ease: 'easeIn',
+					duration: duraction,
+				},
+			},
+		};
+	} else {
+		return {
+			hidden: {
+				opacity: 0,
+				y: direction,
+			},
+			show: {
+				opacity: 1,
+				y: 0,
+				transition: {
+					ease: 'easeIn',
+					duration: duraction,
+				},
+			},
+		};
+	}
+};
 
 export const barSkill = (duraction: number, direction: number) => ({
 	hidden: {

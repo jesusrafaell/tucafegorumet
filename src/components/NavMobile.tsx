@@ -14,7 +14,7 @@ const MenuMobile: React.FC<Props> = ({ setMobileMenu }) => {
 
 	const handleClick = (to: string) => {
 		console.log('go to', to);
-		router.push(`#${to}`, undefined, { scroll: true });
+		router.push(`/#${to}`, undefined, { scroll: true });
 		setMobileMenu(false);
 	};
 

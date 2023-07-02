@@ -1,4 +1,5 @@
 import Hero from '@/components/Hero';
+import Hero2 from '@/components/Hero2';
 import Product from '@/components/Product';
 import { textVariant } from '@/utils/monition';
 import products from '@/utils/products';
@@ -13,6 +14,7 @@ export const Home = () => {
 			min-h-screen '
 		>
 			<Hero />
+			<Hero2 />
 		</section>
 	);
 };
