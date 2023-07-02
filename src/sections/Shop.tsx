@@ -1,6 +1,6 @@
 import Product from '@/components/Product';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
-import { productLisVariant, textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/monition';
 import products from '@/utils/products';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -37,6 +37,7 @@ export const Shop = () => {
 
 	return (
 		<motion.section
+			ref={ref}
 			id='shop'
 			className='h-full w-screen 
 			overflow-hidden relative 
@@ -90,10 +91,9 @@ export const Shop = () => {
 						</motion.div>
 					</div>
 					<motion.div
-						ref={ref}
 						className='
-									grid 
-									rid-cols-1
+									hidden
+									lg:grid 
 									lg:grid-cols-2
 									gap-x-[50px]
 									'
@@ -120,6 +120,18 @@ export const Shop = () => {
 									<Product product={product} />
 								</motion.div>
 							))}
+					</motion.div>
+					<motion.div
+						className='
+									grid 
+									grid-cols-1
+									lg:hidden
+									gap-x-[50px]
+									'
+					>
+						{products.map((product, index) => (
+							<Product product={product} key={index} />
+						))}
 					</motion.div>
 				</div>
 			</div>
