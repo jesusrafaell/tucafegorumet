@@ -8,6 +8,7 @@ module.exports = {
 			'gravity-book': ['Gravity-Book'],
 			'prilly-monly': ['prilly-monly'],
 			aventi: ['Aventi', 'sans-serif'],
+			satoshi: ['Satoshi', 'sans-serif'],
 		},
 		letterSpacing: {
 			tightest: '-.075em',
@@ -35,11 +36,14 @@ module.exports = {
 				primary: '#0a0a0a',
 				accent: '#B809C3',
 				danger: '#B92929',
+				base: '#EAE7DE',
+				'base-light': '#F5F2E9',
 			},
 			backgroundImage: {
 				'header-gradient':
 					'linear-gradient(90deg, rgba(0,0,102,1) 20%, rgba(52,22,71,1) 52%, rgba(24,0,64,1) 97%)',
 				coffeTime: "url('/images/coffetime.jpg')",
+				artBoard: "url('/images/Artboard.png')",
 			},
 			keyframes: {
 				rotate: {

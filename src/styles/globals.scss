@@ -7,6 +7,13 @@
 @import 'coffeLoading';
 
 @font-face {
+	font-family: 'Satoshi';
+	src: url('../fonts/Satoshi-Variable.ttf') format('truetype');
+	/* font-weight: normal; */
+	font-style: normal;
+}
+
+@font-face {
 	font-family: 'Aventi';
 	src: url('../fonts/Aventi-Regular.ttf') format('truetype');
 	font-weight: normal;
@@ -48,12 +55,23 @@
 	scrollbar-width: none; /* Firefox */
 }
 
-/* * {
-	padding: 0;
-	margin: 0;
-	-webkit-box-sizing: inherit;
-	box-sizing: inherit;
-} */
+body {
+	background-color: #eae7de;
+}
+
+.hero {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+#shop {
+	background-image: url('../images/fondo-hero.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
 
 :root {
 	--foreground-rgb: 0, 0, 0;
@@ -95,4 +113,13 @@ body::-webkit-scrollbar {
 
 .loader div:nth-child(3) {
 	animation-delay: 0.6s;
+}
+
+/* product img */
+.custom-magnify img {
+	background-color: white;
+}
+
+.h1-shop {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ajusta los valores de sombra de texto según tus necesidades */
 }

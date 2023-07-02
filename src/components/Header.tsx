@@ -34,11 +34,21 @@ const Header = () => {
 	return (
 		<header
 			className={`${isActive || mobileMenu ? 'bg-white py-4 shadow-md' : 'bg-none py-6'} 
-			fixed w-full z-10 transition-all`}
+			fixed w-full z-50 transition-all`}
 		>
 			<div className='container mx-auto flex items-center justify-between h-full '>
 				{/* cart */}
-				<Link href={'/'} onClick={() => setMobileMenu(false)}>
+				<LinkS
+					to={'home'}
+					spy
+					smooth
+					offset={0}
+					duration={400}
+					onClick={() => {
+						setMobileMenu(false);
+						handleClick('home');
+					}}
+				>
 					<div className='cursor-pointer hover:animate-pulse'>
 						{/* <img
 							className='w-[40px]'
@@ -46,11 +56,10 @@ const Header = () => {
 							alt='logo'
 						/> */}
 						<div className='flex'>
-							<p className='font-gravity-bold text-1xl'>Tu Cafe Gourmet</p>
-							<FaCoffee className='w-[40px] my-1' />
+							<FaCoffee className='text-[1.6rem] my-1' />
 						</div>
 					</div>
-				</Link>
+				</LinkS>
 				<div>
 					<ul className='hidden md:flex items-center gap-8 font-bold'>
 						{navLinks.map((itemNav, index) => {

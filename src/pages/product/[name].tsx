@@ -1,22 +1,26 @@
-/* eslint-disable @next/next/no-img-element */
 import { CartContext } from '@/context/CartContext';
 import products, { ProductCartDto, ProductDto } from '@/utils/products';
 import { GetServerSideProps, NextPage } from 'next';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BsArrowLeftCircle } from 'react-icons/bs';
+import CupLoading from '@/components/CupLoading';
+import ReactImageMagnify from 'react-image-magnify';
+// import Image from 'next/image';
 
 interface ProductPageProps {
 	product: ProductCartDto | ProductDto;
 }
 
 const Product: NextPage<ProductPageProps> = ({ product }) => {
-	const { name, price, description } = product;
-	console.log('Product.tsx', product);
+	const { name, price, description, imagen } = product;
 	const { addToCart } = useContext(CartContext);
+	const [loading, setLoading] = useState(true);
 
 	let easing = [0.6, -0.05, 0.01, 0.99];
 
+	useEffect(() => {
+		setLoading(false); // Simulate data loading completed
+	}, []);
 	return (
 		<motion.div
 			initial={{
@@ -36,50 +40,71 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			}}
 			onAnimationComplete={() => {
 				window.scrollTo(0, 2);
-				// console.log('finish animation product');
-				// console.log(window.scrollY);
 			}}
 		>
-			<section className='pt-32 pb-12 lg:py-32 w-screen h-screen flex items-center'>
-				<div className='container mx-auto'>
-					{/* <div className='grid lg:hidden w-full justify-start items-center'>
-						<span className='flex hover:animate-pulse text-[12px]  text-gray-500 font-gravity-regular mb-2 mx-auto cursor-pointer'>
-							<BsArrowLeftCircle className='text-2xl mr-2' />
-							<p className='py-1'>Go back Shop</p>
-						</span>
-					</div> */}
-					{/* img & text */}
-					<div className='flex flex-col lg:flex-row items-center'>
-						{/* img */}
-						<div>
-							<img
-								className='max-w-[200px] lg:max-w-sm'
-								src='https://www.tucafegourmet.com/wp-content/uploads/2018/07/TuCafe.png'
-								alt={name}
-							/>
-						</div>
-						{/* text */}
-						<div className='flex-1 text-center lg:text-left'>
-							<h1 className='text-[26px] font-gravity-regular mb-2 max-w-[450px] mx-auto'>{name}</h1>
-							<div className='text-xl text-red-500 font-gravity-bold mb-6'>$ {price}</div>
-							<p className='mb-8'>{description} </p>
-							<button
-								onClick={() => addToCart(product as ProductCartDto)}
-								className='bg-primary py-4 px-8 text-white'
-							>
-								Add to Cart
-							</button>
+			{loading ? (
+				<div className='pt-32 pb-12 lg:py-32 w-screen h-screen flex items-center'>
+					<CupLoading />
+				</div>
+			) : (
+				<section className='pt-32 pb-12 lg:py-32 w-screen h-screen flex items-center'>
+					<div className='container mx-auto'>
+						<div className='flex flex-col lg:flex-row items-center'>
+							<div className='bg-base-light p-4 rounded-md hover:opacity-100 transition-opacity'>
+								<div className='image flex flex-col'>
+									{/* <Image
+										ref={productImgRef}
+										alt={name}
+										src={imagen}
+										className='
+											lg:max-w-sm
+											product-img--main
+										'
+										onMouseOver={handleMouseOver}
+										onMouseOut={handleMouseOut}
+										onMouseMove={handleMouseMove}
+										// width={400}
+										// height={400}
+									/> */}
+									<div className='w-[500px] h-[500px]'>
+										<ReactImageMagnify
+											{...{
+												smallImage: {
+													alt: name,
+													isFluidWidth: true,
+													src: imagen.src,
+												},
+												largeImage: {
+													src: imagen.src,
+													width: 1200,
+													height: 1800,
+													className: 'custom-magnify',
+												},
+											}}
+										/>
+									</div>
+								</div>
+							</div>
+							<div className='flex-1 text-center lg:text-left ml-20'>
+								<h1 className='text-[26px] font-gravity-regular mb-2 max-w-[450px] mx-auto'>{name}</h1>
+								<div className='text-xl text-red-500 font-gravity-bold mb-6'>$ {price}</div>
+								<p className='mb-8'>{description}</p>
+								<button
+									onClick={() => addToCart(product as ProductCartDto)}
+									className='bg-primary py-4 px-8 text-white'
+								>
+									Add to Cart
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			)}
 		</motion.div>
 	);
 };
 
-// Función para obtener los datos del producto
 export const getServerSideProps: GetServerSideProps<ProductPageProps> = async ({ params }) => {
-	// Obtén el parámetro de la URL (nombre del archivo sin la extensión .tsx)
 	const name = params?.name as string;
 
 	const product = products.find((item) => item.name === name);

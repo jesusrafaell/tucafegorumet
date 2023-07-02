@@ -4,13 +4,18 @@ import React from 'react';
 import coffe from '@/images/coffe1.png';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
+import { FaCoffee } from 'react-icons/fa';
 // import coffe2 from '@/images/coffe2.png';
 
 const Hero = () => {
 	return (
 		<section
-			className='bg-gray-200 h-[800px] 
-			bg-backgroundImage bg-no-repeat bg-cover
+			// bg-base
+			className='
+			hero
+			h-[800px] 
+			bg-no-repeat 
+			bg-cover
 			bg-center py-24'
 		>
 			<div
@@ -22,12 +27,20 @@ const Hero = () => {
 				{/* text */}
 				<div className='flex flex-col justify-center'>
 					{/* pretitle */}
-					<div className='font-gravity-bold flex items-center uppercase'>
-						<div className='w-10 h-[2px] bg-red-500 mr-3'></div>New
-					</div>
+					<div className='font-gravity-bold flex items-center uppercase'></div>
 					{/* title */}
 					{/* leading-[1.1] */}
-					<div className='text-[60px] font-gravity-light lg:whitespace-nowrap leading-[1.1] mb-5'>
+					<div
+						className='text-[60px] 
+							flex
+							flex-col
+							font-satoshi
+							font-light
+							justify-center
+							items-center
+							lg:whitespace-nowrap
+							leading-[1.1] mb-5'
+					>
 						<motion.h1
 							variants={textVariant(0.5, 20)}
 							initial='hidden'
@@ -36,11 +49,8 @@ const Hero = () => {
 						>
 							Tu Café Gourmet
 						</motion.h1>
-						{/* <span className='font-gravity-bold'>Coffe Shop</span> */}
+						{/* <div className='w-[80%] h-[2px] bg-black mr-3 mt-8'></div> */}
 					</div>
-					{/* <Link href={'/'} className='self-start uppercase font-gravity-bold border-b-2 border-primary'>
-						Tu Café
-					</Link> */}
 				</div>
 				{/* img */}
 				<div className='flex flex-col -order-1 lg:order-none self-center justify-center w-80 lg:w-full'>
@@ -62,7 +72,13 @@ const Hero = () => {
 					<div className='text-[50px] leading-[1.1] font-gravity-light mb-4'>
 						<span className='font-gravity-bold'>Coffe Shop</span>
 					</div>
-					<Link href={'/'} className='self-start uppercase font-gravity-bold border-b-2 border-primary'>
+					<Link
+						href={'/'}
+						className='self-start uppercase font-gravity-bold 
+					border-b-2
+					 border-primary
+					 '
+					>
 						Tu Café
 					</Link>
 				</div>

@@ -25,7 +25,6 @@
 	top: -20px;
 	width: 100px;
 	height: 100px;
-
 	animation: cupAnim 10s ease-in-out infinite;
 }
 
@@ -194,5 +193,98 @@
 		bottom: 40px;
 		left: -5px;
 		transform: rotate(-60deg);
+	}
+}
+
+/* cup loaing */
+.smoke-loader {
+	width: 100px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	top: 50%;
+}
+.coffee-cup {
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.smoke-wave {
+	width: 50px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+
+.smoke1 {
+	width: 6px;
+	height: 30px;
+	float: left;
+	margin-right: 6px;
+	margin-left: 4px;
+	border-radius: 3px;
+}
+.smoke1:before,
+.smoke1:after {
+	content: '';
+	background: white;
+	position: absolute;
+	animation: load 0.9s infinite reverse ease-in-out;
+	border-radius: 3px;
+}
+.smoke2 {
+	width: 6px;
+	height: 15px;
+	float: left;
+	margin-right: 6px;
+	margin-left: 4px;
+	border-radius: 3px;
+}
+.smoke2:before,
+.smoke2:after {
+	content: '';
+	background: white;
+	position: absolute;
+	animation: load 0.6s infinite reverse ease-in-out;
+	border-radius: 3px;
+	margin-top: 5px;
+}
+.smoke3 {
+	width: 6px;
+	height: 30px;
+	float: left;
+	margin-right: 6px;
+	margin-left: 4px;
+	border-radius: 3px;
+}
+.smoke3:before,
+.smoke3:after {
+	content: '';
+	background: white;
+	position: absolute;
+	animation: load 0.9s infinite 0.5s reverse ease-in-out;
+	border-radius: 3px;
+}
+
+@keyframes load {
+	0% {
+		top: 0;
+		height: 30px;
+		width: 6px;
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		top: 29px;
+		height: 15px;
+		width: 6px;
+		opacity: 0;
 	}
 }

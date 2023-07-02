@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { CartContext } from '@/context/CartContext';
 import { ProductCartDto, ProductDto } from '@/utils/products';
 import Link from 'next/link';
@@ -7,16 +6,16 @@ import { BsEyeFill, BsPlus } from 'react-icons/bs';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
+import Image from 'next/image';
 
 interface Props {
-	id: number;
 	product: ProductDto;
 }
 
-const Product: FC<Props> = ({ id, product }) => {
+const Product: FC<Props> = ({ product }) => {
 	const { handleProduct } = useContext(AnimationProductContext);
 	const { addToCart } = useContext(CartContext);
-	const { name, price, disponible } = product;
+	const { name, price, disponible, imagen } = product;
 	const router = useRouter();
 	return (
 		<AnimatePresence>
@@ -42,33 +41,34 @@ const Product: FC<Props> = ({ id, product }) => {
 					},
 				}}
 			>
-				<div className=' bg-white'>
+				<div className='bg-base-light rounded-xl p-5'>
 					<div
 						className='
-				border border-[#e4e4e4] h-[230px]
-				mb-2 relative overflow-hidden group
-				trasition'
+							h-[230px]
+							mb-2 relative overflow-hidden group
+							trasition'
 					>
 						<div className='w-full h-full flex justify-center items-center'>
 							<div className='w-[200px] mx-auto flex justify-center items-center'>
-								<img
+								<Image
 									className='max-h-[160px] group-hover:scale-110:'
 									//
-									src='https://www.tucafegourmet.com/wp-content/uploads/2018/07/TuCafe.png'
+									src={imagen}
 									alt='hola'
 								/>
 							</div>
 						</div>
 						{/* buttuns */}
 						<div
-							className='absolute top-6
-					-right-11 p-2
-					group-hover:right-5
-          flex flex-col items-center 
-          justify-center gap-y-2 
-          opacity-0 
-					group-hover:opacity-100 
-					trasition-all duration-200'
+							className='
+								absolute top-6
+								-right-11 p-2
+								group-hover:right-5
+								flex flex-col items-center 
+								justify-center gap-y-2 
+								opacity-0 
+								group-hover:opacity-100 
+								trasition-all duration-200'
 						>
 							{disponible && (
 								<button onClick={() => addToCart(product as ProductCartDto)}>

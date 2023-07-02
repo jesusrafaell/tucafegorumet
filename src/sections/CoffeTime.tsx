@@ -30,8 +30,18 @@ export const CoffeTime = () => {
 						viewport={{ once: false, amount: 0.7 }}
 						className='flex w-full justify-center items-center'
 					>
-						<h2 className='text-2xl lg:text-4xl font-gravity-bold uppercase text-gray-700 -mb-10 py-10 lg:py-0'>
-							HOW TO DRINK CAFÉ
+						<h2
+							className='
+							text-2xl lg:text-4xl 
+							uppercase
+							text-gray-700 
+							-mb-10 py-10 
+							lg:py-0
+							font-satoshi
+							font-bold
+						'
+						>
+							How to drink café
 						</h2>
 					</motion.div>
 					{/* contedor cart cups */}

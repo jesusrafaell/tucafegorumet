@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { textVariant } from '@/utils/monition';
 import { motion } from 'framer-motion';
 import imageOurStory from '@/images/Our-Story-LR.jpg';
@@ -24,7 +25,15 @@ export const About = () => {
 						viewport={{ once: false, amount: 0.7 }}
 						className='flex w-full justify-center items-center mb-4 lg:mb-20'
 					>
-						<h2 className='text-2xl lg:text-4xl font-gravity-bold uppercase'>HOW TU CAFÉ WAS BORN</h2>
+						<h2
+							className='
+							text-2xl lg:text-4xl 
+							font-satoshi
+							font-bold
+							uppercase'
+						>
+							HOW TU CAFÉ WAS BORN
+						</h2>
 					</motion.div>
 					<div className='flex min-w-screen min-h-full flex-col lg:flex-row lg:gap-x-[80px] justify-center items-center'>
 						{/* image */}
@@ -33,7 +42,8 @@ export const About = () => {
 							initial='hidden'
 							whileInView='show'
 							viewport={{ once: false, amount: 0.7 }}
-							className='flex-1 order-1 py-5 lg:-order-1 w-[300px] lg:w-[full] lg:p-6 lg:shadow-2xl'
+							className='bg-white flex-1 order-1 py-5 lg:-order-1 w-[300px] 
+							lg:w-[full] lg:p-6 lg:shadow-2xl'
 						>
 							<img src={imageOurStory.src} alt='Our-Story-LR' />
 						</motion.div>
