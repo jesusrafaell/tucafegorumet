@@ -19,14 +19,15 @@ const Product: FC<Props> = ({ product }) => {
 	const router = useRouter();
 	return (
 		<div
-			// bg-base-light
 			className='
 				rounded-xl p-5
-			lg:flex
-			lg:flex-row
-			justify-center
-			items-center
-			productCard'
+				lg:flex
+				lg:flex-row
+				justify-center
+			 bg-base-light
+				lg:bg-base
+				items-center
+				productCard'
 		>
 			<div
 				className='

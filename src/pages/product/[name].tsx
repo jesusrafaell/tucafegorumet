@@ -61,8 +61,6 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 											lg:max-w-sm
 											product-img--main
 										'
-										// width={400}
-										// height={400}
 									/>
 									{/* <ReactImageMagnify
 										{...{
