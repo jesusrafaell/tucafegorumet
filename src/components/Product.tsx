@@ -78,7 +78,7 @@ const Product: FC<Props> = ({ product }) => {
 				</div>
 			</div>
 			{/* category & title & price */}
-			<div className='px-4'>
+			<div className='px-4 w-full'>
 				<div className='text-sm capitalize text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
 				<Link
 					href={{

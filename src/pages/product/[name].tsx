@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import CupLoading from '@/components/CupLoading';
 import ReactImageMagnify from 'react-image-magnify';
+import Image from 'next/image';
 // import Image from 'next/image';
 
 interface ProductPageProps {
@@ -52,22 +53,18 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					<div className='flex flex-col lg:flex-row items-center'>
 						<div className='p-4 rounded-md hover:opacity-100 transition-opacity'>
 							<div className='image flex flex-col pt-40 lg:pt-0'>
-								{/* <Image
-										ref={productImgRef}
+								<div className='w-full h-full'>
+									<Image
 										alt={name}
 										src={imagen}
 										className='
 											lg:max-w-sm
 											product-img--main
 										'
-										onMouseOver={handleMouseOver}
-										onMouseOut={handleMouseOut}
-										onMouseMove={handleMouseMove}
 										// width={400}
 										// height={400}
-									/> */}
-								<div className='w-full h-full'>
-									<ReactImageMagnify
+									/>
+									{/* <ReactImageMagnify
 										{...{
 											smallImage: {
 												alt: name,
@@ -80,7 +77,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 												height: 1800,
 											},
 										}}
-									/>
+									/> */}
 								</div>
 							</div>
 						</div>

@@ -126,7 +126,7 @@ export const Shop = () => {
 									grid 
 									grid-cols-1
 									lg:hidden
-									gap-x-[50px]
+									gap-y-[20px]
 									'
 					>
 						{products.map((product, index) => (
