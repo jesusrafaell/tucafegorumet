@@ -16,36 +16,34 @@ export const CoffeTime = () => {
       bg-center
       bg-cover
 			flex
-			items-center
-			justify-center
 			h-full'
 			// bg-coffeTime
 		>
-			<div className='flex w-full justify-center h-full'>
-				<div className='flex flex-col w-full h-full lg:px-40'>
-					<motion.div
-						variants={textVariant(0.5, -10)}
-						initial='hidden'
-						whileInView='show'
-						viewport={{ once: false, amount: 0.7 }}
-						className='flex w-full justify-center items-center'
-					>
-						<h2
-							className='
-							text-2xl lg:text-4xl 
+			<div className='relative flex flex-col w-full h-100 justify-center items-center'>
+				<motion.div
+					variants={textVariant(0.5, -10)}
+					initial='hidden'
+					whileInView='show'
+					viewport={{ once: false, amount: 0.7 }}
+					className='flex flex-col gap-y-20 w-full justify-center items-center'
+				>
+					<h2
+						className='
+							text-2xl lg:text-4xl
 							uppercase
-							text-gray-700 
+							text-gray-100 
 							-mb-10 py-10 
 							lg:py-0
 							font-satoshi
 							font-bold
 						'
-						>
-							How to drink café
-						</h2>
-					</motion.div>
+					>
+						How to drink café
+					</h2>
+				</motion.div>
+				<div className='flex flex-col gap-y-10 justify-center items-center w-full h-full lg:px-40'>
 					{/* contedor cart cups */}
-					<div className='flex items-start justify-center text-white  ml-0 lg:-ml-[100px]'>
+					<div className='flex items-start justify-center  ml-0 lg:-ml-[100px]'>
 						{/* card grid */}
 						<div
 							className='card-grid 
@@ -53,7 +51,7 @@ export const CoffeTime = () => {
 								flex-col
 								lg:grid
 								gap-x-8
-								gap-y-0
+								gap-y-8
 								w-full
 								items-center
 								md:grid-cols-2 

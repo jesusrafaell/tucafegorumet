@@ -6,8 +6,8 @@ import { FiCoffee } from 'react-icons/fi';
 
 const Footer = () => {
 	return (
-		<footer className='footer mt-[120px] bg-red-700'>
-			<div className='waves py-10'>
+		<footer className='footer bg-[#cc9e7a] mt-40'>
+			<div className='waves'>
 				<div className='wave' id='wave1'></div>
 				<div className='wave' id='wave2'></div>
 				<div className='wave' id='wave3'></div>

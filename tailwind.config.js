@@ -38,6 +38,7 @@ module.exports = {
 				danger: '#B92929',
 				base: '#EAE7DE',
 				'base-light': '#F5F2E9',
+				'base-dark': '#130c06',
 			},
 			backgroundImage: {
 				'header-gradient':

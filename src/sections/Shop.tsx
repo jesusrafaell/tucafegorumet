@@ -11,7 +11,7 @@ import { useContext, useEffect, useState } from 'react';
 export const Shop = () => {
 	const router = useRouter();
 
-	const { isActive, setIsActive, setProduct, handleToProduct } = useContext(AnimationProductContext);
+	const { isActive, setIsActive, setProduct } = useContext(AnimationProductContext);
 
 	useEffect(() => {
 		setIsActive(false);
@@ -36,43 +36,18 @@ export const Shop = () => {
 	}, [inView, isVisible]);
 
 	return (
-		<motion.section
-			ref={ref}
+		<section
 			id='shop'
-			className='h-full w-screen 
+			className={`h-full w-screen 
 			overflow-hidden relative 
-			min-h-screen'
-			initial={{
-				x: 0,
-				opacity: 0,
-			}}
-			animate={isActive ? 'active' : 'inactive'}
-			variants={{
-				active: {
-					x: -100,
-					opacity: 0,
-					backdropFilter: 'blur(10px)',
-					transition: {
-						duration: 0.6,
-						ease: 'easeOut',
-					},
-				},
-				inactive: {
-					x: 0,
-					opacity: 1,
-				},
-			}}
-			exit={{ opacity: 0 }}
-			onAnimationComplete={() => {
-				if (isActive) {
-					console.log('go to product detail');
-					handleToProduct();
-				}
-			}}
+			min-h-screen`}
 		>
 			<div className='py-8'>
 				<div className='container mx-auto'>
-					<div className='items-center justify-center lg:px-10 pt-10 pb-5 flex'>
+					<div
+						className='items-center justify-center lg:px-10 pt-10 pb-5 flex
+					'
+					>
 						<motion.div variants={textVariant(0.2, 5)} initial='hidden' whileInView='show'>
 							<h1
 								className={`
@@ -80,7 +55,7 @@ export const Shop = () => {
 									relative
 									uppercase
 									font-satoshi
-									text-black
+									text-white
 									font-bold
 									text-4xl 
 									lg:text-4xl
@@ -91,11 +66,13 @@ export const Shop = () => {
 						</motion.div>
 					</div>
 					<motion.div
+						ref={ref}
 						className='
 									hidden
 									lg:grid 
 									lg:grid-cols-2
 									gap-x-[50px]
+									gap-y-[10px]
 									'
 					>
 						{isVisible &&
@@ -135,7 +112,7 @@ export const Shop = () => {
 					</motion.div>
 				</div>
 			</div>
-		</motion.section>
+		</section>
 	);
 };
 

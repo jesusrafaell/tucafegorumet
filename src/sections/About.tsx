@@ -2,6 +2,7 @@
 import { textVariant } from '@/utils/monition';
 import { motion } from 'framer-motion';
 import imageOurStory from '@/images/Our-Story-LR.jpg';
+import Image from 'next/image';
 
 export const About = () => {
 	return (
@@ -29,23 +30,24 @@ export const About = () => {
 							className='
 							text-2xl lg:text-4xl 
 							font-satoshi
+							text-gray-200
 							font-bold
 							uppercase'
 						>
 							HOW TU CAFÉ WAS BORN
 						</h2>
 					</motion.div>
-					<div className='flex min-w-screen min-h-full flex-col lg:flex-row lg:gap-x-[80px] justify-center items-center'>
+					<div className='flex min-w-screen min-h-full flex-col lg:flex-row lg:gap-x-[80px] justify-center items-center '>
 						{/* image */}
 						<motion.div
 							variants={textVariant(0.5, 10)}
 							initial='hidden'
 							whileInView='show'
 							viewport={{ once: false, amount: 0.7 }}
-							className='bg-white flex-1 order-1 py-5 lg:-order-1 w-[300px] 
+							className='bg-white flex-1 order-1 my-4 py-0 lg:-order-1 w-[300px] 
 							lg:w-[full] lg:p-6 lg:shadow-2xl'
 						>
-							<img src={imageOurStory.src} alt='Our-Story-LR' />
+							<Image src={imageOurStory} alt='Our-Story-LR' />
 						</motion.div>
 						{/* text */}
 						<motion.div
@@ -57,14 +59,16 @@ export const About = () => {
 						>
 							{/* info */}
 							<div className='flex-1 flex flex-col  items-center'>
-								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase'>MARCIO & MARCEL SOPENA</p>
-								<p className=''>
+								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase text-white'>
+									MARCIO & MARCEL SOPENA
+								</p>
+								<p className='text-gray-100'>
 									Established in 1996, Tu Café is a family-owned & operated business dedicated to providing
 									gourmet, Cuban style espresso. Tu Café is carefully crafted to deliver a gourmet Cuban-style
 									espresso experience like none other. With an alluring aroma, smooth flavor and touch of life, Tu
 									Café is more than just a morning coffee, it is coffee that compliments your lifestyle.
 								</p>
-								<span className='hidden lg:block self-start font-gravity-regular py-4'>
+								<span className='hidden lg:block self-start font-gravity-regular py-4 text-white'>
 									Tu Café, make it yours!
 								</span>
 							</div>

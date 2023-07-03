@@ -50,11 +50,6 @@ const Header = () => {
 					}}
 				>
 					<div className='cursor-pointer hover:animate-pulse'>
-						{/* <img
-							className='w-[40px]'
-							src='https://www.tucafegourmet.com/wp-content/uploads/2018/07/TuCafe.png'
-							alt='logo'
-						/> */}
 						<div className='flex'>
 							<FaCoffee className='text-[1.6rem] my-1' />
 						</div>

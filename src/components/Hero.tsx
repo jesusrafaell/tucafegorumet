@@ -15,6 +15,7 @@ const Hero = () => {
 			hero
 			h-[800px] 
 			bg-no-repeat 
+			bg-base
 			bg-cover
 			bg-center py-24'
 		>

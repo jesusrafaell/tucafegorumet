@@ -24,15 +24,12 @@ const Card: FC<Props> = ({ card }) => {
 			viewport={{ once: false, amount: 0.7 }}
 			className={`
         card relative 
-        w-[340px]
-				h-2/3
+				w-[200px]
         lg:w-full
         cursor-pointer 
         list-none 
-        before:content 
         before:block 
-        before:pb-[150%]
-        before:w-full"
+        before:w-full
 				transition duration-300 ease-linear 
       `}
 			onMouseEnter={() => setHover(true)}
@@ -42,11 +39,12 @@ const Card: FC<Props> = ({ card }) => {
 				src={imagen}
 				alt={title}
 				className={`
-          card__background absolute 
+          card__background 
           left-0 top-0 right-0 bottom-0 
           bg-contain 
           bg-no-repeat
           bg-center rounded-lg
+					relative
           filter brightness-75 
           saturate-120 contrast-85 
           transform scale-100 
@@ -61,7 +59,7 @@ const Card: FC<Props> = ({ card }) => {
 				className={`
 					${hover ? 'opacity-100' : 'opacity-0'}
           card__background absolute 
-          left-0 top-0 right-0 bottom-0 
+          bottom-0 
           bg-contain 
           bg-no-repeat
           bg-center rounded-lg
@@ -71,8 +69,8 @@ const Card: FC<Props> = ({ card }) => {
           translate-z-0 
         `}
 			/>
-			<div className='card_content absolute left-0 top-20 w-full h-full flex justify-center items-center lg:items-end py-20'>
-				<h3 className='text-black font-gravity-bold text-2xl shadow-text-lighter'>{title}</h3>
+			<div className='card_content absolute -bottom-3 lg:bottom-0 w-full h-full flex justify-center items-end lg:items-end py-5 lg:py-0'>
+				<h3 className='text-gray-200 font-gravity-bold text-1xl lg:text-2xl shadow-text-lighter'>{title}</h3>
 			</div>
 		</motion.div>
 	);

@@ -3,17 +3,18 @@ import { ProductCartDto, ProductDto } from '@/utils/products';
 import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 import { BsEyeFill, BsPlus } from 'react-icons/bs';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
 import Image from 'next/image';
+import { textVariant } from '@/utils/monition';
 
 interface Props {
 	product: ProductDto;
 }
 
 const Product: FC<Props> = ({ product }) => {
-	const { handleProduct } = useContext(AnimationProductContext);
+	const { product: select, handleProduct } = useContext(AnimationProductContext);
 	const { addToCart } = useContext(CartContext);
 	const { name, price, disponible, imagen } = product;
 	const router = useRouter();
@@ -24,9 +25,8 @@ const Product: FC<Props> = ({ product }) => {
 				lg:flex
 				lg:flex-row
 				justify-center
-			 bg-base-light
-				lg:bg-base
 				items-center
+			text-white
 				productCard'
 		>
 			<div
@@ -37,8 +37,12 @@ const Product: FC<Props> = ({ product }) => {
 							trasition'
 			>
 				<div className='w-full h-full flex justify-center items-center'>
-					<div className='w-[300px] lg:w-[400px] mx-auto flex justify-center items-center'>
-						<Image className='group-hover:scale-110:' src={imagen} alt='hola' />
+					<div className='w-[300px] lg:w-[700px] mx-auto flex justify-center items-center'>
+						<Image
+							className={`group-hover:scale-110 ${select?.id === product.id ? 'scale-150' : ''}`}
+							src={imagen}
+							alt='hola'
+						/>
 					</div>
 				</div>
 				{/* buttuns */}
@@ -56,7 +60,7 @@ const Product: FC<Props> = ({ product }) => {
 					{disponible && (
 						<button onClick={() => addToCart(product as ProductCartDto)}>
 							<div
-								className='flex justify-center 
+								className='flex justify-center rounded-sm
 												items-center text-white 
 												w-10 h-10 bg-red-500'
 							>
@@ -68,7 +72,7 @@ const Product: FC<Props> = ({ product }) => {
 						onClick={() => handleProduct(product)}
 						className='
 									w-10 h-10 
-								bg-white flex justify-center
+								bg-white flex justify-center rounded-sm
 									items-center
 									text-primary drop-shadow-xl
 									cursor-pointer
@@ -79,17 +83,19 @@ const Product: FC<Props> = ({ product }) => {
 				</div>
 			</div>
 			{/* category & title & price */}
-			<div className='px-4 w-full'>
+			<motion.div
+				variants={textVariant(1.5, 10)}
+				initial='hidden'
+				whileInView='show'
+				viewport={{ once: false, amount: 0.7 }}
+				className='px-4 w-full'
+			>
 				<div className='text-sm capitalize text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
-				<Link
-					href={{
-						pathname: `/product/${name}`,
-					}}
-				>
+				<div className='cursor-pointer whitespace-nowrap' onClick={() => handleProduct(product)}>
 					<h2 className='font-gravity-regular mb-1'>{name}</h2>
 					<div className='font-gravity-regular'>{price}$</div>
-				</Link>
-			</div>
+				</div>
+			</motion.div>
 		</div>
 	);
 };

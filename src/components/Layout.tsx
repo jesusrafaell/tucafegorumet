@@ -2,10 +2,9 @@ import Head from 'next/head';
 import { FC, ReactNode, useContext, useEffect } from 'react';
 import Header from './Header';
 import SideBar from './SideBar';
-import AnimationCover from './AnimationCover';
 import { AnimationCoverContext } from '@/context/AnimationCoverContext';
-import Footer2 from './Footer';
 import Footer from './Footer';
+import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 
 interface Props {
 	children: ReactNode;
@@ -13,9 +12,9 @@ interface Props {
 
 const Layout: FC<Props> = ({ children }) => {
 	const { completedAnimation, setCompletedAnimation } = useContext(AnimationCoverContext);
+	const { color } = useContext(BackGroundColorContext);
 
 	useEffect(() => {
-		// Verificar si la página ya ha sido cargada previamente
 		const isPageLoaded = localStorage.getItem('isPageLoaded');
 
 		if (isPageLoaded === 'loaded') {
@@ -28,7 +27,7 @@ const Layout: FC<Props> = ({ children }) => {
 	}, [setCompletedAnimation]);
 
 	return (
-		<>
+		<div className={color}>
 			<Head>
 				<title>tucafegourment</title>
 				<meta name='description' content='Tu Cafe Gourmet' />
@@ -45,7 +44,7 @@ const Layout: FC<Props> = ({ children }) => {
 			{/* {(completedAnimation || !active) && */}
 			<Footer />
 			{/* } */}
-		</>
+		</div>
 	);
 };
 
