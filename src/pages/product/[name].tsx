@@ -128,7 +128,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 						<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>
 							{name}
 						</motion.h1>
-						<motion.p className='text-[15px] lg:text-[20px] font-light' variants={fadeInUp}>
+						<motion.p className='text-[15px] lg:text-[18px] font-light' variants={fadeInUp}>
 							{description}
 						</motion.p>
 						<motion.ul
