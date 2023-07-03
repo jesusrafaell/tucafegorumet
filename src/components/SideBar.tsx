@@ -19,7 +19,7 @@ const SideBar = () => {
 				md:w-[30vw]
         xl:max-w-[35vw] 
 				transition-all duration-300 
-        z-20 px-4 
+        z-50 px-4 
 				lg:px-[35px]
       `}
 		>
@@ -47,6 +47,8 @@ const SideBar = () => {
 			<div
 				className='
 					flex flex-col gap-y-2 
+					px-4
+					lg:px-0
 					h-[420px] lg:h-[480px]
 					overflow-y-auto overflow-x-hidden border-b
 			'

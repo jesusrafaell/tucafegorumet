@@ -29,7 +29,9 @@ export const Shop = () => {
 
 	useEffect(() => {
 		if (inView && !isVisible) {
-			setIsVisible(true);
+			setTimeout(() => {
+				setIsVisible(true);
+			}, 1000);
 		} else if (!inView && isVisible) {
 			setIsVisible(false);
 		}

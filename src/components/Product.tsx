@@ -38,11 +38,7 @@ const Product: FC<Props> = ({ product }) => {
 			>
 				<div className='w-full h-full flex justify-center items-center'>
 					<div className='w-[300px] lg:w-[700px] mx-auto flex justify-center items-center'>
-						<Image
-							className={`group-hover:scale-110 ${select?.id === product.id ? 'scale-150' : ''}`}
-							src={imagen}
-							alt='hola'
-						/>
+						<Image className={`group-hover:scale-110`} src={imagen} alt='hola' />
 					</div>
 				</div>
 				{/* buttuns */}

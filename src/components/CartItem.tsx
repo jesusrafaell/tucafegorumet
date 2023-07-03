@@ -3,6 +3,7 @@ import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { CartContext } from '@/context/CartContext';
 import { SidebarContext } from '@/context/SidebarContext';
 import { ProductDto } from '@/utils/products';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useContext } from 'react';
 
@@ -13,7 +14,7 @@ interface Props {
 }
 
 const CartItem: FC<Props> = ({ item }) => {
-	const { id, name, price, amount } = item;
+	const { id, name, price, amount, imagen } = item;
 	const { handleProduct } = useContext(AnimationProductContext);
 	const { increaseAmount, decreaseAmount, removeFromCart } = useContext(CartContext);
 	const { handleClose } = useContext(SidebarContext);
@@ -22,11 +23,7 @@ const CartItem: FC<Props> = ({ item }) => {
 			<div className='w-full min-h-[150px] flex items-center gap-x-4'>
 				{/* image */}
 				<Link href={`/product/${1}`} onClick={() => handleClose()}>
-					<img
-						className='max-w-[80px]'
-						src='https://www.tucafegourmet.com/wp-content/uploads/2018/07/TuCafe.png'
-						alt='hola'
-					/>
+					<Image className='max-w-[80px]' src={imagen} alt={name} />
 				</Link>
 				<div className='w-full flex flex-col'>
 					{/* title & remove */}

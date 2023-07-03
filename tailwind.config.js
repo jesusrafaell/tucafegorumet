@@ -70,6 +70,11 @@ module.exports = {
 				fillBar: {
 					'0%': { transform: 'scaleX(1)' },
 				},
+				pulseBtn: {
+					'0%': {
+						boxShadow: '0 0 15px #5ddcff, 0 0 10px #4e00c2',
+					},
+				},
 			},
 			animation: {
 				spin: 'rotate 20s linear infinite',
@@ -78,6 +83,7 @@ module.exports = {
 				spinCircleReverse: 'circleRotateReverse 20s linear infinite',
 				spinRotateImg: 'imgRotate 20s linear infinite',
 				skillBar: 'fillBar 5s forwards',
+				pulseBtn: 'pulseBtn 1s ease-in-out infinite',
 			},
 		},
 	},

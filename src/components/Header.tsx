@@ -9,7 +9,6 @@ import { BiMenu } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 
 import { Link as LinkS } from 'react-scroll';
-import Link from 'next/link';
 import navLinks from './variables/navLinks';
 import MenuMobile from './NavMobile';
 
@@ -20,6 +19,16 @@ const Header = () => {
 	const { itemAmount } = useContext(CartContext);
 	const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 	const router = useRouter();
+	const [effectAmount, setEffectAmount] = useState(false);
+
+	useEffect(() => {
+		if (itemAmount > 0) {
+			setEffectAmount(true);
+			setTimeout(() => {
+				setEffectAmount(false);
+			}, 1000);
+		}
+	}, [itemAmount]);
 
 	useEffect(() => {
 		window.addEventListener('scroll', () => {
@@ -33,8 +42,10 @@ const Header = () => {
 
 	return (
 		<header
-			className={`${isActive || mobileMenu ? 'bg-white py-3 shadow-md' : 'bg-none py-5'} 
-			fixed w-full z-50 transition-all`}
+			className={`${
+				isActive || mobileMenu || router.pathname.includes('product') ? 'bg-white py-3 shadow-md' : 'bg-none py-5'
+			} 
+			fixed w-full z-30 transition-all`}
 		>
 			<div className='container mx-auto flex items-center justify-between h-full '>
 				{/* cart */}
@@ -85,13 +96,16 @@ const Header = () => {
 							>
 								<HiShoppingCart className='text-2xl' />
 								<div
-									className='
-											bg-red-500 absolute 
+									className={`
+										${itemAmount > 0 ? 'block' : 'hidden'}
+										${!effectAmount ? 'bg-red-500' : 'bg-blue-700'}
+											duration-300  transition
+											absolute 
 											-right-2 -bottom-2 
-											text-[12px] 
+											text-[12px] rounded-xl
 											w-[18px] h-[18px]
 											text-white rounder-full
-											flex justify-center items-center'
+											flex justify-center items-center`}
 								>
 									{itemAmount}
 								</div>

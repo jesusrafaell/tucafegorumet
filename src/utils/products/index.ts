@@ -13,6 +13,7 @@ export interface ProductDto {
 	name: string;
 	price: string;
 	description: string;
+	li: string[];
 }
 
 export interface ProductCartDto extends ProductDto {
@@ -26,10 +27,13 @@ const products: ProductDto[] = [
 		disponible: true,
 		name: 'Whole Bean 8lbs – 4 Pack',
 		price: '144.99',
-		description: `Tu Café is carefully crafted to deliver the ultimate Cuban style espresso 
-									experience. Once ground and brewed, you will immediately notice the alluring 
-									aroma, smooth flavor and natural sweetness of this distinctly bold and
-									engaging roast.`,
+		description: `Tu Café is carefully crafted to deliver the ultimate Cuban style espresso experience. Once ground and brewed, you will immediately notice the alluring aroma, smooth flavor and natural sweetness of this distinctly bold and engaging roast.`,
+		li: [
+			'A full-bodied, smooth and sophisticated gourmet whole bean blend that is roasted to perfection',
+			'Perfect for grinding and brewing into a gourmet espresso for the ultimate Cuban-style coffee experience',
+			'Certified Kosher',
+			'4 Pack',
+		],
 	},
 	{
 		id: 2,
@@ -37,11 +41,13 @@ const products: ProductDto[] = [
 		imagen: whole_bean_2lbs_2pack,
 		name: 'Whole Bean 2lbs- 2 Pack',
 		price: '59.99',
-		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-								standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-								It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
-								in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-								Aldus PageMaker including versions of Lorem Ipsum.`,
+		description: `Tu Café is carefully crafted to deliver the ultimate Cuban style espresso experience. Once ground and brewed, you will immediately notice the alluring aroma, smooth flavor and natural sweetness of this distinctly bold and engaging roast.`,
+		li: [
+			'A full-bodied, smooth and sophisticated gourmet whole bean blend that is roasted to perfection',
+			'Perfect for grinding and brewing into a gourmet espresso for the ultimate Cuban-style coffee experience',
+			'Certified Kosher',
+			'2 Pack',
+		],
 	},
 	{
 		id: 3,
@@ -49,11 +55,12 @@ const products: ProductDto[] = [
 		imagen: ground_coffe_10oz,
 		name: 'Ground Coffee 10 OZ – 12 PACK',
 		price: '94.99',
-		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-								standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-								It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
-								in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-								Aldus PageMaker including versions of Lorem Ipsum.`,
+		description: `Tu Café is carefully crafted to deliver the ultimate Cuban style espresso experience. This full-bodied gourmet blend is finely ground and ready to brew. You will immediately notice the alluring aroma, smooth flavor and natural sweetness of this distinctly bold and engaging roast.`,
+		li: [
+			'A full-bodied, smooth and sophisticated gourmet coffee, finely ground and read to brew',
+			'Perfect for brewing with all espresso machines',
+			'Certified Kosher',
+		],
 	},
 	{
 		id: 4,
@@ -61,11 +68,12 @@ const products: ProductDto[] = [
 		imagen: ground_coffe_10oz,
 		name: 'Ground Coffee 10 OZ – 6 PACK',
 		price: '51.99',
-		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-								standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-								It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
-								in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-								Aldus PageMaker including versions of Lorem Ipsum.`,
+		description: `Tu Café is carefully crafted to deliver the ultimate Cuban style espresso experience. This full-bodied gourmet blend is finely ground and ready to brew. You will immediately notice the alluring aroma, smooth flavor and natural sweetness of this distinctly bold and engaging roast.`,
+		li: [
+			'	A full-bodied, smooth and sophisticated gourmet coffee, finely ground and read to brew',
+			'	Perfect for brewing with all espresso machines',
+			'	Certified Kosher',
+		],
 	},
 	{
 		id: 5,
@@ -73,23 +81,25 @@ const products: ProductDto[] = [
 		imagen: ground_coffe_10oz,
 		name: 'Ground Coffee 10 OZ – 4 PACK',
 		price: '34.99',
-		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-								standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-								It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
-								in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-								Aldus PageMaker including versions of Lorem Ipsum.`,
+		description: `Tu Café is carefully crafted to deliver the ultimate Cuban style espresso experience. This full-bodied gourmet blend is finely ground and ready to brew. You will immediately notice the alluring aroma, smooth flavor and natural sweetness of this distinctly bold and engaging roast.`,
+		li: [
+			'A full-bodied, smooth and sophisticated gourmet coffee, finely ground and read to brew',
+			'Perfect for brewing with all espresso machines',
+			'Certified Kosher',
+		],
 	},
 	{
-		id: 5,
+		id: 6,
 		disponible: true,
 		name: 'Whole Bean-2 LB Bag',
 		imagen: whole_ean_2lb_bag,
 		price: '34.99',
-		description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-								standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-								It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised 
-								in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like 
-								Aldus PageMaker including versions of Lorem Ipsum.`,
+		description: `Tu Café is carefully crafted to deliver the ultimate Cuban style espresso experience. Once ground and brewed, you will immediately notice the alluring aroma, smooth flavor and natural sweetness of this distinctly bold and engaging roast.`,
+		li: [
+			'A full-bodied, smooth and sophisticated gourmet whole bean blend that is roasted to perfection',
+			'Perfect for grinding and brewing into a gourmet espresso for the ultimate Cuban-style coffee experience',
+			'Certified Kosher',
+		],
 	},
 ];
 export default products;

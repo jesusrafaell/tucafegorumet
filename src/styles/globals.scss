@@ -6,6 +6,7 @@
 @import 'coffeTime';
 @import 'coffeLoading';
 @import 'fonts';
+@import 'product';
 
 .no-scrollbar::-webkit-scrollbar {
 	display: none;
@@ -16,7 +17,7 @@
 }
 
 body {
-	background-color: #eae7de;
+	background-color: #130c06;
 }
 
 .hero {
@@ -80,14 +81,6 @@ body::-webkit-scrollbar {
 	background-color: white;
 }
 
-.main-page {
-}
-
 .h1-shop {
 	text-shadow: 2px 2px 4px rgba(#eae7de, 0.5); /* Ajusta los valores de sombra de texto según tus necesidades */
-}
-
-.buttonHover:hover {
-	box-shadow: 0 0 5px 5px white;
-	background-color: grey;
 }
