@@ -3,13 +3,10 @@ import products, { ProductCartDto, ProductDto } from '@/utils/products';
 import { GetServerSideProps, NextPage } from 'next';
 import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import CupLoading from '@/components/CupLoading';
-import ReactImageMagnify from 'react-image-magnify';
 import Image from 'next/image';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
 import { IoMdAdd, IoMdRemove } from 'react-icons/io';
-import bgImage from '@/images/splash-product.png';
 import bgImage2 from '@/images/splash2-product.png';
 import { useRouter } from 'next/router';
 
