@@ -25,7 +25,7 @@ export default function Home() {
 	useEffect(() => {
 		if (router && router.asPath && !loading) {
 			setTimeout(() => {
-				router.push(router.asPath, undefined, { scroll: true, shallow: true }).catch((error) => {
+				router.push(router.asPath, undefined, { scroll: true }).catch((error) => {
 					console.error('Error al redirigir la ruta:', error);
 				});
 			}, 1000);

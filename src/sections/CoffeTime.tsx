@@ -12,6 +12,7 @@ export const CoffeTime = () => {
 			overflow-hidden relative 
 			w-screen
 			py-20
+			lg:py-40
 			min-h-screen
       bg-center
       bg-cover
