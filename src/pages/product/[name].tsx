@@ -2,13 +2,12 @@ import { CartContext } from '@/context/CartContext';
 import products, { ProductCartDto, ProductDto } from '@/utils/products';
 import { GetServerSideProps, NextPage } from 'next';
 import { useContext, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
 import { IoMdAdd, IoMdRemove } from 'react-icons/io';
 import bgImage2 from '@/images/splash2-product.png';
-import { useRouter } from 'next/router';
 
 interface ProductPageProps {
 	product: ProductCartDto | ProductDto;
@@ -20,8 +19,32 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 	const [amount, setAmount] = useState(handleGetAmount(id) ? handleGetAmount(id) : 1);
 	const { setColor } = useContext(BackGroundColorContext);
 	const [effect, setEffect] = useState(false);
+	const [showImage, setShowImage] = useState(false);
 
-	const router = useRouter();
+	const controls = useAnimation();
+	const controls2 = useAnimation();
+	const [isAnimating, setIsAnimating] = useState(false);
+
+	const handleClick = async () => {
+		if (!isAnimating) {
+			await controls2.start({ opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeOut' } });
+			await controls2.start({ width: 0, transition: { duration: 0.7, ease: 'easeOut' } });
+			await controls.start({ width: '100%', scale: 1.5, transition: { duration: 0.5, ease: 'easeIn' } });
+			console.log('fin control 1');
+			console.log('fin control 2');
+			setIsAnimating(true);
+		} else {
+			await controls.start({ scale: 1, transition: { duration: 0.5, ease: 'easeIn' } });
+			Promise.all([
+				await controls2.start({ width: '50%', transition: { duration: 0.7, ease: 'easeIn' } }),
+				await controls.start({ width: '50%', transition: { duration: 0.5, ease: 'easeOut' } }),
+			]);
+			await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' } });
+			console.log('fin control 1');
+			console.log('fin control 2');
+			setIsAnimating(false);
+		}
+	};
 
 	const handleIncrement = (value: number) => {
 		setAmount(value + 1);
@@ -88,16 +111,24 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					{name}
 				</motion.h1>
 				<motion.div
-					className='lg:bg-base lg:w-[50%] h-full flex items-center justify-center relative'
-					animate={{ opacity: 1 }}
-					initial={{ opacity: 0 }}
+					transition={{ duration: 0.5 }}
+					className={`
+						transition duration-500
+						w-[50%]
+					lg:bg-base
+						h-full flex items-center justify-center relative
+					`}
+					initial={{ opacity: 1 }}
+					animate={controls}
 				>
 					<motion.div
 						animate={{ opacity: 0.8 }}
 						initial={{ opacity: 0 }}
 						exit={{ opacity: 0 }}
 						transition={{ delay: 0.4 }}
-						className='hidden lg:flex absolute w-full h-full top-0 justify-center items-center'
+						className={`${
+							isAnimating ? 'opacity-1' : 'opacity-0'
+						} hidden lg:flex absolute w-full h-full top-0 justify-center items-center`}
 					>
 						<Image src={bgImage2} width={350} alt='splah' />
 					</motion.div>
@@ -108,10 +139,26 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 						transition={{ delay: 0.2 }}
 						className='z-20 w-[300px] lg:w-[500px]'
 					>
-						<Image className='cursor-pointer' src={imagen} alt={name} />
+						<Image
+							onClick={() => handleClick()}
+							className='cursor-pointer hidden lg:block'
+							src={imagen}
+							alt={name}
+						/>
+						<Image className='cursor-pointer  block lg:hidden' src={imagen} alt={name} />
 					</motion.div>
 				</motion.div>
-				<div className='w-full lg:w-[50%] h-full flex flex-col gap-y-10 items-center justify-center'>
+				<motion.div
+					initial={{ opacity: 1 }}
+					animate={controls2}
+					className={`
+						w-full 
+						transition duration-500
+						lg:w-[50%]
+						h-full
+						flex
+						flex-col gap-y-10 items-center justify-center`}
+				>
 					<motion.div variants={stagger} className='w-[80%] relative'>
 						<motion.div variants={fadeInUp} className='text-[14px] flex justify-end py-2'>
 							<Link
@@ -256,7 +303,7 @@ tracking-wider leading-none overflow-hidden hover:text-teal-60
 							</button>
 						</motion.div>
 					</motion.div>
-				</div>
+				</motion.div>
 			</div>
 		</motion.section>
 	);

@@ -33,7 +33,7 @@ export const CoffeTime = () => {
 							text-2xl lg:text-4xl
 							uppercase
 							text-gray-100 
-							-mb-10 py-10 
+							 py-10 
 							lg:py-0
 							font-satoshi
 							font-bold

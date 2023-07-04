@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React, { FC, useState } from 'react';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
@@ -7,8 +7,8 @@ interface Props {
 	card: {
 		id: number;
 		title: string;
-		imagen: string;
-		imagen2: string;
+		imagen: StaticImageData;
+		imagen2: StaticImageData;
 	};
 }
 
@@ -23,8 +23,12 @@ const Card: FC<Props> = ({ card }) => {
 			whileInView='show'
 			viewport={{ once: false, amount: 0.7 }}
 			className={`
-        card relative 
 				w-[200px]
+				h-[200px]
+				lg:h-[300px]
+				border-b
+				lg:border-none
+        card relative 
         lg:w-full
         cursor-pointer 
         list-none 
@@ -37,6 +41,7 @@ const Card: FC<Props> = ({ card }) => {
 		>
 			<Image
 				src={imagen}
+				width={400}
 				alt={title}
 				className={`
           card__background 
@@ -56,6 +61,7 @@ const Card: FC<Props> = ({ card }) => {
 			<Image
 				src={imagen2}
 				alt={title}
+				width={400}
 				className={`
 					${hover ? 'opacity-100' : 'opacity-0'}
           card__background absolute 
@@ -69,7 +75,11 @@ const Card: FC<Props> = ({ card }) => {
           translate-z-0 
         `}
 			/>
-			<div className='card_content absolute -bottom-3 lg:bottom-0 w-full h-full flex justify-center items-end lg:items-end py-5 lg:py-0'>
+			<div
+				className='card_content absolute bottom-0
+				w-full h-full flex justify-center
+			  items-end lg:items-end py-5 lg:py-0'
+			>
 				<h3 className='text-gray-200 font-gravity-bold text-1xl lg:text-2xl shadow-text-lighter'>{title}</h3>
 			</div>
 		</motion.div>

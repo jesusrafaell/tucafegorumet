@@ -50,7 +50,8 @@ const SideBar = () => {
 					px-4
 					lg:px-0
 					h-[420px] lg:h-[480px]
-					overflow-y-auto overflow-x-hidden border-b
+					overflow-y-auto overflow-x-hidden 
+					border-b
 			'
 			>
 				{!cart.length ? (

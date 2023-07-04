@@ -4,7 +4,7 @@ import React from 'react';
 import coffe from '@/images/coffe1.png';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
-import { FaCoffee } from 'react-icons/fa';
+import Image from 'next/image';
 // import coffe2 from '@/images/coffe2.png';
 
 const Hero = () => {
@@ -62,11 +62,7 @@ const Hero = () => {
 						viewport={{ once: false, amount: 0.7 }}
 						// className='hidden lg:block flex-col'
 					>
-						<img
-							//
-							src={coffe.src}
-							alt='tucafegourmet'
-						/>
+						<Image src={coffe} alt='tucafegourmet' />
 					</motion.div>
 				</div>
 				<div className='flex flex-col justify-center'>

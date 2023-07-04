@@ -1,14 +1,14 @@
-import cubano from '@/images/cupsSVG/cubano_1.svg';
-import cubano_2 from '@/images/cupsSVG/cubano_2.svg';
+import cubano from '@/images/cupsSVG/cubano_1.png';
+import cubano_2 from '@/images/cupsSVG/cubano_2.png';
 
-import cafe_negro from '@/images/cupsSVG/cafe_negro_1.svg';
-import cafe_negro_2 from '@/images/cupsSVG/cafe_negro_2.svg';
+import cafe_negro from '@/images/cupsSVG/cafe_negro_1.png';
+import cafe_negro_2 from '@/images/cupsSVG/cafe_negro_2.png';
 
-import cortadito from '@/images/cupsSVG/cortadito_1.svg';
-import cortadito_2 from '@/images/cupsSVG/cortadito_2.svg';
+import cortadito from '@/images/cupsSVG/cortadito_1.png';
+import cortadito_2 from '@/images/cupsSVG/cortadito_2.png';
 
-import cafe_milk from '@/images/cupsSVG/cafe_leche_1.svg';
-import cafe_milk_2 from '@/images/cupsSVG/cafe_leche_2.svg';
+import cafe_milk from '@/images/cupsSVG/cafe_leche_1.png';
+import cafe_milk_2 from '@/images/cupsSVG/cafe_leche_2.png';
 
 const cardItems = [
 	{
