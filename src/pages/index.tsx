@@ -95,6 +95,7 @@ export default function Home() {
 				animate={isActive ? 'active' : 'inactive'}
 				variants={{
 					active: {
+						// x: -100, //esto agregarlo al ir a product
 						opacity: 0,
 						transition: {
 							duration: 0.5,
@@ -103,6 +104,7 @@ export default function Home() {
 					},
 					inactive: {
 						opacity: 1,
+						// x: '0',
 						transition: {
 							duration: 0.5,
 							ease: 'easeIn',

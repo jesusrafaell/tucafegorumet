@@ -10,7 +10,7 @@ import { useContext, useEffect } from 'react';
 export const Shop = () => {
 	const router = useRouter();
 
-	const { isActive, setIsActive, setProduct } = useContext(AnimationProductContext);
+	const { setIsActive, setProduct } = useContext(AnimationProductContext);
 
 	useEffect(() => {
 		setIsActive(false);
