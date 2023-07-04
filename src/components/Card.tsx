@@ -1,7 +1,8 @@
 import Image, { StaticImageData } from 'next/image';
 import React, { FC, useState } from 'react';
-import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
+import { motion } from 'framer-motion';
+import CupLoading from './CupLoading';
 
 interface Props {
 	card: {
@@ -13,15 +14,11 @@ interface Props {
 }
 
 const Card: FC<Props> = ({ card }) => {
-	const { id, title, imagen, imagen2 } = card;
+	const { title, imagen, imagen2 } = card;
 	const [hover, setHover] = useState(false);
 
 	return (
-		<motion.div
-			variants={textVariant(0.2 * id, 10)} //duracion, direccion
-			initial='hidden'
-			whileInView='show'
-			viewport={{ once: false, amount: 0.7 }}
+		<div
 			className={`
 				w-[200px]
 				h-[200px]
@@ -43,6 +40,8 @@ const Card: FC<Props> = ({ card }) => {
 				src={imagen}
 				width={400}
 				alt={title}
+				placeholder='blur'
+				blurDataURL='../'
 				className={`
           card__background 
           left-0 top-0 right-0 bottom-0 
@@ -62,6 +61,8 @@ const Card: FC<Props> = ({ card }) => {
 				src={imagen2}
 				alt={title}
 				width={400}
+				placeholder='blur'
+				blurDataURL='../'
 				className={`
 					${hover ? 'opacity-100' : 'opacity-0'}
           card__background absolute 
@@ -75,14 +76,18 @@ const Card: FC<Props> = ({ card }) => {
           translate-z-0 
         `}
 			/>
-			<div
-				className='card_content absolute bottom-0
-				w-full h-full flex justify-center
-			  items-end lg:items-end py-5 lg:py-0'
+			<motion.div
+				variants={textVariant(0.5, -10)}
+				initial='hidden'
+				whileInView='show'
+				viewport={{ once: false, amount: 0.7 }}
+				className='card_content absolute -bottom-3 lg:bottom-0 w-full h-full flex justify-center items-end lg:items-end py-5 lg:py-0'
 			>
-				<h3 className='text-gray-200 font-gravity-bold text-1xl lg:text-2xl shadow-text-lighter'>{title}</h3>
-			</div>
-		</motion.div>
+				<h3 className='text-gray-200 font-gravity-bold text-1xl lg:text-2xl whitespace-nowrap shadow-text-lighter'>
+					{title}
+				</h3>
+			</motion.div>
+		</div>
 	);
 };
 

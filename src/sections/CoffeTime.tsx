@@ -3,8 +3,11 @@ import Card from '@/components/Card';
 import cardItems from '@/utils/cardItems';
 import { textVariant } from '@/utils/monition';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export const CoffeTime = () => {
+	const [isImagesLoaded, setIsImagesLoaded] = useState(false);
+
 	return (
 		<section
 			id='coffeTime'

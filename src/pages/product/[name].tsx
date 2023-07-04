@@ -1,13 +1,14 @@
 import { CartContext } from '@/context/CartContext';
 import products, { ProductCartDto, ProductDto } from '@/utils/products';
 import { GetServerSideProps, NextPage } from 'next';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
 import { IoMdAdd, IoMdRemove } from 'react-icons/io';
 import bgImage2 from '@/images/splash2-product.png';
+import { useRouter } from 'next/router';
 
 interface ProductPageProps {
 	product: ProductCartDto | ProductDto;
@@ -20,6 +21,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 	const { setColor } = useContext(BackGroundColorContext);
 	const [effect, setEffect] = useState(false);
 	const [showImage, setShowImage] = useState(false);
+	const router = useRouter();
 
 	const controls = useAnimation();
 	const controls2 = useAnimation();
@@ -54,8 +56,11 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		setAmount(value - 1 < 1 ? 1 : value - 1);
 	};
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		setColor('bg-base-dark');
+		if (router.pathname.includes('product')) {
+			window.scrollTo(0, 0);
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	let easing = [0.6, -0.05, 0.01, 0.99];
@@ -130,7 +135,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 							isAnimating ? 'opacity-1' : 'opacity-0'
 						} hidden lg:flex absolute w-full h-full top-0 justify-center items-center`}
 					>
-						<Image src={bgImage2} width={350} alt='splah' />
+						<Image loading='lazy' src={bgImage2} width={350} alt='splah' />
 					</motion.div>
 					<motion.div
 						initial={{ x: 100, opacity: 0 }}
@@ -140,6 +145,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 						className='z-20 w-[300px] lg:w-[500px]'
 					>
 						<Image
+							loading='lazy'
 							onClick={() => handleClick()}
 							className='cursor-pointer hidden lg:block'
 							src={imagen}
@@ -175,7 +181,10 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 						<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>
 							{name}
 						</motion.h1>
-						<motion.p className='text-[15px] lg:text-[18px] font-light' variants={fadeInUp}>
+						<motion.p
+							className='text-[15px] lg:text-[18px] font-light whitespace-normal text-justify'
+							variants={fadeInUp}
+						>
 							{description}
 						</motion.p>
 						<motion.ul
@@ -264,7 +273,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 									<IoMdAdd />
 								</div>
 							</div>
-							<span className='font-bold text-1xl lg:text-2xl select-none'>
+							<span className='font-bold text-[18px] lg:text-2xl select-none'>
 								{`$ ${parseFloat(`${Number(price) * amount}`).toFixed(2)}`}
 							</span>
 						</motion.div>

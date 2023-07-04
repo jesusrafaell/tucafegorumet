@@ -23,10 +23,7 @@ const SideBar = () => {
 				lg:px-[35px]
       `}
 		>
-			<div
-				className='flex items-center 
-			justify-between py-6 border-b'
-			>
+			<div className='flex items-center justify-between py-3 border-b'>
 				<div className='uppercase text-sm font-gravity-bold'>
 					{cart.length ? (
 						<div className='flex'>
@@ -49,9 +46,14 @@ const SideBar = () => {
 					flex flex-col gap-y-2 
 					px-4
 					lg:px-0
+<<<<<<< HEAD
 					h-[420px] lg:h-[480px]
 					overflow-y-auto overflow-x-hidden 
 					border-b
+=======
+					h-[65vh]
+					overflow-y-auto overflow-x-hidden border-b
+>>>>>>> a19602341c7b6048bda44821df453154c43800d0
 			'
 			>
 				{!cart.length ? (

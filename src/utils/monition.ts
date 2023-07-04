@@ -117,3 +117,22 @@ export const imgSkills = (dir: number) => ({
 		},
 	},
 });
+
+export const variantsProducts = (direction: string) => ({
+	hidden: {
+		opacity: 0,
+		x: direction,
+	},
+	show: {
+		opacity: 1,
+		x: 0,
+		transition: {
+			ease: 'easeIn',
+			duration: 0.5,
+		},
+	},
+	exit: {
+		opacity: 0,
+		x: direction,
+	},
+});

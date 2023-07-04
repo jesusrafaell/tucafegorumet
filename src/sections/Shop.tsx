@@ -1,12 +1,11 @@
 import Product from '@/components/Product';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
-import { textVariant } from '@/utils/monition';
+import { textVariant, variantsProducts } from '@/utils/monition';
 import products from '@/utils/products';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
 
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 
 export const Shop = () => {
 	const router = useRouter();
@@ -18,24 +17,6 @@ export const Shop = () => {
 		setProduct(null);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	//animacion
-	const [ref, inView] = useInView({
-		triggerOnce: false,
-		threshold: 0.5,
-	});
-
-	const [isVisible, setIsVisible] = useState(false);
-
-	useEffect(() => {
-		if (inView && !isVisible) {
-			setTimeout(() => {
-				setIsVisible(true);
-			}, 1000);
-		} else if (!inView && isVisible) {
-			setIsVisible(false);
-		}
-	}, [inView, isVisible]);
 
 	return (
 		<section
@@ -68,7 +49,16 @@ export const Shop = () => {
 						</motion.div>
 					</div>
 					<motion.div
-						ref={ref}
+						initial={{
+							opacity: 0,
+						}}
+						animate={{
+							opacity: 1,
+						}}
+						exit={{
+							opacity: 0,
+						}}
+						transition={{ delay: 1 }}
 						className='
 									hidden
 									lg:grid 
@@ -77,28 +67,22 @@ export const Shop = () => {
 									gap-y-[10px]
 									'
 					>
-						{isVisible &&
-							products.map((product, index) => (
-								<motion.div
-									key={index}
-									initial={{
-										x: index % 2 === 0 ? '-80%' : '80%',
-										opacity: 0,
-									}}
-									animate={{
-										x: 0,
-										opacity: 1,
-									}}
-									exit={{
-										x: index % 2 === 0 ? '-80%' : '80%',
-										opacity: 0,
-									}}
-									transition={{ duration: 1 }}
-									viewport={{ once: false, amount: 0.7 }}
-								>
-									<Product product={product} />
-								</motion.div>
-							))}
+						<motion.div
+							variants={variantsProducts('-30%')}
+							initial='hidden'
+							whileInView='show'
+							// viewport={{ once: false, amount: 0.7 }}
+						>
+							{products.map((product, index) => index % 2 === 0 && <Product key={index} product={product} />)}
+						</motion.div>
+						<motion.div
+							variants={variantsProducts('30%')}
+							initial='hidden'
+							whileInView='show'
+							// viewport={{ once: false, amount: 0.7 }}
+						>
+							{products.map((product, index) => index % 2 !== 0 && <Product key={index} product={product} />)}
+						</motion.div>
 					</motion.div>
 					<motion.div
 						className='
