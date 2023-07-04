@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { textVariant } from '@/utils/monition';
 import { motion } from 'framer-motion';
-import imageOurStory from '@/images/Our-Story.png';
 import Image from 'next/image';
+import imageOurStory from '@/images/Our-Story.png';
 
 export const About = () => {
 	return (
@@ -44,8 +44,11 @@ export const About = () => {
 							initial='hidden'
 							whileInView='show'
 							viewport={{ once: false, amount: 0.7 }}
-							className='bg-white flex-1 order-1 my-4 py-0 lg:-order-1 w-[300px] 
-							lg:w-[full] lg:p-6 lg:shadow-2xl'
+							className='
+								bg-white w-[300px] 
+								flex-1 order-1 my-4 py-0 lg:-order-1 
+								lg:w-[full] lg:p-6 lg:shadow-2xl
+							'
 						>
 							<Image src={imageOurStory} alt='Our-Story-LR' />
 						</motion.div>
