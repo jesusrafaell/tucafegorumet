@@ -58,14 +58,7 @@ export const Shop = () => {
 						exit={{
 							opacity: 0,
 						}}
-						transition={{ delay: 1 }}
-						className='
-									hidden
-									lg:grid 
-									lg:grid-cols-2
-									gap-x-[50px]
-									gap-y-[10px]
-									'
+						className='hidden lg:grid lg:grid-cols-2 gap-x-[50px] gap-y-[10px]'
 					>
 						<motion.div
 							variants={variantsProducts('-30%')}

@@ -11,20 +11,7 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ children }) => {
-	const { completedAnimation, setCompletedAnimation } = useContext(AnimationCoverContext);
 	const { color } = useContext(BackGroundColorContext);
-
-	useEffect(() => {
-		const isPageLoaded = localStorage.getItem('isPageLoaded');
-
-		if (isPageLoaded === 'loaded') {
-			console.log('La página ha sido cargada anteriormente en el navegador');
-			// setCompletedAnimation(true);
-		} else {
-			console.log('Es la primera vez que la página se carga en el navegador');
-			localStorage.setItem('isPageLoaded', 'loaded');
-		}
-	}, [setCompletedAnimation]);
 
 	return (
 		<div className={color}>

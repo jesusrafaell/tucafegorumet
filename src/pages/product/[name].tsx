@@ -1,14 +1,16 @@
 import { CartContext } from '@/context/CartContext';
 import products, { ProductCartDto, ProductDto } from '@/utils/products';
 import { GetServerSideProps, NextPage } from 'next';
-import { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { useContext, useLayoutEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import Image from 'next/image';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
-import { IoMdAdd, IoMdRemove } from 'react-icons/io';
+import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 import bgImage2 from '@/images/splash2-product.png';
 import { useRouter } from 'next/router';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { textVariant } from '@/utils/monition';
 
 interface ProductPageProps {
 	product: ProductCartDto | ProductDto;
@@ -20,31 +22,38 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 	const [amount, setAmount] = useState(handleGetAmount(id) ? handleGetAmount(id) : 1);
 	const { setColor } = useContext(BackGroundColorContext);
 	const [effect, setEffect] = useState(false);
-	const [showImage, setShowImage] = useState(false);
 	const router = useRouter();
 
 	const controls = useAnimation();
 	const controls2 = useAnimation();
+	const controlImage = useAnimation();
+	const controlBg = useAnimation();
 	const [isAnimating, setIsAnimating] = useState(false);
 
 	const handleClick = async () => {
 		if (!isAnimating) {
 			await controls2.start({ opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeOut' } });
 			await controls2.start({ width: 0, transition: { duration: 0.7, ease: 'easeOut' } });
-			await controls.start({ width: '100%', scale: 1.5, transition: { duration: 0.5, ease: 'easeIn' } });
+			await controlBg.start({ opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } });
+			await controls.start({ width: '100%', transition: { duration: 0.5, ease: 'easeIn' } });
+			await controlImage.start({ scale: 1.5, transition: { duration: 0.5, ease: 'easeIn' } });
+			await controlBg.start({ y: 100 });
 			console.log('fin control 1');
 			console.log('fin control 2');
 			setIsAnimating(true);
 		} else {
-			await controls.start({ scale: 1, transition: { duration: 0.5, ease: 'easeOut' } });
+			setIsAnimating(false);
+			await controlImage.start({ scale: 1, transition: { duration: 0.5, ease: 'easeOut' } });
 			Promise.all([
 				await controls.start({ width: '50%', transition: { duration: 0.7, ease: 'easeOut' } }),
 				await controls2.start({ width: '50%' }),
 			]);
-			await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.3 } });
+			Promise.all([
+				await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.3 } }),
+				await controlBg.start({ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeIn' } }),
+			]);
 			console.log('fin control 1');
 			console.log('fin control 2');
-			setIsAnimating(false);
 		}
 	};
 
@@ -118,22 +127,19 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 				<motion.div
 					transition={{ duration: 0.5 }}
 					className={`
+						lg:bg-base
 						transition duration-500
 						w-[50%]
-					lg:bg-base
 						h-full flex items-center justify-center relative
+						flex-col
 					`}
 					initial={{ opacity: 1 }}
 					animate={controls}
 				>
 					<motion.div
-						animate={{ opacity: 0.8 }}
-						initial={{ opacity: 0 }}
-						exit={{ opacity: 0 }}
-						transition={{ delay: 0.4 }}
-						className={`${
-							isAnimating ? 'opacity-1' : 'opacity-0'
-						} hidden lg:flex absolute w-full h-full top-0 justify-center items-center`}
+						initial={{ opacity: 1 }}
+						animate={controlBg}
+						className='hidden lg:flex absolute w-full h-full top-0 justify-center items-center flex-col'
 					>
 						<Image loading='lazy' src={bgImage2} width={350} alt='splah' />
 					</motion.div>
@@ -142,15 +148,46 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 						animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn' } }}
 						exit={{ opacity: 0 }}
 						transition={{ delay: 0.2 }}
-						className='z-20 w-[300px] lg:w-[500px]'
+						className='z-20 w-[300px] lg:w-full h-full flex items-center flex-col lg:py-20'
 					>
-						<Image
-							loading='lazy'
-							onClick={() => handleClick()}
-							className='cursor-pointer hidden lg:block'
-							src={imagen}
-							alt={name}
-						/>
+						<div className='hidden w-full lg:flex lg:h-[250px]'>
+							{isAnimating && (
+								<motion.div
+									variants={textVariant(0.2, 10)}
+									initial='hidden'
+									animate='show'
+									exit='hidden'
+									className='justify-center items-center flex w-full'
+								>
+									<h1 className='text-black font-extrabold whitespace-nowrap text-4xl'>{name}</h1>
+									<div
+										onClick={() => handleClick()}
+										className={`
+											text-1xl bg-black text-white
+											w-[30px] h-[30px]
+											 rounded-xl justify-center items-center
+											cursor-pointer
+											flex
+											ml-10
+											p-1 animate-pulseBtn
+										`}
+									>
+										<IoMdClose />
+									</div>
+								</motion.div>
+							)}
+						</div>
+						<motion.div initial={{ opacity: 1 }} animate={controlImage}>
+							<Image
+								onClick={() => handleClick()}
+								loading='lazy'
+								className='
+							cursor-pointer hidden lg:block'
+								src={imagen}
+								alt={name}
+							/>
+						</motion.div>
+
 						<Image className='cursor-pointer  block lg:hidden' src={imagen} alt={name} />
 					</motion.div>
 				</motion.div>
@@ -178,6 +215,12 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								Back to Shop
 							</Link>
 						</motion.div>
+						<div
+							onClick={() => handleClick()}
+							className='animate-pulseBtn hidden text-1xl bg-white text-black  rounded-md p-2 z-20 cursor-pointer w-[40px] lg:flex justify-center  items-center'
+						>
+							<FaEye />
+						</div>
 						<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>
 							{name}
 						</motion.h1>

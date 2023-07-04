@@ -15,12 +15,42 @@ export default function Home() {
 	const router = useRouter();
 
 	const { setColor } = useContext(BackGroundColorContext);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 
 	const { isActive, handleToProduct } = useContext(AnimationProductContext);
 
 	useEffect(() => {
 		import('./product/[name]');
+	}, []);
+
+	useLayoutEffect(() => {
+		import('./product/[name]');
+
+		const handlePrimary = () => {
+			const handleRouteChangeStart = () => {
+				console.log('El navegador está cargando la página');
+				setLoading(true);
+			};
+
+			const handleRouteChangeComplete = () => {
+				console.log('El navegador ha terminado de cargar la página');
+				setLoading(false);
+			};
+
+			router.events.on('routeChangeStart', handleRouteChangeStart);
+			router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+			return () => {
+				router.events.off('routeChangeStart', handleRouteChangeStart);
+				router.events.off('routeChangeComplete', handleRouteChangeComplete);
+			};
+		};
+		const cachedData = localStorage.getItem('cachedData');
+		if (!cachedData) {
+			localStorage.setItem('cachedData', 'true');
+			handlePrimary();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -44,7 +74,7 @@ export default function Home() {
 
 	return (
 		<>
-			<div
+			<motion.div
 				className={`
 				${loading ? 'fixed' : 'hidden'}
 						z-40
@@ -57,7 +87,7 @@ export default function Home() {
 			>
 				<CupLoading />
 				<h1 className='capitalize text-2xl text-white'>Loading...</h1>
-			</div>
+			</motion.div>
 			<motion.div
 				initial={{
 					opacity: 0,
