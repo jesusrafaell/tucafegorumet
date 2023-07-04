@@ -36,12 +36,12 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			console.log('fin control 2');
 			setIsAnimating(true);
 		} else {
-			await controls.start({ scale: 1, transition: { duration: 0.5, ease: 'easeIn' } });
+			await controls.start({ scale: 1, transition: { duration: 0.5, ease: 'easeOut' } });
 			Promise.all([
-				await controls2.start({ width: '50%', transition: { duration: 0.7, ease: 'easeIn' } }),
-				await controls.start({ width: '50%', transition: { duration: 0.5, ease: 'easeOut' } }),
+				await controls.start({ width: '50%', transition: { duration: 0.7, ease: 'easeOut' } }),
+				await controls2.start({ width: '50%' }),
 			]);
-			await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.2, ease: 'easeOut' } });
+			await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.3 } });
 			console.log('fin control 1');
 			console.log('fin control 2');
 			setIsAnimating(false);
