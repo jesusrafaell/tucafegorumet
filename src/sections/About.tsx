@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { textVariant } from '@/utils/monition';
 import { motion } from 'framer-motion';
-import imageOurStory from '@/images/Our-Story.jpg';
+import imageOurStory from '@/images/Our-Story.png';
 import Image from 'next/image';
 
 export const About = () => {
