@@ -23,7 +23,7 @@ const CartItem: FC<Props> = ({ item }) => {
 			<div className='w-full min-h-[150px] flex items-center gap-x-4'>
 				{/* image */}
 				<Link href={`/product/${1}`} onClick={() => handleClose()}>
-					<Image className='max-w-[80px]' src={imagen} alt={name} />
+					<Image loading='lazy' className='max-w-[80px]' src={imagen} alt={name} />
 				</Link>
 				<div className='w-full flex flex-col'>
 					{/* title & remove */}

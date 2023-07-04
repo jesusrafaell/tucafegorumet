@@ -80,17 +80,17 @@ const Product: FC<Props> = ({ product }) => {
 			</div>
 			{/* category & title & price */}
 			<motion.div
-				variants={textVariant(1.5, 10)}
+				variants={textVariant(0.5, 10)}
 				initial='hidden'
 				whileInView='show'
 				viewport={{ once: false, amount: 0.7 }}
 				className='px-4 w-full'
 			>
-				<div className='text-sm capitalize text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
 				<div className='cursor-pointer whitespace-nowrap' onClick={() => handleProduct(product)}>
 					<h2 className='font-gravity-regular mb-1'>{name}</h2>
 					<div className='font-gravity-regular'>{price}$</div>
 				</div>
+				<div className='text-sm capitalize text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
 			</motion.div>
 		</div>
 	);
