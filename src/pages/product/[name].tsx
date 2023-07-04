@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
-import bgImage2 from '@/images/splash2-product.png';
+import bgImage from '@/images/splash-product.png';
 import { useRouter } from 'next/router';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { textVariant } from '@/utils/monition';
@@ -36,8 +36,8 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			await controls2.start({ width: 0, transition: { duration: 0.7, ease: 'easeOut' } });
 			await controlBg.start({ opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } });
 			await controls.start({ width: '100%', transition: { duration: 0.5, ease: 'easeIn' } });
-			await controlImage.start({ scale: 1.5, transition: { duration: 0.5, ease: 'easeIn' } });
-			await controlBg.start({ y: 100 });
+			await controlImage.start({ scale: 1.3, transition: { duration: 0.5, ease: 'easeIn' } });
+			await controlBg.start({ x: 100 });
 			console.log('fin control 1');
 			console.log('fin control 2');
 			setIsAnimating(true);
@@ -50,7 +50,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			]);
 			Promise.all([
 				await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.3 } }),
-				await controlBg.start({ opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeIn' } }),
+				await controlBg.start({ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeIn' } }),
 			]);
 			console.log('fin control 1');
 			console.log('fin control 2');
@@ -137,11 +137,17 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					animate={controls}
 				>
 					<motion.div
-						initial={{ opacity: 1 }}
-						animate={controlBg}
-						className='hidden lg:flex absolute w-full h-full top-0 justify-center items-center flex-col'
+						className='hidden lg:flex absolute w-full 
+						 top-[45%]
+						 justify-center items-center flex-col'
+						initial={{ x: 100, opacity: 0 }}
+						animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn' } }}
+						exit={{ opacity: 0 }}
+						transition={{ delay: 0.2 }}
 					>
-						<Image loading='lazy' src={bgImage2} width={350} alt='splah' />
+						<motion.div initial={{ opacity: 1 }} animate={controlBg}>
+							<Image loading='lazy' width={600} src={bgImage} alt='splah' />
+						</motion.div>
 					</motion.div>
 					<motion.div
 						initial={{ x: 100, opacity: 0 }}
@@ -181,8 +187,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 							<Image
 								onClick={() => handleClick()}
 								loading='lazy'
-								className='
-							cursor-pointer hidden lg:block'
+								className='animate-heart cursor-pointer hidden lg:block'
 								src={imagen}
 								alt={name}
 							/>

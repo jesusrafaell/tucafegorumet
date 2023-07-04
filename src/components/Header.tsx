@@ -9,7 +9,7 @@ import { BiMenu } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 
 import { Link as LinkS } from 'react-scroll';
-import navLinks from './variables/navLinks';
+import navLinks, { interfaceLink } from './variables/navLinks';
 import MenuMobile from './NavMobile';
 
 const Header = () => {
@@ -36,8 +36,12 @@ const Header = () => {
 		});
 	}, []);
 
-	const handleClick = (to: string) => {
-		router.push(`/#${to}`, undefined, { scroll: true });
+	const handleClick = (link: interfaceLink) => {
+		if (link.scroll) {
+			router.push(`/#${link.to}`, undefined, { scroll: true });
+		} else {
+			router.push(`/${link.to}`);
+		}
 	};
 
 	return (
@@ -57,7 +61,7 @@ const Header = () => {
 					duration={400}
 					onClick={() => {
 						setMobileMenu(false);
-						handleClick('home');
+						handleClick({ to: 'home', scroll: true, name: 'home' });
 					}}
 				>
 					<div className='cursor-pointer hover:animate-pulse'>
@@ -80,7 +84,7 @@ const Header = () => {
 											smooth
 											offset={0}
 											duration={400}
-											onClick={() => handleClick(itemNav.to)}
+											onClick={() => handleClick(itemNav)}
 										>
 											{itemNav.name}
 										</LinkS>
