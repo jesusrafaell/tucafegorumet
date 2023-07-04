@@ -20,7 +20,6 @@ export default function Home() {
 	const { isActive, handleToProduct } = useContext(AnimationProductContext);
 
 	useEffect(() => {
-		// Cargar el componente Product en segundo plano
 		import('./product/[name]');
 	}, []);
 
@@ -39,6 +38,7 @@ export default function Home() {
 			setLoading(false);
 		} else {
 			localStorage.setItem('loadingShown', 'true'); //
+			setLoading(false);
 		}
 	}, []);
 
