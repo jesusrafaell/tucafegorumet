@@ -73,7 +73,8 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-	let easing = [0.6, -0.05, 0.01, 0.99];
+
+	const easing = [0.6, -0.05, 0.01, 0.99];
 
 	const stagger = {
 		animate: {

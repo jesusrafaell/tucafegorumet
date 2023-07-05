@@ -1,12 +1,12 @@
 import { ProductCartDto } from '@/utils/products';
 import { useRouter } from 'next/router';
-import React, { FC, ReactNode, createContext, useEffect, useState } from 'react';
+import { Dispatch, FC, ReactNode, SetStateAction, createContext, useEffect, useState } from 'react';
 
 interface AnimationContextValue {
 	isLoading: boolean;
 	completedAnimation: boolean;
-	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-	setCompletedAnimation: React.Dispatch<React.SetStateAction<boolean>>;
+	setIsLoading: Dispatch<SetStateAction<boolean>>;
+	setCompletedAnimation: Dispatch<SetStateAction<boolean>>;
 }
 
 export const AnimationCoverContext = createContext<AnimationContextValue>({
