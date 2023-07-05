@@ -71,24 +71,26 @@ const Header = () => {
 					</div>
 				</LinkS>
 				<div>
-					<ul className='hidden md:flex items-center gap-8 font-bold'>
+					<ul className='hidden md:flex gap-x-9 font-gravity-light font-bold text-1xl list-none items-center navLink'>
 						{navLinks.map((itemNav, index) => {
 							return (
-								<li key={index}>
-									<div className='text-[16px] cursor-pointer hover:animate-pulse relative'>
-										<LinkS
-											// activeClass='before:absolute'
-											className="hover:before:absolute before:content-[''] before:bottom-0 before:h-1 before:w-full before:bg-[#e2e2e2] before:transition"
-											to={itemNav.to}
-											spy
-											smooth
-											offset={0}
-											duration={400}
-											onClick={() => handleClick(itemNav)}
-										>
-											{itemNav.name}
-										</LinkS>
-									</div>
+								<li key={index} className='relative'>
+									<LinkS
+										className='text-black capitalize block relative cursor-pointer 
+													after:bottom-0 after:content after:block after:h-[2px] after:left-[50%] 
+													after:absolute after:bg-black after:w-0
+													after:transition-all after:duration-300 after:ease-in-out
+													hover:after:w-full hover:after:left-0
+													'
+										to={itemNav.to}
+										spy
+										smooth
+										offset={0}
+										duration={400}
+										onClick={() => handleClick(itemNav)}
+									>
+										{itemNav.name}
+									</LinkS>
 								</li>
 							);
 						})}

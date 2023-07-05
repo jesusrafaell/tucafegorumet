@@ -65,12 +65,18 @@ export const About = () => {
 								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase text-white'>
 									MARCIO & MARCEL SOPENA
 								</p>
-								<p className='text-gray-100'>
+								<motion.p
+									variants={textVariant(0.5, 10)}
+									initial='hidden'
+									whileInView='show'
+									viewport={{ once: false, amount: 0.7 }}
+									className='text-gray-100'
+								>
 									Established in 1996, Tu Café is a family-owned & operated business dedicated to providing
 									gourmet, Cuban style espresso. Tu Café is carefully crafted to deliver a gourmet Cuban-style
 									espresso experience like none other. With an alluring aroma, smooth flavor and touch of life, Tu
 									Café is more than just a morning coffee, it is coffee that compliments your lifestyle.
-								</p>
+								</motion.p>
 								<span className='hidden lg:block self-start font-gravity-regular py-4 text-white'>
 									Tu Café, make it yours!
 								</span>

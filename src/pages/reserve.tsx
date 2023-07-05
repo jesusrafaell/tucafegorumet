@@ -4,54 +4,13 @@ import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { motion } from 'framer-motion';
 
-import HomePage from '@/sections/Home';
-import ShopPage from '@/sections/Shop';
-import AboutPage from '@/sections/About';
-import CoffeTimePage from '@/sections/CoffeTime';
 import Footer from '@/components/Footer';
-import CupLoading from '@/components/CupLoading';
 
 export default function Reserve() {
+	const { setColor } = useContext(BackGroundColorContext);
 	const router = useRouter();
 
-	const { setColor } = useContext(BackGroundColorContext);
-	const [loading, setLoading] = useState(false);
-
-	const { isActive, handleToProduct } = useContext(AnimationProductContext);
-
-	useEffect(() => {
-		import('./product/[name]');
-	}, []);
-
-	useLayoutEffect(() => {
-		import('./product/[name]');
-
-		const handlePrimary = () => {
-			const handleRouteChangeStart = () => {
-				console.log('El navegador está cargando la página');
-				setLoading(true);
-			};
-
-			const handleRouteChangeComplete = () => {
-				console.log('El navegador ha terminado de cargar la página');
-				setLoading(false);
-			};
-
-			router.events.on('routeChangeStart', handleRouteChangeStart);
-			router.events.on('routeChangeComplete', handleRouteChangeComplete);
-
-			return () => {
-				router.events.off('routeChangeStart', handleRouteChangeStart);
-				router.events.off('routeChangeComplete', handleRouteChangeComplete);
-			};
-		};
-		const cachedData = localStorage.getItem('cachedData');
-		if (!cachedData) {
-			localStorage.setItem('cachedData', 'true');
-			handlePrimary();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	const { isActive } = useContext(AnimationProductContext);
 
 	useEffect(() => {
 		if (router && router.asPath) {
@@ -59,17 +18,8 @@ export default function Reserve() {
 				console.error('Error al redirigir la ruta:', error);
 			});
 		}
-		setColor('bg-base-dark');
+		setColor('bg-white');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	useLayoutEffect(() => {
-		if (localStorage.getItem('loadingShown') === 'true') {
-			setLoading(false);
-		} else {
-			localStorage.setItem('loadingShown', 'true'); //
-			setLoading(false);
-		}
 	}, []);
 
 	return (
@@ -77,7 +27,7 @@ export default function Reserve() {
 			initial={{
 				opacity: 0,
 			}}
-			animate={isActive ? 'active' : 'inactive'}
+			animate={false ? 'active' : 'inactive'}
 			variants={{
 				active: {
 					opacity: 0,
