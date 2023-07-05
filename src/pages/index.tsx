@@ -17,7 +17,7 @@ export default function Home() {
 	const { setColor } = useContext(BackGroundColorContext);
 	const [loading, setLoading] = useState(false);
 
-	const { isActive, handleToProduct } = useContext(AnimationProductContext);
+	const { isActive, setIsActive, handleToProduct } = useContext(AnimationProductContext);
 
 	useEffect(() => {
 		import('./product/[name]');
@@ -116,7 +116,7 @@ export default function Home() {
 					if (isActive) {
 						console.log('go to product detail');
 						handleToProduct();
-						// window.scrollTo(0, 0);
+						setIsActive(false);
 					}
 				}}
 				className='overflow-hidden'

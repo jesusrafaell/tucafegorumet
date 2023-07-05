@@ -24,7 +24,7 @@ const Hero2 = () => {
 						viewport={{ once: false, amount: 0.7 }}
 						className='text-2xl lg:text-6xl capitalize font-prilly-monly'
 					>
-						te gusta tu café
+						i like tu café
 					</motion.h2>
 					{/* <p className='self-end text-3xl capitalize font-satoshi'>try ours!</p> */}
 					<motion.div

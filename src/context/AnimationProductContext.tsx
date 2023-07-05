@@ -7,7 +7,7 @@ interface AnimationProductValue {
 	product: ProductDto | null;
 	setIsActive: Dispatch<SetStateAction<boolean>>;
 	setProduct: Dispatch<SetStateAction<ProductDto | null>>;
-	handleToProduct: () => void;
+	handleToProduct: (name: string) => void;
 	handleProduct: (product: ProductDto) => void;
 }
 
@@ -41,7 +41,6 @@ const AnimationProductProvider: FC<Props> = ({ children }) => {
 	const handleProduct = (product: ProductDto) => {
 		setIsActive(true);
 		setProduct(product);
-		handleToProduct();
 	};
 
 	return (

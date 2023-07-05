@@ -14,12 +14,31 @@ interface Props {
 }
 
 const Product: FC<Props> = ({ product }) => {
-	const { product: select, handleProduct } = useContext(AnimationProductContext);
+	const { product: select, handleProduct, isActive } = useContext(AnimationProductContext);
 	const { addToCart } = useContext(CartContext);
 	const { name, price, disponible, imagen } = product;
 	const router = useRouter();
+
+	const variantProduct = () => {
+		if (isActive && select) {
+			if (product.id === select.id) {
+				return {
+					opacity: 1,
+					scale: 1.1,
+					transition: { duration: 0.2, ease: 'easeIn' },
+				};
+			} else {
+				return {
+					opacity: 0,
+					transition: { duration: 0.2, ease: 'easeOut' },
+				};
+			}
+		}
+	};
+
 	return (
-		<div
+		<motion.div
+			whileInView={variantProduct()}
 			className='
 				rounded-xl p-5
 				lg:flex
@@ -92,7 +111,7 @@ const Product: FC<Props> = ({ product }) => {
 				</div>
 				<div className='text-sm capitalize text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
 			</motion.div>
-		</div>
+		</motion.div>
 	);
 };
 

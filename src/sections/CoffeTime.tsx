@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Card from '@/components/Card';
+import HeroCoffeTime from '@/components/Hero-CoffeTime';
 import cardItems from '@/utils/cardItems';
 import { textVariant } from '@/utils/monition';
 import { motion } from 'framer-motion';
@@ -8,20 +9,32 @@ import { useState } from 'react';
 export const CoffeTime = () => {
 	const [isImagesLoaded, setIsImagesLoaded] = useState(false);
 
+	// return (
+	// 	<section
+	// 		id='coffeTime'
+	// 		className='
+	// 		overflow-hidden
+	// 		w-screen
+	// 		h-full
+	// 		lg:h-screen'
+	// 	>
+	// 		<HeroCoffeTime />
+	// 	</section>
+	// );
+
 	return (
 		<section
 			id='coffeTime'
-			className='
-			overflow-hidden relative 
-			w-screen
-			py-20
-			lg:py-40
-			min-h-screen
-      bg-center
-      bg-cover
-			flex
-			h-full'
-			// bg-coffeTime
+			className=' overflow-hidden relative
+				w-screen
+				py-20
+				lg:py-40
+				min-h-screen
+				bg-center
+				bg-cover
+				flex
+				h-full'
+			// bg-coffetime
 		>
 			<div className='relative flex flex-col w-full h-100 justify-center items-center'>
 				<motion.div
@@ -33,14 +46,14 @@ export const CoffeTime = () => {
 				>
 					<h2
 						className='
-							text-2xl lg:text-4xl
-							uppercase
-							text-gray-100 
-							 py-10 
-							lg:py-0
-							font-satoshi
-							font-bold
-						'
+								text-2xl lg:text-4xl
+								uppercase
+								text-gray-100
+								py-10
+								lg:py-0
+								font-satoshi
+								font-bold
+							'
 					>
 						How to drink café
 					</h2>
@@ -50,17 +63,16 @@ export const CoffeTime = () => {
 					<div className='flex items-start justify-center  ml-0 lg:-ml-[100px]'>
 						{/* card grid */}
 						<div
-							className='card-grid 
-								flex
-								flex-col
-								lg:grid
-								gap-x-8
-								gap-y-8
-								w-full
-								items-center
-								md:grid-cols-2 
-								lg:grid-cols-4
-								'
+							className='
+									card-grid
+									grid
+									gap-x-8
+									gap-y-8
+									w-full
+									items-center
+									grid-cols-2
+									lg:grid-cols-2
+									'
 						>
 							{/* card */}
 							{cardItems.map((card, index) => {

@@ -25,12 +25,17 @@ const Card: FC<Props> = ({ card }) => {
 				lg:h-[300px]
 				border-b
 				lg:border-none
-        card relative 
+        card 
+				relative 
         lg:w-full
         cursor-pointer 
         list-none 
         before:block 
         before:w-full
+				flex
+				px-5
+				justify-center
+				items-center
 				transition duration-300 ease-linear 
       `}
 			onMouseEnter={() => setHover(true)}
@@ -45,43 +50,16 @@ const Card: FC<Props> = ({ card }) => {
 				className={`
           card__background 
           left-0 top-0 right-0 bottom-0 
-          bg-contain 
-          bg-no-repeat
-          bg-center rounded-lg
-					relative
-          filter brightness-75 
-          saturate-120 contrast-85 
-          transform scale-100 
-          translate-z-0 
-          transition duration-300 ease-linear 
-					${hover ? 'opacity-0' : 'opacity-100'}
+          rounded-lg relative filter brightness-75 
+          saturate-120 contrast-85 transform scale-100 
+          translate-z-0 transition duration-300 ease-linear 
 			`}
 			/>
-			<Image
-				src={imagen2}
-				alt={title}
-				width={400}
-				placeholder='blur'
-				blurDataURL='../'
-				className={`
-					${hover ? 'opacity-100' : 'opacity-0'}
-          card__background absolute 
-          bottom-0 
-          bg-contain 
-          bg-no-repeat
-          bg-center rounded-lg
-          filter brightness-75 
-          saturate-120 contrast-85 
-          transform scale-100 
-          translate-z-0 
-        `}
-			/>
 			<motion.div
-				variants={textVariant(0.5, -10)}
-				initial='hidden'
-				whileInView='show'
 				viewport={{ once: false, amount: 0.7 }}
-				className='card_content absolute -bottom-3 lg:bottom-0 w-full h-full flex justify-center items-end lg:items-end py-5 lg:py-0'
+				className={`absolute -bottom-3 lg:-bottom-2 w-full h-full flex justify-center items-end lg:items-end lg:py-0
+					${hover ? 'opacity-100' : 'opacity-0'}
+					`}
 			>
 				<h3 className='text-gray-200 font-gravity-bold text-1xl lg:text-2xl whitespace-nowrap shadow-text-lighter'>
 					{title}

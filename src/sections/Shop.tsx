@@ -64,6 +64,7 @@ export const Shop = () => {
 							variants={variantsProducts('-30%')}
 							initial='hidden'
 							whileInView='show'
+							// whileInView={isActive ? 'hidden' : 'show'}
 							// viewport={{ once: false, amount: 0.7 }}
 						>
 							{products.map((product, index) => index % 2 === 0 && <Product key={index} product={product} />)}
