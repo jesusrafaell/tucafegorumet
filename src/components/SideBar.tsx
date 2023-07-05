@@ -46,7 +46,8 @@ const SideBar = () => {
 					flex flex-col gap-y-2 
 					px-4
 					lg:px-0
-					h-[65vh]
+					h-[55vh]
+					lg:h-[65vh]
 					overflow-y-auto overflow-x-hidden 
 					border-b
 			'
