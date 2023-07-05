@@ -336,8 +336,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								}}
 								className={`
 									relative
-									cursor-pointer rounded h-12 w-40 border 
-tracking-wider leading-none overflow-hidden hover:text-teal-60
+									cursor-pointer rounded h-12 w-40 border tracking-wider leading-none overflow-hidden hover:text-teal-60
 									border-blue-500 bg-transparent 
 									text-white text-base hover:animate-pulseBtn
 								`}

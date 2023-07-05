@@ -16,13 +16,13 @@ const Footer = () => {
 				<div className='wave' id='wave4'></div>
 			</div>
 			<div className='footer_container'>
-				<div className='p-10 grid gap-x-10 gap-y-4 grid-cols-2 md:grid-cols-4 '>
+				<div className='p-10 grid gap-x-10 gap-y-10 lg:gap-y-4 grid-cols-2 lg:grid-cols-4 '>
 					<motion.div
-						variants={textVariant(0.2, 10)}
+						variants={textVariant(0.2, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base border-r border-base-dark justify-center items-center'
+						className='flex flex-col w-full text-base border-r border-base-dark justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<FaLocationArrow />
@@ -31,11 +31,11 @@ const Footer = () => {
 						<p className='text-gray-700 text-1xl leading-2'>Unidated State, Miami</p>
 					</motion.div>
 					<motion.div
-						variants={textVariant(0.4, 10)}
+						variants={textVariant(0.4, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base border-r border-base-dark justify-center items-center'
+						className='flex flex-col w-full text-base lg:border-r border-base-dark justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<FaEnvelope />
@@ -43,18 +43,18 @@ const Footer = () => {
 						<h3 className='capitalize py-2 text-1xl md:text-2xl'>E - mail</h3>
 						<a
 							href='#'
-							className=' text-[14px] md:text-[17px] text-gray-700 font-satoshi font-bold cursor-pointer hover:underline hover:text-black'
+							className=' text-[14px] md:text-[15px] text-gray-700 font-satoshi font-bold cursor-pointer hover:underline hover:text-black'
 						>
 							Info@tucafegourmet.com
 						</a>
 					</motion.div>
 
 					<motion.div
-						variants={textVariant(0.6, 10)}
+						variants={textVariant(0.6, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base border-r border-base-dark justify-center items-center'
+						className='flex flex-col w-full text-base border-r border-base-dark justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<BsFillTelephoneFill />
@@ -64,11 +64,11 @@ const Footer = () => {
 					</motion.div>
 
 					<motion.div
-						variants={textVariant(0.8, 10)}
+						variants={textVariant(0.8, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base justify-center items-center'
+						className='flex flex-col w-full text-base justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<FaClock />
@@ -82,26 +82,40 @@ const Footer = () => {
 				</div>
 			</div>
 			{/* social media */}
-			<motion.div
-				variants={textVariant(1, -10)}
-				initial='hidden'
-				whileInView='show'
-				viewport={{ once: false, amount: 0.7 }}
-				className='flex flex-row justify-center gap-5 my-8 text-2xl md:text-3xl text-black'
-			>
-				<i>
+			<div className='flex flex-row justify-center gap-5 my-8 text-2xl md:text-3xl text-black'>
+				<motion.i
+					variants={textVariant(0.2, 20)}
+					initial='hidden'
+					whileInView='show'
+					viewport={{ once: false, amount: 0.7 }}
+				>
 					<BsFacebook />
-				</i>
-				<i>
+				</motion.i>
+				<motion.i
+					variants={textVariant(0.3, 20)}
+					initial='hidden'
+					whileInView='show'
+					viewport={{ once: false, amount: 0.7 }}
+				>
 					<BsInstagram />
-				</i>
-				<i>
+				</motion.i>
+				<motion.i
+					variants={textVariant(0.4, 20)}
+					initial='hidden'
+					whileInView='show'
+					viewport={{ once: false, amount: 0.7 }}
+				>
 					<BsTwitter />
-				</i>
-				<i>
+				</motion.i>
+				<motion.i
+					variants={textVariant(0.5, 20)}
+					initial='hidden'
+					whileInView='show'
+					viewport={{ once: false, amount: 0.7 }}
+				>
 					<BsLinkedin />
-				</i>
-			</motion.div>
+				</motion.i>
+			</div>
 			<div className='text-white bg-black w-full flex justify-center items-center text-[10px] md:text-[16px] py-2 '>
 				Copyright 2023 © Cafetales De Miami
 				<i className='fa-solid fa-heart'>
