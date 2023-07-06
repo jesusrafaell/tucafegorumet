@@ -23,6 +23,12 @@ export default function Reserve() {
 	}, []);
 
 	return (
+		<section id='reserve' className='w-screen h-screen overflow-hidden flex items-center justify-center p-12'>
+			<h1 className='text-2xl'>Reserve</h1>
+		</section>
+	);
+
+	return (
 		<motion.div
 			initial={{
 				opacity: 0,

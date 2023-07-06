@@ -19,10 +19,10 @@ const Card: FC<Props> = ({ cup, selectCup, handleSelectCup }) => {
 		<div
 			// lg:h-[300px]
 			className={`
-				w-[100px]
-				h-[100px]
-				border-b
-				lg:border-none
+				w-[80px]
+				h-[80px]
+				lg:w-[120px]
+				lg:h-[120px]
         card 
 				relative 
         cursor-pointer 

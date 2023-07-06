@@ -2,15 +2,6 @@
 	transform: scale(1.05) translateZ(0);
 }
 
-.card:hover .card_content {
-	top: 4rem;
-	transition: top 1s ease-out;
-}
-
-.card:hover .card_content h3 {
-	text-shadow: 0 5px 0 rgba(0, 0, 0, 0.1);
-}
-
 @media (min-width: 768px) {
 	.card-grid:hover > .card:not(:hover) .card__background {
 		filter: brightness(0.55) saturate(1) contrast(1.2) blur(10px);

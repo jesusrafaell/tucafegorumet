@@ -42,7 +42,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			await controlBg.start({ opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } });
 			await controls.start({ width: '100%', transition: { duration: 0.5, ease: 'easeIn' } });
 			await controlImage.start({ scale: 1.3, transition: { duration: 0.5, ease: 'easeIn' } });
-			await controlBg.start({ x: 100 });
+			await controlBg.start({ x: -50 });
 			setIsAnimating(true);
 		} else {
 			setIsAnimating(false);
@@ -147,10 +147,9 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					>
 						<motion.div
 							className='hidden lg:flex absolute w-full top-[40%] justify-center items-center flex-col -z-1'
-							initial={{ x: 100, opacity: 0 }}
-							animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn' } }}
+							initial={{ x: -50, opacity: 0 }}
+							animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn', delay: 0.3 } }}
 							exit={{ opacity: 0 }}
-							transition={{ delay: 0.2 }}
 						>
 							<motion.div initial={{ opacity: 1 }} animate={controlBg}>
 								<Image loading='lazy' width={600} src={bgImage} alt='splah' />

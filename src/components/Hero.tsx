@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import coffe from '@/images/coffe1.png';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
@@ -8,11 +8,31 @@ import Image from 'next/image';
 // import coffe2 from '@/images/coffe2.png';
 
 const Hero = () => {
+	const [scrollDirection, setScrollDirection] = useState<number>(50);
+	const prevScrollYRef = useRef<number>(0);
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			if (currentScrollY > prevScrollYRef.current) {
+				console.log('baje');
+				setScrollDirection(-50); // Scroll hacia abajo
+			} else {
+				console.log('subi');
+				setScrollDirection(50); // Scroll hacia arriba
+			}
+			prevScrollYRef.current = currentScrollY;
+		};
+
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
 	return (
 		<section
 			// bg-base
 			className='
-			hero
 			h-[800px] 
 			bg-no-repeat 
 			bg-base
@@ -56,7 +76,7 @@ const Hero = () => {
 				{/* img */}
 				<div className='flex flex-col -order-1 lg:order-none self-center justify-center w-80 lg:w-full'>
 					<motion.div
-						variants={textVariant(0.5, -100)}
+						variants={textVariant(0.4, scrollDirection)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}

@@ -46,17 +46,23 @@ const Product: FC<Props> = ({ product }) => {
 				justify-center
 				items-center
 			text-white
+				cursor-pointer 
+				border border-transparent
+				hover:border-blue-500
+				hover:animate-pulseBtn
+				bg-white bg-opacity-10
+				group
 				productCard'
 		>
 			<div
 				className='
-							h-[230px]
+							h-[150px]
+							lg:h-[220px]
 							mb-2 relative overflow-hidden 
-							group
 							trasition'
 			>
 				<div className='w-full h-full flex justify-center items-center'>
-					<div className='w-[300px] lg:w-[700px] mx-auto flex justify-center items-center'>
+					<div className='w-[200px] lg:w-[700px] mx-auto flex justify-center items-center'>
 						<Image className={`group-hover:scale-110`} src={imagen} alt='hola' />
 					</div>
 				</div>
@@ -106,10 +112,12 @@ const Product: FC<Props> = ({ product }) => {
 				className='px-4 w-full'
 			>
 				<div className='cursor-pointer whitespace-nowrap' onClick={() => handleProduct(product)}>
-					<h2 className='font-gravity-regular mb-1'>{name}</h2>
-					<div className='font-gravity-regular'>{price}$</div>
+					<h2 className='font-gravity-regular mb-4'>{name}</h2>
+					<div className='font-gravity-regular mb-1'>{price}$</div>
 				</div>
-				<div className='text-sm capitalize text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
+				<div className='text-sm flex justify-end capitalize text-gray-500'>
+					{disponible ? 'Disponible' : 'Agotado'}
+				</div>
 			</motion.div>
 		</motion.div>
 	);

@@ -58,9 +58,10 @@ export const Shop = () => {
 						exit={{
 							opacity: 0,
 						}}
-						className='hidden lg:grid lg:grid-cols-2 gap-x-[50px] gap-y-[10px]'
+						className='hidden lg:grid lg:grid-cols-2 gap-x-20'
 					>
 						<motion.div
+							className='flex flex-col gap-y-10'
 							variants={variantsProducts('-30%')}
 							initial='hidden'
 							whileInView='show'
@@ -70,6 +71,7 @@ export const Shop = () => {
 							{products.map((product, index) => index % 2 === 0 && <Product key={index} product={product} />)}
 						</motion.div>
 						<motion.div
+							className='flex flex-col gap-y-10'
 							variants={variantsProducts('30%')}
 							initial='hidden'
 							whileInView='show'

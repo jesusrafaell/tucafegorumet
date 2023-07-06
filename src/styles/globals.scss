@@ -18,12 +18,11 @@
 
 body {
 	background-color: #130c06;
+	font-family: 'Satoshi';
 }
 
-.hero {
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+body::-webkit-scrollbar {
+	display: none;
 }
 
 .hero2 {
@@ -48,17 +47,6 @@ body {
 		--background-start-rgb: 0, 0, 0;
 		--background-end-rgb: 0, 0, 0;
 	}
-}
-
-body {
-	color: rgb(var(--foreground-rgb));
-	/* background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
-		rgb(var(--background-start-rgb)); */
-	font-family: 'Gravity-Light';
-}
-
-body::-webkit-scrollbar {
-	display: none;
 }
 
 /* loading pages */
