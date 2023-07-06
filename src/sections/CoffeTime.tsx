@@ -44,7 +44,6 @@ export const CoffeTime = () => {
 		await controlInfo.start({ opacity: 0, y: -20 });
 		setSelectCup(cup);
 		await controlInfo.start({ y: 20, transition: { duration: 0, delay: 0 } });
-		console.log(cup);
 		Promise.all([
 			await handleRotateCoffe(cup.id),
 			await controlInfo.start({ y: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeIn' } }),
@@ -77,14 +76,12 @@ export const CoffeTime = () => {
 		},
 	};
 
-	console.log(selectCup);
-
 	return (
 		<section
 			id='coffeTime'
 			className=' overflow-hidden relative flex flex-row h-screen w-screen' // bg-coffetime
 		>
-			<div className='flex flex-col h-full justify-center items-center w-full lg:w-[70%] z-10 px-10 lg:px-20 gap-y-0 lg:gap-y-10'>
+			<div className='flex flex-col h-full justify-center items-center w-full lg:w-[70%] z-10 px-10 lg:px-20 gap-y-0 lg:gap-y-10 relative'>
 				<motion.div className=' transition duration-500 h-[50%] flex flex-col gap-y-4 items-start justify-center'>
 					<h2 className='text-2xl lg:text-6xl uppercase text-gray-100 font-satoshi font-bold whitespace-nowrap'>
 						How to drink café
@@ -119,14 +116,20 @@ export const CoffeTime = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex items-end justify-end h-full w-[30%] z-0'>
-				<div className='relative h-[50%] w-full'>
-					<div className='absolute h-[800px] w-[800px] -right-[52%] -bottom-[70%] scale-150'>
-						<motion.div initial={{ opacity: 1 }} animate={controlCoffeTime}>
-							<Image src={coffeTime_img} alt='coffeTime' width={800} height={800} />
-						</motion.div>
-					</div>
-				</div>
+			<div id='divPadre' className='flex absolute lg:relative jutify-end items-end h-full w-screen lg:w-[30%]'>
+				<motion.div
+					id='divHijo'
+					className='absolute
+					opacity-30
+					w-[600px] h-[600px] 
+					bottom-[-250px] right-[-250px]
+					lg:opacity-100
+					lg:w-[800px] lg:h-[800px] 
+					lg:bottom-[-330px] lg:right-[-300px]'
+					animate={controlCoffeTime}
+				>
+					<Image className='scale-150' src={coffeTime_img} alt='coffeTime' width={800} height={800} />
+				</motion.div>
 			</div>
 		</section>
 	);
