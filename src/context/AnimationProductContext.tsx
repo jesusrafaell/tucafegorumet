@@ -7,7 +7,7 @@ interface AnimationProductValue {
 	product: ProductDto | null;
 	setIsActive: Dispatch<SetStateAction<boolean>>;
 	setProduct: Dispatch<SetStateAction<ProductDto | null>>;
-	handleToProduct: (name: string) => void;
+	handleToProduct: () => void;
 	handleProduct: (product: ProductDto) => void;
 }
 
