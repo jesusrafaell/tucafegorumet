@@ -7,10 +7,11 @@ import { CupItem } from '@/utils/cardItems';
 
 interface Props {
 	cup: CupItem;
+	selectCup: CupItem;
 	handleSelectCup: (cup: CupItem) => void;
 }
 
-const Card: FC<Props> = ({ cup, handleSelectCup }) => {
+const Card: FC<Props> = ({ cup, selectCup, handleSelectCup }) => {
 	const { title, imagen, imagen2 } = cup;
 	const [hover, setHover] = useState(false);
 
@@ -30,6 +31,11 @@ const Card: FC<Props> = ({ cup, handleSelectCup }) => {
 				justify-center
 				items-center
 				transition duration-300 ease-linear 
+				after:bottom-0 after:content after:block after:h-[2px]
+				after:absolute after:bg-white after:w-0
+				after:transition-all after:duration-300 after:ease-in-out
+				hover:after:w-full hover:after:left-0
+				${selectCup.id === cup.id ? 'after:w-full after:left-0' : 'after:left-[50%]'}
       `}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}

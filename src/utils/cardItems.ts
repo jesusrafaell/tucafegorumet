@@ -29,24 +29,24 @@ const CupItems: CupItem[] = [
 	},
 	{
 		id: 2,
+		imagen: cafe_milk,
+		imagen2: cafe_milk_2,
+		title: 'Cafe con Leche',
+		info: 'What does coffee with milk mean?  Lattes are made using filtered coffee and steamed milk, and the usual ratio is one part coffee to one part steamed milk, with no foam or cream on top (although some coffee shops do add it) .',
+	},
+	{
+		id: 3,
 		imagen: cafe_negro,
 		imagen2: cafe_negro_2,
 		title: 'Americano',
 		info: 'American coffee or American coffee is a type of preparation of American origin, in which espresso coffee is diluted in hot water, thus reducing the intensity of its flavor.',
 	},
 	{
-		id: 3,
+		id: 4,
 		imagen: cortadito,
 		imagen2: cortadito_2,
 		title: 'Cortadito',
 		info: 'A cortadito is an espresso coffee, generally to which anywhere from a few drops of milk to approximately 50% milk and 50% coffee is added to bring out the bitterness of coffee in a cup .',
-	},
-	{
-		id: 4,
-		imagen: cafe_milk,
-		imagen2: cafe_milk_2,
-		title: 'Cafe con Leche',
-		info: 'What does coffee with milk mean?  Lattes are made using filtered coffee and steamed milk, and the usual ratio is one part coffee to one part steamed milk, with no foam or cream on top (although some coffee shops do add it) .',
 	},
 ];
 

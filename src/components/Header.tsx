@@ -76,7 +76,8 @@ const Header = () => {
 							return (
 								<li key={index} className='relative'>
 									<LinkS
-										className='text-black capitalize block relative cursor-pointer 
+										className='
+												text-black capitalize block relative cursor-pointer 
 													after:bottom-0 after:content after:block after:h-[2px] after:left-[50%] 
 													after:absolute after:bg-black after:w-0
 													after:transition-all after:duration-300 after:ease-in-out
