@@ -55,12 +55,8 @@ const Hero = () => {
 				text-base-red
 			'
 			>
-				{/* text */}
 				<div className='flex flex-col w-full justify-center'>
-					{/* pretitle */}
 					<div className='font-gravity-bold flex items-center uppercase'></div>
-					{/* title */}
-					{/* leading-[1.1] */}
 					<div
 						className='text-[60px] 
 							flex
@@ -75,7 +71,7 @@ const Hero = () => {
 							leading-[1.1] mb-5'
 					>
 						<motion.h1
-							variants={textVariant(0.5, 20)}
+							variants={textVariant(0.7, -30)}
 							initial='hidden'
 							whileInView='show'
 							viewport={{ once: false, amount: 0.7 }}
