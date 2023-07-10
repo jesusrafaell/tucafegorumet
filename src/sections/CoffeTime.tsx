@@ -115,7 +115,9 @@ export const CoffeTime = () => {
 						animate={controlInfo}
 						className='relative text-white w-[400x] h-[200px]'
 					>
-						<h1 className='text-2xl lg:text-5xl font-bold m lg:flex  font-satoshi my-5'>{selectCup.title}</h1>
+						<motion.h1 className='text-2xl lg:text-5xl font-bold lg:flex  font-satoshi my-5' variants={fadeInUp}>
+							{selectCup.title}
+						</motion.h1>
 						<p className='text-[15px] lg:text-[17px] font-light whitespace-normal text-justify max-h-full leading-[1.4] py-5 w-full lg:w-[500px]'>
 							{selectCup.info}
 						</p>

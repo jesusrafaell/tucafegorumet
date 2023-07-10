@@ -33,22 +33,24 @@ const Hero = () => {
 		<section
 			// bg-base
 			className='
-			bg-no-repeat 
-			bg-cover
 			flex
 			justify-center
 			h-screen
 			heroHome
 			lg:bg-fixed
+			bg-no-repeat 
 			bg-containt
-			bg-center'
+			bg-cover
+			bg-center
+			'
 		>
 			<div
 				className='
 					grid
 					w-full
 					h-full
-					grid-cols-2
+					grid-cols-1
+					lg:grid-cols-2
 					px-10
 					justify-center 
 					items-center
@@ -58,8 +60,10 @@ const Hero = () => {
 				<div className='flex flex-col w-full justify-center'>
 					<div className='font-gravity-bold flex items-center uppercase'></div>
 					<div
-						className='text-[60px] 
-							flex
+						className='
+							hidden
+							lg:text-[60px] 
+							lg:flex
 							flex-col
 							font-satoshi
 							font-bold
@@ -100,11 +104,15 @@ const Hero = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex gap-y-5 bg-white rounded-xl flex-col justify-center items-center 
-					p-5 text-black w-[400px] '
+						className='flex gap-y-5 bg-white bg-opacity-50 lg:bg-opacity-100 lg:rounded-xl flex-col justify-center items-center 
+					p-5 text-black lg:w-[400px] '
 					>
-						<p className='self-start text-gray-300 flex text-[15px] font-gravity-bold uppercase'>New</p>
-						<h1 className='self-start flex text-3xl font-gravity-bold uppercase'>Estaciones de Café</h1>
+						<p className='self-start text-gray-700 lg:text-gray-300 flex text-[15px] font-gravity-bold uppercase'>
+							New
+						</p>
+						<h1 className='self-start flex text-2xl lg:text-3xl font-gravity-bold uppercase'>
+							Estaciones de Café
+						</h1>
 						<p>
 							A coffee station is a reservation-based coffee shop where customers can enjoy a curated menu of
 							specialty coffees in a cozy and intimate atmosphere. With limited seating, customers make
