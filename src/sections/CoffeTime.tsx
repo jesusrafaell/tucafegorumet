@@ -42,6 +42,8 @@ export const CoffeTime = () => {
 		}
 	};
 
+	const [waiting, setWaiting] = useState(false);
+
 	const handleSelectCup = async (cup: CupItem) => {
 		await Promise.all([
 			await controlInfo.start({ opacity: 0, y: -20 }),
@@ -55,6 +57,21 @@ export const CoffeTime = () => {
 			controlBg.start({ x: 0, opacity: 0.5, transition: { duration: 0.2, ease: 'easeIn', delay: 0 } }),
 		]);
 	};
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			if (selectCup.id === 4) {
+				handleSelectCup(CupItems[0]);
+			} else {
+				handleSelectCup(CupItems[selectCup.id]);
+			}
+		}, 5000);
+		return () => {
+			// Esto se ejecuta cuando el componente se desmonta
+			clearTimeout(timer);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectCup]);
 
 	const easing = [0.6, -0.05, 0.01, 0.99];
 
@@ -85,7 +102,8 @@ export const CoffeTime = () => {
 	return (
 		<section
 			id='coffeTime'
-			className=' overflow-hidden relative flex flex-row h-screen w-screen' // bg-coffetime
+			className='overflow-hidden relative flex flex-row h-screen w-screen
+			'
 		>
 			<div className='flex flex-col h-full justify-center items-center w-full lg:w-[70%] z-10 px-10 lg:px-20 gap-y-0 lg:gap-y-10 relative'>
 				<motion.div className=' transition duration-500 h-[50%] flex flex-col gap-y-4 items-start justify-center'>
@@ -97,9 +115,7 @@ export const CoffeTime = () => {
 						animate={controlInfo}
 						className='relative text-white w-[400x] h-[200px]'
 					>
-						<h1 className='text-2xl lg:text-5xl font-bold m lg:flex  font-satoshi my-5' variants={fadeInUp}>
-							{selectCup.title}
-						</h1>
+						<h1 className='text-2xl lg:text-5xl font-bold m lg:flex  font-satoshi my-5'>{selectCup.title}</h1>
 						<p className='text-[15px] lg:text-[17px] font-light whitespace-normal text-justify max-h-full leading-[1.4] py-5 w-full lg:w-[500px]'>
 							{selectCup.info}
 						</p>
@@ -124,9 +140,9 @@ export const CoffeTime = () => {
 				<motion.div
 					initial={{ opacity: 0.5 }}
 					animate={controlBg}
-					className='absolute right-[-10%] top-5 z-[-1] opacity-50'
+					className='absolute right0 top-20 z-[-1] opacity-50 h-full w-full flex items-center justify-end'
 				>
-					<Image src={coffeTimeBg1} alt='coffeTime background' />
+					<Image src={coffeTimeBg1} alt='coffeTime background' width={800} />
 				</motion.div>
 			</div>
 			<div id='divPadre' className='flex absolute lg:relative jutify-end items-end h-full w-screen lg:w-[30%]'>

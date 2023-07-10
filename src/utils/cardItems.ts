@@ -25,28 +25,28 @@ const CupItems: CupItem[] = [
 		imagen: cubano,
 		imagen2: cubano_2,
 		title: 'Cuban Style, Espresso',
-		info: 'Cuban coffee (also known as Cuban espresso, colada, cafecito, Cuban jerk, or Cuban shot) is a type of espresso that originated in Cuba. Specifically, it refers to a shot of sweetened espresso (traditionally with natural brown sugar that has been whipped with the first, strongest drops of espresso).',
+		info: `Cuban-style coffee, also known as cafecito or Cuban espresso, is a strong, sweet coffee that originated in Cuba. The tradition of drinking coffee in Cuba dates back to the 18th century, when coffee was introduced to the island by French colonists. The unique flavor of Cuban coffee comes from the use of dark roasted coffee beans, which are finely ground and brewed using a stovetop espresso maker or Moka pot. The coffee is then mixed with sugar to create a sweet and flavorful drink.`,
 	},
 	{
 		id: 2,
 		imagen: cafe_milk,
 		imagen2: cafe_milk_2,
 		title: 'Cafe con Leche',
-		info: 'What does coffee with milk mean?  Lattes are made using filtered coffee and steamed milk, and the usual ratio is one part coffee to one part steamed milk, with no foam or cream on top (although some coffee shops do add it) .',
+		info: `Café con leche, which translates to "coffee with milk" in Spanish, is a popular coffee drink in many Spanish-speaking countries, including Spain, Cuba, and Mexico. The drink is made by combining equal parts strong brewed coffee and steamed milk, and is often served with sugar. The exact origin of café con leche is unclear, but it is believed to have originated in Spain in the 1800s.`,
 	},
 	{
 		id: 3,
 		imagen: cafe_negro,
 		imagen2: cafe_negro_2,
 		title: 'Americano',
-		info: 'American coffee or American coffee is a type of preparation of American origin, in which espresso coffee is diluted in hot water, thus reducing the intensity of its flavor.',
+		info: `The Americano is a popular coffee drink that is believed to have originated during World War II. At the time, American soldiers stationed in Italy found the local espresso to be too strong for their taste, so they began diluting it with hot water to create a milder version. The resulting drink became known as the Americano, and it remains a popular coffee drink around the world today.`,
 	},
 	{
 		id: 4,
 		imagen: cortadito,
 		imagen2: cortadito_2,
 		title: 'Cortadito',
-		info: 'A cortadito is an espresso coffee, generally to which anywhere from a few drops of milk to approximately 50% milk and 50% coffee is added to bring out the bitterness of coffee in a cup .',
+		info: `Cortadito is a Cuban coffee drink that is similar to a café con leche, but with a stronger coffee flavor. The drink is made by combining a shot of Cuban-style espresso with steamed milk and sugar. The exact origin of the cortadito is unclear, but it is believed to have originated in Cuba in the 19th century, and it remains a popular coffee drink in Cuban communities around the world today.`,
 	},
 ];
 

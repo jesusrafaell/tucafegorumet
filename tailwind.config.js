@@ -36,13 +36,15 @@ module.exports = {
 				primary: '#0a0a0a',
 				accent: '#B809C3',
 				danger: '#B92929',
-				base: '#EAE7DE',
+				base: '#e4b77d',
 				'base-light': '#F5F2E9',
-				'base-dark': '#130c06',
+				'base-dark': '#2a3387',
+				'base-red': '#da252e',
 			},
 			backgroundImage: {
 				'header-gradient':
 					'linear-gradient(90deg, rgba(0,0,102,1) 20%, rgba(52,22,71,1) 52%, rgba(24,0,64,1) 97%)',
+				'base-gradient': 'linear-gradient(171deg, rgba(42,51,135,1) 46%, rgba(228,183,125,1) 100%)',
 				coffeTime: "url('/images/coffetime.jpg')",
 				artBoard: "url('/images/Artboard.png')",
 			},

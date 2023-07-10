@@ -11,10 +11,11 @@ export const Home = () => {
 			id='home'
 			className='h-full w-screen 
 			overflow-x-hidden relative 
+			bg-base-dark
 			min-h-screen '
 		>
+			{/* <CarouselCustom /> */}
 			<Hero />
-			<Hero2 />
 		</section>
 	);
 };

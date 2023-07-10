@@ -2,8 +2,8 @@
 	transform: scale(1.05) translateZ(0);
 }
 
-@media (min-width: 768px) {
-	.card-grid:hover > .card:not(:hover) .card__background {
-		filter: brightness(0.55) saturate(1) contrast(1.2) blur(10px);
-	}
-}
+/* @media (min-width: 768px) { */
+/* .card-grid:hover > .card:not(:hover) .card__background { */
+/* filter: brightness(0.55) saturate(1) contrast(1.2) blur(10px); */
+/* } */
+/* } */

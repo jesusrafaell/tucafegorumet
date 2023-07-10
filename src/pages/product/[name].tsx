@@ -129,7 +129,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 				<motion.div
 					transition={{ duration: 0.5 }}
 					className={`
-						lg:bg-base
+						lg:bg-base-light
 						transition duration-500
 						w-[50%]
 						h-full flex items-center justify-center relative
@@ -216,6 +216,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					animate={loading ? { opacity: 1 } : controls2}
 					className={`
 						w-full lg:w-[50%] transition duration-500 h-full flex
+						pt-20
 						flex-col gap-y-10 items-center justify-center`}
 				>
 					<motion.div variants={stagger} className='w-[80%] relative'>
@@ -402,3 +403,6 @@ export const getServerSideProps: GetServerSideProps<ProductPageProps> = async ({
 };
 
 export default Product;
+
+{
+}

@@ -15,14 +15,14 @@ const Footer = () => {
 				<div className='wave' id='wave3'></div>
 				<div className='wave' id='wave4'></div>
 			</div>
-			<div className='footer_container'>
+			<div className='footer_container text-white'>
 				<div className='p-10 grid gap-x-10 gap-y-10 lg:gap-y-4 grid-cols-2 lg:grid-cols-4 '>
 					<motion.div
 						variants={textVariant(0.2, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base border-r border-base-dark justify-center items-start lg:items-center'
+						className='flex flex-col w-full border-r border-base-dark justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<FaLocationArrow />
@@ -35,7 +35,7 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base lg:border-r border-base-dark justify-center items-start lg:items-center'
+						className='flex flex-col w-full lg:border-r border-base-dark justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<FaEnvelope />
@@ -54,7 +54,7 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base border-r border-base-dark justify-center items-start lg:items-center'
+						className='flex flex-col w-full border-r border-base-dark justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<BsFillTelephoneFill />
@@ -68,7 +68,7 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full text-base justify-center items-start lg:items-center'
+						className='flex flex-col w-full justify-center items-start lg:items-center'
 					>
 						<i className='text-black text-2xl md:text-4xl'>
 							<FaClock />
@@ -117,11 +117,11 @@ const Footer = () => {
 				</motion.i>
 			</div>
 			<div className='text-white bg-black w-full flex justify-center items-center text-[10px] md:text-[16px] py-2 '>
-				Copyright 2023 © Cafetales De Miami
+				Copyright 2023 © Cafetales De Miami,
 				<i className='fa-solid fa-heart'>
 					<FiCoffee className='text-2xl py-1 mx-2' />
 				</i>{' '}
-				All rights reserved Coffe Shop{' '}
+				All rights reserved
 			</div>
 		</footer>
 	);

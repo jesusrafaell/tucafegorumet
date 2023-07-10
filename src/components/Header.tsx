@@ -3,14 +3,16 @@ import { CartContext } from '@/context/CartContext';
 import { SidebarContext } from '@/context/SidebarContext';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
-import { FaCoffee } from 'react-icons/fa';
 import { HiShoppingCart } from 'react-icons/hi';
 import { BiMenu } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 
+import logoTuCafe from '@/images/logo_tucafe.png';
+
 import { Link as LinkS } from 'react-scroll';
 import navLinks, { interfaceLink } from './variables/navLinks';
 import MenuMobile from './NavMobile';
+import Image from 'next/image';
 
 const Header = () => {
 	// header state
@@ -46,9 +48,12 @@ const Header = () => {
 
 	return (
 		<header
-			className={`${
-				isActive || mobileMenu || router.pathname.includes('product') ? 'bg-white py-3 shadow-md' : 'bg-none py-5'
-			} 
+			className={`
+				${
+					isActive || mobileMenu || router.pathname.includes('product')
+						? 'bg-white py-1 shadow-md text-black'
+						: 'py-3 text-white'
+				} 
 			fixed w-full z-30 transition-all`}
 		>
 			<div className='container mx-auto flex items-center justify-between h-full '>
@@ -65,24 +70,28 @@ const Header = () => {
 					}}
 				>
 					<div className='cursor-pointer hover:animate-pulse'>
-						<div className='flex'>
-							<FaCoffee className='text-[1.6rem] my-1' />
+						<div className='flex w-[80px] h-[50px] relative'>
+							<div className='absolute w-full top-0 duration-200 transition-all'>
+								<Image src={logoTuCafe} alt='tucafegourmet' width={100} />
+							</div>
 						</div>
 					</div>
 				</LinkS>
 				<div>
-					<ul className='hidden md:flex gap-x-9 font-gravity-light font-bold text-1xl list-none items-center navLink'>
+					<ul className='hidden md:flex gap-x-9 font-gravity-regular font-bold text-[18px] list-none items-center navLink'>
 						{navLinks.map((itemNav, index) => {
 							return (
 								<li key={index} className='relative'>
 									<LinkS
-										className='
-												text-black capitalize block relative cursor-pointer 
-													after:bottom-0 after:content after:block after:h-[2px] after:left-[50%] 
-													after:absolute after:bg-black after:w-0
-													after:transition-all after:duration-300 after:ease-in-out
-													hover:after:w-full hover:after:left-0
-													'
+										className={`
+												capitalize block relative cursor-pointer 
+												after:bottom-0 after:content after:block after:h-[2px] after:left-[50%] 
+												after:absolute 
+												after:${isActive ? 'bg-black' : 'bg-white'}
+												after:w-0
+												after:transition-all after:duration-300 after:ease-in-out
+												hover:after:w-full hover:after:left-0
+										`}
 										to={itemNav.to}
 										spy
 										smooth
@@ -121,7 +130,7 @@ const Header = () => {
 					</ul>
 					<div className='flex items-center gap-8'>
 						{/* Mobile icon start */}
-						<div className='w-8 h-8 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative  text-black'>
+						<div className='w-8 h-8 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative '>
 							<div
 								onClick={() => {
 									setMobileMenu(false);

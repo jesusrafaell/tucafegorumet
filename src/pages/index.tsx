@@ -10,6 +10,7 @@ import AboutPage from '@/sections/About';
 import CoffeTimePage from '@/sections/CoffeTime';
 import Footer from '@/components/Footer';
 import CupLoading from '@/components/CupLoading';
+import Hero2 from '@/components/Hero2';
 
 export default function Home() {
 	const router = useRouter();
@@ -18,10 +19,6 @@ export default function Home() {
 	const [loading, setLoading] = useState(false);
 
 	const { isActive, setIsActive, handleToProduct } = useContext(AnimationProductContext);
-
-	useEffect(() => {
-		import('./product/[name]');
-	}, []);
 
 	useLayoutEffect(() => {
 		import('./product/[name]');
@@ -59,7 +56,7 @@ export default function Home() {
 				console.error('Error al redirigir la ruta:', error);
 			});
 		}
-		setColor('bg-base-dark');
+		setColor('bg-base-light');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -122,8 +119,15 @@ export default function Home() {
 				className='overflow-hidden'
 			>
 				<HomePage />
-				<ShopPage />
-				<CoffeTimePage />
+				<div
+					className='
+			bg-base-gradient
+				'
+				>
+					<ShopPage />
+					<CoffeTimePage />
+				</div>
+				<Hero2 />
 				<AboutPage />
 				<Footer />
 			</motion.div>

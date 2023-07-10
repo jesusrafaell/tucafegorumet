@@ -10,6 +10,7 @@ export const About = () => {
 			id='about'
 			className='
 			overflow-hidden relative 
+			bg-base-light
 			w-screen
 			min-h-screen
 			flex
@@ -17,7 +18,7 @@ export const About = () => {
 			justify-center
 			h-full'
 		>
-			<div className='flex items-center justify-center'>
+			<div className='flex items-center justify-center pt-20'>
 				<div className='container max-auto flex flex-col'>
 					<motion.div
 						variants={textVariant(0.5, -10)}
@@ -30,7 +31,7 @@ export const About = () => {
 							className='
 							text-2xl lg:text-4xl 
 							font-satoshi
-							text-gray-200
+							text-gray-700
 							font-bold
 							uppercase'
 						>
@@ -61,23 +62,21 @@ export const About = () => {
 							className='lg:flex-1 flex flex-col justify-end px-4 lg:px-0'
 						>
 							{/* info */}
-							<div className='flex-1 flex flex-col  items-center'>
-								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase text-white'>
-									MARCIO & MARCEL SOPENA
-								</p>
+							<div className='flex-1 flex flex-col items-center'>
+								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase'>MARCIO & MARCEL SOPENA</p>
 								<motion.p
 									variants={textVariant(0.5, 10)}
 									initial='hidden'
 									whileInView='show'
 									viewport={{ once: false, amount: 0.7 }}
-									className='text-gray-100'
+									className='text-gray-700'
 								>
 									Established in 1996, Tu Café is a family-owned & operated business dedicated to providing
 									gourmet, Cuban style espresso. Tu Café is carefully crafted to deliver a gourmet Cuban-style
 									espresso experience like none other. With an alluring aroma, smooth flavor and touch of life, Tu
 									Café is more than just a morning coffee, it is coffee that compliments your lifestyle.
 								</motion.p>
-								<span className='hidden lg:block self-start font-gravity-regular py-4 text-white'>
+								<span className='hidden lg:block self-start font-gravity-regular py-4 text-black'>
 									Tu Café, make it yours!
 								</span>
 							</div>
