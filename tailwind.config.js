@@ -36,7 +36,7 @@ module.exports = {
 				primary: '#0a0a0a',
 				accent: '#B809C3',
 				danger: '#B92929',
-				base: '#e4b77d',
+				base: '#cdcdcd',
 				'base-light': '#F5F2E9',
 				'base-dark': '#2a3387',
 				'base-red': '#da252e',
