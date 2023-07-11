@@ -54,7 +54,7 @@ export const CoffeTime = () => {
 		await Promise.all([
 			await handleRotateCoffe(cup.id),
 			controlInfo.start({ y: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeIn' } }),
-			controlBg.start({ x: 0, opacity: 0.5, transition: { duration: 0.2, ease: 'easeIn', delay: 0 } }),
+			controlBg.start({ x: 0, opacity: 0.2, transition: { duration: 0.2, ease: 'easeIn', delay: 0 } }),
 		]);
 	};
 
@@ -100,20 +100,16 @@ export const CoffeTime = () => {
 	};
 
 	return (
-		<section
-			id='coffeTime'
-			className='overflow-hidden relative flex flex-row h-screen w-screen
-			'
-		>
+		<section id='coffeTime' className='overflow-hidden flex flex-row h-screen w-screen relative '>
 			<div className='flex flex-col h-full justify-center items-center w-full lg:w-[70%] z-10 px-10 lg:px-20 gap-y-0 lg:gap-y-10 relative'>
 				<motion.div className=' transition duration-500 h-[50%] flex flex-col gap-y-4 items-start justify-center'>
-					<h2 className='text-2xl lg:text-6xl uppercase text-gray-100 font-satoshi font-bold whitespace-nowrap'>
+					<h2 className='text-2xl lg:text-6xl uppercase text-gray-700 font-satoshi font-bold whitespace-nowrap border-b-[2px] border-base-red py-10'>
 						How to drink café
 					</h2>
 					<motion.div
 						initial={{ opacity: 1 }}
 						animate={controlInfo}
-						className='relative text-white w-[400x] h-[200px]'
+						className='relative text-black w-[400x] h-[200px]'
 					>
 						<motion.h1 className='text-2xl lg:text-5xl font-bold lg:flex  font-satoshi my-5' variants={fadeInUp}>
 							{selectCup.title}
@@ -139,14 +135,14 @@ export const CoffeTime = () => {
 						})}
 					</div>
 				</div>
-				<motion.div
-					initial={{ opacity: 0.5 }}
-					animate={controlBg}
-					className='absolute right0 top-20 z-[-1] opacity-50 h-full w-full flex items-center justify-end'
-				>
-					<Image src={coffeTimeBg1} alt='coffeTime background' width={800} />
-				</motion.div>
 			</div>
+			<motion.div
+				initial={{ opacity: 0.2 }}
+				animate={controlBg}
+				className='hidden lg:flex absolute z-[1] opacity-20 h-screen w-screen items-screen top-0 right-0 justify-center'
+			>
+				<Image src={coffeTimeBg1} alt='coffeTime background' width={800} />
+			</motion.div>
 			<div id='divPadre' className='flex absolute lg:relative jutify-end items-end h-full w-screen lg:w-[30%]'>
 				<motion.div
 					id='divHijo'

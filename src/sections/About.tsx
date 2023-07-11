@@ -25,7 +25,7 @@ export const About = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex w-full justify-center items-center mb-4 lg:mb-20'
+						className='flex w-full justify-center items-center lg:mb-5'
 					>
 						<h2
 							className='
@@ -33,6 +33,7 @@ export const About = () => {
 							font-satoshi
 							text-gray-700
 							font-bold
+							border-b-[2px] border-base-red py-5
 							uppercase'
 						>
 							HOW TU CAFÉ WAS BORN
@@ -62,7 +63,7 @@ export const About = () => {
 							className='lg:flex-1 flex flex-col justify-end px-4 lg:px-0'
 						>
 							{/* info */}
-							<div className='flex-1 flex flex-col items-center'>
+							<div className='flex-1 flex flex-col items-center pt-5 lg:pt-0'>
 								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase'>MARCIO & MARCEL SOPENA</p>
 								<motion.p
 									variants={textVariant(0.5, 10)}

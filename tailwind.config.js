@@ -44,7 +44,7 @@ module.exports = {
 			backgroundImage: {
 				'header-gradient':
 					'linear-gradient(90deg, rgba(0,0,102,1) 20%, rgba(52,22,71,1) 52%, rgba(24,0,64,1) 97%)',
-				'base-gradient': 'linear-gradient(171deg, rgba(42,51,135,1) 50%, rgba(228,183,125,1) 100%)',
+				'base-gradient': 'linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(245,242,233,1) 90%)',
 				coffeTime: "url('/images/coffetime.jpg')",
 				artBoard: "url('/images/Artboard.png')",
 			},

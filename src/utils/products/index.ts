@@ -64,7 +64,7 @@ const products: ProductDto[] = [
 	},
 	{
 		id: 4,
-		disponible: false,
+		disponible: true,
 		imagen: ground_coffe_10oz,
 		name: 'Ground Coffee 10 OZ – 6 PACK',
 		price: '51.99',

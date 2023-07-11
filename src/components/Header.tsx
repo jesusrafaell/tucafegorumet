@@ -87,7 +87,7 @@ const Header = () => {
 												capitalize block relative cursor-pointer 
 												after:bottom-0 after:content after:block after:h-[2px] after:left-[50%] 
 												after:absolute 
-												after:${isActive ? 'bg-black' : 'bg-white'}
+												${isActive ? 'after:bg-black' : 'after:bg-white'}
 												after:w-0
 												after:transition-all after:duration-300 after:ease-in-out
 												hover:after:w-full hover:after:left-0
