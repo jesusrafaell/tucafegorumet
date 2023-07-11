@@ -14,10 +14,10 @@ const Hero = () => {
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
 			if (currentScrollY > prevScrollYRef.current) {
-				console.log('baje');
+				// console.log('baje');
 				setScrollDirection(-50); // Scroll hacia abajo
 			} else {
-				console.log('subi');
+				// console.log('subi');
 				setScrollDirection(50); // Scroll hacia arriba
 			}
 			prevScrollYRef.current = currentScrollY;

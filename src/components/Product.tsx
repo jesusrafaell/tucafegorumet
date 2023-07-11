@@ -38,29 +38,30 @@ const Product: FC<Props> = ({ product }) => {
 		<motion.div
 			whileInView={variantProduct()}
 			className='
-				rounded-xl p-5
-				lg:flex
-				lg:flex-row
-				justify-center
-				items-center
-			text-black
-				cursor-pointer 
-				border border-transparent
-				hover:border-blue-500
-				hover:animate-pulseBtn
-				bg-black bg-opacity-5
-				group
-				productCard'
+				rounded-xl flex flex-col justify-center items-center
+			text-white bg-black bg-opacity-20 hover:border-blue-500 hover:animate-pulseBtn
+				m-10
+				p-5
+				'
 		>
 			<div
 				className='
-							h-[150px]
-							lg:h-[220px]
-							mb-2 relative overflow-hidden 
-							trasition'
+				group
+				grad
+				w-full
+				group
+				lg:h-[400px]
+				h-[300px]
+				flex
+				cursor-pointer 
+				border border-transparent
+				productCard
+				justify-center
+				items-center
+				relative overflow-hidden trasition'
 			>
 				<div className='w-full h-full flex justify-center items-center'>
-					<div className='w-[200px] lg:w-[700px] mx-auto flex justify-center items-center'>
+					<div className='w-[300px] lg:w-[400px] mx-auto flex justify-center items-center'>
 						<Image className={`transition duration-200 ease-in group-hover:scale-110`} src={imagen} alt='hola' />
 					</div>
 				</div>
@@ -107,14 +108,14 @@ const Product: FC<Props> = ({ product }) => {
 				initial='hidden'
 				whileInView='show'
 				viewport={{ once: false, amount: 0.7 }}
-				className='px-4 w-full'
 			>
-				<div className='cursor-pointer whitespace-nowrap' onClick={() => handleProduct(product)}>
+				<div
+					className='flex flex-col justify-center items-center cursor-pointer whitespace-nowrap'
+					onClick={() => handleProduct(product)}
+				>
+					<div className='text-sm capitalize mb-3 text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
 					<h2 className='font-gravity-regular mb-4'>{name}</h2>
-					<div className='font-gravity-regular mb-1'>{price}$</div>
-				</div>
-				<div className='text-sm flex justify-end capitalize text-gray-500'>
-					{disponible ? 'Disponible' : 'Agotado'}
+					<div className='font-gravity-bold text-2xl mb-1 text-orange-400'>{price}$</div>
 				</div>
 			</motion.div>
 		</motion.div>

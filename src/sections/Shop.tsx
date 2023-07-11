@@ -1,55 +1,65 @@
-import Product from '@/components/Product';
-import { AnimationProductContext } from '@/context/AnimationProductContext';
-import { textVariant, variantsProducts } from '@/utils/monition';
-import products from '@/utils/products';
+import React, { useEffect, useRef } from 'react';
+import { NextPage } from 'next';
 import { motion } from 'framer-motion';
+import Product from '@/components/Product';
+import products from '@/utils/products';
+import { textVariant } from '@/utils/monition';
+import ProductSlider from '@/components/ProductSlider';
 
-import { useContext, useEffect } from 'react';
-
-export const Shop = () => {
-	const { setIsActive, setProduct } = useContext(AnimationProductContext);
+const Shop: NextPage = () => {
+	const containerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		setIsActive(false);
-		setProduct(null);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		const handleScroll = (e: WheelEvent) => {
+			e.preventDefault();
+			const container = containerRef.current;
+
+			if (container) {
+				const scrollAmount = (e.deltaY / 100) * 400;
+				const newScrollLeft = container.scrollLeft + scrollAmount;
+				container.scrollTo({
+					left: newScrollLeft,
+					behavior: 'smooth',
+				});
+			}
+		};
+
+		if (containerRef.current) {
+			containerRef.current.addEventListener('wheel', handleScroll);
+		}
+
+		return () => {
+			if (containerRef.current) {
+				containerRef.current.removeEventListener('wheel', handleScroll);
+			}
+		};
 	}, []);
 
 	return (
-		<section
-			id='shop'
-			className={`h-full w-screen 
-			bg-white
-			overflow-hidden relative 
-			min-h-screen`}
-		>
-			<div className='py-8'>
-				<div className='container mx-auto'>
-					<div
-						className='items-center justify-center lg:px-10 pt-10 pb-5 flex
-					'
+		<section id='shop' className='h-full py-20 w-screen bg-base-dark overflow-hidden relative'>
+			<div className='container mx-auto '>
+				<motion.div
+					variants={textVariant(0.2, 5)}
+					initial='hidden'
+					whileInView='show'
+					className='flex justify-center items-center'
+				>
+					<h1
+						className={`h1-shop relative uppercase font-satoshi text-white font-bold border-b-[2px] py-5 border-base-red text-4xl lg:text-4xl`}
 					>
-						<motion.div variants={textVariant(0.2, 5)} initial='hidden' whileInView='show'>
-							<h1
-								className={`
-									h1-shop
-									relative
-									uppercase
-									font-satoshi
-									text-black
-									font-bold
-									border-b-[2px]
-									py-5
-									border-base-red
-									text-4xl 
-									lg:text-4xl
-								`}
-							>
-								MAKE IT YOURS!
-							</h1>
-						</motion.div>
-					</div>
-					<motion.div
+						MAKE IT YOURS!
+					</h1>
+				</motion.div>
+			</div>
+			{/* strapi */}
+			<ProductSlider data={products} />
+		</section>
+	);
+};
+
+export default Shop;
+
+/* <motion.div
 						initial={{
 							opacity: 0,
 						}}
@@ -77,24 +87,12 @@ export const Shop = () => {
 							// viewport={{ once: false, amount: 0.7 }}
 						>
 							{products.map((product, index) => index % 2 !== 0 && <Product key={index} product={product} />)}
-						</motion.div>
-					</motion.div>
-					<motion.div
-						className='
-									grid 
-									grid-cols-1
-									lg:hidden
-									gap-y-[20px]
-									'
-					>
-						{products.map((product, index) => (
-							<Product product={product} key={index} />
-						))}
-					</motion.div>
-				</div>
-			</div>
-		</section>
-	);
-};
+						</motion.div> 
+	 </motion.div> 
 
-export default Shop;
+					 	{products.map((product, index) => (
+					 		<div key={index} className='card'>
+					 			<Product product={product} key={index} />
+					 		</div>
+					 	))}
+	*/
