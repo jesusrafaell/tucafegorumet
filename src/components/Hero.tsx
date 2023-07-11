@@ -127,7 +127,7 @@ const Hero = () => {
 
 					 '
 						>
-							<span className='absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-base-dark bg-opacity-50 group-hover:translate-x-0 group-hover:translate-y-0'></span>
+							<span className='absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-base-red bg-opacity-50 group-hover:translate-x-0 group-hover:translate-y-0'></span>
 							<span className='absolute inset-0 w-full h-full border-[0.5rem] border-black'></span>
 							<span className='relative text-xl capitalize'>Reserve Now!</span>
 						</Link>

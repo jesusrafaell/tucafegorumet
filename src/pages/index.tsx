@@ -112,23 +112,19 @@ export default function Home() {
 				onAnimationComplete={() => {
 					if (isActive) {
 						console.log('go to product detail');
-						handleToProduct();
+						// handleToProduct();
 						setIsActive(false);
 					}
 				}}
 				className='overflow-hidden'
 			>
 				<HomePage />
-				<div
-					className='
-			bg-base-gradient
-				'
-				>
-					<ShopPage />
+				<ShopPage />
+				<div className='bg-base-gradient'>
 					<CoffeTimePage />
 				</div>
-				<Hero2 />
 				<AboutPage />
+				<Hero2 />
 				<Footer />
 			</motion.div>
 		</>

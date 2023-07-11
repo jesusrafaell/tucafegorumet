@@ -4,12 +4,9 @@ import { textVariant, variantsProducts } from '@/utils/monition';
 import products from '@/utils/products';
 import { motion } from 'framer-motion';
 
-import { useRouter } from 'next/router';
 import { useContext, useEffect } from 'react';
 
 export const Shop = () => {
-	const router = useRouter();
-
 	const { setIsActive, setProduct } = useContext(AnimationProductContext);
 
 	useEffect(() => {
@@ -22,6 +19,7 @@ export const Shop = () => {
 		<section
 			id='shop'
 			className={`h-full w-screen 
+			bg-white
 			overflow-hidden relative 
 			min-h-screen`}
 		>
@@ -38,8 +36,11 @@ export const Shop = () => {
 									relative
 									uppercase
 									font-satoshi
-									text-white
+									text-black
 									font-bold
+									border-b-[2px]
+									py-5
+									border-base-red
 									text-4xl 
 									lg:text-4xl
 								`}
@@ -58,15 +59,13 @@ export const Shop = () => {
 						exit={{
 							opacity: 0,
 						}}
-						className='hidden lg:grid lg:grid-cols-2 gap-x-20'
+						className='hidden lg:grid lg:grid-cols-2 gap-x-20 pt-5'
 					>
 						<motion.div
 							className='flex flex-col gap-y-10'
 							variants={variantsProducts('-30%')}
 							initial='hidden'
 							whileInView='show'
-							// whileInView={isActive ? 'hidden' : 'show'}
-							// viewport={{ once: false, amount: 0.7 }}
 						>
 							{products.map((product, index) => index % 2 === 0 && <Product key={index} product={product} />)}
 						</motion.div>

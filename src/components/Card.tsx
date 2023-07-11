@@ -32,7 +32,7 @@ const Card: FC<Props> = ({ cup, selectCup, handleSelectCup }) => {
 				items-center
 				transition duration-300 ease-linear 
 				after:bottom-0 after:content after:block after:h-[2px]
-				after:absolute after:bg-white after:w-0
+				after:absolute after:bg-base-red after:w-0
 				after:transition-all after:duration-300 after:ease-in-out
 				hover:after:w-full hover:after:left-0
 				${selectCup.id === cup.id ? 'after:w-full after:left-0' : 'after:left-[50%]'}

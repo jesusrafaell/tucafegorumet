@@ -41,6 +41,7 @@ const AnimationProductProvider: FC<Props> = ({ children }) => {
 	const handleProduct = (product: ProductDto) => {
 		setIsActive(true);
 		setProduct(product);
+		router.push(`/product/${product.name}`);
 	};
 
 	return (

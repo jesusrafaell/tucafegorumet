@@ -4,7 +4,6 @@ import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 import { BsEyeFill, BsPlus } from 'react-icons/bs';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
 import Image from 'next/image';
 import { textVariant } from '@/utils/monition';
@@ -17,7 +16,6 @@ const Product: FC<Props> = ({ product }) => {
 	const { product: select, handleProduct, isActive } = useContext(AnimationProductContext);
 	const { addToCart } = useContext(CartContext);
 	const { name, price, disponible, imagen } = product;
-	const router = useRouter();
 
 	const variantProduct = () => {
 		if (isActive && select) {
@@ -45,12 +43,12 @@ const Product: FC<Props> = ({ product }) => {
 				lg:flex-row
 				justify-center
 				items-center
-			text-white
+			text-black
 				cursor-pointer 
 				border border-transparent
 				hover:border-blue-500
 				hover:animate-pulseBtn
-				bg-white bg-opacity-10
+				bg-black bg-opacity-5
 				group
 				productCard'
 		>
@@ -63,7 +61,7 @@ const Product: FC<Props> = ({ product }) => {
 			>
 				<div className='w-full h-full flex justify-center items-center'>
 					<div className='w-[200px] lg:w-[700px] mx-auto flex justify-center items-center'>
-						<Image className={`group-hover:scale-110`} src={imagen} alt='hola' />
+						<Image className={`transition duration-200 ease-in group-hover:scale-110`} src={imagen} alt='hola' />
 					</div>
 				</div>
 				{/* buttuns */}
