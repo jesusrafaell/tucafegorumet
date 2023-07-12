@@ -182,7 +182,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								alt={name}
 							/>
 							<div
-								className={`hidden lg:flex absolute h-[50px] -bootm-10 justify-center items-start w-full ${
+								className={`hidden lg:flex absolute h-[50px] -bottom-10 justify-center items-start w-full ${
 									isAnimating ? 'opacity-100' : 'opacity-0'
 								} `}
 							>

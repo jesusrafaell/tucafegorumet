@@ -1,11 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
-import coffe from '@/images/coffe1.png';
-import logoTuCafe from '@/images/logo_tucafe.png';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
-import Image from 'next/image';
 
 const Hero = () => {
 	const [scrollDirection, setScrollDirection] = useState<number>(50);

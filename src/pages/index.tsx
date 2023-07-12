@@ -10,6 +10,7 @@ import AboutPage from '@/sections/About';
 import CoffeTimePage from '@/sections/CoffeTime';
 import CupLoading from '@/components/CupLoading';
 import Hero2 from '@/components/Hero2';
+import Info from '@/sections/Info';
 
 export default function Home() {
 	const router = useRouter();
@@ -119,6 +120,7 @@ export default function Home() {
 			>
 				<CoffeTimePage />
 				<ShopPage />
+				<Info />
 				<HomePage />
 				<AboutPage />
 				{/* <Hero2 /> */}

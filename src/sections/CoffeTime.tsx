@@ -101,8 +101,8 @@ export const CoffeTime = () => {
 	};
 
 	return (
-		<section id='home' className='overflow-hidden flex flex-row h-screen w-screen relative '>
-			<Hero />
+		<section id='home' className='home overflow-hidden flex flex-row h-screen w-screen relative homeBg'>
+			home
 		</section>
 	);
 };
