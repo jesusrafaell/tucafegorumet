@@ -21,7 +21,6 @@ const ProductSlider: FC<Props> = ({ data }) => {
 			modules={[Pagination, Navigation, Scrollbar, A11y]}
 			loop={false}
 			navigation
-			scrollbar={{ draggable: true }}
 			breakpoints={{
 				320: {
 					slidesPerView: 1,
@@ -32,11 +31,11 @@ const ProductSlider: FC<Props> = ({ data }) => {
 					spaceBetween: 30,
 				},
 				1024: {
-					slidesPerView: 2,
+					slidesPerView: 3,
 					spaceBetween: 30,
 				},
 				1440: {
-					slidesPerView: 3,
+					slidesPerView: 4,
 					spaceBetween: 30,
 				},
 			}}
@@ -47,7 +46,7 @@ const ProductSlider: FC<Props> = ({ data }) => {
 		>
 			{data.map((product, index) => {
 				return (
-					<SwiperSlide key={index}>
+					<SwiperSlide key={index} className='pb-10'>
 						<Product product={product} />
 					</SwiperSlide>
 				);

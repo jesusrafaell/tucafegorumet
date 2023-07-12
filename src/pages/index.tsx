@@ -8,7 +8,6 @@ import HomePage from '@/sections/Home';
 import ShopPage from '@/sections/Shop';
 import AboutPage from '@/sections/About';
 import CoffeTimePage from '@/sections/CoffeTime';
-import Footer from '@/components/Footer';
 import CupLoading from '@/components/CupLoading';
 import Hero2 from '@/components/Hero2';
 
@@ -116,16 +115,13 @@ export default function Home() {
 						setIsActive(false);
 					}
 				}}
-				className='overflow-hidden'
+				className='overflow-hidden bg-white'
 			>
-				<HomePage />
+				<CoffeTimePage />
 				<ShopPage />
-				<div className='bg-base-gradient'>
-					<CoffeTimePage />
-				</div>
+				<HomePage />
 				<AboutPage />
-				<Hero2 />
-				<Footer />
+				{/* <Hero2 /> */}
 			</motion.div>
 		</>
 	);

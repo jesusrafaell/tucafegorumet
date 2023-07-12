@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import coffeTime_img from '@/images/coffe_time_rotate.png';
 import Image from 'next/image';
 import coffeTimeBg1 from '@/images/coffeTime/bg-coffetime.png';
+import Hero from '@/components/Hero';
 
 export const CoffeTime = () => {
 	const [selectCup, setSelectCup] = useState<CupItem>(CupItems[0]);
@@ -100,64 +101,8 @@ export const CoffeTime = () => {
 	};
 
 	return (
-		<section id='coffeTime' className='overflow-hidden flex flex-row h-screen w-screen relative '>
-			<div className='flex flex-col h-full justify-center items-center w-full lg:w-[70%] z-10 px-10 lg:px-20 gap-y-0 lg:gap-y-10 relative'>
-				<motion.div className=' transition duration-500 h-[50%] flex flex-col gap-y-4 items-start justify-center'>
-					<h2 className='text-2xl lg:text-6xl uppercase text-gray-700 font-satoshi font-bold whitespace-nowrap border-b-[2px] border-base-red py-10'>
-						How to drink café
-					</h2>
-					<motion.div
-						initial={{ opacity: 1 }}
-						animate={controlInfo}
-						className='relative text-black w-[400x] h-[200px]'
-					>
-						<motion.h1 className='text-2xl lg:text-5xl font-bold lg:flex  font-satoshi my-5' variants={fadeInUp}>
-							{selectCup.title}
-						</motion.h1>
-						<p className='text-[15px] lg:text-[17px] font-light whitespace-normal text-justify max-h-full leading-[1.4] py-5 w-full lg:w-[500px]'>
-							{selectCup.info}
-						</p>
-						{/* <motion.ul
-								variants={fadeInUp}
-								className='text-gray-300 py-5 px-5 lg:px-10 list-disc flex flex-col gap-y-2 text-[13px] lg:text-[18px]'
-							>
-								{li.map((item, index) => (
-									<li key={index}>{item}</li>
-								))}
-							</motion.ul> */}
-					</motion.div>
-				</motion.div>
-				{/* contedor cart cups */}
-				<div className='flex items-center justify-center h-[20%] w-full'>
-					<div className='card-grid flex gap-x-5 relative'>
-						{CupItems.map((cup, index) => {
-							return <Card key={index} selectCup={selectCup} cup={cup} handleSelectCup={handleSelectCup} />;
-						})}
-					</div>
-				</div>
-			</div>
-			<motion.div
-				initial={{ opacity: 0.2 }}
-				animate={controlBg}
-				className='hidden lg:flex absolute z-[1] opacity-20 h-screen w-screen items-screen top-0 right-0 justify-center'
-			>
-				<Image src={coffeTimeBg1} alt='coffeTime background' width={800} />
-			</motion.div>
-			<div id='divPadre' className='flex absolute lg:relative jutify-end items-end h-full w-screen lg:w-[30%]'>
-				<motion.div
-					id='divHijo'
-					className='absolute
-					opacity-30
-					w-[600px] h-[600px] 
-					bottom-[-250px] right-[-250px]
-					lg:opacity-100
-					lg:w-[800px] lg:h-[800px] 
-					lg:bottom-[-330px] lg:right-[-300px]'
-					animate={controlCoffeTime}
-				>
-					<Image className='scale-150' src={coffeTime_img} alt='coffeTime' width={800} height={800} />
-				</motion.div>
-			</div>
+		<section id='home' className='overflow-hidden flex flex-row h-screen w-screen relative '>
+			<Hero />
 		</section>
 	);
 };

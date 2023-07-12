@@ -17,7 +17,7 @@
 }
 
 body {
-	background-color: #130c06;
+	/* background-color: #130c06; */
 	font-family: 'Satoshi';
 }
 
@@ -94,7 +94,7 @@ body::-webkit-scrollbar {
 }
 .mainSlider .swiper-pagination-bullet,
 .productSlider .swiper-pagination-bullet {
-	background: #f6cd46;
+	background: white;
 }
 
 .productSlider .swiper-button-prev::after {
@@ -104,7 +104,7 @@ body::-webkit-scrollbar {
 .productSlider .swiper-button-prev::after,
 .productSlider .swiper-button-next::after {
 	font-size: 2rem;
-	color: #f6cd46;
+	color: white;
 	padding: 2rem;
-	width: 200px;
+	width: 300px;
 }

@@ -35,7 +35,8 @@ const Hero = () => {
 			className='
 			flex
 			justify-center
-			h-screen
+			h-full
+			py-10
 			heroHome
 			lg:bg-fixed
 			bg-no-repeat 

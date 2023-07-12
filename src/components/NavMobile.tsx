@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { useRouter } from 'next/router';
-import navLinks from './variables/navLinks';
+import navLinks, { interfaceLink } from './variables/navLinks';
 
 interface Props {
 	setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,10 +12,13 @@ const MenuMobile: React.FC<Props> = ({ setMobileMenu }) => {
 
 	console.log(window.location.pathname);
 
-	const handleClick = (to: string) => {
-		console.log('go to', to);
-		router.push(`/#${to}`, undefined, { scroll: true });
+	const handleClick = (link: interfaceLink) => {
 		setMobileMenu(false);
+		if (link.scroll) {
+			router.push(`/#${link.to}`, undefined, { scroll: true });
+		} else {
+			router.push(`/${link.to}`);
+		}
 	};
 
 	return (
@@ -23,7 +26,7 @@ const MenuMobile: React.FC<Props> = ({ setMobileMenu }) => {
 			{navLinks.map((item, index) => {
 				return (
 					<li key={index}>
-						<Link to={item.to} offset={0} duration={400} onClick={() => handleClick(item.to)}>
+						<Link to={item.scroll ? item.to : ''} offset={0} duration={400} onClick={() => handleClick(item)}>
 							<div className='py-4 px-5 border-b cursor-pointer'>{item.name}</div>
 						</Link>
 					</li>

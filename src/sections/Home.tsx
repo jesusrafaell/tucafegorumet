@@ -8,11 +8,10 @@ import { motion } from 'framer-motion';
 export const Home = () => {
 	return (
 		<section
-			id='home'
-			className='h-full w-screen 
+			id='coffeTime'
+			className='h-full  
 			overflow-x-hidden relative 
-			bg-base-dark
-			min-h-screen '
+			bg-base-dark'
 		>
 			{/* <CarouselCustom /> */}
 			<Hero />

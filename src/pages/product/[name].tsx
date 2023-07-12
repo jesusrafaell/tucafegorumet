@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 import bgImage from '@/images/splash-product.png';
 import { useRouter } from 'next/router';
-import { FaArrowLeft, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaArrowLeft, FaEye } from 'react-icons/fa';
 import { textVariant } from '@/utils/monition';
 
 interface ProductPageProps {
@@ -103,8 +103,10 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		<motion.section
 			id='infoProduct'
 			className=' 
+			bg-base-dark
 			w-full 
-			h-screen
+			h-full
+			lg:h-screen
 			max-w-screen 
 			text-white
 			justify-center
@@ -117,8 +119,9 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 				className='
 					lg:h-full w-full flex items-center 
 					justify-center
-					py-20
-					lg:py-0
+					pb-20
+					pt-40
+					lg:p-0
 					lg:justify-between
 					lg:mt-0
 					flex-col lg:flex-row '
@@ -216,13 +219,14 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					animate={loading ? { opacity: 1 } : controls2}
 					className={`
 						w-full lg:w-[50%] transition duration-500 h-full flex
-						pt-20
+						lg:bg-base-dark
+						lg:pt-20
 						flex-col gap-y-10 items-center justify-center`}
 				>
 					<motion.div variants={stagger} className='w-[80%] relative'>
 						<motion.div variants={fadeInUp} className='text-[14px] flex justify-start lg:justify-end py-2'>
 							<Link
-								href={'/#shop'}
+								href={'/shop'}
 								// onClick={() => router.push(`/#shop`, undefined, { scroll: false })}
 								className='
 									flex flex-row
@@ -235,15 +239,15 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 									hover:text-blue-100 hover:underline'
 							>
 								<FaArrowLeft />
-								Back to Shop
+								Go to Shop
 							</Link>
 						</motion.div>
-						<div
+						{/* <div
 							onClick={() => handleClick()}
 							className='animate-pulseBtn hidden text-1xl bg-white text-black  rounded-md p-2 z-20 cursor-pointer w-[40px] lg:flex justify-center  items-center'
 						>
 							<FaEye />
-						</div>
+						</div> */}
 						<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>
 							{name}
 						</motion.h1>
@@ -403,6 +407,3 @@ export const getServerSideProps: GetServerSideProps<ProductPageProps> = async ({
 };
 
 export default Product;
-
-{
-}

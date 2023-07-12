@@ -52,7 +52,7 @@ const Header = () => {
 				${
 					isActive || mobileMenu || router.pathname.includes('product')
 						? 'bg-white py-1 shadow-md text-black'
-						: 'py-3 text-white'
+						: 'py-3 text-black'
 				} 
 			fixed w-full z-30 transition-all`}
 		>
@@ -78,7 +78,7 @@ const Header = () => {
 					</div>
 				</LinkS>
 				<div>
-					<ul className='hidden md:flex gap-x-9 font-gravity-regular font-bold text-[18px] list-none items-center navLink'>
+					<ul className='hidden md:flex gap-x-9 font-gravity-regular text-[15px] list-none items-center navLink'>
 						{navLinks.map((itemNav, index) => {
 							return (
 								<li key={index} className='relative'>
@@ -92,7 +92,7 @@ const Header = () => {
 												after:transition-all after:duration-300 after:ease-in-out
 												hover:after:w-full hover:after:left-0
 										`}
-										to={itemNav.to}
+										to={itemNav.scroll ? itemNav.to : ''}
 										spy
 										smooth
 										offset={0}
@@ -104,64 +104,41 @@ const Header = () => {
 								</li>
 							);
 						})}
-						<li className={`cursor-pointer hover:animate-pulse`}>
-							<div
-								onClick={() => setIsOpen(!isOpen)}
-								className='cursor-pointer flex relative'
-								//
-							>
-								<HiShoppingCart className='text-2xl' />
-								<div
-									className={`
-										${itemAmount > 0 ? 'block' : 'hidden'}
-										${!effectAmount ? 'bg-red-500' : 'bg-blue-700'}
-											duration-300  transition
-											absolute 
-											-right-2 -bottom-2 
-											text-[12px] rounded-xl
-											w-[18px] h-[18px]
-											text-white rounder-full
-											flex justify-center items-center`}
-								>
-									{itemAmount}
-								</div>
-							</div>
-						</li>
 					</ul>
-					<div className='flex items-center gap-8'>
-						{/* Mobile icon start */}
-						<div className='w-8 h-8 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative '>
+				</div>
+				<div className='flex items-center gap-8'>
+					{/* Mobile icon start */}
+					<div className='w-8 h-8 rounded-full flex  justify-center items-center hover:bg-black/[0.05] cursor-pointer relative '>
+						<div
+							onClick={() => {
+								setMobileMenu(false);
+								setIsOpen(!isOpen);
+							}}
+							className='cursor-pointer flex relative'
+							//
+						>
+							<HiShoppingCart className='text-[20px]' />
 							<div
-								onClick={() => {
-									setMobileMenu(false);
-									setIsOpen(!isOpen);
-								}}
-								className='cursor-pointer flex relative'
-								//
-							>
-								<HiShoppingCart className='text-[20px]' />
-								<div
-									className='
+								className='
 											bg-red-500 absolute 
 											-right-2 -top-2
 											text-[10px] 
 											w-[12px] h-[12px]
 											text-white rounder-full
 											flex justify-center items-center'
-								>
-									{itemAmount}
-								</div>
+							>
+								{itemAmount}
 							</div>
 						</div>
-						<div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative  text-black'>
-							{mobileMenu ? (
-								<VscChromeClose className='text-[20px]' onClick={() => setMobileMenu(false)} />
-							) : (
-								<BiMenu className='text-[25px]' onClick={() => setMobileMenu(true)} />
-							)}
-						</div>
-						{/* Mobile icon end */}
 					</div>
+					<div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative  text-black'>
+						{mobileMenu ? (
+							<VscChromeClose className='text-[20px]' onClick={() => setMobileMenu(false)} />
+						) : (
+							<BiMenu className='text-[25px]' onClick={() => setMobileMenu(true)} />
+						)}
+					</div>
+					{/* Mobile icon end */}
 				</div>
 			</div>
 			{mobileMenu && <MenuMobile setMobileMenu={setMobileMenu} />}

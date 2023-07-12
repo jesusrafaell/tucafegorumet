@@ -8,13 +8,14 @@ import { textVariant } from '@/utils/monition';
 
 const Footer = () => {
 	return (
-		<footer className='footer bg-[#cc9e7a] mt-40'>
-			<div className='waves'>
+		<footer className='footer bg-black'>
+			{/* <div className='waves'>
+				bg-[#cc9e7a]
 				<div className='wave' id='wave1'></div>
 				<div className='wave' id='wave2'></div>
 				<div className='wave' id='wave3'></div>
 				<div className='wave' id='wave4'></div>
-			</div>
+			</div> */}
 			<div className='footer_container text-white'>
 				<div className='p-10 grid gap-x-10 gap-y-10 lg:gap-y-4 grid-cols-2 lg:grid-cols-4 '>
 					<motion.div
@@ -22,28 +23,28 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full border-r border-base-dark justify-center items-start lg:items-center'
+						className='flex flex-col w-full border-r border-base-red justify-center items-start lg:items-center'
 					>
-						<i className='text-black text-2xl md:text-4xl'>
+						<i className='text-2xl md:text-4xl'>
 							<FaLocationArrow />
 						</i>
 						<h3 className='capitalize py-2 text-1xl md:text-2xl'>address</h3>
-						<p className='text-gray-700 text-1xl leading-2'>Unidated State, Miami</p>
+						<p className='text-gray-200 text-1xl leading-2'>Unidated State, Miami</p>
 					</motion.div>
 					<motion.div
 						variants={textVariant(0.4, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full lg:border-r border-base-dark justify-center items-start lg:items-center'
+						className='flex flex-col w-full lg:border-r border-base-red justify-center items-start lg:items-center'
 					>
-						<i className='text-black text-2xl md:text-4xl'>
+						<i className='text-2xl md:text-4xl'>
 							<FaEnvelope />
 						</i>
 						<h3 className='capitalize py-2 text-1xl md:text-2xl'>E - mail</h3>
 						<a
 							href='#'
-							className=' text-[14px] md:text-[15px] text-gray-700 font-satoshi font-bold cursor-pointer hover:underline hover:text-black'
+							className=' text-[14px] md:text-[15px] text-gray-200 font-satoshi font-bold cursor-pointer hover:underline hover:text-red-200'
 						>
 							Info@tucafegourmet.com
 						</a>
@@ -54,13 +55,13 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full border-r border-base-dark justify-center items-start lg:items-center'
+						className='flex flex-col w-full border-r border-base-red justify-center items-start lg:items-center'
 					>
-						<i className='text-black text-2xl md:text-4xl'>
+						<i className='text-2xl md:text-4xl'>
 							<BsFillTelephoneFill />
 						</i>
 						<h3 className='capitalize py-2 text-2xl'>call us</h3>
-						<p className='text-[14px] md:text-[17px] text-gray-700 font-satoshi font-bold'>+(305) 594-0190</p>
+						<p className='text-[14px] md:text-[17px] text-gray-200 font-satoshi font-bold'>+(305) 594-0190</p>
 					</motion.div>
 
 					<motion.div
@@ -70,11 +71,11 @@ const Footer = () => {
 						viewport={{ once: false, amount: 0.7 }}
 						className='flex flex-col w-full justify-center items-start lg:items-center'
 					>
-						<i className='text-black text-2xl md:text-4xl'>
+						<i className='text-2xl md:text-4xl'>
 							<FaClock />
 						</i>
 						<h3 className='capitalize py-2 text-1xl md:text-2xl'>opening hours</h3>
-						<p className='text-gray-700 text-[15px] md:text-1xl leading-2'>
+						<p className='text-gray-200 text-[15px] md:text-1xl leading-2'>
 							Customer Service Hours:
 							<br /> 7:30am - 4:30pm
 						</p>
@@ -82,7 +83,7 @@ const Footer = () => {
 				</div>
 			</div>
 			{/* social media */}
-			<div className='flex flex-row justify-center gap-5 my-8 text-2xl md:text-3xl text-black'>
+			<div className='flex flex-row justify-center gap-5 my-8 text-2xl md:text-3xl text-white'>
 				<motion.i
 					variants={textVariant(0.2, 20)}
 					initial='hidden'

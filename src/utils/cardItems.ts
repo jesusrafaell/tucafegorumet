@@ -31,14 +31,14 @@ const CupItems: CupItem[] = [
 		id: 2,
 		imagen: cafe_milk,
 		imagen2: cafe_milk_2,
-		title: 'Cafe con Leche',
+		title: 'ICE Coffe',
 		info: `Café con leche, which translates to "coffee with milk" in Spanish, is a popular coffee drink in many Spanish-speaking countries, including Spain, Cuba, and Mexico. The drink is made by combining equal parts strong brewed coffee and steamed milk, and is often served with sugar. The exact origin of café con leche is unclear, but it is believed to have originated in Spain in the 1800s.`,
 	},
 	{
 		id: 3,
 		imagen: cafe_negro,
 		imagen2: cafe_negro_2,
-		title: 'Americano',
+		title: 'Cafe Con leche',
 		info: `The Americano is a popular coffee drink that is believed to have originated during World War II. At the time, American soldiers stationed in Italy found the local espresso to be too strong for their taste, so they began diluting it with hot water to create a milder version. The resulting drink became known as the Americano, and it remains a popular coffee drink around the world today.`,
 	},
 	{

@@ -1,5 +1,5 @@
 module.exports = {
-	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'],
 	theme: {
 		fontFamily: {
 			'gravity-bold': ['Gravity-Bold'],

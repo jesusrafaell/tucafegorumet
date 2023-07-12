@@ -8,13 +8,13 @@ const navLinks = [
 	{
 		name: 'Shop',
 		to: 'shop',
-		scroll: true,
+		scroll: false,
 	},
-	{
-		name: 'Coffe Time',
-		to: 'coffeTime',
-		scroll: true,
-	},
+	// {
+	// 	name: 'Coffe Time',
+	// 	to: 'coffeTime',
+	// 	scroll: true,
+	// },
 	{
 		name: 'Our Story',
 		to: 'about',
@@ -23,6 +23,11 @@ const navLinks = [
 	{
 		name: 'Reserve',
 		to: 'reserve',
+		scroll: false,
+	},
+	{
+		name: 'Events',
+		to: 'events',
 		scroll: false,
 	},
 ];

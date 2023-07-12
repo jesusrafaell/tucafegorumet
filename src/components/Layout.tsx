@@ -11,10 +11,8 @@ interface Props {
 }
 
 const Layout: FC<Props> = ({ children }) => {
-	const { color } = useContext(BackGroundColorContext);
-
 	return (
-		<div className={color}>
+		<div className='bg-base-dark'>
 			<Head>
 				<title>tucafegourment</title>
 				<meta name='description' content='Tu Cafe Gourmet' />
@@ -24,6 +22,7 @@ const Layout: FC<Props> = ({ children }) => {
 			<Header />
 			<SideBar />
 			{children}
+			<Footer />
 		</div>
 	);
 };

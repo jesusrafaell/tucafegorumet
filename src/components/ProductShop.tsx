@@ -1,7 +1,7 @@
 import { CartContext } from '@/context/CartContext';
 import { ProductCartDto, ProductDto } from '@/utils/products';
 import Link from 'next/link';
-import React, { FC, useContext, useEffect, useLayoutEffect } from 'react';
+import React, { FC, useContext } from 'react';
 import { BsEyeFill, BsPlus } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
@@ -12,7 +12,7 @@ interface Props {
 	product: ProductDto;
 }
 
-const Product: FC<Props> = ({ product }) => {
+const ProductShop: FC<Props> = ({ product }) => {
 	const { handleProduct } = useContext(AnimationProductContext);
 	const { addToCart } = useContext(CartContext);
 	const { name, price, disponible, imagen } = product;
@@ -20,21 +20,18 @@ const Product: FC<Props> = ({ product }) => {
 	return (
 		<motion.div
 			className='
-				flex flex-col justify-center items-center rounded-md
-			text-black bg-base bg-opacity-10 w-full h-full p-5
+				rounded-md 
+				relative
+				group
+				text-black bg-black bg-opacity-5 lg:hover:border-blue-500 lg:hover:animate-pulseBtn shadow-lg
+				p-10
+				flex flex-col justify-center items-center
+				w-full
+				h-full
 				'
 		>
 			<div
-				m-10
 				className='
-				group
-				grad
-				w-full
-				h-full
-				lg:w-[300px]
-				lg:h-[200px]
-				group
-				flex
 				cursor-pointer 
 				border border-transparent
 				productCard
@@ -43,7 +40,7 @@ const Product: FC<Props> = ({ product }) => {
 				relative overflow-hidden trasition'
 			>
 				<div className='w-full h-full flex justify-center items-center'>
-					<div className='w-[400px] lg:w-[200px] h-[300px]  mx-auto flex justify-center items-center'>
+					<div className='w-[200px] h-[200px]  mx-auto flex justify-center items-center'>
 						<Image className={`transition duration-200 ease-in group-hover:scale-110`} src={imagen} alt='hola' />
 					</div>
 				</div>
@@ -92,16 +89,16 @@ const Product: FC<Props> = ({ product }) => {
 				viewport={{ once: false, amount: 0.7 }}
 			>
 				<div
-					className='flex flex-col justify-center items-center cursor-pointer whitespace-nowrap'
+					className='flex flex-col justify-start items-start cursor-pointer whitespace-nowrap'
 					onClick={() => handleProduct(product)}
 				>
-					<div className='text-sm capitalize mb-3 text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
-					<h2 className='font-gravity-regular mb-4'>{name}</h2>
-					<div className='font-gravity-bold text-2xl mb-1 text-base-red'>{price}$</div>
+					<div className='text-sm capitalize mb-1 text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
+					<h2 className='font-gravity-regular mb-2'>{name}</h2>
+					<div className='font-gravity-bold text-2xl text-red-400 self-end'>{price}$</div>
 				</div>
 			</motion.div>
 		</motion.div>
 	);
 };
 
-export default Product;
+export default ProductShop;
