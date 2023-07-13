@@ -7,10 +7,9 @@ import { motion } from 'framer-motion';
 import HomePage from '@/sections/Home';
 import ShopPage from '@/sections/Shop';
 import AboutPage from '@/sections/About';
-import CoffeTimePage from '@/sections/CoffeTime';
 import CupLoading from '@/components/CupLoading';
-import Hero2 from '@/components/Hero2';
 import Info from '@/sections/Info';
+import Hero from '@/components/Hero';
 
 export default function Home() {
 	const router = useRouter();
@@ -118,12 +117,11 @@ export default function Home() {
 				}}
 				className='overflow-hidden bg-white'
 			>
-				<CoffeTimePage />
+				<HomePage />
 				<ShopPage />
 				<Info />
-				<HomePage />
+				<Hero />
 				<AboutPage />
-				{/* <Hero2 /> */}
 			</motion.div>
 		</>
 	);

@@ -120,12 +120,12 @@ const Hero = () => {
 						</p>
 						<Link
 							href={'/reserve'}
-							className='flex justify-center items-center bg-red-200 relative px-10 py-5 font-bold text-black group uppercase 
+							className='flex justify-center items-center relative px-10 py-5 font-bold text-black group uppercase 
 							font-gravity-bold border-b-2 border-primary whitespace-nowrap
 
 					 '
 						>
-							<span className='absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-base-red bg-opacity-50 group-hover:translate-x-0 group-hover:translate-y-0'></span>
+							<span className='absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-base-dark bg-opacity-50 group-hover:translate-x-0 group-hover:translate-y-0'></span>
 							<span className='absolute inset-0 w-full h-full border-[0.5rem] border-black'></span>
 							<span className='relative text-xl capitalize'>Reserve Now!</span>
 						</Link>

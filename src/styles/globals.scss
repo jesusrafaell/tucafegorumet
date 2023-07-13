@@ -35,13 +35,13 @@ body::-webkit-scrollbar {
 	background-size: 100%;
 }
 
+.bgHome {
+	background-image: url('../images/home/bghome3.svg');
+	background-size: 100%;
+}
+
 .heroHome {
-	/* background-image: url('../images/home/cup-left.png'); */
-	/* background-image: url('../images/home/beard-coffe.jpg'); */
-	/* background-image: url('../images/home/beard-coffe.jpg'); */
 	background-image: url('../images/home/cortadito-cup.jpg');
-	/* background-image: url('../images/home/cup-center.jpg'); */
-	/* background-size: 100%; */
 }
 
 :root {

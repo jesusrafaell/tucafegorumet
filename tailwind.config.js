@@ -7,6 +7,7 @@ module.exports = {
 			'gravity-light': ['Gravity-Light'],
 			'gravity-book': ['Gravity-Book'],
 			'prilly-monly': ['prilly-monly'],
+			'bebas-neue': ['Bebas-Neue', 'sans-serif'],
 			aventi: ['Aventi', 'sans-serif'],
 			satoshi: ['Satoshi', 'sans-serif'],
 		},
@@ -49,6 +50,11 @@ module.exports = {
 				artBoard: "url('/images/Artboard.png')",
 			},
 			keyframes: {
+				cartHome: {
+					'0%': { left: '-5%', transform: 'rotate(5deg)' },
+					'50%': { left: '5%', transform: 'rotate(0deg)' },
+					'100%': { left: '-5%', transform: 'rotate(5deg)' },
+				},
 				heart: {
 					'0%': { transform: 'scale(1)' },
 					'50%': { transform: 'scale(1.05)' },
@@ -85,6 +91,7 @@ module.exports = {
 			},
 			animation: {
 				spin: 'rotate 20s linear infinite',
+				cartHome: 'cartHome 6s linear infinite',
 				heart: 'heart 4s linear infinite',
 				spinReverse: 'rotateReverse 20s linear infinite',
 				spinCircle: 'circleRotate 20s linear infinite',
