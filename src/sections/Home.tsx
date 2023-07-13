@@ -42,7 +42,7 @@ export const Home = () => {
 						</div>
 					</div>
 				</div>
-				<div className='flex flex-col h-full justify-center items-center mt-20 text-black w-full lg:w-[50%] px-10'>
+				<div className='flex flex-col h-full justify-center items-center mt-10 lg:mt-20 text-black w-full lg:w-[50%] px-10'>
 					<div className='flex flex-col w-full justify-center items-center '>
 						<h1 className='text-4xl lg:text-6xl capitalize font-bold font-bebas-neue tracking-widest text-base-dark '>
 							tu cafe gourmet
