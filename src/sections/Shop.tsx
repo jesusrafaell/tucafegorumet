@@ -36,7 +36,7 @@ const Shop: NextPage = () => {
 	}, []);
 
 	return (
-		<section id='shop' className='h-full py-20 w-screen bg-none overflow-hidden relative'>
+		<section id='shopHome' className='h-full py-20 w-screen bg-none overflow-hidden relative'>
 			<div className='container mx-auto'>
 				<motion.div
 					variants={textVariant(0.2, 5)}

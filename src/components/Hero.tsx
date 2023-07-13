@@ -1,31 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
-import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
 
 const Hero = () => {
-	const [scrollDirection, setScrollDirection] = useState<number>(50);
-	const prevScrollYRef = useRef<number>(0);
-	useEffect(() => {
-		const handleScroll = () => {
-			const currentScrollY = window.scrollY;
-			if (currentScrollY > prevScrollYRef.current) {
-				// console.log('baje');
-				setScrollDirection(-50); // Scroll hacia abajo
-			} else {
-				// console.log('subi');
-				setScrollDirection(50); // Scroll hacia arriba
-			}
-			prevScrollYRef.current = currentScrollY;
-		};
-
-		window.addEventListener('scroll', handleScroll);
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
 	return (
 		<section
 			// bg-base
