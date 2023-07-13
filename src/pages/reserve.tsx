@@ -100,9 +100,13 @@ export const Reserve = () => {
 						scale: 0,
 						opacity: 0,
 					}}
-					whileInView={{
+					animate={{
 						scale: 1,
 						opacity: 1,
+					}}
+					exit={{
+						scale: 0,
+						opacity: 0,
 					}}
 					viewport={{ once: false, amount: 0.7 }}
 					className=' transition duration-500 flex flex-col items-center justify-center bg-base-dark rounded-md p-5 lg:p-10'
@@ -150,7 +154,7 @@ export const Reserve = () => {
 									</span>
 								</div>
 								<select
-									className='flex flex-1 w-full text-[15px] outline-none focus:border-none'
+									className='flex flex-1 w-full text-[20px] outline-none focus:border-none'
 									name='whatever'
 									id='frm-whatever'
 								>
