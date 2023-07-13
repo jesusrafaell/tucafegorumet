@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { useRouter } from 'next/router';
-import navLinks, { interfaceLink } from './variables/navLinks';
+import { interfaceLink } from './variables/navLinks';
+import navLinksMobile from './variables/navLinksMobile';
+import logoTuCafe from '@/images/logo_tucafe.png';
+import Image from 'next/image';
 
 interface Props {
 	setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,8 +12,6 @@ interface Props {
 
 const MenuMobile: React.FC<Props> = ({ setMobileMenu }) => {
 	const router = useRouter();
-
-	console.log(window.location.pathname);
 
 	const handleClick = (link: interfaceLink) => {
 		setMobileMenu(false);
@@ -23,7 +24,7 @@ const MenuMobile: React.FC<Props> = ({ setMobileMenu }) => {
 
 	return (
 		<ul className='flex flex-col md:hidden font-bold absolute top-[50px] left-0 w-full h-[calc(100vh-50px)] bg-white border-t text-black'>
-			{navLinks.map((item, index) => {
+			{navLinksMobile.map((item, index) => {
 				return (
 					<li key={index}>
 						<Link to={item.scroll ? item.to : ''} offset={0} duration={400} onClick={() => handleClick(item)}>
@@ -32,6 +33,11 @@ const MenuMobile: React.FC<Props> = ({ setMobileMenu }) => {
 					</li>
 				);
 			})}
+			<div className='flex justify-center items-center'>
+				<div className='w-[200px] mt-10'>
+					<Image src={logoTuCafe} alt='logo' />
+				</div>
+			</div>
 		</ul>
 	);
 };

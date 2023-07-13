@@ -30,7 +30,7 @@ export const About = () => {
 						<h2
 							className='
 							text-2xl lg:text-4xl 
-							font-satoshi
+							font-lemonMilk-bold
 							text-gray-700
 							font-bold
 							border-b-[2px] border-base-red py-5

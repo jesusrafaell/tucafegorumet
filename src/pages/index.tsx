@@ -14,10 +14,10 @@ import Hero from '@/components/Hero';
 export default function Home() {
 	const router = useRouter();
 
-	const { setColor } = useContext(BackGroundColorContext);
+	const { setColor, setItemColor } = useContext(BackGroundColorContext);
 	const [loading, setLoading] = useState(false);
 
-	const { isActive, setIsActive, handleToProduct } = useContext(AnimationProductContext);
+	const { isActive, setIsActive } = useContext(AnimationProductContext);
 
 	useLayoutEffect(() => {
 		import('./product/[name]');
@@ -47,6 +47,9 @@ export default function Home() {
 			handlePrimary();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
+		setColor('bg-base-light');
+		setItemColor(false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -55,7 +58,6 @@ export default function Home() {
 				console.error('Error al redirigir la ruta:', error);
 			});
 		}
-		setColor('bg-base-light');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -110,7 +112,7 @@ export default function Home() {
 				exit={{ opacity: 0 }}
 				onAnimationComplete={() => {
 					if (isActive) {
-						console.log('go to product detail');
+						// console.log('go to product detail');
 						// handleToProduct();
 						setIsActive(false);
 					}

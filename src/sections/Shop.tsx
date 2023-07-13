@@ -28,11 +28,11 @@ const Shop: NextPage = () => {
 			containerRef.current.addEventListener('wheel', handleScroll);
 		}
 
-		return () => {
-			if (containerRef.current) {
-				containerRef.current.removeEventListener('wheel', handleScroll);
-			}
-		};
+		// return () => {
+		// 	if (containerRef.current) {
+		// 		containerRef.current.removeEventListener('wheel', handleScroll);
+		// 	}
+		// };
 	}, []);
 
 	return (

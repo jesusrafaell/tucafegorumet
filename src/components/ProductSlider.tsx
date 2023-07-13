@@ -15,7 +15,6 @@ interface Props {
 }
 
 const ProductSlider: FC<Props> = ({ data }) => {
-	console.log(data);
 	return (
 		<Swiper
 			modules={[Pagination, Navigation, Scrollbar, A11y]}

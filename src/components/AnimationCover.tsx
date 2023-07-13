@@ -9,7 +9,7 @@ interface Props {
 
 const AnimationCover: FC<Props> = ({ children, title }) => {
 	const { completedAnimation, setCompletedAnimation, isLoading } = useContext(AnimationCoverContext);
-	console.log(completedAnimation);
+	// console.log(completedAnimation);
 	useEffect(() => {
 		//cuando no este cargada has la animacion
 

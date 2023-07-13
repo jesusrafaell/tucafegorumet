@@ -4,7 +4,12 @@ export interface interfaceLink {
 	scroll: boolean;
 }
 
-const navLinks = [
+const navLinksMobile = [
+	{
+		name: 'Home',
+		to: 'home',
+		scroll: true,
+	},
 	{
 		name: 'About',
 		to: 'info',
@@ -20,6 +25,11 @@ const navLinks = [
 		to: 'shop',
 		scroll: false,
 	},
+	{
+		name: 'Make a Reservation',
+		to: 'reserve',
+		scroll: false,
+	},
 ];
 
-export default navLinks;
+export default navLinksMobile;

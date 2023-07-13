@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useContext, useLayoutEffect } from 'react';
 import { NextPage } from 'next';
 import { motion } from 'framer-motion';
 import Product from '@/components/ProductShop';
 import products from '@/utils/products';
 import { textVariant } from '@/utils/monition';
 import CarouselCustom from '@/components/CarouselCustom';
-import Footer from '@/components/Footer';
+import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 
 const Shop: NextPage = () => {
+	const { setItemColor } = useContext(BackGroundColorContext);
+
+	useLayoutEffect(() => {
+		setItemColor(true);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<motion.div
 			initial={{

@@ -1,5 +1,5 @@
 module.exports = {
-	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './node_modules/react-tailwindcss-datepicker/dist/index.esm.js'],
+	content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		fontFamily: {
 			'gravity-bold': ['Gravity-Bold'],
@@ -10,6 +10,9 @@ module.exports = {
 			'bebas-neue': ['Bebas-Neue', 'sans-serif'],
 			aventi: ['Aventi', 'sans-serif'],
 			satoshi: ['Satoshi', 'sans-serif'],
+			lemonMilk: ['LemonMilk', 'sans-serif'],
+			'lemonMilk-bold': ['LemonMilk-Bold', 'sans-serif'],
+			'roboto-bold': ['Roboto-Bold', 'sans-serif'],
 		},
 		letterSpacing: {
 			tightest: '-.075em',

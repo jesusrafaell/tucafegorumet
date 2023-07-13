@@ -1,21 +1,32 @@
-/* eslint-disable @next/next/no-img-element */
-import Card from '@/components/Card';
-import HeroCoffeTime from '@/components/Hero-CoffeTime';
 import CupItems, { CupItem } from '@/utils/cardItems';
 import { textVariant } from '@/utils/monition';
 import { motion, useAnimation } from 'framer-motion';
-import { title } from 'process';
-import { useEffect, useMemo, useState } from 'react';
+import { useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import coffeTime_img from '@/images/coffe_time_rotate.png';
 import Image from 'next/image';
-import DatePicker from '@/components/DatePicker';
+import { BackGroundColorContext } from '@/context/BackgorundColorContext';
+import categoryList from '@/utils/category';
+import { FaRegCalendarAlt } from 'react-icons/fa';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { RxTimer } from 'react-icons/rx';
+import { BiCategoryAlt } from 'react-icons/bi';
+import { BsPeople } from 'react-icons/bs';
+import { AiOutlineMail } from 'react-icons/ai';
+import { VscLocation } from 'react-icons/vsc';
 
 export const Reserve = () => {
 	const [selectCup, setSelectCup] = useState<CupItem>(CupItems[0]);
+	const [date, setDate] = useState<Date | null>(new Date());
 
-	const controlInfo = useAnimation();
+	const { setItemColor } = useContext(BackGroundColorContext);
+
+	useLayoutEffect(() => {
+		setItemColor(true);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	const controlCoffeTime = useAnimation();
-	const controlBg = useAnimation();
 
 	const transitionCoffes = {
 		transition: { duration: 0.3, ease: 'easeInOut' },
@@ -43,17 +54,8 @@ export const Reserve = () => {
 	};
 
 	const handleSelectCup = async (cup: CupItem) => {
-		await Promise.all([
-			await controlInfo.start({ opacity: 0, y: -20 }),
-			controlBg.start({ x: -5, opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } }),
-			controlInfo.start({ y: 20, transition: { duration: 0, delay: 0 } }),
-		]);
 		setSelectCup(cup);
-		await Promise.all([
-			await handleRotateCoffe(cup.id),
-			controlInfo.start({ y: 0, opacity: 1, transition: { duration: 0.3, ease: 'easeIn' } }),
-			controlBg.start({ x: 0, opacity: 0.2, transition: { duration: 0.2, ease: 'easeIn', delay: 0 } }),
-		]);
+		await handleRotateCoffe(cup.id);
 	};
 
 	useEffect(() => {
@@ -70,34 +72,6 @@ export const Reserve = () => {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectCup]);
-
-	const easing = [0.6, -0.05, 0.01, 0.99];
-
-	const stagger = {
-		animate: {
-			transition: {
-				staggerChildren: 0.05,
-			},
-		},
-	};
-
-	const fadeInUp = {
-		initial: {
-			y: 60,
-			opacity: 0,
-			transition: { duration: 0.6, ease: easing },
-		},
-		animate: {
-			y: 0,
-			opacity: 1,
-			transition: {
-				duration: 0.6,
-				ease: easing,
-			},
-		},
-	};
-
-	const center = useMemo(() => ({ lat: 18.52043, lng: 73.856743 }), []);
 
 	return (
 		<motion.section
@@ -118,76 +92,125 @@ export const Reserve = () => {
 				ease: 'easeIn',
 			}}
 			id='home'
-			className='overflow-hidden flex flex-row h-screen w-screen relative bg-base-dark'
+			className='overflow-hidden h-full py-20 flex w-full relative bg-white justify-center items-center min-h-screen'
 		>
-			<div className='flex flex-col h-full justify-center items-center w-full lg:w-[70%] z-10 px-10 lg:px-20 gap-y-0 lg:gap-y-10 relative'>
-				<motion.div className=' transition duration-500 h-[50%] flex flex-col gap-y-4 items-start justify-center'>
-					<div className='mx-auto w-full max-w-[550px]'>
-						<form action='https://formbold.com/s/FORM_ID' method='POST'>
-							<div className='-mx-3 flex flex-wrap'>
-								<div className='w-full px-3 sm:w-1/2'>
-									<div className='mb-5'>
-										<label className='mb-3 block text-base font-medium text-[#07074D]'>Date</label>
-										<DatePicker />
-									</div>
+			<div className='flex flex-col justify-center items-center z-10 container mx-auto'>
+				<motion.div
+					initial={{
+						scale: 0,
+						opacity: 0,
+					}}
+					whileInView={{
+						scale: 1,
+						opacity: 1,
+					}}
+					viewport={{ once: false, amount: 0.7 }}
+					className=' transition duration-500 flex flex-col items-center justify-center bg-base-dark rounded-md p-5 lg:p-10'
+				>
+					<div className='mx-auto w-full lg:max-w-[550px]'>
+						<h1 className='text-4xl font-lemonMilk text-white mt-4 mb-4'>Reservation Options</h1>
+						<form
+							action='https://formbold.com/s/FORM_ID'
+							method='POST'
+							className='flex flex-col lg:gap-y-5 gap-y-0'
+						>
+							<div className='flex h-15 bg-white items-center rounded mb-6 pr-10'>
+								<div className='flex flex-nowrap -mr-px justify-center w-ful p-5'>
+									<span className='flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600'>
+										<FaRegCalendarAlt />
+									</span>
 								</div>
-								<div className='w-full px-3 sm:w-1/2'>
-									<div className='mb-5'>
-										<label className='mb-3 block text-base font-medium text-[#07074D]'>Time</label>
-										<input
-											type='time'
-											name='time'
-											id='time'
-											className='w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md'
-										/>
-									</div>
-								</div>
-							</div>
-							<div className='-mx-3 flex flex-wrap'>
-								<div className='w-full px-3 sm:w-1/2'>
-									<div className='mb-5'>
-										<label className='mb-3 block text-base font-medium text-[#07074D]'>De que trata</label>
-										<select
-											className='w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md'
-											name='whatever'
-											id='frm-whatever'
-										>
-											<option value=''>Please choose&hellip;</option>
-											<option value='1'>Fiesta</option>
-											<option value='2'>Reunion</option>
-											<option value='3'>Graduacion</option>
-										</select>
-									</div>
-								</div>
-								<div className='w-full px-3 sm:w-1/2'>
-									<div className='mb-5'>
-										<label className='mb-3 block text-base font-medium text-[#07074D]'>N personas</label>
-										<input
-											type='number'
-											name='guest'
-											id='guest'
-											placeholder='5'
-											min='0'
-											className='w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md'
-										/>
-									</div>
+								<div className='text-[20px] w-[200px] flex-1 font-medium text-black outline-none focus:border-none'>
+									<DatePicker
+										selected={date}
+										onChange={(date) => {
+											setDate(date);
+										}}
+										dateFormat='MM/dd/yyyy'
+									/>
 								</div>
 							</div>
-							<div className='mb-5'>
-								<label className='mb-3 block text-base font-medium text-[#07074D]'>Ubiacion</label>
+							<div className='flex flex-nowrap h-15 bg-white items-center rounded mb-6 pr-10'>
+								<div className='flex -mr-px justify-center w-15 p-4'>
+									<span className='flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600'>
+										<RxTimer />
+									</span>
+								</div>
 								<input
-									type='text'
-									name='guest'
-									id='guest'
-									placeholder='Place'
-									className='w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-black outline-none focus:border-[#6A64F1] focus:shadow-md'
+									type='time'
+									name='time'
+									id='time'
+									className='text-[20px] w-full flex-1 font-medium text-black outline-none focus:border-none'
 								/>
 							</div>
-
-							<div className='mb-5'>
-								<label className='mb-3 block text-base font-medium text-[#07074D]'>
-									Are you coming to the event?
-								</label>
+							<div className='flex flex-nowrap h-15 bg-white items-center rounded mb-6 pr-10'>
+								<div className='flex -mr-px justify-center w-15 p-4'>
+									<span className='flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600'>
+										<BiCategoryAlt />
+									</span>
+								</div>
+								<select
+									className='flex flex-1 w-full text-[15px] outline-none focus:border-none'
+									name='whatever'
+									id='frm-whatever'
+								>
+									<option value=''>Please choose&hellip;</option>
+									{categoryList.map((item, index) => {
+										return (
+											<option key={index} value={`item`}>
+												{item}
+											</option>
+										);
+									})}
+								</select>
+							</div>
+							<div className='flex flex-nowrap h-15 bg-white items-center rounded mb-6 pr-10'>
+								<div className='flex -mr-px justify-center w-15 p-4'>
+									<span className='flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600'>
+										<BsPeople />
+									</span>
+								</div>
+								<select
+									className='flex flex-1 w-full text-[20px] outline-none focus:border-none'
+									name='whatever'
+									id='frm-whatever'
+								>
+									<option value=''>People</option>
+									{Array.from({ length: 100 }, (_, i) => (
+										<option key={i + 1} value={`People ${i + 1}`}>{`People ${i + 1}`}</option>
+									))}
+								</select>
+							</div>
+							<div className='flex flex-nowrap h-15 bg-white items-center rounded mb-6 pr-10'>
+								<div className='flex -mr-px justify-center w-15 p-4'>
+									<span className='flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600'>
+										<VscLocation />
+									</span>
+								</div>
+								<input
+									type='text'
+									name='addres'
+									id='people'
+									placeholder='Addres'
+									className='flex flex-1 w-full text-[20px] outline-none focus:border-none'
+								/>
+							</div>
+							<div className='flex flex-nowrap h-15 bg-white items-center rounded mb-6 pr-10'>
+								<div className='flex -mr-px justify-center w-15 p-4'>
+									<span className='flex items-center leading-normal bg-white px-3 border-0 rounded rounded-r-none text-2xl text-gray-600'>
+										<AiOutlineMail />
+									</span>
+								</div>
+								<input
+									type='mail'
+									name='guest'
+									id='guest'
+									placeholder='example@correo.com'
+									className='flex flex-1 w-full text-[20px] outline-none focus:border-none'
+								/>
+							</div>
+							<div className='flex justify-center items-center  w-full flex-col gap-y-4'>
+								<label className=' block text-base font-medium text-[#07074D]'>Are you coming to the event?</label>
 								<div className='flex items-center space-x-6'>
 									<div className='flex items-center'>
 										<input type='radio' name='radio1' id='radioButton1' className='h-5 w-5' />
@@ -198,22 +221,23 @@ export const Reserve = () => {
 										<label className='pl-3 text-base font-medium text-[#07074D]'>No</label>
 									</div>
 								</div>
-							</div>
-
-							<div>
-								<button className='hover:shadow-form rounded-md bg-base-red py-3 px-8 text-center text-base font-semibold text-white outline-none'>
-									Reserved
-								</button>
+								<div>
+									<button className='hover:shadow-form rounded-md bg-base-red py-3 px-8 text-center text-base font-semibold text-white outline-none'>
+										Reserve
+									</button>
+								</div>
 							</div>
 						</form>
 					</div>
 				</motion.div>
-				{/* contedor cart cups */}
 			</div>
-			<div id='divPadre' className='flex absolute lg:relative jutify-end items-end h-full w-screen lg:w-[30%]'>
+			<div id='divPadre' className='flex absolute jutify-end items-end h-full right-0'>
 				<motion.div
 					id='divHijo'
-					className='absolute
+					className='
+					hidden
+					lg:flex
+					absolute
 					opacity-30
 					w-[600px] h-[600px] 
 					bottom-[-250px] right-[-250px]

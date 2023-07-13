@@ -57,17 +57,17 @@ const CartProvider: FC<Props> = ({ children }) => {
 	}, [cart]);
 
 	const handleGetAmount = (id: number) => {
-		console.log(id);
+		// console.log(id);
 		const item = cart.find((item) => {
 			return item.id === id;
 		});
-		console.log(item);
+		// console.log(item);
 		return item ? item.amount : 0;
 	};
 
 	const addToCart = (product: ProductCartDto) => {
 		const { id } = product;
-		console.log(product);
+		// console.log(product);
 		const newItem = { ...product, amount: 1 };
 		const cartItem = cart.find((item) => {
 			return item.id === id;
@@ -86,7 +86,7 @@ const CartProvider: FC<Props> = ({ children }) => {
 
 	const addToCartProduct = (product: ProductCartDto) => {
 		const { id } = product;
-		console.log(product);
+		// console.log(product);
 		const newItem = { ...product, amount: product.amount ? product.amount : 1 };
 		const cartItem = cart.find((item) => {
 			return item.id === id;
