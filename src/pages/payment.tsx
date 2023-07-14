@@ -112,7 +112,7 @@ const Payment = () => {
 						</ul>
 					</header>
 					<main className='mt-4 p-4'>
-						<h1 className='text-xl font-semibold text-gray-700 text-center'>Card payment</h1>
+						<h1 className='text-xl font-semibold text-gray-700 text-center capitalize'>card payment</h1>
 						<div>
 							<div className='my-3'>
 								<input
