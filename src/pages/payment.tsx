@@ -36,7 +36,10 @@ const Payment = () => {
 		if (cardNumber === '') {
 			return false;
 		}
-		if (expiredMonth === '' && expiredYear === '') {
+		if (expiredMonth === '') {
+			return false;
+		}
+		if (expiredYear === '') {
 			return false;
 		}
 		if (securityCode.length !== 3) {
