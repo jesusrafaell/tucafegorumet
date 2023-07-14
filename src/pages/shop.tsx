@@ -46,7 +46,7 @@ const Shop: NextPage = () => {
 						<h1
 							className={`mb-10 h1-shop relative uppercase font-satoshi text-black font-bold border-b-[2px] py-5 border-base-red text-3xl lg:text-4xl`}
 						>
-							Shop
+							Products
 						</h1>
 					</motion.div>
 					<motion.div

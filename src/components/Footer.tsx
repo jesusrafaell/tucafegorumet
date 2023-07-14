@@ -5,6 +5,7 @@ import { BsFacebook, BsFillTelephoneFill, BsInstagram, BsLinkedin, BsTwitter } f
 import { FiCoffee } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
+import Link from 'next/link';
 
 const Footer = () => {
 	return (
@@ -90,7 +91,12 @@ const Footer = () => {
 					whileInView='show'
 					viewport={{ once: false, amount: 0.7 }}
 				>
-					<BsFacebook />
+					<div
+						className='cursor-pointer hover:animate-pulse'
+						onClick={() => window.open('https://www.facebook.com/tucafegourmet/', '_blank')}
+					>
+						<BsFacebook />
+					</div>
 				</motion.i>
 				<motion.i
 					variants={textVariant(0.3, 20)}
@@ -98,7 +104,12 @@ const Footer = () => {
 					whileInView='show'
 					viewport={{ once: false, amount: 0.7 }}
 				>
-					<BsInstagram />
+					<div
+						className='cursor-pointer hover:animate-pulse'
+						onClick={() => window.open('https://www.instagram.com/tucafemiami/', '_blank')}
+					>
+						<BsInstagram />
+					</div>
 				</motion.i>
 				<motion.i
 					variants={textVariant(0.4, 20)}
@@ -106,7 +117,12 @@ const Footer = () => {
 					whileInView='show'
 					viewport={{ once: false, amount: 0.7 }}
 				>
-					<BsTwitter />
+					<div
+						className='cursor-pointer hover:animate-pulse'
+						onClick={() => window.open('https://twitter.com/TuCafegourmet', '_blank')}
+					>
+						<BsTwitter />
+					</div>
 				</motion.i>
 				<motion.i
 					variants={textVariant(0.5, 20)}
@@ -114,7 +130,12 @@ const Footer = () => {
 					whileInView='show'
 					viewport={{ once: false, amount: 0.7 }}
 				>
-					<BsLinkedin />
+					<div
+						className='cursor-pointer hover:animate-pulse'
+						onClick={() => window.open('https://www.linkedin.com/company/tu-cafe-gourmet/', '_blank')}
+					>
+						<BsLinkedin />
+					</div>
 				</motion.i>
 			</div>
 			<div className='text-white bg-black w-full flex justify-center items-center text-[10px] md:text-[16px] py-2 '>

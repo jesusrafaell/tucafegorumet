@@ -21,13 +21,13 @@ const navLinksMobile = [
 		scroll: true,
 	},
 	{
-		name: 'Shop',
+		name: 'Products',
 		to: 'shop',
 		scroll: false,
 	},
 	{
 		name: 'Make a Reservation',
-		to: 'reserve',
+		to: 'booking',
 		scroll: false,
 	},
 ];

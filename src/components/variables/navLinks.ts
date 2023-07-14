@@ -16,7 +16,7 @@ const navLinks = [
 		scroll: true,
 	},
 	{
-		name: 'Shop',
+		name: 'Products',
 		to: 'shop',
 		scroll: false,
 	},

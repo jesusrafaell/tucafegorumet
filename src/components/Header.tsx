@@ -139,7 +139,7 @@ const Header = () => {
 						text-white
 						hover:bg-base-red font-satoshi tracking-widest 
 						`}
-						href={'/reserve'}
+						href={'/booking'}
 					>
 						Make a Reservation
 					</Link>

@@ -97,7 +97,7 @@ const Hero = () => {
 							away from the everyday hustle and bustle.
 						</p>
 						<Link
-							href={'/reserve'}
+							href={'/booking'}
 							className='flex justify-center items-center relative px-10 py-5 font-bold text-black group uppercase 
 							font-gravity-bold border-b-2 border-primary whitespace-nowrap
 

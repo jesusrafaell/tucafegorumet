@@ -76,14 +76,14 @@ const SideBar = () => {
 						<FiTrash2 />
 					</div>
 				</div>
-				<Link
+				{/* <Link
 					href={'/'}
 					className='bg-gray-200 flex p-4 justify-center items-center text-primary w-full font-gravity-regular'
 				>
 					View Cart
-				</Link>
+				</Link> */}
 				<Link
-					href={'/'}
+					href={'/payment'}
 					className='bg-primary flex p-4 justify-center items-center text-white w-full font-gravity-regular'
 				>
 					Checkout
