@@ -49,6 +49,7 @@ module.exports = {
 				'header-gradient':
 					'linear-gradient(90deg, rgba(0,0,102,1) 20%, rgba(52,22,71,1) 52%, rgba(24,0,64,1) 97%)',
 				'base-gradient': 'linear-gradient(180deg, rgba(255,255,255,1) 6%, rgba(245,242,233,1) 90%)',
+				reserve: 'linear-gradient(90deg, rgba(42, 51, 135, 1) 0%, rgba(218, 37, 46, 1) 100%)',
 				coffeTime: "url('/images/coffetime.jpg')",
 				artBoard: "url('/images/Artboard.png')",
 			},

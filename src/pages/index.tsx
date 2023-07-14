@@ -1,9 +1,8 @@
-import { useEffect, useContext, useState, useLayoutEffect } from 'react';
+import { useEffect, useContext, useState, useLayoutEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { motion } from 'framer-motion';
-
 import HomePage from '@/sections/Home';
 import ShopPage from '@/sections/Shop';
 import AboutPage from '@/sections/About';
@@ -59,15 +58,6 @@ export default function Home() {
 			});
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
-	useLayoutEffect(() => {
-		if (localStorage.getItem('loadingShown') === 'true') {
-			setLoading(false);
-		} else {
-			localStorage.setItem('loadingShown', 'true'); //
-			setLoading(false);
-		}
 	}, []);
 
 	return (

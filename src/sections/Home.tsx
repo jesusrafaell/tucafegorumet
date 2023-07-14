@@ -6,45 +6,12 @@ import splash1 from '@/images/home/splash1.png';
 import manCoffe from '@/images/home/mancoffe.png';
 import Image from 'next/image';
 import logo from '@/images/logo_tucafe.png';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { scroller } from 'react-scroll';
 
 export const Home = () => {
-	const componentRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const handleScroll = (event: WheelEvent) => {
-			if (event.deltaY > 0) {
-				// Se ha hecho scroll hacia abajo mientras esté sobre el componente
-				const section = document.getElementById('shopHome');
-				if (section) {
-					window.scrollTo({
-						top: section.offsetTop,
-						behavior: 'smooth',
-					});
-				}
-			}
-		};
-
-		const componentElement = componentRef.current;
-
-		if (componentElement) {
-			componentElement.addEventListener('wheel', handleScroll);
-		}
-
-		return () => {
-			if (componentElement) {
-				componentElement.removeEventListener('wheel', handleScroll);
-			}
-		};
-	}, []);
-
 	return (
-		<section
-			ref={componentRef}
-			id='home'
-			className='home overflow-hidden flex flex-row h-screen w-screen relative'
-		>
+		<section id='home' className='home overflow-hidden flex flex-row h-screen w-screen relative'>
 			<div className='bgHome hidden lg:flex absolute h-full w-full bg-no-repeat bg-cover'></div>
 			<div className='flex w-screen h-screen relative justify-start items-start'>
 				<div className='hidden lg:flex absolute w-[500px] h-[500px] right-40 top-1/2 transform -translate-y-1/2 '>
