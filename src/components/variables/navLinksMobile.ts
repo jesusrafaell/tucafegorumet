@@ -26,6 +26,11 @@ const navLinksMobile = [
 		scroll: false,
 	},
 	{
+		name: 'Services',
+		to: 'services',
+		scroll: false,
+	},
+	{
 		name: 'Make a Reservation',
 		to: 'booking',
 		scroll: false,

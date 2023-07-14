@@ -83,7 +83,7 @@ const Header = () => {
 									<LinkS
 										className={`
 												capitalize block relative cursor-pointer 
-												text-[20px]
+												text-[20px] whitespace-nowrap
 												after:bottom-0 after:content after:block after:h-[2px] after:left-[50%] 
 												after:absolute after:w-0
 												after:bg-black

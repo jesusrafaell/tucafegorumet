@@ -4,6 +4,7 @@ import info1 from '@/images/info/info1.png';
 import info2 from '@/images/info/info2.png';
 import info3 from '@/images/info/info3.png';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Info = () => {
 	return (
@@ -70,13 +71,13 @@ const Info = () => {
 						initial={{ x: 50, opacity: 0 }}
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.4, ease: 'easeIn' }}
-						className='w-full lg:w-[500px] flex flex-col justify-center items-center gap-y-5 relative '
+						className='w-full lg:w-[500px] flex flex-col justify-center items-center gap-y-2 relative '
 					>
 						<div className='absolute top-20 left-0 opacity-10'>
 							<span className='text-9xl font-gravity-bold'>02</span>
 						</div>
 						<div className='flex flex-row items-end'>
-							<h1 className='text-2xl lg:text-5xl text-black font-roboto-bold font-bold uppercase'>
+							<h1 className='text-2xl lg:text-5xl text-black font-roboto-bold font-bold uppercase mb-2'>
 								What do we offer ?
 							</h1>
 							<motion.div
@@ -95,6 +96,17 @@ const Info = () => {
 							touch of vitality.
               `}
 						</p>
+						<Link
+							href={'/services'}
+							className='bg-primary 
+								flex text-[12px] lg:text-[14px]
+								p-3 rounded-md justify-center
+								items-center text-white
+								font-roboto-bold 
+								'
+						>
+							Our Services
+						</Link>
 					</motion.div>
 				</div>
 				<div className='flex w-full h-full flex-col lg:flex-row justify-between items-center px-5'>

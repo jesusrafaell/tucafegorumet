@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const Footer = () => {
 	return (
-		<footer className='footer bg-black'>
+		<footer id='footer' className='footer bg-black'>
 			{/* <div className='waves'>
 				bg-[#cc9e7a]
 				<div className='wave' id='wave1'></div>
@@ -30,7 +30,9 @@ const Footer = () => {
 							<FaLocationArrow />
 						</i>
 						<h3 className='capitalize py-2 text-1xl md:text-2xl'>address</h3>
-						<p className='text-gray-200 text-1xl leading-2'>Unidated State, Miami</p>
+						<p className='text-gray-200 text-1xl leading-2 lg:px-5'>
+							Unidated State, Cafetales de Miami, Inc. 8465 NW 70th Street Miami, FL 33166
+						</p>
 					</motion.div>
 					<motion.div
 						variants={textVariant(0.4, 20)}
@@ -62,7 +64,20 @@ const Footer = () => {
 							<BsFillTelephoneFill />
 						</i>
 						<h3 className='capitalize py-2 text-2xl'>call us</h3>
-						<p className='text-[14px] md:text-[17px] text-gray-200 font-satoshi font-bold'>+(305) 594-0190</p>
+						<div className='flex flex-col items-start justify-start gap-y-2'>
+							<span className='flex flex-col lg:flex-row gap-x-1 font-satoshi'>
+								Phone
+								<p className='text-[14px] md:text-[17px] text-gray-200  font-bold'>+(305) 594-0190</p>
+							</span>
+							<span className='flex flex-col lg:flex-row gap-x-1 font-satoshi'>
+								Mobile
+								<p className='text-[14px] md:text-[17px] text-gray-200 font-satoshi font-bold'>+(954) 274-3661</p>
+							</span>
+							<span className='flex flex-col lg:flex-row gap-x-6 font-satoshi'>
+								Fax
+								<p className='text-[14px] md:text-[17px] text-gray-200 font-satoshi font-bold'>+(305) 594-2316</p>
+							</span>
+						</div>
 					</motion.div>
 
 					<motion.div

@@ -20,6 +20,11 @@ const navLinks = [
 		to: 'shop',
 		scroll: false,
 	},
+	{
+		name: 'Services',
+		to: 'services',
+		scroll: false,
+	},
 ];
 
 export default navLinks;
