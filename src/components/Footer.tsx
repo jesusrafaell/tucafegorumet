@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { FaClock, FaEnvelope, FaLocationArrow } from 'react-icons/fa';
-import { BsFacebook, BsFillTelephoneFill, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { FiCoffee } from 'react-icons/fi';
+import { BsFacebook, BsFillTelephoneFill, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
-import Link from 'next/link';
 
 const Footer = () => {
 	return (
@@ -18,13 +17,13 @@ const Footer = () => {
 				<div className='wave' id='wave4'></div>
 			</div> */}
 			<div className='footer_container text-white'>
-				<div className='p-10 grid gap-x-10 gap-y-10 lg:gap-y-4 grid-cols-2 lg:grid-cols-4 '>
+				<div className='px-10 py-20 grid gap-x-10 gap-y-10 lg:gap-y-4 grid-cols-2 lg:grid-cols-4 '>
 					<motion.div
 						variants={textVariant(0.2, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full border-r border-base-red justify-center items-start lg:items-center'
+						className='flex flex-col w-full border-r border-base-red justify-start items-start lg:items-center'
 					>
 						<i className='text-2xl md:text-4xl'>
 							<FaLocationArrow />
@@ -39,7 +38,7 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full lg:border-r border-base-red justify-center items-start lg:items-center'
+						className='flex flex-col w-full lg:border-r border-base-red justify-start items-start lg:items-center'
 					>
 						<i className='text-2xl md:text-4xl'>
 							<FaEnvelope />
@@ -58,7 +57,7 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full border-r border-base-red justify-center items-start lg:items-center'
+						className='flex flex-col w-full border-r border-base-red justify-start items-start lg:items-center'
 					>
 						<i className='text-2xl md:text-4xl'>
 							<BsFillTelephoneFill />
@@ -85,7 +84,7 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full justify-center items-start lg:items-center'
+						className='flex flex-col w-full justify-start items-start lg:items-center'
 					>
 						<i className='text-2xl md:text-4xl'>
 							<FaClock />
