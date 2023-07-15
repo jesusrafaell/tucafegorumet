@@ -3,7 +3,6 @@ import React, { useContext, useLayoutEffect, useState } from 'react';
 import Image from 'next/image';
 import cartFront from '@/images/payment/card-visa-front.png';
 import cartBack from '@/images/payment/card-visa-back.png';
-import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 
 const Payment = () => {
 	const [cardholder, setCardholder] = useState('');
@@ -13,13 +12,6 @@ const Payment = () => {
 	const [securityCode, setSecurityCode] = useState('');
 	const [card, setCard] = useState('front');
 	const currentYear = new Date().getFullYear();
-
-	const { setItemColor } = useContext(BackGroundColorContext);
-
-	useLayoutEffect(() => {
-		setItemColor(true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
 
 	const formatCardNumber = (value: string) => {
 		if (value.length > 18) {
@@ -57,33 +49,31 @@ const Payment = () => {
 			<div className=''>
 				<div className='credit-card w-full sm:w-auto shadow-lg mx-auto rounded-xl bg-white'>
 					<header className='flex flex-col justify-center items-center'>
-						<div
-							className={`relative ${card === 'front' ? 'block' : 'hidden'}`}
-							key='front'
-							// transition classes removed for simplicity
-						>
-							<Image className='w-full h-auto' src={cartFront} alt='front credit card' />
-							<div className='front bg-transparent text-lg w-full text-white px-12 absolute left-0 bottom-12'>
-								<p className='number mb-5 sm:text-xl'>{cardNumber !== '' ? cardNumber : '0000 0000 0000 0000'}</p>
-								<div className='flex flex-row justify-between'>
-									<p>{cardholder !== '' ? cardholder : 'Card holder'}</p>
-									<div>
-										<span>{expiredMonth}</span>
-										{expiredMonth !== '' && <span>/</span>}
-										<span>{expiredYear}</span>
+						{/* cartfront */}
+						<div className='flex h-[261px] w-[390px] justify-center items-center'>
+							<div className={`relative ${card === 'front' ? 'block' : 'hidden'}`} key='front'>
+								<Image className='w-full h-auto' src={cartFront} alt='front credit card' />
+								<div className='front bg-transparent text-lg w-full text-white px-12 absolute left-0 bottom-12'>
+									<p className='number mb-5 sm:text-xl'>
+										{cardNumber !== '' ? cardNumber : '0000 0000 0000 0000'}
+									</p>
+									<div className='flex flex-row justify-between'>
+										<p>{cardholder !== '' ? cardholder : 'Card holder'}</p>
+										<div>
+											<span>{expiredMonth}</span>
+											{expiredMonth !== '' && <span>/</span>}
+											<span>{expiredYear}</span>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div
-							className={`relative ${card === 'back' ? 'block' : 'hidden'}`}
-							key='back'
-							// transition classes removed for simplicity
-						>
-							<Image className='w-full h-auto' src={cartBack} alt='cartBack' />
-							<div className='bg-transparent text-white text-xl w-full flex justify-end absolute bottom-20 px-8 sm:bottom-24 right-0 sm:px-12'>
-								<div className='border border-white w-16 h-9 flex justify-center items-center'>
-									<p>{securityCode !== '' ? securityCode : 'code'}</p>
+							{/* cartback */}
+							<div className={`relative ${card === 'back' ? 'block' : 'hidden'}`} key='back'>
+								<Image className='w-full h-auto' src={cartBack} alt='cartBack' />
+								<div className='bg-transparent text-white text-xl w-full flex justify-end absolute bottom-20 px-8 sm:bottom-24 right-0 sm:px-12'>
+									<div className='border border-white w-16 h-9 flex justify-center items-center'>
+										<p>{securityCode !== '' ? securityCode : 'code'}</p>
+									</div>
 								</div>
 							</div>
 						</div>

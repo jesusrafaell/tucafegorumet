@@ -5,17 +5,10 @@ import machine from '@/images/services/machine-expresso.png';
 import maintenance from '@/images/services/Maintenance-machine.png';
 import repair from '@/images/services/repair-machine.png';
 import { motion } from 'framer-motion';
-import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
 import { Link as LinkS } from 'react-scroll';
 
 const Services = () => {
-	const { setItemColor } = useContext(BackGroundColorContext);
-
-	useLayoutEffect(() => {
-		setItemColor(true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
 	return (
 		<motion.div
 			initial={{
@@ -52,14 +45,14 @@ const Services = () => {
 					</motion.h1>
 					{/* 1 img & text */}
 					<div className='w-full h-full py-16'>
-						<div className='px-3 lg:px-20 text-gray-500 '>
-							<div className='mx-auto grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
+						<div className=' px-3 lg:px-20 text-gray-500 flex justify-center items-center'>
+							<div className='container max-auto grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-2'>
 								<motion.div
 									initial={{ opacity: 0, x: '-20%' }}
 									animate={{ opacity: 1, x: '0' }}
 									exit={{ opacity: 0, x: '-20%' }}
 									transition={{ delay: 0.3, duration: 0.5, ease: 'easeIn' }}
-									className='bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
+									className='bg-gray-100 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
 								>
 									<div className='mb-12 space-y-4'>
 										<h3 className='text-2xl font-semibold text-base-dark capitalize'>coffee stations</h3>
@@ -87,7 +80,7 @@ const Services = () => {
 									animate={{ opacity: 1, x: '0' }}
 									exit={{ opacity: 0, x: '20%' }}
 									transition={{ delay: 0.3, duration: 0.5, ease: 'easeIn' }}
-									className='bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
+									className='bg-gray-100 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
 								>
 									<div className='mb-12 space-y-4'>
 										<h3 className='text-2xl font-semibold text-base-dark capitalize'>espresso machine rental</h3>
@@ -97,8 +90,7 @@ const Services = () => {
 												convenience of brewing their own delicious espresso beverages. Our rental service offers
 												high-quality espresso machines that are easy to use and maintain. Whether for a special
 												event, office setting, or personal use, our espresso machine rentals ensure a seamless and
-												enjoyable coffee experience. With our reliable and flexible rental options, you can indulge
-												in the rich flavors and aromas of freshly brewed espresso at your convenience.
+												enjoyable coffee experience.
 											</p>
 											<div className='w-full flex justify-end items-end'>
 												<div className='w-[250px]'>
@@ -123,7 +115,7 @@ const Services = () => {
 									animate={{ opacity: 1, x: '0' }}
 									exit={{ opacity: 0, x: '-20%' }}
 									transition={{ delay: 0.3, duration: 0.5, ease: 'easeIn' }}
-									className='bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
+									className='bg-gray-100 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
 								>
 									<div className='mb-12 space-y-4'>
 										<h3 className='text-2xl font-semibold text-base-dark capitalize'>
@@ -135,9 +127,7 @@ const Services = () => {
 												your espresso machines. Our team of skilled technicians provides regular maintenance and
 												servicing to keep your espresso machines in optimal condition. We conduct routine
 												inspections, cleanings, and necessary repairs to ensure consistent performance and extend
-												the lifespan of your machines. With our maintenance service, you can have peace of mind
-												knowing that your espresso machines will receive the necessary care, allowing you to
-												continue serving delightful espresso beverages without any interruptions.
+												the lifespan of your machines.
 											</p>
 											<div className='w-full flex justify-end items-end'>
 												<div className='w-[250px]'>
@@ -162,7 +152,7 @@ const Services = () => {
 									animate={{ opacity: 1, x: '0' }}
 									exit={{ opacity: 0, x: '20%' }}
 									transition={{ delay: 0.3, duration: 0.5, ease: 'easeIn' }}
-									className='bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
+									className='bg-gray-100 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
 								>
 									<div className='mb-12 space-y-4'>
 										<h3 className='text-2xl font-semibold text-base-dark capitalize'>
@@ -173,8 +163,7 @@ const Services = () => {
 												Our team of expert technicians is responsible for diagnosing and resolving any issues that
 												your coffee equipment may have. We perform repairs to ensure optimal functionality and
 												extend the lifespan of your machines and grinders. Our goal is to provide fast and
-												efficient service to minimize any downtime. You can trust our repair service to keep your
-												coffee equipment in excellent condition and ensure the production of high-quality coffee.
+												efficient service to minimize any downtime.
 											</p>
 											<div className='w-full flex justify-end items-end'>
 												<div className='w-[250px]'>

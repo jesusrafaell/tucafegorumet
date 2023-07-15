@@ -121,15 +121,15 @@ const Booking = () => {
 		>
 			<div className='relative py-3 w-full lg:w-[950px] mt-20 '>
 				<div className='absolute inset-0 bg-gradient-to-r from-base-red to-base-dark shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl'></div>
-				<div className='relative px-4 py-10 shadow-lg sm:rounded-3xl sm:p-20 w-full flex flex-col bg-white gap-y-5'>
+				<div className='relative px-4 py-5 shadow-lg sm:rounded-3xl w-full flex flex-col bg-white gap-y-5'>
 					{/* title */}
-					<div className='flex flex-row justify-center items-end'>
-						<h1 className='text-4xl font-lemonMilk text-black mt-4 mb-4'>Reservation Options</h1>
-						<div className='flex w-[150px]'>
+					<div className='flex flex-row justify-center items-end w-full'>
+						<h1 className='text-3xl lg:text-4xl font-lemonMilk text-black mt-4 mb-4'>Reservation Options</h1>
+						<div className='flex w-[200px] lg:w-[150px]'>
 							<Image src={manCoffe} alt='man coffe' />
 						</div>
 					</div>
-					<div className='w-full flex-col lg:flex-row gap-x-10 flex justify-center items-start pt-10'>
+					<div className='w-full flex-col lg:flex-row gap-x-10 flex justify-center items-start pt-5'>
 						{/* info */}
 						<div className='divide-y divide-gray-200  w-full flex-1 relative'>
 							<div className='py-8 text-base flex flex-col gap-y-5 leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7'>

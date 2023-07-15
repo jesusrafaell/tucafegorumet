@@ -14,14 +14,12 @@ import navLinks, { interfaceLink } from './variables/navLinks';
 import MenuMobile from './NavMobile';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 
 const Header = () => {
 	// header state
 	const [isActive, setIsActive] = useState(false);
 	const { isOpen, setIsOpen } = useContext(SidebarContext);
 	const { itemAmount } = useContext(CartContext);
-	const { itemColor } = useContext(BackGroundColorContext);
 	const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 	const router = useRouter();
 
@@ -112,10 +110,7 @@ const Header = () => {
 								setMobileMenu(false);
 								setIsOpen(!isOpen);
 							}}
-							className={`cursor-pointer flex relative ${
-								isActive || itemColor ? 'text-black' : 'text-black lg:text-white'
-							} `}
-							//
+							className='cursor-pointer flex relative text-black'
 						>
 							<HiShoppingCart className='text-[25px]' />
 							<div

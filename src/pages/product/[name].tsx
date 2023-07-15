@@ -359,21 +359,21 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								className={`
 									relative
 									cursor-pointer rounded h-12 w-40 border tracking-wider leading-none overflow-hidden hover:text-teal-60
-									border-blue-500 bg-transparent 
-									text-white text-base hover:animate-pulseBtn
+									border-blue-500 bg-white
+									text-black text-base hover:animate-pulseBtn
 								`}
 							>
 								<span
 									className={`absolute inset-0 flex items-center 
 									${effect && 'text-black translate-x-0'}
-								justify-center 
-								duration-300 transition-transform transform -translate-x-full
-								 bg-white
+										justify-center 
+										duration-300 transition-transform transform -translate-x-full
+									bg-black
 								`}
 								></span>
 								<span
 									className={`
-									${effect && 'text-black translate-x-0'}
+									${effect && 'text-white translate-x-0'}
 								absolute inset-0 flex justify-center items-center font-bold capitalize`}
 								>
 									{effect ? 'Now Buy' : 'add to cart'}

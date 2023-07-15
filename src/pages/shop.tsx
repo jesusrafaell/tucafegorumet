@@ -5,16 +5,8 @@ import Product from '@/components/ProductShop';
 import products from '@/utils/products';
 import { textVariant } from '@/utils/monition';
 import CarouselCustom from '@/components/CarouselCustom';
-import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 
 const Shop: NextPage = () => {
-	const { setItemColor } = useContext(BackGroundColorContext);
-
-	useLayoutEffect(() => {
-		setItemColor(true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
 	return (
 		<motion.div
 			initial={{
