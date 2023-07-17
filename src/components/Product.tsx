@@ -95,7 +95,7 @@ const Product: FC<Props> = ({ product }) => {
 					className='flex flex-col justify-center items-center cursor-pointer whitespace-nowrap'
 					onClick={() => handleProduct(product)}
 				>
-					<div className='text-sm capitalize mb-3 text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
+					<div className='text-sm capitalize mb-3 text-gray-500'>{disponible ? 'available' : 'exhausted'}</div>
 					<h2 className='font-gravity-regular mb-4'>{name}</h2>
 					<div className='font-gravity-bold text-2xl mb-1 text-base-red'>{price}$</div>
 				</div>

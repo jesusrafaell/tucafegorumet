@@ -5,6 +5,7 @@ import info2 from '@/images/info/info2.png';
 import info3 from '@/images/info/info3.png';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import * as lang from '@/LANG/eng.json';
 
 const Info = () => {
 	return (
@@ -31,19 +32,9 @@ const Info = () => {
 							>
 								<Image src={info1} alt='instagram img' className='rounded-md' />
 							</motion.div>
-							<h1 className='text-2xl lg:text-5xl text-black font-roboto-bold uppercase'>
-								What do we specialize ?
-							</h1>
+							<h1 className='text-2xl lg:text-5xl text-black font-roboto-bold uppercase'>{lang.info_title_1}</h1>
 						</div>
-						<p className='text-[15px] lg:text-1xl  text-gray-700'>
-							{`
-							We are dedicated to providing gourmet Cuban-style espresso. We specialize in crafting and offering a
-							unique espresso experience with an alluring aroma, smooth flavor, and a touch of vitality. Our
-							company is committed to delivering coffee that complements customers' lifestyles, going beyond just a
-							morning beverage. In addition to the exquisite Cuban-style espresso, we promote and sell other
-							products such as café con leche, ice coffee, and cortadito at our coffee stations
-              `}
-						</p>
+						<p className='text-[15px] lg:text-1xl text-gray-700 text-justify'>{lang.info_text_1}</p>
 					</motion.div>
 					{/* img */}
 					<motion.div
@@ -78,7 +69,7 @@ const Info = () => {
 						</div>
 						<div className='flex flex-row items-end'>
 							<h1 className='text-2xl lg:text-5xl text-black font-roboto-bold font-bold uppercase mb-2'>
-								What do we offer ?
+								{lang.info_title_2}
 							</h1>
 							<motion.div
 								initial={{ scale: 0, opacity: 0 }}
@@ -89,13 +80,7 @@ const Info = () => {
 								<Image src={info2} alt='instagram img' className='rounded-md' />
 							</motion.div>
 						</div>
-						<p className='text-1xl  text-gray-700'>
-							{`
-							We offer gourmet Cuban-style espresso, café con leche, ice coffee, and cortadito. Our goal is to
-							provide a distinctive and high-quality coffee experience with enticing aromas, smooth flavors, and a
-							touch of vitality.
-              `}
-						</p>
+						<p className='text-1xl text-gray-700 text-justify'>{lang.info_text_2}</p>
 						<Link
 							href={'/services'}
 							className='bg-primary 
@@ -115,19 +100,15 @@ const Info = () => {
 						initial={{ x: -50, opacity: 0 }}
 						whileInView={{ x: 0, opacity: 1 }}
 						transition={{ duration: 0.4, ease: 'easeIn' }}
-						className='w-full h-full lg:w-[400px] flex flex-col justify-center items-center gap-y-5 relative'
+						className='w-full h-full lg:w-[400px] flex flex-col justify-center items-start  gap-y-5 relative'
 					>
 						<div className='absolute top-0 left-0 opacity-10'>
 							<span className='text-9xl font-gravity-bold'>03</span>
 						</div>
-						<h1 className='text-4xl lg:text-5xl text-black font-roboto-bold font-bold uppercase'>Tu Café ?</h1>
-						<p className='text-1xl  text-gray-700'>
-							{`
-							Tu Café is carefully crafted to deliver the ultimate Cuban style espresso experience. This
-							full-bodied gourmet blend is finely ground and ready to brew. You will immediately notice the
-							alluring aroma, smooth flavor and natural sweetness of this distinctly bold and engaging roast.
-              `}
-						</p>
+						<h1 className='text-4xl lg:text-5xl text-black font-roboto-bold font-bold uppercase'>
+							{lang.info_title_3}
+						</h1>
+						<p className='text-1xl text-gray-700 text-justify'>{lang.info_text_3}</p>
 					</motion.div>
 					{/* img */}
 					<motion.div

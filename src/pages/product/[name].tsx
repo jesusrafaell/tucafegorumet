@@ -9,15 +9,16 @@ import Link from 'next/link';
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 import bgImage from '@/images/splash-product.png';
 import { useRouter } from 'next/router';
-import { FaArrowLeft, FaEye } from 'react-icons/fa';
+import { FaArrowLeft } from 'react-icons/fa';
 import { textVariant } from '@/utils/monition';
+import lang from '@/LANG/eng.json';
 
 interface ProductPageProps {
 	product: ProductCartDto | ProductDto;
 }
 
 const Product: NextPage<ProductPageProps> = ({ product }) => {
-	const { id, name, price, description, imagen, li } = product;
+	const { id, name, price, description, imagen, li, rank } = product;
 	const { addToCartProduct, handleGetAmount } = useContext(CartContext);
 	const [amount, setAmount] = useState(handleGetAmount(id) ? handleGetAmount(id) : 1);
 	const { setColor } = useContext(BackGroundColorContext);
@@ -30,6 +31,37 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 	const controlImage = useAnimation();
 	const controlBg = useAnimation();
 	const [isAnimating, setIsAnimating] = useState(false);
+
+	const startRanking = (rank: number, limit: number) => {
+		const result = [];
+		for (let i = 0; i < limit; i++) {
+			if (i < rank - 1) {
+				result.push(
+					<svg
+						className='w-4 h-4 text-yellow-300'
+						aria-hidden='true'
+						xmlns='http://www.w3.org/2000/svg'
+						fill='currentColor'
+						viewBox='0 0 22 20'
+					>
+						<path d='M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z' />
+					</svg>
+				);
+			} else {
+				result.push(
+					<svg
+						className='w-4 h-4 text-gray-300 dark:text-gray-500'
+						aria-hidden='true'
+						fill='currentColor'
+						viewBox='0 0 22 20'
+					>
+						<path d='M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z' />
+					</svg>
+				);
+			}
+		}
+		return result;
+	};
 
 	useEffect(() => {
 		setLoading(false);
@@ -242,12 +274,6 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								Go to Shop
 							</Link>
 						</motion.div>
-						{/* <div
-							onClick={() => handleClick()}
-							className='animate-pulseBtn hidden text-1xl bg-white text-black  rounded-md p-2 z-20 cursor-pointer w-[40px] lg:flex justify-center  items-center'
-						>
-							<FaEye />
-						</div> */}
 						<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>
 							{name}
 						</motion.h1>
@@ -267,58 +293,11 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 						</motion.ul>
 						<motion.div variants={fadeInUp}>
 							<div className='flex font-bold items-center w-full mb-4'>
-								<svg
-									aria-hidden='true'
-									className='w-5 h-5 text-yellow-400'
-									fill='currentColor'
-									viewBox='0 0 20 20'
-									xmlns='http://www.w3.org/2000/svg'
-								>
-									<title>First star</title>
-									<path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z'></path>
-								</svg>
-								<svg
-									aria-hidden='true'
-									className='w-5 h-5 text-yellow-400'
-									fill='currentColor'
-									viewBox='0 0 20 20'
-									xmlns='http://www.w3.org/2000/svg'
-								>
-									<title>Second star</title>
-									<path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z'></path>
-								</svg>
-								<svg
-									aria-hidden='true'
-									className='w-5 h-5 text-yellow-400'
-									fill='currentColor'
-									viewBox='0 0 20 20'
-									xmlns='http://www.w3.org/2000/svg'
-								>
-									<title>Third star</title>
-									<path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z'></path>
-								</svg>
-								<svg
-									aria-hidden='true'
-									className='w-5 h-5 text-yellow-400'
-									fill='currentColor'
-									viewBox='0 0 20 20'
-									xmlns='http://www.w3.org/2000/svg'
-								>
-									<title>Fourth star</title>
-									<path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z'></path>
-								</svg>
-								<svg
-									aria-hidden='true'
-									className='w-5 h-5 text-gray-300 dark:text-gray-500'
-									fill='currentColor'
-									viewBox='0 0 20 20'
-									xmlns='http://www.w3.org/2000/svg'
-								>
-									<title>Fifth star</title>
-									<path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z'></path>
-								</svg>
-								<span className='w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400'></span>
-								<p className='ml-2 text-1xl font-bold text-gray-200'>4.95</p>
+								{/* start ranking */}
+
+								<div className='flex flex-row gap-x-1'>{startRanking(rank, lang.limitStart)}</div>
+								{/* ranking */}
+								<p className='ml-2 text-1xl font-bold text-gray-200'>{rank}</p>
 							</div>
 						</motion.div>
 						<motion.div
@@ -376,7 +355,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 									${effect && 'text-white translate-x-0'}
 								absolute inset-0 flex justify-center items-center font-bold capitalize`}
 								>
-									{effect ? 'Now Buy' : 'add to cart'}
+									{effect ? lang.shop_button_2 : lang.shop_button_1}
 								</span>
 							</button>
 						</motion.div>

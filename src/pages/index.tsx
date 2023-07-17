@@ -20,6 +20,9 @@ export default function Home() {
 
 	useLayoutEffect(() => {
 		import('./product/[name]');
+		import('./services');
+		import('./shop');
+		import('./booking');
 
 		const handlePrimary = () => {
 			const handleRouteChangeStart = () => {

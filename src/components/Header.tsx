@@ -6,6 +6,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { HiShoppingCart } from 'react-icons/hi';
 import { BiMenu } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
+import lang from '@/LANG/eng.json';
 
 import logoTuCafe from '@/images/logo_tucafe.png';
 
@@ -129,14 +130,16 @@ const Header = () => {
 					<Link
 						className={`
 						hidden lg:flex justify-center items-center
-					bg-black px-5 py-2 rounded-lg uppercase
-						 relative cursor-pointer
-						text-white
-						hover:bg-base-red font-satoshi tracking-widest 
+						relative cursor-pointer uppercase
+						group h-12 w-50 overflow-hidden rounded-lg bg-black text-lg shadow
+						p-5
 						`}
 						href={'/booking'}
 					>
-						Make a Reservation
+						<div className='absolute inset-0 w-0 bg-base-red transition-all duration-500 ease-out group-hover:w-full'></div>
+						<span className='relative text-white group-hover:text-black whitespace-nowrap font-bebas-neue tracking-widest text-bold text-1xl'>
+							{lang.header_Reserve}
+						</span>
 					</Link>
 					<div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative  text-black'>
 						{mobileMenu ? (
