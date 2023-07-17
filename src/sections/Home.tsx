@@ -26,7 +26,7 @@ export const Home = () => {
 			/>
 			<div className='flex lg:flex-row flex-col w-full h-full justify-center items-center'>
 				<div className='container mx-auto flex flex-col justify-center items-center mt-10 text-black w-full px-10 pb-40 md:pb-0'>
-					<div className='absolute left-0 bottom-20 lg:top-10 z-10 opacity-50 lg:opacity-20 w-full lg:h-full lg:w-[600px]'>
+					<div className='absolute left-0 bottom-10 lg:bottom-0 b z-10 opacity-50 lg:opacity-40 w-full lg:w-[700px]'>
 						<Image src={bgCoffe} alt='Coffe Back' />
 					</div>
 					<div className='flex flex-col w-full justify-center items-center z-20'>
