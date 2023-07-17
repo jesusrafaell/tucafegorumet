@@ -29,7 +29,7 @@ const Footer = () => {
 							<FaLocationArrow />
 						</i>
 						<h3 className='capitalize py-2 text-1xl md:text-2xl'>address</h3>
-						<p className='text-gray-200 text-1xl leading-2 lg:px-5'>
+						<p className='text-gray-200 text-1xl lead-2 lg:px-5'>
 							Unidated State, Cafetales de Miami, Inc. 8465 NW 70th Street Miami, FL 33166
 						</p>
 					</motion.div>
