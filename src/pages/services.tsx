@@ -40,16 +40,14 @@ const Services = () => {
 						animate={{ opacity: 1, y: '0' }}
 						exit={{ opacity: 0, y: '20%' }}
 						transition={{ delay: 0.4, duration: 0.5, ease: 'easeIn' }}
-						className='text-5xl tracking-widestx whitespace-nowrap
-							text-gray-700
-							font-lemonMilk-bold
-							font-bold
+						className='text-3xl lg:text-5xl 
+						tracking-widestx whitespace-nowrap text-gray-700 font-lemonMilk-bold font-bold
 						'
 					>
 						{lang.services_title}
 					</motion.h1>
 					{/* 1 img & text */}
-					<div className='w-full h-full py-16'>
+					<div className='w-full h-full'>
 						<div className=' px-3 lg:px-20 text-gray-500 flex justify-center items-center'>
 							<div className='container max-auto grid gap-8 grid-cols-1 md:grid-cols-1 lg:grid-cols-2'>
 								<motion.div
