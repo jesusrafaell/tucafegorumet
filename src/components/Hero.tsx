@@ -50,10 +50,10 @@ const Hero = () => {
 					className='flex bg-white bg-opacity-70 h-full w-full lg:w-[50%] p-7 lg:p-20 justify-center items-center'
 				>
 					<div className='flex flex-col justify-center items-center gap-y-5 text-black w-[450px] font-bold'>
-						<h1 className='lg:self-start flex text-1xl lg:text-2xl font-lemonMilk-bold uppercase'>
+						<h1 className='flex text-1xl lg:text-2xl font-bebas-neue tracking-wider uppercase'>
 							{lang.index_hero_title}
 						</h1>
-						<p className='text-justify text-[15px]'>{lang.index_hero_text}</p>
+						<p className='text-justify font-gravity-light leading-[1.6] text-[15px]'>{lang.index_hero_text}</p>
 						<Link
 							href={'/booking'}
 							className='uppercase font-gravity-bold border-b-2 relative px-5 py-3 overflow-hidden font-medium text-gray-100 bg-black border border-gray-700 rounded-lg shadow-inner group '
