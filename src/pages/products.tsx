@@ -1,10 +1,10 @@
-import React, { useContext, useLayoutEffect } from 'react';
 import { NextPage } from 'next';
 import { motion } from 'framer-motion';
 import Product from '@/components/ProductShop';
 import products from '@/utils/products';
 import { textVariant } from '@/utils/monition';
 import CarouselCustom from '@/components/CarouselCustom';
+import lang from '@/LANG/eng.json';
 
 const Shop: NextPage = () => {
 	return (
@@ -36,9 +36,13 @@ const Shop: NextPage = () => {
 						className='flex justify-center items-center'
 					>
 						<h1
-							className={`mb-10 h1-shop relative uppercase font-satoshi text-black font-bold border-b-[2px] py-5 border-base-red text-3xl lg:text-4xl`}
+							className={`mb-10 h1-shop relative uppercase border-b-[2px] py-5 border-base-red text-3xl lg:text-4xl
+							text-gray-700
+							font-lemonMilk-bold
+							font-bold
+							`}
 						>
-							Products
+							{lang.shop_title}
 						</h1>
 					</motion.div>
 					<motion.div

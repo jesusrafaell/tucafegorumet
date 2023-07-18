@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import products from '@/utils/products';
 import { textVariant } from '@/utils/monition';
 import ProductSlider from '@/components/ProductSlider';
+import lang from '@/LANG/eng.json';
 
 const Shop: NextPage = () => {
 	return (
@@ -15,9 +16,9 @@ const Shop: NextPage = () => {
 					className='flex justify-center items-center'
 				>
 					<h1
-						className={`h1-shop relative uppercase font-satoshi text-black font-bold border-b-[2px] py-5 border-base-red text-4xl lg:text-4xl`}
+						className={`h1-shop relative uppercase border-b-[2px] py-5 border-base-red text-4xl lg:text-4xl text-gray-700 font-lemonMilk-bold font-bold`}
 					>
-						MAKE IT YOURS!
+						{lang.index_shop_title}
 					</h1>
 				</motion.div>
 			</div>

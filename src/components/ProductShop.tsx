@@ -1,6 +1,5 @@
 import { CartContext } from '@/context/CartContext';
 import { ProductCartDto, ProductDto } from '@/utils/products';
-import Link from 'next/link';
 import React, { FC, useContext } from 'react';
 import { BsEyeFill, BsPlus } from 'react-icons/bs';
 import { motion } from 'framer-motion';
@@ -19,6 +18,7 @@ const ProductShop: FC<Props> = ({ product }) => {
 
 	return (
 		<motion.div
+			onClick={() => handleProduct(product)}
 			className='
 				rounded-md 
 				relative
@@ -92,7 +92,7 @@ const ProductShop: FC<Props> = ({ product }) => {
 					className='flex flex-col justify-start items-start cursor-pointer whitespace-nowrap'
 					onClick={() => handleProduct(product)}
 				>
-					<div className='text-sm capitalize mb-1 text-gray-500'>{disponible ? 'Disponible' : 'Agotado'}</div>
+					<div className='text-sm capitalize mb-1 text-gray-500'>{disponible ? 'available' : 'exhausted'}</div>
 					<h2 className='font-gravity-regular mb-2'>{name}</h2>
 					<div className='font-gravity-bold text-2xl text-red-400 self-end'>{price}$</div>
 				</div>

@@ -1,40 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { textVariant } from '@/utils/monition';
+import lang from '@/LANG/eng.json';
 
 const Hero = () => {
 	return (
-		<section
-			// bg-base
-			className='
-			flex
-			justify-center
-			h-full
-			py-10
-			heroHome
-			lg:bg-fixed
-			bg-no-repeat 
-			bg-containt
-			bg-cover
-			bg-center
-			'
-		>
-			<div
-				className='
-					grid
-					w-full
-					h-full
-					grid-cols-1
-					lg:grid-cols-2
-					px-10
-					justify-center 
-					items-center
-				text-base-red
-			'
-			>
-				<div className='flex flex-col w-full justify-center'>
-					<div className='font-gravity-bold flex items-center uppercase'></div>
+		<section className='flex justify-center h-full heroHome lg:bg-fixed bg-no-repeat bg-containt bg-cover bg-center '>
+			<div className='w-full h-full flex flex-row justify-end items-center text-base-red '>
+				{/* <div className='flex flex-col w-full h-full justify-center'>
 					<div
 						className='
 							hidden
@@ -58,57 +31,44 @@ const Hero = () => {
 						>
 							Tu Café Gourmet
 						</motion.h1>
-						{/* <div className='w-[80%] h-[2px] bg-black mr-3 mt-8'></div> */}
 					</div>
-				</div>
-				{/* img */}
-				{/* <div className='flex flex-col -order-1 items-center lg:order-none self-center justify-center lg:w-full'>
-					<motion.div
-						variants={textVariant(0.4, scrollDirection)}
-						initial='hidden'
-						whileInView='show'
-						viewport={{ once: false, amount: 0.7 }}
-						// className='hidden lg:block flex-col'
-					>
-						<Image src={coffe} alt='tucafegourmet' />
-						<Image src={logoTuCafe} alt='tucafegourmet' />
-					</motion.div>
 				</div> */}
-				<div className='flex flex-col justify-center items-center'>
-					<motion.div
-						variants={textVariant(0.7, 30)}
-						initial='hidden'
-						whileInView='show'
-						viewport={{ once: false, amount: 0.7 }}
-						className='flex gap-y-5 bg-white bg-opacity-50 lg:bg-opacity-100 lg:rounded-xl flex-col justify-center items-center 
-					p-5 text-black lg:w-[400px] '
-					>
-						<p className='self-start text-gray-700 lg:text-gray-300 flex text-[15px] font-gravity-bold uppercase'>
-							New
-						</p>
-						<h1 className='self-start flex text-2xl lg:text-3xl font-gravity-bold uppercase'>
-							Estaciones de Café
+				<motion.div
+					initial={{
+						x: '-10%',
+						opacity: 0,
+					}}
+					whileInView={{
+						x: 0,
+						opacity: 1,
+						transition: {
+							ease: 'easeIn',
+							duration: 0.3,
+						},
+					}}
+					viewport={{ once: false, amount: 0.7 }}
+					className='flex bg-white bg-opacity-70 h-full w-full lg:w-[50%] p-7 lg:p-20 justify-center items-center'
+				>
+					<div className='flex flex-col justify-center items-center gap-y-5 text-black w-[450px] font-bold'>
+						<h1 className='lg:self-start flex text-1xl lg:text-2xl font-lemonMilk-bold uppercase'>
+							{lang.index_hero_title}
 						</h1>
-						<p>
-							A coffee station is a reservation-based coffee shop where customers can enjoy a curated menu of
-							specialty coffees in a cozy and intimate atmosphere. With limited seating, customers make
-							reservations in advance to secure a spot and receive personalized service from knowledgeable
-							baristas. It offers a unique and refined coffee-drinking experience, providing a tranquil setting
-							away from the everyday hustle and bustle.
-						</p>
+						<p className='text-justify text-[15px]'>{lang.index_hero_text}</p>
 						<Link
 							href={'/booking'}
-							className='flex justify-center items-center relative px-10 py-5 font-bold text-black group uppercase 
-							font-gravity-bold border-b-2 border-primary whitespace-nowrap
-
-					 '
+							className='uppercase font-gravity-bold border-b-2 relative px-5 py-3 overflow-hidden font-medium text-gray-100 bg-black border border-gray-700 rounded-lg shadow-inner group '
 						>
-							<span className='absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-base-dark bg-opacity-50 group-hover:translate-x-0 group-hover:translate-y-0'></span>
-							<span className='absolute inset-0 w-full h-full border-[0.5rem] border-black'></span>
-							<span className='relative text-xl capitalize'>Book Now!</span>
+							<span className='absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-white group-hover:w-full ease'></span>
+							<span className='absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-white group-hover:w-full ease'></span>
+							<span className='absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-white group-hover:h-full ease'></span>
+							<span className='absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-white group-hover:h-full ease'></span>
+							<span className='absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-200 opacity-0 group-hover:opacity-100'></span>
+							<span className='relative transition-colors duration-300 delay-200 group-hover:text-black ease capitalize whitespace-nowrap'>
+								{lang.home_button}
+							</span>
 						</Link>
-					</motion.div>
-				</div>
+					</div>
+				</motion.div>
 			</div>
 		</section>
 	);

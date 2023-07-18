@@ -1,89 +1,124 @@
-/* eslint-disable @next/next/no-img-element */
-import { textVariant } from '@/utils/monition';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
-import imageOurStory from '@/images/Our-Story.png';
+import React from 'react';
+import info1 from '@/images/info/info1.png';
+import info2 from '@/images/info/info2.png';
+import info3 from '@/images/info/info3.png';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import lang from '@/LANG/eng.json';
 
-export const About = () => {
+const About = () => {
 	return (
-		<section
-			id='about'
-			className='
-			overflow-hidden relative 
-			bg-base-light
-			w-screen
-			min-h-screen
-			flex
-			items-center 
-			justify-center
-			h-full'
-		>
-			<div className='flex items-center justify-center pt-20'>
-				<div className='container max-auto flex flex-col'>
+		<section id='about' className='flex w-screen  h-full justify-center items-center'>
+			<div className='flex w-full lg:w-[1000px] h-full flex-col justify-center items-center  py-20 gap-y-10'>
+				{/* 1 img & text */}
+				<div className='flex w-full h-full flex-col lg:flex-row justify-between px-5'>
+					{/* text1 */}
 					<motion.div
-						variants={textVariant(0.5, -10)}
-						initial='hidden'
-						whileInView='show'
-						viewport={{ once: false, amount: 0.7 }}
-						className='flex w-full justify-center items-center lg:mb-5'
+						initial={{ x: -50, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.4, ease: 'easeIn' }}
+						className='w-full lg:w-[500px] flex flex-col justify-center items-center gap-y-5 relative'
 					>
-						<h2
-							className='
-							text-2xl lg:text-4xl 
-							font-lemonMilk-bold
-							text-gray-700
-							font-bold
-							border-b-[2px] border-base-red py-5
-							uppercase'
-						>
-							HOW TU CAFÉ WAS BORN
-						</h2>
+						<div className='absolute top-0 lg:top-10 right-0 lg:left-0 opacity-10'>
+							<span className='text-9xl font-gravity-bold'>01</span>
+						</div>
+						<div className='flex flex-row justify-end items-end'>
+							<motion.div
+								initial={{ x: 50, opacity: 0 }}
+								whileInView={{ x: 0, opacity: 1 }}
+								transition={{ duration: 0.4, ease: 'easeIn' }}
+								className='flex lg:hidden justify-center items-center w-[220px] h-full mr-5 '
+							>
+								<Image src={info1} alt='instagram img' className='rounded-md' />
+							</motion.div>
+							<h1 className='text-2xl lg:text-5xl text-black font-roboto-bold uppercase'>{lang.info_title_1}</h1>
+						</div>
+						<p className='text-[15px] lg:text-1xl text-gray-700 text-justify'>{lang.info_text_1}</p>
 					</motion.div>
-					<div className='flex min-w-screen min-h-full flex-col lg:flex-row lg:gap-x-[80px] justify-center items-center '>
-						{/* image */}
-						<motion.div
-							variants={textVariant(0.5, 10)}
-							initial='hidden'
-							whileInView='show'
-							viewport={{ once: false, amount: 0.7 }}
-							className='
-								bg-white w-[300px] 
-								flex-1 order-1 my-4 py-0 lg:-order-1 
-								lg:w-[full] lg:p-6 lg:shadow-2xl
-							'
+					{/* img */}
+					<motion.div
+						initial={{ x: 50, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.4, ease: 'easeIn' }}
+						className='hidden lg:flex justify-center items-center w-full h-full px-10 lg:px-0 lg:w-[400px] lg:h-[300px]'
+					>
+						<Image src={info1} alt='instagram img' className='rounded-md' />
+					</motion.div>
+				</div>
+				{/* 2 img & text */}
+				<div className='flex w-full h-full flex-row justify-between px-5'>
+					{/* img */}
+					<motion.div
+						initial={{ scale: 0, opacity: 0 }}
+						whileInView={{ scale: 1, opacity: 1 }}
+						transition={{ duration: 0.4, ease: 'easeIn' }}
+						className='hidden lg:flex w-[400px] h-full lg:w-[400px] lg:h-[400px]'
+					>
+						<Image src={info2} alt='instagram img' className='rounded-md' />
+					</motion.div>
+					{/* text1 */}
+					<motion.div
+						initial={{ x: 50, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.4, ease: 'easeIn' }}
+						className='w-full lg:w-[500px] flex flex-col justify-center items-center gap-y-2 relative '
+					>
+						<div className='absolute top-20 left-0 opacity-10'>
+							<span className='text-9xl font-gravity-bold'>02</span>
+						</div>
+						<div className='flex flex-row items-end'>
+							<h1 className='text-2xl lg:text-5xl text-black font-roboto-bold font-bold uppercase mb-2'>
+								{lang.info_title_2}
+							</h1>
+							<motion.div
+								initial={{ scale: 0, opacity: 0 }}
+								whileInView={{ scale: 1, opacity: 1 }}
+								transition={{ duration: 0.4, ease: 'easeIn' }}
+								className='flex lg:hidden w-[200px] h-full'
+							>
+								<Image src={info2} alt='instagram img' className='rounded-md' />
+							</motion.div>
+						</div>
+						<p className='text-1xl text-gray-700 text-justify'>{lang.info_text_2}</p>
+						<Link
+							href={'/services'}
+							className='bg-primary 
+								flex text-[12px] lg:text-[14px]
+								p-3 rounded-md justify-center
+								items-center text-white
+								font-roboto-bold 
+								'
 						>
-							<Image src={imageOurStory} alt='Our-Story-LR' />
-						</motion.div>
-						{/* text */}
-						<motion.div
-							variants={textVariant(0.5, -10)}
-							initial='hidden'
-							whileInView='show'
-							viewport={{ once: false, amount: 0.7 }}
-							className='lg:flex-1 flex flex-col justify-end px-4 lg:px-0'
-						>
-							{/* info */}
-							<div className='flex-1 flex flex-col items-center pt-5 lg:pt-0'>
-								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase'>MARCIO & MARCEL SOPENA</p>
-								<motion.p
-									variants={textVariant(0.5, 10)}
-									initial='hidden'
-									whileInView='show'
-									viewport={{ once: false, amount: 0.7 }}
-									className='text-gray-700'
-								>
-									Established in 1996, Tu Café is a family-owned & operated business dedicated to providing
-									gourmet, Cuban style espresso. Tu Café is carefully crafted to deliver a gourmet Cuban-style
-									espresso experience like none other. With an alluring aroma, smooth flavor and touch of life, Tu
-									Café is more than just a morning coffee, it is coffee that compliments your lifestyle.
-								</motion.p>
-								<span className='hidden lg:block self-start font-gravity-regular py-4 text-black'>
-									Tu Café, make it yours!
-								</span>
-							</div>
-						</motion.div>
-					</div>
-					<span className='block lg:hidden self-start font-gravity-regular py-4'>Tu Café, make it yours!</span>
+							Our Services
+						</Link>
+					</motion.div>
+				</div>
+				<div className='flex w-full h-full flex-col lg:flex-row justify-between items-center px-5'>
+					{/* text1 */}
+					<motion.div
+						initial={{ x: -50, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.4, ease: 'easeIn' }}
+						className='w-full h-full lg:w-[400px] flex flex-col justify-center items-start  gap-y-5 relative'
+					>
+						<div className='absolute top-0 left-0 opacity-10'>
+							<span className='text-9xl font-gravity-bold'>03</span>
+						</div>
+						<h1 className='text-4xl lg:text-5xl text-black font-roboto-bold font-bold uppercase'>
+							{lang.info_title_3}
+						</h1>
+						<p className='text-1xl text-gray-700 text-justify'>{lang.info_text_3}</p>
+					</motion.div>
+					{/* img */}
+					<motion.div
+						initial={{ x: 50, opacity: 0 }}
+						whileInView={{ x: 0, opacity: 1 }}
+						transition={{ duration: 0.4, ease: 'easeIn' }}
+						className='flex pt-5 lg:pt-0 w-[300px] h-full  lg:w-[400px] lg:h-[400px]'
+					>
+						<Image src={info3} alt='instagram img' className='rounded-md' />
+					</motion.div>
 				</div>
 			</div>
 		</section>

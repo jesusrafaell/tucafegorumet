@@ -12,17 +12,17 @@ const navLinksMobile = [
 	},
 	{
 		name: 'About',
-		to: 'info',
-		scroll: true,
-	},
-	{
-		name: 'Our Story',
 		to: 'about',
 		scroll: true,
 	},
 	{
+		name: 'Our Story',
+		to: 'ourstory',
+		scroll: true,
+	},
+	{
 		name: 'Products',
-		to: 'shop',
+		to: 'products',
 		scroll: false,
 	},
 	{
@@ -32,7 +32,7 @@ const navLinksMobile = [
 	},
 	{
 		name: 'Make a Reservation',
-		to: 'booking',
+		to: 'book',
 		scroll: false,
 	},
 ];

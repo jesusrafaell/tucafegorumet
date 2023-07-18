@@ -8,21 +8,30 @@ import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import { VscLocation } from 'react-icons/vsc';
 import { useRouter } from 'next/router';
 import citiesOfMiami from '@/utils/citysMiami';
+import estadosDeMiami from '@/utils/stateMiami';
+import lang from '@/LANG/eng.json';
+import { motion } from 'framer-motion';
 
 const Booking = () => {
+	const timeInputRef = useRef<HTMLInputElement>(null);
 	const { setItemColor } = useContext(BackGroundColorContext);
 	const currentDate = new Date();
 	const nextDay = new Date(currentDate.setDate(currentDate.getDate() + 1));
+
+	// state
 	const [date, setDate] = useState<Date | null>(nextDay);
 	const [time, setTime] = useState('');
-	const [timeFormat, setTimeFormat] = useState('');
+	const [name, setName] = useState('');
+	const [lastName, setLastName] = useState('');
 	const [email, setEmail] = useState('');
 	const [category, setCategory] = useState('');
 	const [people, setPeople] = useState('');
 	const [address, setAddres] = useState('');
-	const [PLZ, setPLZ] = useState('');
+	const [state, setState] = useState(estadosDeMiami[0]);
+	const [duration, setDuration] = useState('');
+	const [ZipCode, setZipCode] = useState('');
 	const [city, setCity] = useState('');
-	const timeInputRef = useRef<HTMLInputElement>(null);
+	const [timeFormat, setTimeFormat] = useState('');
 
 	const handleInputClick = () => {
 		if (timeInputRef.current) {
@@ -43,7 +52,7 @@ const Booking = () => {
 			!validarCorreo(email) ||
 			category === '' ||
 			address === '' ||
-			PLZ === '' ||
+			ZipCode === '' ||
 			city === ''
 		) {
 			return false;
@@ -85,18 +94,12 @@ const Booking = () => {
 		if (value) {
 			const selectedTime = new Date(`1970-01-01T${value}`);
 			const aux = formatTime(selectedTime);
-			// console.log('valid', validateTimeRange(aux));
 			if (!validateTimeRange(aux)) {
 				console.log('Hora no valida');
 			} else {
 				setTime(value);
 				setTimeFormat(aux);
 			}
-			// const formattedTime = selectedTime.toLocaleTimeString([], {
-			// 	hour: 'numeric',
-			// 	minute: 'numeric',
-			// 	hour12: true,
-			// });
 		}
 	};
 
@@ -115,7 +118,14 @@ const Booking = () => {
 	};
 
 	return (
-		<section
+		<motion.section
+			initial={{ opacity: 0, y: '-100%' }}
+			animate={{ opacity: 1, y: 0 }}
+			exit={{ opacity: 0, y: '-100%' }}
+			transition={{
+				duration: 0.4,
+				ease: 'easeIn',
+			}}
 			id='booking'
 			className='min-h-screen bg-gray-100 py-6 flex flex-col justify-center items-center sm:py-12'
 		>
@@ -124,7 +134,9 @@ const Booking = () => {
 				<div className='relative px-4 py-5 shadow-lg sm:rounded-3xl w-full flex flex-col bg-white gap-y-5'>
 					{/* title */}
 					<div className='flex flex-row justify-center items-end w-full'>
-						<h1 className='text-3xl lg:text-4xl font-lemonMilk text-black mt-4 mb-4'>Reservation Options</h1>
+						<h1 className='text-3xl lg:text-4xl text-gray-700 font-lemonMilk-bold font-bold mt-4 mb-4'>
+							{lang.booking_title}
+						</h1>
 						<div className='flex w-[200px] lg:w-[150px]'>
 							<Image src={manCoffe} alt='man coffe' />
 						</div>
@@ -133,42 +145,76 @@ const Booking = () => {
 						{/* info */}
 						<div className='divide-y divide-gray-200  w-full flex-1 relative'>
 							<div className='py-8 text-base flex flex-col gap-y-5 leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7'>
-								<div className='relative'>
-									<DatePicker
-										minDate={nextDay}
-										selected={date}
-										onChange={(date: Date | null) => {
-											setDate(date);
-										}}
-										dateFormat='MM/dd/yyyy'
-										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
-										wrapperClassName='w-full'
-									/>
-									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
-										Date
-									</label>
+								<div className='grid grid-cols-2 gap-x-10 relative'>
+									<div className='relative'>
+										<DatePicker
+											minDate={nextDay}
+											selected={date}
+											onChange={(date: Date | null) => {
+												setDate(date);
+											}}
+											dateFormat='MM/dd/yyyy'
+											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+											wrapperClassName='w-full'
+										/>
+										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+											{lang.booking_date}
+										</label>
+									</div>
+									<div className='relative'>
+										<input
+											type='time'
+											onFocus={(event) => {
+												if ('showPicker' in event.target) {
+													event.preventDefault();
+													event.target.showPicker();
+												}
+											}}
+											onChange={handleTimeChange}
+											value={time}
+											name='time'
+											min='06:00:00'
+											max='15:00:00'
+											id='time'
+											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+										/>
+										<span className='text-[14px] h-2 flex'>6:00am - 11:00pm</span>
+										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+											{lang.booking_time}
+										</label>
+									</div>
 								</div>
-								<div className='relative'>
-									<input
-										type='time'
-										onFocus={(event) => {
-											if ('showPicker' in event.target) {
-												event.preventDefault();
-												event.target.showPicker();
-											}
-										}}
-										onChange={handleTimeChange}
-										value={time}
-										name='time'
-										min='06:00:00'
-										max='15:00:00'
-										id='time'
-										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
-									/>
-									<span className='text-[14px] h-2 flex'>6:00am - 11:00pm</span>
-									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
-										Time
-									</label>
+								<div className='grid grid-cols-2 gap-x-10 relative'>
+									<div className='relative'>
+										<input
+											autoComplete='off'
+											id='email'
+											onChange={(e) => setLastName(e.target.value)}
+											value={lastName}
+											name='LastName'
+											type='text'
+											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+											placeholder='Email'
+										/>
+										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+											{lang.booking_lastName}
+										</label>
+									</div>
+									<div className='relative'>
+										<input
+											autoComplete='off'
+											id='email'
+											onChange={(e) => setName(e.target.value)}
+											value={name}
+											name='name'
+											type='text'
+											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+											placeholder='Email'
+										/>
+										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+											{lang.booking_name}
+										</label>
+									</div>
 								</div>
 								<div className='relative'>
 									<input
@@ -182,8 +228,52 @@ const Booking = () => {
 										placeholder='Email'
 									/>
 									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
-										Email
+										{lang.booking_email}
 									</label>
+								</div>
+								<div className='grid grid-cols-2 gap-x-10 relative'>
+									<div className='relative'>
+										<select
+											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+											name='whatever'
+											onChange={(e) => setPeople(e.target.value)}
+											value={people}
+											id='frm-whatever'
+										>
+											<option value='' disabled>
+												{lang.booking_people}&hellip;
+											</option>
+											{Array.from({ length: 150 }, (_, i) => (
+												<option key={i + 1} value={`People ${i + 1}`}>{`${lang.booking_people} ${i + 1}`}</option>
+											))}
+											<option value={`People 150+`}>{`${lang.booking_people} +150`}</option>
+										</select>
+										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+											{lang.booking_persons}
+										</label>
+									</div>
+									<div className='relative'>
+										<select
+											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+											name='whatever'
+											onChange={(e) => setDuration(e.target.value)}
+											value={duration}
+											id='frm-whatever'
+										>
+											<option value='' disabled>
+												{lang.booking_hour}&hellip;
+											</option>
+											{Array.from({ length: 6 }, (_, i) => (
+												<option key={i + 1} value={`${i + 1}`}>
+													{`${i + 1} 
+												${lang.booking_hour}${i + 1 > 1 ? 's' : ''}`}
+												</option>
+											))}
+										</select>
+										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+											{lang.booking_duration}
+										</label>
+									</div>
 								</div>
 								<div className='relative'>
 									<select
@@ -194,7 +284,7 @@ const Booking = () => {
 										value={category}
 									>
 										<option value='' disabled>
-											Please choose&hellip;
+											{lang.booking_category_select}&hellip;
 										</option>
 										{categoryList.map((item, index) => {
 											return (
@@ -205,46 +295,7 @@ const Booking = () => {
 										})}
 									</select>
 									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
-										Category
-									</label>
-								</div>
-								<div className='relative'>
-									<select
-										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
-										name='whatever'
-										onChange={(e) => setPeople(e.target.value)}
-										value={people}
-										id='frm-whatever'
-									>
-										<option value='' disabled>
-											hour&hellip;
-										</option>
-										{Array.from({ length: 6 }, (_, i) => (
-											<option key={i + 1} value={`${i + 1}`}>{`${i + 1} ${i + 1 > 1 ? 'hours' : 'hour'}`}</option>
-										))}
-									</select>
-									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
-										Duration of the event
-									</label>
-								</div>
-								<div className='relative'>
-									<select
-										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
-										name='whatever'
-										onChange={(e) => setPeople(e.target.value)}
-										value={people}
-										id='frm-whatever'
-									>
-										<option value='' disabled>
-											People&hellip;
-										</option>
-										{Array.from({ length: 150 }, (_, i) => (
-											<option key={i + 1} value={`People ${i + 1}`}>{`People ${i + 1}`}</option>
-										))}
-										<option value={`People 150+`}>{`People +150`}</option>
-									</select>
-									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
-										Persons
+										{lang.booking_category}
 									</label>
 								</div>
 							</div>
@@ -254,15 +305,39 @@ const Booking = () => {
 						<div className='flex h-full flex-col w-full flex-1 relative'>
 							<div className='flex flex-row'>
 								<VscLocation className='text-3xl' />
-								<h1 className='text-2xl font-roboto-bold tracking-widest text-black mb-5'>Address</h1>
+								<h1 className='text-2xl font-roboto-bold tracking-widest text-black mb-5'>
+									{lang.booking_title_address}
+								</h1>
 							</div>
-							<div className='px-5 pb-5'>
+							<div className='px-5 pb-5 flex flex-col gap-y-2'>
+								<div className='flex-grow'>
+									<select
+										className='text-black placeholder-gray-600
+											 w-full px-4 py-3 mt-2 text-base  
+											 transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400'
+										name='whatever'
+										id='frm-whatever'
+										onChange={(e) => setState(e.target.value)}
+										value={state}
+									>
+										<option value='' disabled>
+											{lang.booking_state}
+										</option>
+										{estadosDeMiami.map((item, index) => {
+											return (
+												<option key={index} value={item}>
+													{item}
+												</option>
+											);
+										})}
+									</select>
+								</div>
 								<div className='flex'>
 									<div className='flex-grow w-1/4 pr-2'>
 										<input
-											onChange={(e) => setPLZ(e.target.value)}
-											value={PLZ}
-											placeholder='PLZ'
+											onChange={(e) => setZipCode(e.target.value)}
+											value={ZipCode}
+											placeholder={lang.booking_zip_code}
 											className=' text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400'
 										/>
 									</div>
@@ -277,7 +352,7 @@ const Booking = () => {
 											value={city}
 										>
 											<option value='' disabled>
-												Citys
+												{lang.booking_city}
 											</option>
 											{citiesOfMiami.map((item, index) => {
 												return (
@@ -290,7 +365,7 @@ const Booking = () => {
 									</div>
 								</div>
 								<input
-									placeholder='Address'
+									placeholder={lang.booking_title_address}
 									onChange={(e) => setAddres(e.target.value)}
 									value={address}
 									className=' text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400'
@@ -304,12 +379,12 @@ const Booking = () => {
 							onClick={handleSubmit}
 							className='submit-button bg-blue-500 text-white rounded-md px-4 py-2 uppercase font-bebas-neue tracking-widest'
 						>
-							Reserved
+							{lang.booking_button}
 						</button>
 					</div>
 				</div>
 			</div>
-		</section>
+		</motion.section>
 	);
 };
 

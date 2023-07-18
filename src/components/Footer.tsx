@@ -5,17 +5,11 @@ import { FiCoffee } from 'react-icons/fi';
 import { BsFacebook, BsFillTelephoneFill, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { textVariant } from '@/utils/monition';
+import lang from '@/LANG/eng.json';
 
 const Footer = () => {
 	return (
 		<footer id='footer' className='footer bg-black'>
-			{/* <div className='waves'>
-				bg-[#cc9e7a]
-				<div className='wave' id='wave1'></div>
-				<div className='wave' id='wave2'></div>
-				<div className='wave' id='wave3'></div>
-				<div className='wave' id='wave4'></div>
-			</div> */}
 			<div className='footer_container text-white'>
 				<div className='px-10 py-20 grid gap-x-10 gap-y-10 lg:gap-y-4 grid-cols-2 lg:grid-cols-4 '>
 					<motion.div
@@ -23,33 +17,34 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full border-r border-base-red justify-start items-start lg:items-center'
+						className='flex flex-col w-full justify-start items-start lg:items-center relative'
 					>
 						<i className='text-2xl md:text-4xl'>
 							<FaLocationArrow />
 						</i>
-						<h3 className='capitalize py-2 text-1xl md:text-2xl'>address</h3>
-						<p className='text-gray-200 text-1xl lead-2 lg:px-5'>
-							Unidated State, Cafetales de Miami, Inc. 8465 NW 70th Street Miami, FL 33166
-						</p>
+						<h3 className='capitalize py-2 text-1xl md:text-2xl'>{lang.footer_title_1}</h3>
+						<p className='text-[12px] md:text-[18px] text-gray-200 leading-2 lg:px-5'>{lang.footer_text_1}</p>
+						<div className='absolute top-0 bottom-0 -right-5 w-0.5 h-full bg-base-red bg-opacity-40'></div>
 					</motion.div>
 					<motion.div
 						variants={textVariant(0.4, 20)}
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full lg:border-r border-base-red justify-start items-start lg:items-center'
+						className='flex flex-col w-full justify-start items-start lg:items-center relative'
 					>
 						<i className='text-2xl md:text-4xl'>
 							<FaEnvelope />
 						</i>
-						<h3 className='capitalize py-2 text-1xl md:text-2xl'>E - mail</h3>
+						<h3 className='capitalize py-2 text-1xl md:text-2xl'>{lang.footer_title_2}</h3>
 						<a
 							href='#'
-							className=' text-[14px] md:text-[15px] text-gray-200 font-satoshi font-bold cursor-pointer hover:underline hover:text-red-200'
+							className='text-[12px] md:text-[18px] text-gray-200 font-satoshi font-bold cursor-pointer hover:underline hover:text-red-200'
 						>
-							Info@tucafegourmet.com
+							{lang.footer_text_2}
 						</a>
+
+						<div className='hidden lg:flex absolute top-0 bottom-0 -right-5 w-0.5 h-full bg-base-red bg-opacity-40'></div>
 					</motion.div>
 
 					<motion.div
@@ -57,26 +52,27 @@ const Footer = () => {
 						initial='hidden'
 						whileInView='show'
 						viewport={{ once: false, amount: 0.7 }}
-						className='flex flex-col w-full border-r border-base-red justify-start items-start lg:items-center'
+						className='flex flex-col w-full justify-start items-start lg:items-center relative'
 					>
 						<i className='text-2xl md:text-4xl'>
 							<BsFillTelephoneFill />
 						</i>
-						<h3 className='capitalize py-2 text-2xl'>call us</h3>
+						<h3 className='capitalize py-2 text-1xl: md:text-2xl'>{lang.footer_title_3}</h3>
 						<div className='flex flex-col items-start justify-start gap-y-2'>
-							<span className='flex flex-col lg:flex-row gap-x-1 font-satoshi'>
-								Phone
-								<p className='text-[14px] md:text-[17px] text-gray-200  font-bold'>+(305) 594-0190</p>
-							</span>
-							<span className='flex flex-col lg:flex-row gap-x-1 font-satoshi'>
-								Mobile
-								<p className='text-[14px] md:text-[17px] text-gray-200 font-satoshi font-bold'>+(954) 274-3661</p>
-							</span>
-							<span className='flex flex-col lg:flex-row gap-x-6 font-satoshi'>
-								Fax
-								<p className='text-[14px] md:text-[17px] text-gray-200 font-satoshi font-bold'>+(305) 594-2316</p>
-							</span>
+							{lang.footer_text_3.map((item, index) => {
+								const value = item.split(':');
+								return (
+									<span
+										key={index}
+										className='text-[12px] md:text-[18px] flex flex-col lg:flex-row gap-x-1 font-satoshi'
+									>
+										{value[0]}
+										<p className='text-gray-200 font-bold'>{value[1]}</p>
+									</span>
+								);
+							})}
 						</div>
+						<div className='absolute top-0 bottom-0 -right-5 w-0.5 h-full bg-base-red bg-opacity-40'></div>
 					</motion.div>
 
 					<motion.div
@@ -89,9 +85,9 @@ const Footer = () => {
 						<i className='text-2xl md:text-4xl'>
 							<FaClock />
 						</i>
-						<h3 className='capitalize py-2 text-1xl md:text-2xl'>opening hours</h3>
-						<p className='text-gray-200 text-[15px] md:text-1xl leading-2'>
-							Customer Service Hours:
+						<h3 className='capitalize py-2 text-1xl md:text-2xl'>{lang.footer_title_4}</h3>
+						<p className='text-gray-200 text-[12px] md:text-[18px] lg:text-1xl leading-2'>
+							{lang.footer_text_4}:
 							<br /> 7:30am - 4:30pm
 						</p>
 					</motion.div>

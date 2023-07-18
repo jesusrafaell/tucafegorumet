@@ -5,9 +5,9 @@ import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { motion } from 'framer-motion';
 import HomePage from '@/sections/Home';
 import ShopPage from '@/sections/Shop';
-import AboutPage from '@/sections/About';
+import OurStoryPage from '@/sections/OurStory';
 import CupLoading from '@/components/CupLoading';
-import Info from '@/sections/Info';
+import AboutPage from '@/sections/About';
 import Hero from '@/components/Hero';
 
 export default function Home() {
@@ -20,33 +20,29 @@ export default function Home() {
 
 	useLayoutEffect(() => {
 		import('./product/[name]');
+		import('./services');
+		import('./products');
+		import('./book');
 
 		const handlePrimary = () => {
-			const handleRouteChangeStart = () => {
-				console.log('El navegador está cargando la página');
-				setLoading(true);
-			};
-
-			const handleRouteChangeComplete = () => {
-				console.log('El navegador ha terminado de cargar la página');
-				setLoading(false);
-			};
-
-			router.events.on('routeChangeStart', handleRouteChangeStart);
-			router.events.on('routeChangeComplete', handleRouteChangeComplete);
-
-			return () => {
-				router.events.off('routeChangeStart', handleRouteChangeStart);
-				router.events.off('routeChangeComplete', handleRouteChangeComplete);
-			};
+			// const handleRouteChangeStart = () => {
+			// 	console.log('El navegador está cargando la página');
+			// 	setLoading(true);
+			// };
+			// const handleRouteChangeComplete = () => {
+			// 	console.log('El navegador ha terminado de cargar la página');
+			// 	setLoading(false);
+			// };
+			// router.events.on('routeChangeStart', handleRouteChangeStart);
+			// router.events.on('routeChangeComplete', handleRouteChangeComplete);
+			// return () => {
+			// 	router.events.off('routeChangeStart', handleRouteChangeStart);
+			// 	router.events.off('routeChangeComplete', handleRouteChangeComplete);
+			// };
 		};
-		const cachedData = localStorage.getItem('cachedData');
-		if (!cachedData) {
-			localStorage.setItem('cachedData', 'true');
-			handlePrimary();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		handlePrimary();
 		setColor('bg-base-light');
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -110,9 +106,9 @@ export default function Home() {
 			>
 				<HomePage />
 				<ShopPage />
-				<Info />
-				<Hero />
 				<AboutPage />
+				<Hero />
+				<OurStoryPage />
 			</motion.div>
 		</>
 	);
