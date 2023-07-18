@@ -22,7 +22,7 @@ export const Home = () => {
 						duration: 0.4,
 					},
 				}}
-				className='bgHome hidden lg:flex absolute h-full w-full bg-center bg-no-repeat bg-cove'
+				className='bgHome hidden lg:flex absolute h-full w-full bg-top bg-no-repeat bg-cover'
 			/>
 			<div className='flex lg:flex-row flex-col w-full h-full justify-center items-center'>
 				<div className='container mx-auto flex flex-col justify-center items-center mt-10 text-black w-full px-10 pb-40 md:pb-0'>
