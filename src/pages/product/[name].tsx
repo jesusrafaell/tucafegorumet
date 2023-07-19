@@ -67,28 +67,28 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		setLoading(false);
 	}, []);
 
-	const handleClick = async () => {
-		if (!isAnimating) {
-			await controls2.start({ opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeOut' } });
-			await controls2.start({ width: 0, transition: { duration: 0.7, ease: 'easeOut' } });
-			await controlBg.start({ opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } });
-			await controls.start({ width: '100%', transition: { duration: 0.5, ease: 'easeIn' } });
-			await controlImage.start({ scale: 1.3, transition: { duration: 0.5, ease: 'easeIn' } });
-			await controlBg.start({ x: -50 });
-			setIsAnimating(true);
-		} else {
-			setIsAnimating(false);
-			await controlImage.start({ scale: 1, transition: { duration: 0.5, ease: 'easeOut' } });
-			Promise.all([
-				await controls.start({ width: '50%', transition: { duration: 0.7, ease: 'easeOut' } }),
-				await controls2.start({ width: '50%' }),
-			]);
-			Promise.all([
-				await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.3 } }),
-				await controlBg.start({ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeIn' } }),
-			]);
-		}
-	};
+	// const handleClick = async () => {
+	// 	if (!isAnimating) {
+	// 		await controls2.start({ opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeOut' } });
+	// 		await controls2.start({ width: 0, transition: { duration: 0.7, ease: 'easeOut' } });
+	// 		await controlBg.start({ opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } });
+	// 		await controls.start({ width: '100%', transition: { duration: 0.5, ease: 'easeIn' } });
+	// 		await controlImage.start({ scale: 1.3, transition: { duration: 0.5, ease: 'easeIn' } });
+	// 		await controlBg.start({ x: -50 });
+	// 		setIsAnimating(true);
+	// 	} else {
+	// 		setIsAnimating(false);
+	// 		await controlImage.start({ scale: 1, transition: { duration: 0.5, ease: 'easeOut' } });
+	// 		Promise.all([
+	// 			await controls.start({ width: '50%', transition: { duration: 0.7, ease: 'easeOut' } }),
+	// 			await controls2.start({ width: '50%' }),
+	// 		]);
+	// 		Promise.all([
+	// 			await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.3 } }),
+	// 			await controlBg.start({ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeIn' } }),
+	// 		]);
+	// 	}
+	// };
 
 	const handleIncrement = (value: number) => {
 		setAmount(value + 1);
@@ -112,6 +112,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		animate: {
 			transition: {
 				staggerChildren: 0.05,
+				delay: 0.3,
 			},
 		},
 	};
@@ -128,6 +129,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			transition: {
 				duration: 0.6,
 				ease: easing,
+				delay: 0.3,
 			},
 		},
 	};
@@ -162,7 +164,6 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					{name}
 				</motion.h1>
 				<motion.div
-					transition={{ duration: 0.5 }}
 					className={`
 						lg:bg-base-light
 						transition duration-500
@@ -170,8 +171,10 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 						h-full flex items-center justify-center relative
 						flex-col
 					`}
-					initial={{ opacity: 1 }}
-					animate={controls}
+					initial={{ width: '100%' }}
+					animate={{ width: '50%' }}
+					exit={{ width: '100%' }}
+					transition={{ duration: 0.5 }}
 				>
 					<motion.div
 						initial={{ x: 100, opacity: 0 }}
@@ -190,7 +193,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								<Image loading='lazy' width={600} src={bgImage} alt='splah' />
 							</motion.div>
 						</motion.div>
-						<motion.div initial={{ opacity: 1 }} animate={controlImage} className='relative'>
+						<motion.div className='relative'>
 							<div
 								className={`hidden lg:flex absolute h-[50px] -top-10 justify-center items-start w-full ${
 									isAnimating ? 'opacity-100' : 'opacity-0'
@@ -207,7 +210,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								</motion.div>
 							</div>
 							<Image
-								onClick={() => handleClick()}
+								// onClick={() => handleClick()}
 								loading='lazy'
 								className='animate-heart cursor-pointer hidden lg:block z-30 w-[500px]'
 								src={imagen}
@@ -226,7 +229,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 									className='justify-center items-center flex w-full left-0'
 								>
 									<div
-										onClick={() => handleClick()}
+										// onClick={() => handleClick()}
 										className={`
 											text-1xl bg-black text-white
 											w-[30px] h-[30px]
@@ -247,8 +250,10 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					</motion.div>
 				</motion.div>
 				<motion.div
-					initial={{ opacity: 1 }}
-					animate={loading ? { opacity: 1 } : controls2}
+					// initial={{ width: 0 }}
+					// animate={{ width: '50%' }}
+					// exit={{ width: 0 }}
+					// transition={{ duration: 0.5 }}
 					className={`
 						w-full lg:w-[50%] transition duration-500 h-full flex
 						lg:bg-base-dark
@@ -258,7 +263,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					<motion.div variants={stagger} className='w-[80%] relative'>
 						<motion.div variants={fadeInUp} className='text-[14px] flex justify-start lg:justify-end py-2'>
 							<Link
-								href={'/shop'}
+								href={'/products'}
 								// onClick={() => router.push(`/#shop`, undefined, { scroll: false })}
 								className='
 									flex flex-row

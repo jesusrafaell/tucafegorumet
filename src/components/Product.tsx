@@ -1,6 +1,5 @@
 import { CartContext } from '@/context/CartContext';
 import { ProductCartDto, ProductDto } from '@/utils/products';
-import Link from 'next/link';
 import React, { FC, useContext, useEffect, useLayoutEffect } from 'react';
 import { BsEyeFill, BsPlus } from 'react-icons/bs';
 import { motion } from 'framer-motion';

@@ -18,7 +18,7 @@ const ProductShop: FC<Props> = ({ product }) => {
 
 	return (
 		<motion.div
-			onClick={() => handleProduct(product)}
+			// onClick={() => handleProduct(product)}
 			className='
 				rounded-md 
 				relative
@@ -32,7 +32,6 @@ const ProductShop: FC<Props> = ({ product }) => {
 		>
 			<div
 				className='
-				cursor-pointer 
 				border border-transparent
 				productCard
 				justify-center
