@@ -12,8 +12,8 @@ const navLinks = [
 	},
 	{
 		name: 'Our Story',
-		to: 'ourstory',
-		scroll: true,
+		to: 'ourStory',
+		scroll: false,
 	},
 	{
 		name: 'Products',
@@ -23,6 +23,11 @@ const navLinks = [
 	{
 		name: 'Services',
 		to: 'services',
+		scroll: false,
+	},
+	{
+		name: 'Request a Coffe Station',
+		to: 'book',
 		scroll: false,
 	},
 ];

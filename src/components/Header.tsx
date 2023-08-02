@@ -132,7 +132,7 @@ const Header = () => {
 							</div>
 						</div>
 					</div>
-					<Link
+					{/* <Link
 						className={`
 						hidden lg:flex justify-center items-center
 						relative cursor-pointer uppercase
@@ -145,7 +145,7 @@ const Header = () => {
 						<span className='relative text-white group-hover:text-black whitespace-nowrap font-bebas-neue tracking-widest text-bold text-1xl'>
 							{lang.header_Reserve}
 						</span>
-					</Link>
+					</Link> */}
 					<div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative  text-black'>
 						{mobileMenu ? (
 							<VscChromeClose className='text-[20px]' onClick={() => setMobileMenu(false)} />

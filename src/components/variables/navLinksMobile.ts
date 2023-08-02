@@ -17,8 +17,8 @@ const navLinksMobile = [
 	},
 	{
 		name: 'Our Story',
-		to: 'ourstory',
-		scroll: true,
+		to: 'ourStory',
+		scroll: false,
 	},
 	{
 		name: 'Products',
@@ -31,7 +31,7 @@ const navLinksMobile = [
 		scroll: false,
 	},
 	{
-		name: 'Make a Reservation',
+		name: 'Request a Coffe Station',
 		to: 'book',
 		scroll: false,
 	},

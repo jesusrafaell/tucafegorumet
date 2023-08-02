@@ -35,12 +35,12 @@ export const Home = () => {
 							initial='hidden'
 							whileInView='show'
 							viewport={{ once: false, amount: 0.7 }}
-							className='text-3xl lg:text-6xl capitalize text-base-dark font-lemonMilk-bold font-bold whitespace-nowrap'
+							className='text-3xl md:text-4xl lg:text-4xl xl:text-5xl capitalize text-base-dark font-lemonMilk-bold font-bold whitespace-nowrap'
 						>
 							{lang.title_home}
 						</motion.h1>
 						<p className='text-[14px] md:text-[15px] lg:text-[20px] py-5 text-center'>{lang.text_home}</p>
-						<motion.div
+						{/* <motion.div
 							variants={textVariant(0.5, -20)}
 							initial='hidden'
 							whileInView='show'
@@ -56,7 +56,7 @@ export const Home = () => {
 									{lang.home_button}
 								</span>
 							</Link>
-						</motion.div>
+						</motion.div> */}
 					</div>
 					{/* <div className='absolute flex w-full lg:w-[200px] h-full mt-5 lg:p-0 bottom-0'>
 						<div className='relative flex h-full w-justify-center items-start'>

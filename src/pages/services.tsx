@@ -74,9 +74,9 @@ const Services = () => {
 								transition={{ delay: 0.3, duration: 0.5, ease: 'easeIn' }}
 								className='bg-gray-100 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8'
 							>
-								<div className='space-y-1'>
+								<div className='space-y-1 flex flex-col'>
 									<h3 className='text-2xl font-semibold text-base-dark capitalize'>{lang.services_title_2}</h3>
-									<div className='mb-6 flex flex-col'>
+									<div className='flex flex-col pb-10'>
 										<p>{lang.services_text_2}</p>
 										<div className='w-full flex justify-end items-end'>
 											<div className='w-[200px]'>
@@ -90,10 +90,13 @@ const Services = () => {
 										smooth
 										offset={0}
 										duration={400}
-										className='block font-medium text-purple-600 cursor-pointer'
+										className='block font-medium text-purple-600 cursor-pointer '
 									>
-										{lang.services_contact}
+										For more information,
 									</LinkS>
+									<p className='text-black'>
+										Please Call Us at <span className='text-gray-700 font-bold'>+1 (305) 594-0190</span>
+									</p>
 								</div>
 							</motion.div>
 							<motion.div

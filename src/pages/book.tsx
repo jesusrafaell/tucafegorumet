@@ -11,6 +11,7 @@ import citiesOfMiami from '@/utils/citysMiami';
 import estadosDeMiami from '@/utils/stateMiami';
 import lang from '@/LANG/eng.json';
 import { motion } from 'framer-motion';
+import timeCalls from '@/utils/timeCallMe';
 
 const Booking = () => {
 	const timeInputRef = useRef<HTMLInputElement>(null);
@@ -24,6 +25,7 @@ const Booking = () => {
 	const [name, setName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [email, setEmail] = useState('');
+	const [phone, setPhone] = useState('');
 	const [category, setCategory] = useState('');
 	const [people, setPeople] = useState('');
 	const [address, setAddres] = useState('');
@@ -32,6 +34,7 @@ const Booking = () => {
 	const [ZipCode, setZipCode] = useState('');
 	const [city, setCity] = useState('');
 	const [timeFormat, setTimeFormat] = useState('');
+	const [timeCallMe, setTimeCallMe] = useState('');
 
 	const handleInputClick = () => {
 		if (timeInputRef.current) {
@@ -49,6 +52,8 @@ const Booking = () => {
 			date === null ||
 			time === '' ||
 			email === '' ||
+			phone === '' ||
+			timeCallMe === '' ||
 			!validarCorreo(email) ||
 			category === '' ||
 			address === '' ||
@@ -188,13 +193,13 @@ const Booking = () => {
 									<div className='relative'>
 										<input
 											autoComplete='off'
-											id='email'
+											id='lastName'
 											onChange={(e) => setLastName(e.target.value)}
 											value={lastName}
 											name='LastName'
 											type='text'
 											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
-											placeholder='Email'
+											placeholder='Last Name'
 										/>
 										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
 											{lang.booking_lastName}
@@ -203,13 +208,13 @@ const Booking = () => {
 									<div className='relative'>
 										<input
 											autoComplete='off'
-											id='email'
+											id='name'
 											onChange={(e) => setName(e.target.value)}
 											value={name}
 											name='name'
 											type='text'
 											className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
-											placeholder='Email'
+											placeholder='Name'
 										/>
 										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
 											{lang.booking_name}
@@ -231,6 +236,21 @@ const Booking = () => {
 										{lang.booking_email}
 									</label>
 								</div>
+								<div className='relative'>
+									<input
+										autoComplete='off'
+										id='phone'
+										onChange={(e) => setPhone(e.target.value)}
+										value={phone}
+										name='Phone'
+										type='text'
+										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+										placeholder='+1 (000) 000 0000'
+									/>
+									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+										{lang.booking_phone}
+									</label>
+								</div>
 								<div className='grid grid-cols-2 gap-x-10 relative'>
 									<div className='relative'>
 										<select
@@ -243,10 +263,12 @@ const Booking = () => {
 											<option value='' disabled>
 												{lang.booking_people}&hellip;
 											</option>
-											{Array.from({ length: 150 }, (_, i) => (
-												<option key={i + 1} value={`People ${i + 1}`}>{`${lang.booking_people} ${i + 1}`}</option>
+											{Array.from({ length: 10 }, (_, i) => (
+												<option key={i + 1} value={`People ${(i + 1) * 50}`}>{`${lang.booking_people} ${
+													(i + 1) * 50
+												}`}</option>
 											))}
-											<option value={`People 150+`}>{`${lang.booking_people} +150`}</option>
+											<option value={`People +500`}>{`${lang.booking_people} +500`}</option>
 										</select>
 										<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
 											{lang.booking_persons}
@@ -296,6 +318,29 @@ const Booking = () => {
 									</select>
 									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
 										{lang.booking_category}
+									</label>
+								</div>
+								<div className='relative'>
+									<select
+										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+										name='callme'
+										id='frm-whatever'
+										onChange={(e) => setCategory(e.target.value)}
+										value={timeCallMe}
+									>
+										<option value='' disabled>
+											{lang.booking_category_select}&hellip;
+										</option>
+										{timeCalls.map((item, index) => {
+											return (
+												<option key={index} value={item}>
+													{item}
+												</option>
+											);
+										})}
+									</select>
+									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+										{lang.booking_timeCallMe}
 									</label>
 								</div>
 							</div>
@@ -372,6 +417,12 @@ const Booking = () => {
 								/>
 							</div>
 						</div>
+					</div>
+					<div className='w-full flex justify-center items-center text-gray-400 text-md'>
+						<ul className='list-disc flex flex-col'>
+							<li>We recommend 2 coffee stations if your event is from 200 to 500 guests.</li>
+							<li>Max. capacity 6.000 people.</li>
+						</ul>
 					</div>
 					<div className='flex justify-center items-center'>
 						<button

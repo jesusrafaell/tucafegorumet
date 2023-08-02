@@ -276,7 +276,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 									hover:text-blue-100 hover:underline'
 							>
 								<FaArrowLeft />
-								Go to Shop
+								Go to products
 							</Link>
 						</motion.div>
 						<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>

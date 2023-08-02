@@ -15,6 +15,9 @@ const ProductShop: FC<Props> = ({ product }) => {
 	const { handleProduct } = useContext(AnimationProductContext);
 	const { addToCart } = useContext(CartContext);
 	const { name, price, disponible, imagen } = product;
+	const auxPrice = price.split('.');
+	const entero = auxPrice[0];
+	const decimal = auxPrice[1];
 
 	return (
 		<motion.div
@@ -91,10 +94,12 @@ const ProductShop: FC<Props> = ({ product }) => {
 					className='flex flex-col justify-start items-start cursor-pointer whitespace-nowrap'
 					onClick={() => handleProduct(product)}
 				>
-					<div className='text-sm capitalize mb-1 text-gray-500'>{disponible ? 'available' : 'exhausted'}</div>
-					<h2 className='font-gravity-regular mb-2'>{name}</h2>
-					<div className='font-gravity-bold text-2xl text-red-400 self-end'>{price}$</div>
-				</div>
+					<h2 className='font-gravity-regular mt-5 mb-2'>{name}</h2>
+					<div className='font-gravity-bold text-2xl text-red-400 self-end flex flex-row justify-start items-start'>
+						${entero}
+						<p className='text-[12px] p-0 m-0 -mt-1'>{decimal}</p>
+					</div>
+				</div>{' '}
 			</motion.div>
 		</motion.div>
 	);

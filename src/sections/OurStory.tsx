@@ -3,6 +3,7 @@ import { textVariant } from '@/utils/monition';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import imageOurStory from '@/images/Our-Story.png';
+import lang from '@/LANG/eng.json';
 
 export const About = () => {
 	return (
@@ -78,7 +79,8 @@ export const About = () => {
 									Café is more than just a morning coffee, it is coffee that compliments your lifestyle.
 								</motion.p>
 								<span className='hidden lg:block self-start font-gravity-regular py-4 text-black'>
-									Tu Café, make it yours!
+									Tu Café,
+									{lang.slogan}
 								</span>
 							</div>
 						</motion.div>

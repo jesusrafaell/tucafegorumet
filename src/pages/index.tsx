@@ -105,10 +105,10 @@ export default function Home() {
 				className='overflow-hidden bg-white'
 			>
 				<HomePage />
-				<ShopPage />
+				{/* <ShopPage /> */}
 				<AboutPage />
 				<Hero />
-				<OurStoryPage />
+				{/* <OurStoryPage /> */}
 			</motion.div>
 		</>
 	);
