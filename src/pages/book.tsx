@@ -132,12 +132,11 @@ const Booking = () => {
 				ease: 'easeIn',
 			}}
 			id='booking'
-			className='min-h-screen bg-gray-100 py-6 flex flex-col justify-center items-center sm:py-12'
+			className='min-h-screen max-w-screen bg-gray-100 flex flex-col justify-center items-center sm:py-12 py-6 '
 		>
-			<div className='relative py-3 w-full lg:w-[950px] mt-20 '>
+			<div className='relative py-3 w-full lg:w-[950px] mt-20 px-2'>
 				<div className='absolute inset-0 bg-gradient-to-r from-base-red to-base-dark shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl'></div>
-				<div className='relative px-4 py-5 shadow-lg sm:rounded-3xl w-full flex flex-col bg-white gap-y-5'>
-					{/* title */}
+				<div className='relative px-4 py-5 shadow-lg rounded-3xl flex flex-col bg-white gap-y-5'>
 					<div className='flex flex-row justify-center items-end w-full'>
 						<h1 className='text-3xl lg:text-4xl text-gray-700 font-lemonMilk-bold font-bold mt-4 mb-4'>
 							{lang.booking_title}
@@ -146,8 +145,7 @@ const Booking = () => {
 							<Image src={manCoffe} alt='man coffe' />
 						</div>
 					</div>
-					<div className='w-full flex-col lg:flex-row gap-x-10 flex justify-center items-start pt-5'>
-						{/* info */}
+					<div className='w-full flex-col lg:flex-row lg:gap-x-10 flex justify-center items-start pt-5'>
 						<div className='divide-y divide-gray-200  w-full flex-1 relative'>
 							<div className='py-8 text-base flex flex-col gap-y-5 leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7'>
 								<div className='grid grid-cols-2 gap-x-10 relative'>
@@ -251,6 +249,29 @@ const Booking = () => {
 										{lang.booking_phone}
 									</label>
 								</div>
+								<div className='relative'>
+									<select
+										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
+										name='callme'
+										id='frm-whatever'
+										onChange={(e) => setTimeCallMe(e.target.value)}
+										value={timeCallMe}
+									>
+										<option value='' disabled>
+											Please choose&hellip;
+										</option>
+										{timeCalls.map((item, index) => {
+											return (
+												<option key={index} value={item}>
+													{item}
+												</option>
+											);
+										})}
+									</select>
+									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
+										{lang.booking_timeCallMe}
+									</label>
+								</div>
 								<div className='grid grid-cols-2 gap-x-10 relative'>
 									<div className='relative'>
 										<select
@@ -320,33 +341,9 @@ const Booking = () => {
 										{lang.booking_category}
 									</label>
 								</div>
-								<div className='relative'>
-									<select
-										className='peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600'
-										name='callme'
-										id='frm-whatever'
-										onChange={(e) => setCategory(e.target.value)}
-										value={timeCallMe}
-									>
-										<option value='' disabled>
-											{lang.booking_category_select}&hellip;
-										</option>
-										{timeCalls.map((item, index) => {
-											return (
-												<option key={index} value={item}>
-													{item}
-												</option>
-											);
-										})}
-									</select>
-									<label className='absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm'>
-										{lang.booking_timeCallMe}
-									</label>
-								</div>
 							</div>
 							<div className='absolute top-0 bottom-0 -right-5 w-0.5 f-full py-10 bg-gray-200'></div>
 						</div>
-						{/* address */}
 						<div className='flex h-full flex-col w-full flex-1 relative'>
 							<div className='flex flex-row'>
 								<VscLocation className='text-3xl' />
@@ -419,7 +416,7 @@ const Booking = () => {
 						</div>
 					</div>
 					<div className='w-full flex justify-center items-center text-gray-400 text-md'>
-						<ul className='list-disc flex flex-col'>
+						<ul className='list-disc flex flex-col text-[14px] lg:text-[17px] px-5'>
 							<li>We recommend 2 coffee stations if your event is from 200 to 500 guests.</li>
 							<li>Max. capacity 6.000 people.</li>
 						</ul>

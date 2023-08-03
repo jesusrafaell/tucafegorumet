@@ -65,13 +65,15 @@ const ourStory = () => {
 						>
 							{/* info */}
 							<div className='flex-1 flex flex-col items-center pt-5 lg:pt-0'>
-								<p className='text-1xl lg:text-2xl font-gravity-bold my-4 uppercase'>MARCIO & MARCEL SOPENA</p>
+								<p className='text-2xl whitespace-nowrap lg:text-4xl font-gravity-bold mb-5 lg:mb-10 uppercase'>
+									MARCIO & MARCEL SOPENA
+								</p>
 								<motion.p
 									variants={textVariant(0.5, 10)}
 									initial='hidden'
 									whileInView='show'
 									viewport={{ once: false, amount: 0.7 }}
-									className='text-gray-700'
+									className='text-gray-700 text-[17px] lg:text-2xl text-justify'
 								>
 									Established in 1996, Tu Café is a family-owned & operated business dedicated to providing
 									gourmet, Cuban style espresso. Tu Café is carefully crafted to deliver a gourmet Cuban-style

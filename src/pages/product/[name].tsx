@@ -3,6 +3,7 @@ import products, { ProductCartDto, ProductDto } from '@/utils/products';
 import { GetServerSideProps, NextPage } from 'next';
 import { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
+import ProductSlider from '@/components/ProductSlider';
 import Image from 'next/image';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
@@ -18,7 +19,7 @@ interface ProductPageProps {
 }
 
 const Product: NextPage<ProductPageProps> = ({ product }) => {
-	const { id, name, price, description, imagen, li, rank } = product;
+	const { id, name, price, description, imagen, li, rank, category } = product;
 	const { addToCartProduct, handleGetAmount } = useContext(CartContext);
 	const [amount, setAmount] = useState(handleGetAmount(id) ? handleGetAmount(id) : 1);
 	const { setColor } = useContext(BackGroundColorContext);
@@ -31,6 +32,8 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 	const controlImage = useAnimation();
 	const controlBg = useAnimation();
 	const [isAnimating, setIsAnimating] = useState(false);
+
+	const otherProducts = products.filter((p) => p.id !== id);
 
 	const startRanking = (rank: number, limit: number) => {
 		const result = [];
@@ -66,29 +69,6 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 	useEffect(() => {
 		setLoading(false);
 	}, []);
-
-	// const handleClick = async () => {
-	// 	if (!isAnimating) {
-	// 		await controls2.start({ opacity: 0, y: 20, transition: { duration: 0.2, ease: 'easeOut' } });
-	// 		await controls2.start({ width: 0, transition: { duration: 0.7, ease: 'easeOut' } });
-	// 		await controlBg.start({ opacity: 0, transition: { duration: 0.3, ease: 'easeInOut' } });
-	// 		await controls.start({ width: '100%', transition: { duration: 0.5, ease: 'easeIn' } });
-	// 		await controlImage.start({ scale: 1.3, transition: { duration: 0.5, ease: 'easeIn' } });
-	// 		await controlBg.start({ x: -50 });
-	// 		setIsAnimating(true);
-	// 	} else {
-	// 		setIsAnimating(false);
-	// 		await controlImage.start({ scale: 1, transition: { duration: 0.5, ease: 'easeOut' } });
-	// 		Promise.all([
-	// 			await controls.start({ width: '50%', transition: { duration: 0.7, ease: 'easeOut' } }),
-	// 			await controls2.start({ width: '50%' }),
-	// 		]);
-	// 		Promise.all([
-	// 			await controls2.start({ opacity: 1, y: 0, transition: { duration: 0.3 } }),
-	// 			await controlBg.start({ opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeIn' } }),
-	// 		]);
-	// 	}
-	// };
 
 	const handleIncrement = (value: number) => {
 		setAmount(value + 1);
@@ -134,9 +114,10 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		},
 	};
 	return (
-		<motion.section
-			id='infoProduct'
-			className=' 
+		<>
+			<motion.section
+				id='infoProduct'
+				className=' 
 			bg-base-dark
 			w-full 
 			h-full
@@ -145,12 +126,12 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			text-white
 			justify-center
 			items-center'
-			initial='initial'
-			animate='animate'
-			exit={{ opacity: 0 }}
-		>
-			<div
-				className='
+				initial='initial'
+				animate='animate'
+				exit={{ opacity: 0 }}
+			>
+				<div
+					className='
 					lg:h-full w-full flex items-center 
 					justify-center
 					pb-20
@@ -159,78 +140,80 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					lg:justify-between
 					lg:mt-0
 					flex-col lg:flex-row '
-			>
-				<motion.h1 className='flex lg:hidden font-bold text-2xl' variants={fadeInUp}>
-					{name}
-				</motion.h1>
-				<motion.div
-					className={`
+				>
+					<motion.h1 className='flex lg:hidden font-bold text-2xl' variants={fadeInUp}>
+						{name}
+					</motion.h1>
+					<motion.div
+						className={`
 						lg:bg-base-light
 						transition duration-500
 						w-[50%]
 						h-full flex items-center justify-center relative
 						flex-col
 					`}
-					initial={{ width: '100%' }}
-					animate={{ width: '50%' }}
-					exit={{ width: '100%' }}
-					transition={{ duration: 0.5 }}
-				>
-					<motion.div
-						initial={{ x: 100, opacity: 0 }}
-						animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn' } }}
-						exit={{ opacity: 0 }}
-						transition={{ delay: 0.2 }}
-						className='z-20 w-[300px] lg:w-full h-full flex items-center justify-center flex-col'
+						initial={{ width: '100%' }}
+						animate={{ width: '50%' }}
+						exit={{ width: '100%' }}
+						transition={{ duration: 0.5 }}
 					>
 						<motion.div
-							className='hidden lg:flex absolute w-full top-[40%] justify-center items-center flex-col -z-1'
-							initial={{ x: -50, opacity: 0 }}
-							animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn', delay: 0.3 } }}
+							initial={{ x: 100, opacity: 0 }}
+							animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn' } }}
 							exit={{ opacity: 0 }}
+							transition={{ delay: 0.2 }}
+							className='z-20 w-[300px] lg:w-full h-full flex items-center justify-center flex-col'
 						>
-							<motion.div initial={{ opacity: 1 }} animate={controlBg}>
-								<Image loading='lazy' width={600} src={bgImage} alt='splah' />
+							<motion.div
+								className='hidden lg:flex absolute w-full top-[40%] justify-center items-center flex-col -z-1'
+								initial={{ x: -50, opacity: 0 }}
+								animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn', delay: 0.3 } }}
+								exit={{ opacity: 0 }}
+							>
+								{category === 'whole' ? (
+									<motion.div initial={{ opacity: 1 }} animate={controlBg}>
+										<Image loading='lazy' width={600} src={bgImage} alt='splah' />
+									</motion.div>
+								) : null}
 							</motion.div>
-						</motion.div>
-						<motion.div className='relative'>
-							<div
-								className={`hidden lg:flex absolute h-[50px] -top-10 justify-center items-start w-full ${
-									isAnimating ? 'opacity-100' : 'opacity-0'
-								} `}
-							>
-								<motion.div
-									variants={textVariant(0.2, 10)}
-									initial='hidden'
-									animate='show'
-									exit='hidden'
-									className='justify-center items-center flex w-full absolute left-0'
+							<motion.div className='relative'>
+								<div
+									className={`hidden lg:flex absolute h-[50px] -top-10 justify-center items-start w-full ${
+										isAnimating ? 'opacity-100' : 'opacity-0'
+									} `}
 								>
-									<h1 className='text-black font-extrabold whitespace-nowrap text-4xl'>{name}</h1>
-								</motion.div>
-							</div>
-							<Image
-								// onClick={() => handleClick()}
-								loading='lazy'
-								className='animate-heart cursor-pointer hidden lg:block z-30 w-[500px]'
-								src={imagen}
-								alt={name}
-							/>
-							<div
-								className={`hidden lg:flex absolute h-[50px] -bottom-10 justify-center items-start w-full ${
-									isAnimating ? 'opacity-100' : 'opacity-0'
-								} `}
-							>
-								<motion.div
-									variants={textVariant(0.2, 10)}
-									initial='hidden'
-									animate='show'
-									exit='hidden'
-									className='justify-center items-center flex w-full left-0'
+									<motion.div
+										variants={textVariant(0.2, 10)}
+										initial='hidden'
+										animate='show'
+										exit='hidden'
+										className='justify-center items-center flex w-full absolute left-0'
+									>
+										<h1 className='text-black font-extrabold whitespace-nowrap text-4xl'>{name}</h1>
+									</motion.div>
+								</div>
+								<Image
+									// onClick={() => handleClick()}
+									loading='lazy'
+									className='animate-heart cursor-pointer hidden lg:block z-30 w-[500px]'
+									src={imagen}
+									alt={name}
+								/>
+								<div
+									className={`hidden lg:flex absolute h-[50px] -bottom-10 justify-center items-start w-full ${
+										isAnimating ? 'opacity-100' : 'opacity-0'
+									} `}
 								>
-									<div
-										// onClick={() => handleClick()}
-										className={`
+									<motion.div
+										variants={textVariant(0.2, 10)}
+										initial='hidden'
+										animate='show'
+										exit='hidden'
+										className='justify-center items-center flex w-full left-0'
+									>
+										<div
+											// onClick={() => handleClick()}
+											className={`
 											text-1xl bg-black text-white
 											w-[30px] h-[30px]
 											 rounded-xl justify-center items-center
@@ -240,32 +223,32 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 											p-1 animate-pulseBtn
 											right-0
 										`}
-									>
-										<IoMdClose />
-									</div>
-								</motion.div>
-							</div>
+										>
+											<IoMdClose />
+										</div>
+									</motion.div>
+								</div>
+							</motion.div>
+							<Image className='cursor-pointer block lg:hidden' src={imagen} alt={name} />
 						</motion.div>
-						<Image className='cursor-pointer block lg:hidden' src={imagen} alt={name} />
 					</motion.div>
-				</motion.div>
-				<motion.div
-					// initial={{ width: 0 }}
-					// animate={{ width: '50%' }}
-					// exit={{ width: 0 }}
-					// transition={{ duration: 0.5 }}
-					className={`
+					<motion.div
+						// initial={{ width: 0 }}
+						// animate={{ width: '50%' }}
+						// exit={{ width: 0 }}
+						// transition={{ duration: 0.5 }}
+						className={`
 						w-full lg:w-[50%] transition duration-500 h-full flex
 						lg:bg-base-dark
 						lg:pt-20
 						flex-col gap-y-10 items-center justify-center`}
-				>
-					<motion.div variants={stagger} className='w-[80%] relative'>
-						<motion.div variants={fadeInUp} className='text-[14px] flex justify-start lg:justify-end py-2'>
-							<Link
-								href={'/products'}
-								// onClick={() => router.push(`/#shop`, undefined, { scroll: false })}
-								className='
+					>
+						<motion.div variants={stagger} className='w-[80%] relative'>
+							<motion.div variants={fadeInUp} className='text-[14px] flex justify-start lg:justify-end py-2'>
+								<Link
+									href={'/products'}
+									// onClick={() => router.push(`/#shop`, undefined, { scroll: false })}
+									className='
 									flex flex-row
 									justify-center
 									items-center
@@ -274,100 +257,106 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 									hover:animate-pulse
 									text-red-200 cursor-pointer text-center 
 									hover:text-blue-100 hover:underline'
+								>
+									<FaArrowLeft />
+									Go to products
+								</Link>
+							</motion.div>
+							<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>
+								{name}
+							</motion.h1>
+							<motion.p
+								className='text-[15px] lg:text-[18px] font-light whitespace-normal text-justify'
+								variants={fadeInUp}
 							>
-								<FaArrowLeft />
-								Go to products
-							</Link>
-						</motion.div>
-						<motion.h1 className='hidden font-bold m lg:flex text-2xl my-5  justify-center' variants={fadeInUp}>
-							{name}
-						</motion.h1>
-						<motion.p
-							className='text-[15px] lg:text-[18px] font-light whitespace-normal text-justify'
-							variants={fadeInUp}
-						>
-							{description}
-						</motion.p>
-						<motion.ul
-							variants={fadeInUp}
-							className='text-gray-300 py-5 px-5 lg:px-10 list-disc flex flex-col gap-y-2 text-[13px] lg:text-[18px]'
-						>
-							{li.map((item, index) => (
-								<li key={index}>{item}</li>
-							))}
-						</motion.ul>
-						<motion.div variants={fadeInUp}>
-							<div className='flex font-bold items-center w-full mb-4'>
-								{/* start ranking */}
+								{description}
+							</motion.p>
+							<motion.ul
+								variants={fadeInUp}
+								className='text-gray-300 py-5 px-5 lg:px-10 list-disc flex flex-col gap-y-2 text-[13px] lg:text-[18px]'
+							>
+								{li.map((item, index) => (
+									<li key={index}>{item}</li>
+								))}
+							</motion.ul>
+							<motion.div variants={fadeInUp}>
+								<div className='flex font-bold items-center w-full mb-4'>
+									{/* start ranking */}
 
-								<div className='flex flex-row gap-x-1'>{startRanking(rank, lang.limitStart)}</div>
-								{/* ranking */}
-								<p className='ml-2 text-1xl font-bold text-gray-200'>{rank}</p>
-							</div>
-						</motion.div>
-						<motion.div
-							variants={fadeInUp}
-							className='flex items-start lg:items-center justify-between flex-col lg:flex-row gap-y-2 py-5 lg:py-0'
-						>
-							<div className='flex items-center self-end lg:self-start rounded p-1 bg-[#cdcdcd] text-black'>
-								<div
-									onClick={() => handleDecrease(amount)}
-									className='p-1  h-[24px] w-[24px] flex justify-center items-center bg-[#cdcdcd] text-black rounded cursor-pointer border-white
+									<div className='flex flex-row gap-x-1'>{startRanking(rank, lang.limitStart)}</div>
+									{/* ranking */}
+									<p className='ml-2 text-1xl font-bold text-gray-200'>{rank}</p>
+								</div>
+							</motion.div>
+							<motion.div
+								variants={fadeInUp}
+								className='flex items-start lg:items-center justify-between flex-col lg:flex-row gap-y-2 py-5 lg:py-0'
+							>
+								<div className='flex items-center self-end lg:self-start rounded p-1 bg-[#cdcdcd] text-black'>
+									<div
+										onClick={() => handleDecrease(amount)}
+										className='p-1  h-[24px] w-[24px] flex justify-center items-center bg-[#cdcdcd] text-black rounded cursor-pointer border-white
 									hover:bg-white
 									'
-								>
-									<IoMdRemove className='text-2xl' />
-								</div>
-								<div className='px-3 w-[34px] font-bold'>{amount}</div>
-								<div
-									onClick={() => handleIncrement(amount)}
-									className='p-1  h-[24px] w-[24px] flex justify-center items-center bg-[#cdcdcd] text-black rounded cursor-pointer border-white
+									>
+										<IoMdRemove className='text-2xl' />
+									</div>
+									<div className='px-3 w-[34px] font-bold'>{amount}</div>
+									<div
+										onClick={() => handleIncrement(amount)}
+										className='p-1  h-[24px] w-[24px] flex justify-center items-center bg-[#cdcdcd] text-black rounded cursor-pointer border-white
 									 hover:bg-white'
-								>
-									<IoMdAdd />
+									>
+										<IoMdAdd />
+									</div>
 								</div>
-							</div>
-							<span className='font-bold text-[18px] lg:text-2xl select-none'>
-								{`$ ${parseFloat(`${Number(price) * amount}`).toFixed(2)}`}
-							</span>
-						</motion.div>
-						<motion.div variants={fadeInUp} className='mt-10 flex items-center justify-center'>
-							<button
-								onClick={() => {
-									setEffect(true);
-									addToCartProduct({ ...product, amount });
-									setTimeout(() => {
-										setEffect(false);
-									}, 1000);
-								}}
-								className={`
+								<span className='font-bold text-[18px] lg:text-2xl select-none'>
+									{`$ ${parseFloat(`${Number(price) * amount}`).toFixed(2)}`}
+								</span>
+							</motion.div>
+							<motion.div variants={fadeInUp} className='mt-10 flex items-center justify-center'>
+								<button
+									onClick={() => {
+										setEffect(true);
+										addToCartProduct({ ...product, amount });
+										setTimeout(() => {
+											setEffect(false);
+										}, 1000);
+									}}
+									className={`
 									relative
 									cursor-pointer rounded h-12 w-40 border tracking-wider leading-none overflow-hidden hover:text-teal-60
 									border-blue-500 bg-white
 									text-black text-base hover:animate-pulseBtn
 								`}
-							>
-								<span
-									className={`absolute inset-0 flex items-center 
+								>
+									<span
+										className={`absolute inset-0 flex items-center 
 									${effect && 'text-black translate-x-0'}
 										justify-center 
 										duration-300 transition-transform transform -translate-x-full
 									bg-black
 								`}
-								></span>
-								<span
-									className={`
+									></span>
+									<span
+										className={`
 									${effect && 'text-white translate-x-0'}
 								absolute inset-0 flex justify-center items-center font-bold capitalize`}
-								>
-									{effect ? lang.shop_button_2 : lang.shop_button_1}
-								</span>
-							</button>
+									>
+										{effect ? lang.shop_button_2 : lang.shop_button_1}
+									</span>
+								</button>
+							</motion.div>
 						</motion.div>
 					</motion.div>
-				</motion.div>
+				</div>
+			</motion.section>
+			<div className='w-screen h-full bg-base-light'>
+				<div className='container mx-auto py-10'>
+					<ProductSlider data={otherProducts} />
+				</div>
 			</div>
-		</motion.section>
+		</>
 	);
 };
 

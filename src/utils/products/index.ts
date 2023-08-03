@@ -15,6 +15,7 @@ export interface ProductDto {
 	description: string;
 	li: string[];
 	rank: number;
+	category: 'ground' | 'whole'; //ground=molido whole grano
 }
 
 export interface ProductCartDto extends ProductDto {
@@ -35,6 +36,7 @@ const products: ProductDto[] = [
 			'Certified Kosher',
 		],
 		rank: 3.92,
+		category: 'ground',
 	},
 	{
 		id: 2,
@@ -49,6 +51,7 @@ const products: ProductDto[] = [
 			'	Certified Kosher',
 		],
 		rank: 4.82,
+		category: 'ground',
 	},
 	{
 		id: 3,
@@ -63,6 +66,7 @@ const products: ProductDto[] = [
 			'Certified Kosher',
 		],
 		rank: 4.02,
+		category: 'ground',
 	},
 	{
 		id: 4,
@@ -77,6 +81,7 @@ const products: ProductDto[] = [
 			'Certified Kosher',
 		],
 		rank: 4.92,
+		category: 'whole',
 	},
 	{
 		id: 5,
@@ -92,6 +97,7 @@ const products: ProductDto[] = [
 			'2 Pack',
 		],
 		rank: 4.84,
+		category: 'whole',
 	},
 	{
 		id: 6,
@@ -107,6 +113,7 @@ const products: ProductDto[] = [
 			'4 Pack',
 		],
 		rank: 3.95,
+		category: 'whole',
 	},
 ];
 export default products;

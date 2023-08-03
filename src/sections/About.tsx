@@ -90,7 +90,7 @@ const About = () => {
 						</Link>
 					</motion.div>
 				</div> */}
-				<h1 className='text-4xl lg:text-5xl text-black font-roboto-bold font-bold uppercase'>
+				<h1 className='text-4xl lg:text-5xl text-black font-lemonMilk-bold uppercase px-5 text-center'>
 					{lang.info_title_3}
 				</h1>
 				<div className='flex w-full h-full flex-col lg:flex-row gap-x-10 justify-between items-start px-5'>

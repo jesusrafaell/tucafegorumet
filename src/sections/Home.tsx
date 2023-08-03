@@ -10,84 +10,40 @@ import bgCoffe from '@/images/bg_coffe2.png';
 
 export const Home = () => {
 	return (
-		<section id='home' className='home overflow-hidden flex flex-row h-screen w-screen relative'>
+		<section id='home' className=' home overflow-hidden flex flex-row h-screen w-screen relative'>
 			<motion.div
 				initial={{
-					x: '50%',
+					clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
 				}}
-				whileInView={{
-					x: 0,
+				animate={{
+					clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 0 100%)',
 					transition: {
+						delay: 1,
 						ease: 'easeIn',
 						duration: 0.4,
 					},
 				}}
-				className='bgHome hidden lg:flex absolute h-full w-full bg-top bg-no-repeat bg-cover'
+				className='bg-base-dark hidden lg:flex absolute h-screen w-screen'
 			/>
 			<div className='flex lg:flex-row flex-col w-full h-full justify-center items-center'>
-				<div className='container mx-auto flex flex-col justify-center items-center mt-10 text-black w-full px-10 pb-40 md:pb-0'>
-					<div className='absolute left-0 bottom-10 lg:top-0 z-10 opacity-50 lg:opacity-20 w-full lg:w-[700px]'>
-						<Image src={bgCoffe} alt='Coffe Back' />
-					</div>
-					<div className='flex flex-col w-full justify-center items-center z-20'>
+				{/* <div className='absolute left-0 bottom-0 z-10 opacity-50 lg:opacity-70 w-full lg:w-[700px]'>
+					<Image src={bgCoffe} alt='Coffe Back' />
+				</div> */}
+				<div className='container mx-auto flex flex-col justify-center items-center text-black w-full pb-[300px]'>
+					<div className='flex flex-col justify-center items-center z-20 w-full '>
 						<motion.h1
 							variants={textVariant(0.5, 20)}
 							initial='hidden'
-							whileInView='show'
+							animate='show'
 							viewport={{ once: false, amount: 0.7 }}
-							className='text-3xl md:text-4xl lg:text-4xl xl:text-5xl capitalize text-base-dark font-lemonMilk-bold font-bold whitespace-nowrap'
+							className='text-3xl md:text-4xl lg:text-5xl xl:text-7xl capitalize text-base-dark font-lemonMilk-bold font-bold whitespace-nowrap'
 						>
 							{lang.title_home}
 						</motion.h1>
-						<p className='text-[14px] md:text-[15px] lg:text-[20px] py-5 text-center'>{lang.text_home}</p>
-						{/* <motion.div
-							variants={textVariant(0.5, -20)}
-							initial='hidden'
-							whileInView='show'
-							viewport={{ once: false, amount: 0.7 }}
-							className='flex justify-center'
-						>
-							<Link
-								href={'book'}
-								className='relative inline-flex items-center w-[150px] h-[40px] justify-start px-4 py-2 overflow-hidden font-medium transition-all bg-black group'
-							>
-								<span className='w-48 h-48 rounded rotate-[-40deg] bg-white absolute bottom-0 left-0 -translate-x-full ease-out duration-700 transition-all translate-y-full mb-9 ml-9 group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0'></span>
-								<span className='relative font-gravity-regular text-[15px] flex justify-center items-center w-full text-left text-white transition-colors duration-300 ease-in-out group-hover:text-black'>
-									{lang.home_button}
-								</span>
-							</Link>
-						</motion.div> */}
+						<p className='text-[14px] md:text-[15px] lg:text-[25px] font-bold text-gray-400 py-5 text-center'>
+							{lang.text_home}
+						</p>
 					</div>
-					{/* <div className='absolute flex w-full lg:w-[200px] h-full mt-5 lg:p-0 bottom-0'>
-						<div className='relative flex h-full w-justify-center items-start'>
-							<motion.div
-								initial={{
-									scale: 0,
-									opacity: 0,
-								}}
-								animate={{
-									scale: 1,
-									opacity: 1,
-								}}
-								exit={{
-									scale: 0,
-									opacity: 0,
-								}}
-								transition={{
-									duration: 0.5,
-									delay: 0.2,
-								}}
-								className='animate-heart'
-							>
-								<Image src={splash1} alt='coffe' />
-							</motion.div>
-							<div className='w-full h-full flex justify-center items-center'>
-								<div className='w-[200px] lg:w-[200px]'>
-									<Image src={manCoffe} alt='coffe' />
-								</div>
-							</div>
-						</div>
-					</div> */}
 				</div>
 				<div className='relative hidden lg:flex h-full w-full justify-center items-center'>
 					<motion.div
@@ -95,7 +51,7 @@ export const Home = () => {
 							scale: 0,
 							opacity: 0,
 						}}
-						whileInView={{
+						animate={{
 							scale: 1,
 							opacity: 1,
 						}}
@@ -105,17 +61,11 @@ export const Home = () => {
 						}}
 						transition={{
 							duration: 0.5,
-							delay: 0.2,
+							delay: 1.5,
 						}}
 					>
-						<Image src={logo} alt='coffe' className='w-[250px] h-[270px]' />
+						<Image src={logo} alt='coffe' className='w-[350px] h-[370px]' />
 					</motion.div>
-					{/* humano */}
-					{/* <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center'>
-							<div className='w-[500px]'>
-								<Image src={manCoffe} alt='coffe' />
-							</div>
-						</div> */}
 				</div>
 			</div>
 		</section>

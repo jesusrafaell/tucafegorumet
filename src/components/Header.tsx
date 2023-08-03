@@ -51,7 +51,7 @@ const Header = () => {
 						? 'bg-white py-3 shadow-md text-black'
 						: 'py-5 text-black'
 				} 
-			fixed w-full z-30 transition-all`}
+			fixed w-full z-30 transition-all  max-w-screen`}
 		>
 			<div className='container mx-auto w-screen grid grid-col-2 lg:grid-cols-3 h-full'>
 				<div className='w-full h-full'>

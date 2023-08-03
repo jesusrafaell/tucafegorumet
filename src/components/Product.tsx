@@ -20,7 +20,7 @@ const Product: FC<Props> = ({ product }) => {
 		<motion.div
 			className='
 				flex flex-col justify-center items-center rounded-md
-			text-black bg-base bg-opacity-10 w-full h-full p-5
+			text-black bg-gray-700 bg-opacity-10 w-full h-full p-5
 				'
 		>
 			<div
@@ -28,8 +28,8 @@ const Product: FC<Props> = ({ product }) => {
 				className='
 				group
 				grad
-				w-full
-				h-full
+				w-[150px]
+				h-[250px]
 				lg:w-[300px]
 				lg:h-[200px]
 				group
@@ -42,7 +42,7 @@ const Product: FC<Props> = ({ product }) => {
 				relative overflow-hidden trasition'
 			>
 				<div className='w-full h-full flex justify-center items-center'>
-					<div className='w-[400px] lg:w-[200px] h-[300px]  mx-auto flex justify-center items-center'>
+					<div className='w-[300px] lg:w-[200px] h-[300px]  mx-auto flex justify-center items-center'>
 						<Image className={`transition duration-200 ease-in group-hover:scale-110`} src={imagen} alt='hola' />
 					</div>
 				</div>
@@ -94,7 +94,6 @@ const Product: FC<Props> = ({ product }) => {
 					className='flex flex-col justify-center items-center cursor-pointer whitespace-nowrap'
 					onClick={() => handleProduct(product)}
 				>
-					<div className='text-sm capitalize mb-3 text-gray-500'>{disponible ? 'available' : 'exhausted'}</div>
 					<h2 className='font-gravity-regular mb-4'>{name}</h2>
 					<div className='font-gravity-bold text-2xl mb-1 text-base-red'>{price}$</div>
 				</div>
