@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import logoTuCafe from '@/images/logo_tucafe.png';
 import { motion } from 'framer-motion';
-import { textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/motion';
 import Image from 'next/image';
 import banner1 from '@/images/banners/banner-1.jpg';
 import banner2 from '@/images/banners/banner-2.jpg';

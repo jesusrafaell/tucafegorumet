@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import imageOurStory from '@/images/Our-Story.png';

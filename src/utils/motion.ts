@@ -136,3 +136,17 @@ export const variantsProducts = (direction: string) => ({
 		x: direction,
 	},
 });
+
+export const explainAnimation = {
+	hidden: {
+		clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+	},
+	show: {
+		clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+		transition: {
+			delay: 1,
+			duration: 1,
+			ease: 'easeInOut',
+		},
+	},
+};

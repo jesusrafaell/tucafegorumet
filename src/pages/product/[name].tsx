@@ -11,7 +11,7 @@ import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 import bgImage from '@/images/splash-product.png';
 import { useRouter } from 'next/router';
 import { FaArrowLeft } from 'react-icons/fa';
-import { textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/motion';
 import lang from '@/LANG/eng.json';
 
 interface ProductPageProps {

@@ -5,7 +5,7 @@ import { BsEyeFill, BsPlus } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
 import Image from 'next/image';
-import { textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/motion';
 
 interface Props {
 	product: ProductDto;

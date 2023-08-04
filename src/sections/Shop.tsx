@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { motion } from 'framer-motion';
-import { textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/motion';
 import products from '@/utils/products';
 import ProductSlider from '@/components/ProductSlider';
 import lang from '@/LANG/eng.json';

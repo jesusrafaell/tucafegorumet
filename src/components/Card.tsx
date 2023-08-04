@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from 'next/image';
 import React, { FC, useState } from 'react';
-import { textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import CupLoading from './CupLoading';
 import { CupItem } from '@/utils/cardItems';

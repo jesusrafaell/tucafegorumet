@@ -53,7 +53,7 @@ const Header = () => {
 				} 
 			fixed w-full z-30 transition-all  max-w-screen`}
 		>
-			<div className='container mx-auto w-screen grid grid-col-2 lg:grid-cols-3 h-full'>
+			<div className='container mx-auto w-screen flex flex-row h-full'>
 				<div className='w-full h-full'>
 					<LinkS
 						to={'home'}
@@ -79,13 +79,14 @@ const Header = () => {
 						</div>
 					</LinkS>
 				</div>
-				<div className='hidden lg:flex flex-row justify-center items-center'>
-					<ul className='gap-x-9 font-gravity-regular flex flex-row text-[15px] list-none items-center navLink'>
-						{navLinks.map((itemNav, index) => {
-							return (
-								<li key={index} className='relative'>
-									<LinkS
-										className={`
+				<div className='flex flex-row'>
+					<div className='hidden lg:flex flex-row justify-center items-center px-5'>
+						<ul className='gap-x-9 font-gravity-regular flex flex-row text-[15px] list-none items-center navLink'>
+							{navLinks.map((itemNav, index) => {
+								return (
+									<li key={index} className='relative'>
+										<LinkS
+											className={`
 												capitalize block relative cursor-pointer 
 												text-[20px] whitespace-nowrap
 												after:bottom-0 after:content after:block after:h-[2px] after:left-[50%] 
@@ -94,41 +95,42 @@ const Header = () => {
 												after:transition-all after:duration-300 after:ease-in-out
 												hover:after:w-full hover:after:left-0
 										`}
-										to={itemNav.scroll ? itemNav.to : ''}
-										spy
-										smooth
-										offset={0}
-										duration={timeScroll}
-										onClick={() => handleClick(itemNav)}
-									>
-										{itemNav.name}
-									</LinkS>
-								</li>
-							);
-						})}
-					</ul>
-				</div>
-				<div className='flex flex-row justify-end items-center gap-x-4 w-full'>
-					{/* Mobile icon start */}
-					<div className='w-10 h-10 rounded-full flex justify-center items-center  cursor-pointer relative'>
-						<div
-							onClick={() => {
-								setMobileMenu(false);
-								setIsOpen(!isOpen);
-							}}
-							className='cursor-pointer flex relative text-black'
-						>
-							<HiShoppingCart className='text-[25px]' />
+											to={itemNav.scroll ? itemNav.to : ''}
+											spy
+											smooth
+											offset={0}
+											duration={timeScroll}
+											onClick={() => handleClick(itemNav)}
+										>
+											{itemNav.name}
+										</LinkS>
+									</li>
+								);
+							})}
+						</ul>
+					</div>
+					<div className='flex flex-row justify-end items-center gap-x-4 w-full'>
+						{/* Mobile icon start */}
+						<div className='w-10 h-10 rounded-full flex justify-center items-center  cursor-pointer relative'>
 							<div
-								className='
+								onClick={() => {
+									setMobileMenu(false);
+									setIsOpen(!isOpen);
+								}}
+								className='cursor-pointer flex relative text-black'
+							>
+								<HiShoppingCart className='text-[25px]' />
+								<div
+									className='
 											bg-red-500 absolute 
 											-right-2 -top-2
 											text-[10px] 
 											w-[12px] h-[12px]
 											text-white rounder-full
 											flex justify-center items-center'
-							>
-								{itemAmount}
+								>
+									{itemAmount}
+								</div>
 							</div>
 						</div>
 					</div>

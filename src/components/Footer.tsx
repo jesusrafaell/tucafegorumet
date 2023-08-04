@@ -4,7 +4,7 @@ import { FaClock, FaEnvelope, FaLocationArrow } from 'react-icons/fa';
 import { FiCoffee } from 'react-icons/fi';
 import { BsFacebook, BsFillTelephoneFill, BsInstagram, BsLinkedin, BsTwitter } from 'react-icons/bs';
 import { motion } from 'framer-motion';
-import { textVariant } from '@/utils/monition';
+import { textVariant } from '@/utils/motion';
 import lang from '@/LANG/eng.json';
 
 const Footer = () => {
