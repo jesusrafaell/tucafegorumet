@@ -94,7 +94,7 @@ const ProductShop: FC<Props> = ({ product }) => {
 					className='flex flex-col justify-start items-start cursor-pointer whitespace-nowrap'
 					onClick={() => handleProduct(product)}
 				>
-					<h2 className='font-gravity-regular mt-5 mb-2'>{name}</h2>
+					<h2 className='font-gravity-regular mt-5 mb-2 lg:text-[16px] '>{name}</h2>
 					<div className='font-gravity-bold text-2xl text-red-400 self-end flex flex-row justify-start items-start'>
 						${entero}
 						<p className='text-[12px] p-0 m-0 -mt-1'>{decimal}</p>

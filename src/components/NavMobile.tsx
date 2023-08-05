@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-scroll';
 import { useRouter } from 'next/router';
-import { interfaceLink } from './variables/navLinks';
-import navLinksMobile from './variables/navLinksMobile';
+import navLinks, { interfaceLink } from './variables/navLinks';
 import logoTuCafe from '@/images/logo_tucafe.png';
 import Image from 'next/image';
-import timeScroll from '@/utils/timeScroll';
+import Link from 'next/link';
+import navLinksMobile from './variables/navLinksMobile';
 
 interface Props {
-	handleClick: (link: interfaceLink) => void;
+	handleClick: () => void;
 }
 
 const MenuMobile: React.FC<Props> = ({ handleClick }) => {
@@ -17,12 +16,7 @@ const MenuMobile: React.FC<Props> = ({ handleClick }) => {
 			{navLinksMobile.map((item, index) => {
 				return (
 					<li key={index}>
-						<Link
-							to={item.scroll ? item.to : ''}
-							offset={0}
-							duration={timeScroll}
-							onClick={() => handleClick(item)}
-						>
+						<Link href={item.to} onClick={() => handleClick()}>
 							<div className='py-4 px-5 border-b cursor-pointer'>{item.name}</div>
 						</Link>
 					</li>

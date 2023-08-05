@@ -25,7 +25,7 @@ const Booking = () => {
 	const [name, setName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [email, setEmail] = useState('');
-	const [phone, setPhone] = useState('');
+	const [phone, setPhone] = useState('+1');
 	const [category, setCategory] = useState('');
 	const [people, setPeople] = useState('');
 	const [address, setAddres] = useState('');
@@ -36,11 +36,28 @@ const Booking = () => {
 	const [timeFormat, setTimeFormat] = useState('');
 	const [timeCallMe, setTimeCallMe] = useState('');
 
-	const handleInputClick = () => {
-		if (timeInputRef.current) {
-			timeInputRef.current.click();
+	function getFormatNumber(input: string) {
+		// Eliminar todos los caracteres no numéricos del input
+
+		// Caso 1: Si hay 10 dígitos, formatear como 123-123-1234
+		if (input.length > 6) {
+			return `+1 (${input.slice(0, 3)})-${input.slice(3, 6)}-${input.slice(6)}`;
 		}
-	};
+
+		// Caso 2: Si hay más de 3 dígitos, formatear como xxx-xx o xxx-x
+		if (input.length > 3) {
+			const x = input.slice(0, 3);
+			const y = input.slice(3);
+			return `+1 (${x})-${y}`;
+		}
+
+		// Caso 3: Cualquier otra longitud se formate como está
+		if (input === '') {
+			return '+1';
+		} else {
+			return '+1 (' + input;
+		}
+	}
 
 	function validarCorreo(correo: string) {
 		const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -53,6 +70,7 @@ const Booking = () => {
 			time === '' ||
 			email === '' ||
 			phone === '' ||
+			phone.length < 15 ||
 			timeCallMe === '' ||
 			!validarCorreo(email) ||
 			category === '' ||
@@ -238,7 +256,20 @@ const Booking = () => {
 									<input
 										autoComplete='off'
 										id='phone'
-										onChange={(e) => setPhone(e.target.value)}
+										onChange={(e) => {
+											const regex = /^\+?\d+$/;
+											const value = e.target.value
+												.substring(2)
+												.replace(/-/g, '')
+												.replace('(', '')
+												.replace(')', '')
+												.replace(' ', '');
+											if (regex.test(value) || value === '') {
+												if (value.length < 11) {
+													setPhone(getFormatNumber(value));
+												}
+											}
+										}}
 										value={phone}
 										name='Phone'
 										type='text'

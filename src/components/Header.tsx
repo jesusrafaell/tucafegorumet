@@ -10,7 +10,6 @@ import lang from '@/LANG/eng.json';
 
 import logoTuCafe from '@/images/logo_tucafe.png';
 
-import { Link as LinkS } from 'react-scroll';
 import navLinks, { interfaceLink } from './variables/navLinks';
 import MenuMobile from './NavMobile';
 import Image from 'next/image';
@@ -31,16 +30,16 @@ const Header = () => {
 		});
 	}, []);
 
-	const handleClick = async (link: interfaceLink) => {
+	const handleClick = () => {
 		setMobileMenu(false);
-		if (!link.scroll) {
-			router.push(`/${link.to}`);
-		} else {
-			if (router.pathname.split('/').length > 1 && router.pathname !== '/') {
-				await router.push(`/#${link.to}`);
-			}
-			await router.replace(`/#${link.to}`);
-		}
+		// if (!link.scroll) {
+		// 	router.push(`/${link.to}`);
+		// } else {
+		// 	if (router.pathname.split('/').length > 1 && router.pathname !== '/') {
+		// 		await router.push(`/#${link.to}`);
+		// 	}
+		// 	await router.replace(`/#${link.to}`);
+		// }
 	};
 
 	return (
@@ -55,18 +54,13 @@ const Header = () => {
 		>
 			<div className='container mx-auto w-screen flex flex-row h-full'>
 				<div className='w-full h-full'>
-					<LinkS
-						to={'home'}
-						spy
-						smooth
-						offset={0}
-						duration={timeScroll}
+					<Link
+						href={'/'}
 						onClick={() => {
 							setMobileMenu(false);
-							handleClick({ to: 'home', scroll: true, name: 'home' });
 						}}
 					>
-						<div className='cursor-pointer hover:animate-pulse'>
+						<div className='cursor-pointer'>
 							<div
 								className={`${
 									mobileMenu ? 'opacity-0' : 'opacity-100'
@@ -77,7 +71,7 @@ const Header = () => {
 								</div>
 							</div>
 						</div>
-					</LinkS>
+					</Link>
 				</div>
 				<div className='flex flex-row'>
 					<div className='hidden lg:flex flex-row justify-center items-center px-5'>
@@ -85,7 +79,7 @@ const Header = () => {
 							{navLinks.map((itemNav, index) => {
 								return (
 									<li key={index} className='relative'>
-										<LinkS
+										<Link
 											className={`
 												capitalize block relative cursor-pointer 
 												text-[20px] whitespace-nowrap
@@ -95,15 +89,11 @@ const Header = () => {
 												after:transition-all after:duration-300 after:ease-in-out
 												hover:after:w-full hover:after:left-0
 										`}
-											to={itemNav.scroll ? itemNav.to : ''}
-											spy
-											smooth
-											offset={0}
-											duration={timeScroll}
-											onClick={() => handleClick(itemNav)}
+											href={itemNav.to}
+											onClick={() => handleClick()}
 										>
 											{itemNav.name}
-										</LinkS>
+										</Link>
 									</li>
 								);
 							})}

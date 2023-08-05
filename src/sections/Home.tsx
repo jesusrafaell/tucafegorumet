@@ -59,8 +59,11 @@ export const Home = () => {
 						>
 							{lang.title_home}
 						</motion.h1>
-						<p className='text-[14px] md:text-[15px] lg:text-[25px] font-bold text-gray-400 py-5 text-center'>
+						<p className='text-[14px] md:text-[15px] lg:text-[25px] font-bold text-gray-400 text-center pt-5'>
 							{lang.text_home}
+						</p>
+						<p className='text-[14px] md:text-[15px] lg:text-[25px] font-bold text-gray-400  text-center'>
+							{lang.text_home2}
 						</p>
 					</motion.div>
 				</div>

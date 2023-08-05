@@ -106,7 +106,7 @@ export default function Home() {
 			>
 				<HomePage />
 				{/* <ShopPage /> */}
-				<AboutPage />
+				{/* <AboutPage /> */}
 				<Hero />
 				{/* <OurStoryPage /> */}
 			</motion.div>

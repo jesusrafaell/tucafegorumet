@@ -80,7 +80,7 @@ const ourStory = () => {
 									espresso experience like none other. With an alluring aroma, smooth flavor and touch of life, Tu
 									Café is more than just a morning coffee, it is coffee that compliments your lifestyle.
 								</motion.p>
-								<span className='hidden lg:block self-start font-gravity-regular py-4 text-black'>
+								<span className='hidden lg:block text-xl self-end font-gravity-regular py-4 text-black'>
 									{lang.slogan}
 								</span>
 							</div>
