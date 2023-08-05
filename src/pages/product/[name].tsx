@@ -1,3 +1,4 @@
+'use client';
 import { CartContext } from '@/context/CartContext';
 import products, { ProductCartDto, ProductDto } from '@/utils/products';
 import { GetServerSideProps, NextPage } from 'next';
@@ -42,6 +43,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			if (i < rank - 1) {
 				result.push(
 					<svg
+						key={i}
 						className='w-4 h-4 text-yellow-300'
 						aria-hidden='true'
 						xmlns='http://www.w3.org/2000/svg'
@@ -54,6 +56,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 			} else {
 				result.push(
 					<svg
+						key={i}
 						className='w-4 h-4 text-gray-300 dark:text-gray-500'
 						aria-hidden='true'
 						fill='currentColor'
@@ -79,7 +82,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 		setAmount(value - 1 < 1 ? 1 : value - 1);
 	};
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		setColor('bg-base-dark');
 		if (router.pathname.includes('product')) {
 			window.scrollTo(0, 0);
@@ -136,7 +139,7 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 					lg:h-full w-full flex items-center 
 					justify-center
 					pb-20
-					pt-40
+					pt-[7rem]
 					lg:p-0
 					lg:justify-between
 					lg:mt-0

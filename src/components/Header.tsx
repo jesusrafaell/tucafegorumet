@@ -130,7 +130,7 @@ const Header = () => {
 							{lang.header_Reserve}
 						</span>
 					</Link> */}
-					<div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative  text-black'>
+					<div className='w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative  text-black ml-5'>
 						{mobileMenu ? (
 							<VscChromeClose className='text-[20px]' onClick={() => setMobileMenu(false)} />
 						) : (

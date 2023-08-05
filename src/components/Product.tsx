@@ -24,7 +24,6 @@ const Product: FC<Props> = ({ product }) => {
 				'
 		>
 			<div
-				m-10
 				className='
 				group
 				grad
