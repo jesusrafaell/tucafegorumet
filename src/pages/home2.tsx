@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import { AnimationProductContext } from '@/context/AnimationProductContext';
 import { motion } from 'framer-motion';
-import HomePage from '@/sections/Home';
+import HomePage from '@/sections/Home2';
 import ShopPage from '@/sections/Shop';
 import OurStoryPage from '@/sections/OurStory';
 import CupLoading from '@/components/CupLoading';
@@ -101,7 +101,7 @@ export default function Home() {
 					if (isActive) {
 						// console.log('go to product detail');
 						// handleToProduct();
-						setIsActive(true);
+						setIsActive(false);
 					}
 				}}
 				className='overflow-hidden bg-white'

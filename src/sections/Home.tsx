@@ -9,8 +9,15 @@ import lang from '@/LANG/eng.json';
 // import bgCoffe from '@/images/bg_coffe2.png';
 import groundI from '@/images/home/groundI.png';
 import groundD from '@/images/home/groundD.png';
+import { useContext, useEffect } from 'react';
+import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 
 export const Home = () => {
+	const { setItemColor } = useContext(BackGroundColorContext);
+	useEffect(() => {
+		setItemColor(false);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	return (
 		<section id='home' className='home overflow-hidden flex flex-row h-screen w-screen relative'>
 			<motion.div

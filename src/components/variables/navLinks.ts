@@ -27,7 +27,7 @@ const navLinks = [
 	},
 	{
 		name: 'Request a Coffe Station',
-		to: 'book',
+		to: '/book',
 		scroll: false,
 	},
 ];

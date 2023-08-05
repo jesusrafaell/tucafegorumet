@@ -15,12 +15,14 @@ import MenuMobile from './NavMobile';
 import Image from 'next/image';
 import Link from 'next/link';
 import timeScroll from '@/utils/timeScroll';
+import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 
 const Header = () => {
 	// header state
 	const [isActive, setIsActive] = useState(false);
 	const { isOpen, setIsOpen } = useContext(SidebarContext);
 	const { itemAmount } = useContext(CartContext);
+	const { itemColor } = useContext(BackGroundColorContext);
 	const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 	const router = useRouter();
 
@@ -40,7 +42,7 @@ const Header = () => {
 				${
 					isActive || mobileMenu || router.pathname.includes('product')
 						? 'bg-white py-3 shadow-md text-black'
-						: 'py-5 text-black'
+						: `py-5 ${itemColor ? 'text-white' : 'text-black'}`
 				} 
 			fixed w-full z-30 transition-all  max-w-screen`}
 		>
@@ -101,7 +103,7 @@ const Header = () => {
 								}}
 								className='cursor-pointer flex relative text-black'
 							>
-								<HiShoppingCart className='text-[25px]' />
+								<HiShoppingCart className={`text-[25px] ${itemColor ? 'text-white' : 'text-black'}`} />
 								<div
 									className='
 											bg-red-500 absolute 

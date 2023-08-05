@@ -8,18 +8,6 @@ const About = () => {
 	return (
 		<section id='about' className='bg-base-light flex w-screen h-full min-h-screen justify-center items-center'>
 			<div className='bgAbout absolute w-screen h-full opacity-10'></div>
-			{/* <motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{
-					ease: 'easeIn',
-					duration: 0.4,
-					delay: 1,
-				}}
-				className='absolute top-0 w-screen h-screen'
-			>
-				<Image src={bgCoffes} alt='ground-rop' />
-			</motion.div> */}
 			<div className='container mx-auto flex w-full h-full flex-col justify-center items-center pt-[7rem] pb-8 lg:py-0 relative'>
 				<div className='flex w-full h-full flex-col lg:flex-row gap-x-10 justify-center items-center lg:items-start px-3 lg:px-10'>
 					<motion.div
