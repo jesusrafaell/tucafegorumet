@@ -20,8 +20,10 @@ export default function Home() {
 
 	useLayoutEffect(() => {
 		import('./product/[name]');
-		import('./services');
+		import('./about');
+		import('./ourStory');
 		import('./products');
+		import('./services');
 		import('./book');
 
 		const handlePrimary = () => {
