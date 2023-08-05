@@ -10,23 +10,23 @@ const navLinksMobile = [
 	},
 	{
 		name: 'About',
-		to: 'about',
+		to: '/about',
 	},
 	{
 		name: 'Our Story',
-		to: 'ourStory',
+		to: '/ourStory',
 	},
 	{
 		name: 'Products',
-		to: 'products',
+		to: '/products',
 	},
 	{
 		name: 'Services',
-		to: 'services',
+		to: '/services',
 	},
 	{
 		name: 'Request a Coffe Station',
-		to: 'book',
+		to: '/book',
 	},
 ];
 

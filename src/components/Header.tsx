@@ -32,14 +32,6 @@ const Header = () => {
 
 	const handleClick = () => {
 		setMobileMenu(false);
-		// if (!link.scroll) {
-		// 	router.push(`/${link.to}`);
-		// } else {
-		// 	if (router.pathname.split('/').length > 1 && router.pathname !== '/') {
-		// 		await router.push(`/#${link.to}`);
-		// 	}
-		// 	await router.replace(`/#${link.to}`);
-		// }
 	};
 
 	return (

@@ -28,7 +28,7 @@ const Product: FC<Props> = ({ product }) => {
 				className='
 				group
 				grad
-				w-[150px]
+				w-[250px]
 				h-[250px]
 				lg:w-[300px]
 				lg:h-[200px]
@@ -42,7 +42,7 @@ const Product: FC<Props> = ({ product }) => {
 				relative overflow-hidden trasition'
 			>
 				<div className='w-full h-full flex justify-center items-center'>
-					<div className='w-[300px] lg:w-[200px] h-[300px]  mx-auto flex justify-center items-center'>
+					<div className='w-[250px] lg:w-[200px] h-[300px]  mx-auto flex justify-center items-center'>
 						<Image className={`transition duration-200 ease-in group-hover:scale-110`} src={imagen} alt='hola' />
 					</div>
 				</div>

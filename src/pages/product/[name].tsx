@@ -9,6 +9,7 @@ import { BackGroundColorContext } from '@/context/BackgorundColorContext';
 import Link from 'next/link';
 import { IoMdAdd, IoMdClose, IoMdRemove } from 'react-icons/io';
 import bgImage from '@/images/splash-product.png';
+import bgImage2 from '@/images/splash-ground.png';
 import { useRouter } from 'next/router';
 import { FaArrowLeft } from 'react-icons/fa';
 import { textVariant } from '@/utils/motion';
@@ -170,11 +171,9 @@ const Product: NextPage<ProductPageProps> = ({ product }) => {
 								animate={{ x: 0, opacity: 1, transition: { ease: 'easeIn', delay: 0.3 } }}
 								exit={{ opacity: 0 }}
 							>
-								{category === 'whole' ? (
-									<motion.div initial={{ opacity: 1 }} animate={controlBg}>
-										<Image loading='lazy' width={600} src={bgImage} alt='splah' />
-									</motion.div>
-								) : null}
+								<motion.div initial={{ opacity: 1 }} animate={controlBg}>
+									<Image loading='lazy' width={600} src={category === 'whole' ? bgImage : bgImage2} alt='splah' />
+								</motion.div>
 							</motion.div>
 							<motion.div className='relative'>
 								<div

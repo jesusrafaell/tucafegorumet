@@ -7,22 +7,22 @@ export interface interfaceLink {
 const navLinks = [
 	{
 		name: 'About',
-		to: 'about',
+		to: '/about',
 		scroll: true,
 	},
 	{
 		name: 'Our Story',
-		to: 'ourStory',
+		to: '/ourStory',
 		scroll: false,
 	},
 	{
 		name: 'Products',
-		to: 'products',
+		to: '/products',
 		scroll: false,
 	},
 	{
 		name: 'Services',
-		to: 'services',
+		to: '/services',
 		scroll: false,
 	},
 	{
