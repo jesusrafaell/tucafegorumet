@@ -38,6 +38,10 @@ body::-webkit-scrollbar {
 .heroHome {
 	background-image: url('../images/bg_hero.png');
 }
+.bgAbout {
+	background-image: url('../images/bgAbout.png');
+	background-size: 100%;
+}
 
 :root {
 	--foreground-rgb: 0, 0, 0;
