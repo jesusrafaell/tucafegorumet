@@ -19,13 +19,12 @@ const ourStory = () => {
 			justify-center
 			h-full'
 		>
-			<div className='flex items-center justify-center pt-20'>
+			<div className='flex items-center justify-center pt-[6rem] lg:pt-0'>
 				<div className='container max-auto flex flex-col'>
 					<motion.div
 						variants={textVariant(0.5, -10)}
 						initial='hidden'
-						whileInView='show'
-						viewport={{ once: false, amount: 0.7 }}
+						animate='show'
 						className='flex w-full justify-center items-center lg:mb-5'
 					>
 						<h2
@@ -45,8 +44,7 @@ const ourStory = () => {
 						<motion.div
 							variants={textVariant(0.5, 10)}
 							initial='hidden'
-							whileInView='show'
-							viewport={{ once: false, amount: 0.7 }}
+							animate='show'
 							className='
 								bg-white w-[300px] 
 								flex-1 order-1 my-4 py-0 lg:-order-1 
@@ -59,8 +57,7 @@ const ourStory = () => {
 						<motion.div
 							variants={textVariant(0.5, -10)}
 							initial='hidden'
-							whileInView='show'
-							viewport={{ once: false, amount: 0.7 }}
+							animate='show'
 							className='lg:flex-1 flex flex-col justify-end px-4 lg:px-0'
 						>
 							{/* info */}
@@ -71,8 +68,7 @@ const ourStory = () => {
 								<motion.p
 									variants={textVariant(0.5, 10)}
 									initial='hidden'
-									whileInView='show'
-									viewport={{ once: false, amount: 0.7 }}
+									animate='show'
 									className='text-gray-700 text-[17px] lg:text-2xl text-justify'
 								>
 									Established in 1996, Tu Café is a family-owned & operated business dedicated to providing

@@ -70,7 +70,7 @@ const Booking = () => {
 			time === '' ||
 			email === '' ||
 			phone === '' ||
-			phone.length < 15 ||
+			phone.length < 14 ||
 			timeCallMe === '' ||
 			!validarCorreo(email) ||
 			category === '' ||
