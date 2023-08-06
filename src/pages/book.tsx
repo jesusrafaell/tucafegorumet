@@ -15,7 +15,7 @@ import timeCalls from '@/utils/timeCallMe';
 
 const Booking = () => {
 	const timeInputRef = useRef<HTMLInputElement>(null);
-	const { setItemColor } = useContext(BackGroundColorContext);
+	// const { setItemColor } = useContext(BackGroundColorContext);
 	const currentDate = new Date();
 	const nextDay = new Date(currentDate.setDate(currentDate.getDate() + 1));
 
@@ -126,10 +126,10 @@ const Booking = () => {
 		}
 	};
 
-	useLayoutEffect(() => {
-		setItemColor(true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	// useLayoutEffect(() => {
+	// 	setItemColor(true);
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, []);
 
 	const router = useRouter();
 
